@@ -12,6 +12,14 @@
     var vm = this;
     vm.authentication = Authentication;
     vm.purchase = purchase;
+
+
+
+    // vm.purchase.ncc.nccdate = vm.purchase.ncc.nccdate ? new Date(vm.purchase.ncc.nccdate) : vm.purchase.ncc.nccdate;
+    // vm.purchase.webbam.datesub = vm.purchase.webbam.datesub ? new Date(vm.purchase.webbam.datesub) : vm.purchase.webbam.datesub;
+    // vm.purchase.webbam.onweb = vm.purchase.webbam.onweb ? new Date(vm.purchase.webbam.onweb) : vm.purchase.webbam.onweb;
+
+
     vm.error = null;
     vm.form = {};
     vm.remove = remove;
@@ -39,12 +47,26 @@
         vm.purchase.docdate = new Date();
         vm.purchase.drilldate = new Date();
       }
+
       if (!vm.purchase.items) {
         vm.purchase.items = [{
           productcode: '',
           product: '',
           qty: 1
         }];
+      }
+      if (vm.purchase._id) {
+        if (vm.purchase.ncc.nccdate) {
+          vm.purchase.ncc.nccdate = new Date(vm.purchase.ncc.nccdate)
+        }
+
+        if (vm.purchase.webbam.datesub) {
+          vm.purchase.webbam.datesub = new Date(vm.purchase.webbam.datesub)
+        }
+
+        if (vm.purchase.webbam.onweb) {
+          vm.purchase.webbam.onweb = new Date(vm.purchase.webbam.onweb)
+        }
       }
 
     }
@@ -66,13 +88,13 @@
         vm.purchase.amount += itm.amount || 0;
       });
       vm.purchase.remark = [];
-      if(vm.purchase.amount >= 100000){
+      if (vm.purchase.amount >= 100000) {
         vm.purchase.remark.push('ต้องมีข้อมูลการประกาศ Website BAM');
       }
-      if(vm.purchase.amount >= 2000000){
+      if (vm.purchase.amount >= 2000000) {
         vm.purchase.remark.push('ต้องมีข้อมูลคุมสัญญาจากสำนักงาน ป.ป.ช.');
       }
-      
+
     }
 
     function init() {

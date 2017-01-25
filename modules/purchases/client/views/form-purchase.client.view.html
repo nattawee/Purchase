@@ -95,6 +95,7 @@
             </div>
           </div>
         </div>
+
         <div class="form-group">
           <table class="table">
             <thead style="background-color:lightgray;">
@@ -131,15 +132,71 @@
           </table>
           <button type="button" class="btn btn-default" ng-click="vm.addItem()">Add</button>
         </div>
+
+        <div class="row" ng-hide="(vm.purchase.amount || 0) < 100000">
+          <div class="col-xs-12">
+            <div class="row">
+              <div class="col-xs-12 text-center well">
+                <h4>ประกาศ Website BAM</h4>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-3">
+                <div class="form-group">
+                  <label class="control-label" for="datesub">วันที่ส่งฝ่าย</label>
+                  <input name="datesub" type="date" ng-model="vm.purchase.webbam.datesub" id="datesub" class="form-control" placeholder="วันที่ส่งฝ่าย">
+                </div>
+              </div>          
+
+              <div class="col-xs-3">
+                <label class="control-label" for="onweb">วันที่ประกาศ Website BAM</label>
+                <input name="onweb" type="date" ng-model="vm.purchase.webbam.onweb" id="onweb" class="form-control" placeholder="วันที่ประกาศ Website BAM">
+              </div>
+              <div class="col-xs-3">
+                <label class="control-label" for="refno">เลขที่อ้างอิง(Reference Number)</label>
+                <input name="refno" type="text" ng-model="vm.purchase.webbam.refno" id="refno" class="form-control" placeholder="เลขที่อ้างอิง(Reference Number)">
+              </div>
+              <div class="col-xs-3">
+                <label class="control-label" for="url">Url Web BAM</label>
+                <input name="url" type="text" ng-model="vm.purchase.webbam.url" id="url" class="form-control" placeholder="Url Web BAM">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row" ng-hide="(vm.purchase.amount || 0) < 2000000">
+          <div class="col-xs-12">
+            <div class="row">
+              <div class="col-xs-12 text-center well">
+                <h4>คุมสัญญาจากสำนักงาน ป.ป.ช.</h4>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-6">
+                <div class="form-group">
+                  <label class="control-label" for="nccdate">วันที่</label>
+                  <input name="nccdate" type="date" ng-model="vm.purchase.ncc.nccdate" id="nccdate" class="form-control" placeholder="วันที่">
+                </div>
+              </div>
+
+              {{vm.purchase.ncc.date}}
+
+              <div class="col-xs-6">
+                <label class="control-label" for="nccno">เลขที่คุมสัญญา</label>
+                <input name="nccno" type="text" ng-model="vm.purchase.ncc.nccno" id="nccno" class="form-control" placeholder="เลขที่คุมสัญญา">
+              </div>
+            </div>
+          </div>
+        </div>
+
         <div class="row">
           <div class="col-lg-3">
-            <div class="row">
-              
-              <div class="col-xs-12" ng-show="vm.purchase.remark.length > 0">
+            <div class="row ">
+              <div class="col-xs-12 " ng-show="vm.purchase.remark.length > 0">
                 Remark
               </div>
             </div>
-            <div class="row border-top border-bottom border-left border-right" ng-show="vm.purchase.remark.length > 0">
+            <div class="row well text-danger" ng-show="vm.purchase.remark.length > 0">
               <div class="col-xs-12">
                 <ul>
                   <li ng-repeat="rem in vm.purchase.remark">

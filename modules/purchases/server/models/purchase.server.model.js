@@ -11,6 +11,7 @@ var mongoose = require('mongoose'),
  */
 var PurchaseSchema = new Schema({
     docno: {
+        // เลขที่ใบสั่งซื้อ
         type: String,
         default: '',
         unique: true,
@@ -18,35 +19,102 @@ var PurchaseSchema = new Schema({
         trim: true
     },
     docdate: {
+        // วันที่
         type: Date,
         default: Date.now
     },
     client: {
+        // ชื่อผู้ขาย
         type: String,
         required: 'Please fill Purchase client'
     },
     company: {
+        // สังกัด
         type: String
     },
-    approv: {
-        type: String
-    },
+    approvmd: [{
+        // Medium price
+        amount: {
+            type: String
+        },
+        date: {
+            type: Date,
+            default: Date.now
+
+        },
+        approv: {
+            type: String
+        }
+    }],
+    approvp: [{
+        // purchase
+        amount: {
+            type: String
+        },
+        date: {
+            type: Date,
+            default: Date.now
+        },
+        approv: {
+            type: String
+        }
+    }],
     tender: {
+        // เลขที่ใบขอซื้อ
         type: String
     },
     howtohire: {
+        //วิธีซื้อ/จ้าง
         type: String
     },
     buyer: {
+        // ผู้ซื้อ
         type: String,
         required: 'Please fill Purchase buyer'
     },
     pursector: {
+        // ประเภทการจัดซื้อ / จัดจ้าง
         type: String,
         required: 'Please fill Purchase pursector'
     },
-    remark:[String],
+    remark: [String],
+    webbam: {
+        // ประกาศลงเว็บ        
+        datesub: {
+            type: Date,
+            default: Date.now
+        },
+        onweb: {
+            type: Date,
+            default: Date.now
+        },
+        refno: {
+            type: String
+        },
+        url: {
+            type: String
+        }
+    },
+    success: {
+        // ผู้ชนะการเสนอราคา
+        type: String
+    },
+    po: {
+        // เลขที่สัญญา/PO
+        type: String
+    },
+    ncc: {
+        // คุมสัญญาจากสำนักงาน ป.ป.ช.	
+        nccdate: {
+            type: Date,
+            default: Date.now
+        },
+        nccno: {
+            type: String
+        },
+    },
     items: [{
+        // รายชื่อสินค้า
         productcode: {
             type: String,
             required: 'Please fill Purchase productcode'
@@ -71,7 +139,9 @@ var PurchaseSchema = new Schema({
         }
     }],
     drilldate: {
+        // กำหนดส่งมอบ วันที่
         type: Date,
+        default: Date.now
     },
     amount: {
         type: Number,

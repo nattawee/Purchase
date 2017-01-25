@@ -36,6 +36,16 @@ describe('Purchase Model Unit Tests:', function () {
         buyer: 'nong',
         pursector: 'pursector',
         remark: ['remark1','remark2'],
+        webbam:{
+          datesub:Date.now(),
+          onweb:Date.now(),
+          refno:'no',
+          url:'url'
+        },
+        ncc:{
+          nccdate:Date.now(),
+          nccno:'011'
+        },
         items: [{
           productcode: 'N100',
           product: 'book',

@@ -58,6 +58,16 @@ describe('Purchase CRUD tests', function () {
         buyer: 'nong',
         pursector: 'pursector',
         remark:['remark1','remark2'],
+        webbam:{
+          datesub:Date.now(),
+          onweb:Date.now(),
+          refno:'no',
+          url:'url'
+        },
+        ncc:{
+          nccdate:Date.now(),
+          nccno:'011'
+        },
         items: [{
           productcode: 'N100',
           product: 'book',
@@ -99,7 +109,9 @@ describe('Purchase CRUD tests', function () {
 
         // Get the userId
         var userId = user.id;
-
+        var datenow = Date.now();
+        purchase.webbam.datesub = datenow;
+        purchase.ncc.nccdate = datenow;
         // Save a new Purchase
         agent.post('/api/purchases')
           .send(purchase)
@@ -129,6 +141,10 @@ describe('Purchase CRUD tests', function () {
                 (purchases[0].pursector).should.match('pursector');
                 (purchases[0].remark.length).should.equal(2);
                 (purchases[0].items[0].productcode).should.match('N100');
+                //(purchases[0].webbam.datesub).should.equal(datenow);
+                //(purchases[0].ncc.date).should.equal(datenow);
+                
+                
 
                 // Call the assertion callback
                 done();
