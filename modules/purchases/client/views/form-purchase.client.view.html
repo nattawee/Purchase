@@ -7,12 +7,9 @@
       <fieldset>
         <div class="row">
           <div class="col-md-3">
-            <div class="form-group" show-errors>
-              <label class="control-label" for="client">Client</label>
-              <input name="client" type="text" ng-model="vm.purchase.client" id="client" class="form-control" placeholder="ชื่อผู้ขาย" required>
-              <div ng-messages="vm.form.purchaseForm.client.$error" role="alert">
-                <p class="help-block error-text" ng-message="required">Purchase Client is required.</p>
-              </div>
+            <div class="form-group">
+              <label class="control-label" for="docdate">วันที่</label>
+              <input name="docdate" type="date" ng-model="vm.purchase.docdate" id="docdate" class="form-control" placeholder="Doc Date">
             </div>
           </div>
           <div class="col-md-3">
@@ -21,8 +18,9 @@
           </div>
           <div class="col-md-3">
             <div class="form-group" show-errors>
-              <label class="control-label" for="docno">Doc No</label>
-              <input name="docno" type="text" ng-model="vm.purchase.docno" id="docno" class="form-control" placeholder="Doc No" required>
+              <label class="control-label" for="docno">เลขที่ใบสั่งซื้อ</label>
+              <input name="docno" type="text" ng-model="vm.purchase.docno" id="docno" class="form-control" placeholder="เลขที่ใบสั่งซื้อ"
+                required>
               <div ng-messages="vm.form.purchaseForm.docno.$error" role="alert">
                 <p class="help-block error-text" ng-message="required">Purchase docdate is required.</p>
               </div>
@@ -31,61 +29,69 @@
         </div>
         <div class="row">
           <div class="col-md-3">
-            <div class="form-group">
-              <label class="control-label" for="address">Address</label>
-              <textarea name="docdate" type="text" ng-model="vm.purchase.client.address" id="address" class="form-control" placeholder="Address"
-              />
+            <div class="form-group" show-errors>
+              <label class="control-label" for="client">ชื่อผู้ขาย</label>
+              <input name="client" type="text" ng-model="vm.purchase.client" id="client" class="form-control" placeholder="ชื่อผู้ขาย"
+                required>
+              <div ng-messages="vm.form.purchaseForm.client.$error" role="alert">
+                <p class="help-block error-text" ng-message="required">Purchase Client is required.</p>
+              </div>
             </div>
           </div>
           <div class="col-md-3">
             <div class="form-group">
-              <label class="control-label" for="brunch">Brunch</label>
-              <input name="docdate" type="text" ng-model="vm.purchase.client.brunch" id="brunch" class="form-control" placeholder="Brunch">
+              <label class="control-label" for="company">สังกัด</label>
+              <input name="company" type="text" ng-model="vm.purchase.company" id="company" class="form-control" placeholder="สังกัด">
             </div>
           </div>
           <div class="col-md-3">
             <div class="form-group">
-              <label class="control-label" for="taxid">Tax ID</label>
-              <input name="docdate" type="text" ng-model="vm.purchase.client.taxid" id="taxid" class="form-control" placeholder="Tax ID">
+              <label class="control-label" for="tender">เลขที่ใบสั่งซื้อ</label>
+              <input name="tender" type="text" ng-model="vm.purchase.tender" id="tender" class="form-control" placeholder="เลขที่ใบสั่งซื้อ">
             </div>
           </div>
           <div class="col-md-3">
             <div class="form-group">
-              <label class="control-label" for="docdate">Doc Date</label>
-              <input name="docdate" type="date" ng-model="vm.purchase.docdate" ng-change="vm.creditdayChanged()" id="docdate" class="form-control"
-                placeholder="Doc Date">
+              <label class="control-label" for="drilldate">กำหนดมอบวันที่</label>
+              <input name="drilldate" type="date" ng-model="vm.purchase.drilldate" id="drilldate" class="form-control" placeholder="กำหนดมอบวันที่">
             </div>
           </div>
         </div>
         <div class="row">
-          <div class="col-md-3">
+          <div class="col-md-2">
             <div class="form-group">
-              <label class="control-label" for="telofficeno">Phone</label>
-              <input name="telofficeno" type="text" ng-model="vm.purchase.client.telofficeno" id="telofficeno" class="form-control" placeholder="Phone">
+              <label class="control-label" for="buyer">ผู้สั่งซื้อ</label>
+              <input name="buyer" type="text" ng-model="vm.purchase.buyer" id="buyer" class="form-control" placeholder="ผู้สั่งซื้อ">
             </div>
           </div>
-          <div class="col-md-3">
+          <div class="col-md-5">
             <div class="form-group">
-              <label class="control-label" for="creditday">Credit Day</label>
-              <input name="creditday" type="number" ng-model="vm.purchase.creditday" ng-change="vm.creditdayChanged()" id="creditday" class="form-control"
-                placeholder="Credit Day">
+              <label class="control-label" for="howtohire">วิธีซื้อ/จ้าง</label>
+              <select class="form-control" name="carlist" form="carform" ng-model="vm.purchase.howtohire">
+                <option value="วิธีตกลงราคา">วิธีตกลงราคา</option>
+                <option value="วิธีสืบราคา">วิธีสืบราคา</option>
+                <option value="วิธีประมูลด้วยระบบอิเล็กทรอนิกส์">วิธีประมูลด้วยระบบอิเล็กทรอนิกส์</option>
+                <option value="วิธีกรณีพิเศษ">วิธีกรณีพิเศษ</option>
+                <option value="การต่อสัญญา">การต่อสัญญา</option>
+                <option value="วิธีฉุกเฉิน">วิธีฉุกเฉิน</option>
+                <option value="วิธีพิเศษ (มีประกาศเชิญชวน หรือ ไม่มีประกาศเชิญชวน)">วิธีพิเศษ (มีประกาศเชิญชวน หรือ ไม่มีประกาศเชิญชวน)</option>
+                <option value="อื่นๆ">อื่นๆ</option>
+              </select>
             </div>
           </div>
-          <div class="col-md-3">
+          <div class="col-md-5">
             <div class="form-group">
-              <label class="control-label" for="refno">Ref No</label>
-              <input name="refno" type="text" ng-model="vm.purchase.refno" id="refno" class="form-control" placeholder="Ref No">
-            </div>
-          </div>
-          <div class="col-md-3">
-            <div class="form-group">
-              <label class="control-label" for="drilldate">Drill Date</label>
-              <input name="drildate" type="date" ng-model="vm.purchase.drilldate" id="drildate" class="form-control" placeholder="Drill Date"
-                readonly>
-            </div>
-            <div class="form-group">
-              <label class="control-label" for="refno">Is Include Vat</label>
-              <input name="isincludevat" type="checkbox" value=false ng-model="vm.purchase.isincludevat" id="isincludevat">
+              <label class="control-label" for="pursector">ประเภทการจัดซื้อ/จัดจ้าง</label>
+              <select class="form-control" name="carlist" form="carform" ng-model="vm.purchase.pursector">
+                <option value="งานก่อสร้าง">งานก่อสร้าง</option>
+                <option value="การจ้างควบคุมงาน">การจ้างควบคุมงาน</option>
+                <option value="การจ้างออกแบบ">การจ้างออกแบบ</option>
+                <option value="การจ้างที่ปรึกษา">การจ้างที่ปรึกษา</option>
+                <option value="การจ้างงานวิจัยหรือเงินสนับสนุนให้ทุนการวิจัย">การจ้างงานวิจัยหรือเงินสนับสนุนให้ทุนการวิจัย</option>
+                <option value="การจ้างพัฒนาระบบคอมพิวเตอร์">การจ้างพัฒนาระบบคอมพิวเตอร์</option>
+                <option value="การจัดซื้อ/จัดจ้างที่มิใช่งานก่อสร้าง">การจัดซื้อ/จัดจ้างที่มิใช่งานก่อสร้าง</option>
+                <option value="อื่นๆ">อื่นๆ</option>
+              </select>
             </div>
           </div>
         </div>
@@ -104,18 +110,18 @@
             <tbody>
               <tr ng-repeat="product in vm.purchase.items">
                 <td>
-                  <p>{{$index+1}}</p>
-                </td>
-                <td>
-                  <input name="product" type="text" ng-model="product.product" id="total" class="form-control" placeholder="ชื่อสินค้า"
+                  <!--<p>{{$index+1}}</p>-->
+                  <input name="productcode" type="text" ng-model="product.productcode" id="productcode" class="form-control" placeholder="รหัสสินค้า"
                     ng-change="vm.calculate(product)">
                 </td>
-                <td><input name="qty" type="number" ng-model="product.qty" id="total" class="form-control" placeholder="QTY"
-                    ng-change="vm.calculate(product)"></td>
-                <td><input name="unitprice" type="number" ng-change="vm.calculate(product)" ng-model="product.unitprice" id="total"
+                <td>
+                  <input name="product" type="text" ng-model="product.product" id="product" class="form-control" placeholder="ชื่อสินค้า" ng-change="vm.calculate(product)">
+                </td>
+                <td><input name="qty" type="number" ng-model="product.qty" id="qty" class="form-control" placeholder="QTY" ng-change="vm.calculate(product)"></td>
+                <td><input name="unitprice" type="number" ng-change="vm.calculate(product)" ng-model="product.unitprice" id="unitprice"
                     class="form-control" placeholder="price"></td>
                 <td>
-                  <p  ng-bind="product.amount| number:2"></p>
+                  <p ng-bind="product.amount| number:2"></p>
                 </td>
                 <td style="text-align:right;">
                   <button type="button" class="btn btn-danger" ng-click="vm.removeProduct($index)">Remove</button>
@@ -126,37 +132,40 @@
           <button type="button" class="btn btn-default" ng-click="vm.addItem()">Add</button>
         </div>
         <div class="row">
-          <div class="col-lg-3"></div>
-          <div class="col-lg-3"></div>
-          <div class="col-lg-3"></div>
+          <div class="col-lg-3">
+            <div class="row">
+              
+              <div class="col-xs-12" ng-show="vm.purchase.remark.length > 0">
+                Remark
+              </div>
+            </div>
+            <div class="row border-top border-bottom border-left border-right" ng-show="vm.purchase.remark.length > 0">
+              <div class="col-xs-12">
+                <ul>
+                  <li ng-repeat="rem in vm.purchase.remark">
+                    {{rem}}
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3">
+
+          </div>
+          <div class="col-lg-3">
+
+          </div>
           <div class="col-lg-3">
             <div class="form-group">
-              <label class="control-label" for="amount">Amount</label>
+              <label class="control-label" for="amount">Total Amount</label>
               <p ng-bind="vm.purchase.amount | number:2" />
             </div>
             <div class="form-group">
-              <label class="control-label" for="discountamount">Discount amount</label>
-              <input name="discountamount" type="number" ng-model="vm.purchase.discountamount" id="discountamount" class="form-control"
-                placeholder="Discount amount">
-            </div>
-            <div class="form-group" ng-show="vm.purchase.discountamount">
-              <label class="control-label" for="amount">Amount after discount</label>
-              <p ng-bind="vm.purchase.amountafterdiscount" />-
+              <label class="control-label" for="approv">ผู้อนุมัติ</label>
+              <input name="approv" type="text" ng-model="vm.purchase.approv" id="approv" class="form-control" placeholder="ผู้อนุมัติ">
             </div>
             <div class="form-group">
-              <label class="control-label" for="vatamount">Vat Amount</label>
-              <p ng-bind="vm.purchase.vatamount | number:2" />
-            </div>
-            <div class="form-group">
-              <label class="control-label" for="vatamount ">Wht Amount</label>
-              <p ng-bind="vm.purchase.whtamount | number:2" />
-            </div>
-            <div class="form-group">
-              <label class="control-label" for="vatamount">Total Amount</label>
-              <p ng-bind="vm.purchase.totalamount | number:2" />
-            </div>
-            <div class="form-group">
-              <button type="submit" class="btn btn-primary" >{{vm.purchase._id ? 'Update' : 'Create'}}</button>
+              <button type="submit" class="btn btn-primary">{{vm.purchase._id ? 'Update' : 'Create'}}</button>
             </div>
             <div ng-show="vm.error" class="text-danger">
               <strong ng-bind="vm.error"></strong>

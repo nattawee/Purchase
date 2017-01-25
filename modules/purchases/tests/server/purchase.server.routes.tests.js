@@ -55,19 +55,24 @@ describe('Purchase CRUD tests', function () {
       purchase = {
         docno: 'Purchase docno',
         client: 'cyber',
-        // items: [{
-        //   product: 'book',
-        //   qty: 1,
-        //   unitprice: 1,
-        //   amount: 100,
-        //   totalamount: 100
-        // }, {
-        //   product: 'pen',
-        //   qty: 1,
-        //   unitprice: 1,
-        //   amount: 200,
-        //   totalamount: 200
-        // }],
+        buyer: 'nong',
+        pursector: 'pursector',
+        remark:['remark1','remark2'],
+        items: [{
+          productcode: 'N100',
+          product: 'book',
+          qty: 1,
+          unitprice: 1,
+          amount: 100,
+          totalamount: 100
+        }, {
+          productcode: 'N100',
+          product: 'pen',
+          qty: 1,
+          unitprice: 1,
+          amount: 200,
+          totalamount: 200
+        }],
         // creditday: 0,
         // isincludevat: 0,
         // amount: 107,
@@ -119,6 +124,12 @@ describe('Purchase CRUD tests', function () {
                 // Set assertions
                 (purchases[0].user._id).should.equal(userId);
                 (purchases[0].docno).should.match('Purchase docno');
+                (purchases[0].client).should.match('cyber');
+                (purchases[0].buyer).should.match('nong');
+                (purchases[0].pursector).should.match('pursector');
+                (purchases[0].remark.length).should.equal(2);
+                (purchases[0].items[0].productcode).should.match('N100');
+
                 // Call the assertion callback
                 done();
               });

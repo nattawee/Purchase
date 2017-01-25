@@ -33,18 +33,23 @@ describe('Purchase Model Unit Tests:', function () {
       purchase = new Purchase({
         docno: 'Purchase Docno',
         client: 'cyber',
-        items:[{
-          product:'book',
-          qty:1,
-          unitprice:1,
-          amount:100,
-          totalamount:100
-        },{
-          product:'pen',
-          qty:1,
-          unitprice:1,
-          amount:200,
-          totalamount:200
+        buyer: 'nong',
+        pursector: 'pursector',
+        remark: ['remark1','remark2'],
+        items: [{
+          productcode: 'N100',
+          product: 'book',
+          qty: 1,
+          unitprice: 1,
+          amount: 100,
+          totalamount: 100
+        }, {
+          productcode: 'N100',
+          product: 'pen',
+          qty: 1,
+          unitprice: 1,
+          amount: 200,
+          totalamount: 200
         }],
         user: user
       });
@@ -64,6 +69,33 @@ describe('Purchase Model Unit Tests:', function () {
 
     it('should be able to show an error when try to save without docno', function (done) {
       purchase.docno = '';
+
+      return purchase.save(function (err) {
+        should.exist(err);
+        done();
+      });
+    });
+
+    it('should be able to show an error when try to save without buyer', function (done) {
+      purchase.buyer = '';
+
+      return purchase.save(function (err) {
+        should.exist(err);
+        done();
+      });
+    });
+
+    it('should be able to show an error when try to save without productcode', function (done) {
+      purchase.items[0].productcode = '';
+
+      return purchase.save(function (err) {
+        should.exist(err);
+        done();
+      });
+    });
+
+    it('should be able to show an error when try to save without pursector', function (done) {
+      purchase.pursector = '';
 
       return purchase.save(function (err) {
         should.exist(err);

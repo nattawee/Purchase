@@ -106,6 +106,7 @@ describe('vm.addItem() as set', function () {
       beforeEach(function () {
         $scope.vm.purchase.docdate = new Date();
         $scope.vm.purchase.items = [{
+          productcode: '',
           product: '',
           qty: 1
         }];
@@ -126,20 +127,63 @@ describe('vm.addItem() as set', function () {
       beforeEach(function () {
         $scope.vm.purchase.docdate = new Date();
         $scope.vm.purchase.items = [{
+          productcode: '',
           product: '',
           qty: 1,
-          unitprice:250
+          unitprice:10000
         }];
       });
-
-      it('should addItem', inject(function () {
+      it('should addItem < 100,000', inject(function () {
         $scope.vm.calculate($scope.vm.purchase.items[0]);
 
         // Test form inputs are reset
         expect($scope.vm.purchase.docdate).toEqual(new Date($scope.vm.purchase.docdate) || new Date());
         expect($scope.vm.purchase.items.length).toEqual(1);
-        expect($scope.vm.purchase.items[0].amount).toEqual(250);
-        expect($scope.vm.purchase.amount).toEqual(250);
+        expect($scope.vm.purchase.items[0].amount).toEqual(10000);
+        expect($scope.vm.purchase.amount).toEqual(10000);
+        expect($scope.vm.purchase.remark.length).toEqual(0);
+        
+        
+
+      }));
+
+      it('should addItem >= 100,000 < 2,000,000', inject(function () {
+        $scope.vm.purchase.items = [{
+          productcode: '',
+          product: '',
+          qty: 1,
+          unitprice:100000
+        }];
+        $scope.vm.calculate($scope.vm.purchase.items[0]);
+
+        // Test form inputs are reset
+        expect($scope.vm.purchase.docdate).toEqual(new Date($scope.vm.purchase.docdate) || new Date());
+        expect($scope.vm.purchase.items.length).toEqual(1);
+        expect($scope.vm.purchase.items[0].amount).toEqual(100000);
+        expect($scope.vm.purchase.amount).toEqual(100000);
+        expect($scope.vm.purchase.remark.length).toEqual(1);
+        expect($scope.vm.purchase.remark[0]).toEqual('ต้องมีข้อมูลการประกาศ Website BAM');
+        
+
+      }));
+
+      it('should addItem >= 2,000,000', inject(function () {
+        $scope.vm.purchase.items = [{
+          productcode: '',
+          product: '',
+          qty: 1,
+          unitprice:2000000
+        }];
+        $scope.vm.calculate($scope.vm.purchase.items[0]);
+
+        // Test form inputs are reset
+        expect($scope.vm.purchase.docdate).toEqual(new Date($scope.vm.purchase.docdate) || new Date());
+        expect($scope.vm.purchase.items.length).toEqual(1);
+        expect($scope.vm.purchase.items[0].amount).toEqual(2000000);
+        expect($scope.vm.purchase.amount).toEqual(2000000);
+        expect($scope.vm.purchase.remark.length).toEqual(2);
+        expect($scope.vm.purchase.remark[0]).toEqual('ต้องมีข้อมูลการประกาศ Website BAM');
+        expect($scope.vm.purchase.remark[1]).toEqual('ต้องมีข้อมูลคุมสัญญาจากสำนักงาน ป.ป.ช.');
         
 
       }));
@@ -180,9 +224,7 @@ describe('vm.addItem() as set', function () {
         $httpBackend.flush();
 
         // Test URL redirection after the Purchase was created
-        expect($state.go).toHaveBeenCalledWith('purchases.view', {
-          purchaseId: mockPurchase._id
-        });
+        expect($state.go).toHaveBeenCalledWith('purchases.list');
       }));
 
       it('should set $scope.vm.error if error', function () {
@@ -213,9 +255,7 @@ describe('vm.addItem() as set', function () {
         $httpBackend.flush();
 
         // Test URL location to new object
-        expect($state.go).toHaveBeenCalledWith('purchases.view', {
-          purchaseId: mockPurchase._id
-        });
+        expect($state.go).toHaveBeenCalledWith('purchases.list');
       }));
 
       it('should set $scope.vm.error if error', inject(function (PurchasesService) {

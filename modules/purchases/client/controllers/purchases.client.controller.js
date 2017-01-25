@@ -10,7 +10,6 @@
 
   function PurchasesController($scope, $state, $window, Authentication, purchase) {
     var vm = this;
-
     vm.authentication = Authentication;
     vm.purchase = purchase;
     vm.error = null;
@@ -19,7 +18,7 @@
     vm.save = save;
     vm.setData = setData;
     vm.init = init;
-    vm.selectedProductss = null;
+    // vm.selectedProductss = null;
     vm.removeProduct = removeProduct;
     vm.addItem = addItem;
     vm.calculate = calculate;
@@ -42,6 +41,7 @@
       }
       if (!vm.purchase.items) {
         vm.purchase.items = [{
+          productcode: '',
           product: '',
           qty: 1
         }];
@@ -51,20 +51,28 @@
 
     function addItem() {
       vm.purchase.items.push({
-          product: '',
-          qty: 1
-        });
+        productcode: '',
+        product: '',
+        qty: 1
+      });
     }
 
     function calculate(product) {
-      console.log(product);
       product.amount = (product.unitprice || 0) * (product.qty || 0);
 
 
       vm.purchase.amount = 0;
-      vm.purchase.items.forEach(function(itm){
+      vm.purchase.items.forEach(function (itm) {
         vm.purchase.amount += itm.amount || 0;
       });
+      vm.purchase.remark = [];
+      if(vm.purchase.amount >= 100000){
+        vm.purchase.remark.push('ต้องมีข้อมูลการประกาศ Website BAM');
+      }
+      if(vm.purchase.amount >= 2000000){
+        vm.purchase.remark.push('ต้องมีข้อมูลคุมสัญญาจากสำนักงาน ป.ป.ช.');
+      }
+      
     }
 
     function init() {
