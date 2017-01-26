@@ -1,0 +1,291 @@
+<section style="min-height:1600px;" ng-init="vm.init()">
+  <div class="page-header">
+    <h1>{{vm.construction._id ? 'Edit Construction' : 'New Construction'}}</h1>
+  </div>
+  <div class="col-md-12">
+    <form name="vm.form.constructionForm" class="form-horizontal" ng-submit="vm.save(vm.form.constructionForm.$valid)" novalidate>
+      <fieldset>
+        <div class="row">
+          <div class="col-md-3">
+            <div class="form-group" show-errors>
+              <label class="control-label" for="resourceno">รหัสทรัพย์</label>
+              <input name="resourceno" type="text" ng-model="vm.construction.resourceno" id="resourceno" class="form-control" placeholder="รหัสทรัพย์"
+                required>
+              <div ng-messages="vm.form.purchaseForm.certno.$error" role="alert">
+                <p class="help-block error-text" ng-message="required">Purchase docdate is required.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+          </div>
+          <div class="col-md-3">
+          </div>
+          <div class="col-md-3">
+            <div class="form-group" show-errors>
+              <label class="control-label" for="certno">เลขที่เอกสารสิทธิ์</label>
+              <input name="certno" type="text" ng-model="vm.construction.certno" id="certno" class="form-control" placeholder="เลขที่ใบสั่งซื้อ"
+                required>
+              <div ng-messages="vm.form.purchaseForm.certno.$error" role="alert">
+                <p class="help-block error-text" ng-message="required">Purchase docdate is required.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-2">
+            <div class="form-group">
+              <label class="control-label" for="jobdes">ลักษณะงาน</label>
+              <input name="jobdes" type="text" ng-model="vm.construction.jobdes" id="buyer" class="form-control" placeholder="ลักษณะงาน">
+            </div>
+          </div>
+          <div class="col-md-5">
+            <div class="form-group">
+              <label class="control-label" for="howtohire">วิธีซื้อ/จ้าง</label>
+              <select class="form-control" name="carlist" form="carform" ng-model="vm.construction.howtohire">
+                <option value="วิธีตกลงราคา">วิธีตกลงราคา</option>
+                <option value="วิธีสืบราคา">วิธีสืบราคา</option>
+                <option value="วิธีประมูลด้วยระบบอิเล็กทรอนิกส์">วิธีประมูลด้วยระบบอิเล็กทรอนิกส์</option>
+                <option value="วิธีกรณีพิเศษ">วิธีกรณีพิเศษ</option>
+                <option value="การต่อสัญญา">การต่อสัญญา</option>
+                <option value="วิธีฉุกเฉิน">วิธีฉุกเฉิน</option>
+                <option value="วิธีพิเศษ (มีประกาศเชิญชวน หรือ ไม่มีประกาศเชิญชวน)">วิธีพิเศษ (มีประกาศเชิญชวน หรือ ไม่มีประกาศเชิญชวน)</option>
+                <option value="อื่นๆ">อื่นๆ</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-5">
+            <div class="form-group">
+              <label class="control-label" for="pursector">ประเภทการจัดซื้อ/จัดจ้าง</label>
+              <select class="form-control" name="carlist" form="carform" ng-model="vm.construction.pursector">
+                <option value="งานก่อสร้าง">งานก่อสร้าง</option>
+                <option value="การจ้างควบคุมงาน">การจ้างควบคุมงาน</option>
+                <option value="การจ้างออกแบบ">การจ้างออกแบบ</option>
+                <option value="การจ้างที่ปรึกษา">การจ้างที่ปรึกษา</option>
+                <option value="การจ้างงานวิจัยหรือเงินสนับสนุนให้ทุนการวิจัย">การจ้างงานวิจัยหรือเงินสนับสนุนให้ทุนการวิจัย</option>
+                <option value="การจ้างพัฒนาระบบคอมพิวเตอร์">การจ้างพัฒนาระบบคอมพิวเตอร์</option>
+                <option value="การจัดซื้อ/จัดจ้างที่มิใช่งานก่อสร้าง">การจัดซื้อ/จัดจ้างที่มิใช่งานก่อสร้าง</option>
+                <option value="อื่นๆ">อื่นๆ</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <table class="table">
+            <thead style="background-color:lightgray;">
+              <tr>
+                <!--<th>No.</th>-->
+                <th> ชื่ออาคาร</th>
+                <th> แขวง/ตำบล</th>
+                <th> อำเภอ</th>
+                <th> จังหวัด</th>
+                <!--<th></th>-->
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <!--<td>
+                  <p>{{$index+1}}</p>
+                </td>-->
+                <td><input name="name" type="text" ng-model="vm.construction.name" id="name" class="form-control" placeholder="ชื่ออาคาร"></td>
+                <td><input name="subdis" type="text" ng-model="vm.construction.local.subdis" id="subdis" class="form-control"
+                    placeholder="แขวง/ตำบล"></td>
+                <td><input name="dis" type="text" ng-model="vm.construction.local.dis" id="dis" class="form-control" placeholder="อำเภอ"></td>
+                <td><input name="provin" type="text" ng-model="vm.construction.local.provin" id="provin" class="form-control"
+                    placeholder="จังหวัด"></td>
+                <!--<td style="text-align:right;">
+                  <button type="button" class="btn btn-danger" ng-click="vm.removeProduct($index)">Remove</button>
+                </td>-->
+              </tr>
+            </tbody>
+          </table>
+          <!--<button type="button" class="btn btn-default" ng-click="vm.addItem($index)">Add</button>-->
+        </div>
+
+        <div class="row">
+          <div class="col-md-4">
+            <div class="form-group">
+              <label class="control-label" for="participant">ผู้เข้าร่วมเสนอราคาจำนวน (ราย)</label>
+              <input name="participant" type="number" ng-model="vm.construction.participant" id="participant" class="form-control" placeholder="จำนวนกี่ราย">
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label class="control-label" for="contrac">ผู้รับเหมา</label>
+              <input name="contrac" type="text" ng-model="vm.construction.contrac" id="contrac" class="form-control" placeholder="ผู้รับเหมา">
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label class="control-label" for="operator">ผู้ดำนินการ</label>
+              <input name="operator" type="text" ng-model="vm.construction.operator" id="operator" class="form-control" placeholder="ผู้ดำนินการ">
+            </div>
+          </div>
+        </div>
+
+        <div class="row" ng-show="vm.construction.estimate.amountest >= 100000">
+          <div class="col-xs-12">
+            <div class="row">
+              <div class="col-xs-12 text-center well">
+                <h4>ประกาศ Website BAM</h4>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-3">
+                <div class="form-group">
+                  <label class="control-label" for="datesub">วันที่ส่งฝ่าย</label>
+                  <input name="datesub" type="date" ng-model="vm.construction.webbam.datesub" id="datesub" class="form-control" placeholder="วันที่ส่งฝ่าย">
+                </div>
+              </div>
+
+              <div class="col-xs-3">
+                <label class="control-label" for="onweb">วันที่ประกาศ Website BAM</label>
+                <input name="onweb" type="date" ng-model="vm.construction.webbam.onweb" id="onweb" class="form-control" placeholder="วันที่ประกาศ Website BAM">
+              </div>
+              <div class="col-xs-3">
+                <label class="control-label" for="refno">เลขที่อ้างอิง</label>
+                <input name="refno" type="text" ng-model="vm.construction.webbam.refno" id="refno" class="form-control" placeholder="เลขที่อ้างอิง">
+              </div>
+              <div class="col-xs-3">
+                <label class="control-label" for="url">Url Web BAM</label>
+                <input name="url" type="text" ng-model="vm.construction.webbam.url" id="url" class="form-control" placeholder="Url Web BAM">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row" ng-show="vm.construction.estimate.amountest >= 2000000">
+          <div class="col-xs-12">
+            <div class="row">
+              <div class="col-xs-12 text-center well">
+                <h4>คุมสัญญาจากสำนักงาน ป.ป.ช.</h4>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-6">
+                <div class="form-group">
+                  <label class="control-label" for="nccdate">วันที่</label>
+                  <input name="nccdate" type="date" ng-model="vm.construction.ncc.nccdate" id="nccdate" class="form-control" placeholder="วันที่">
+                </div>
+              </div>
+              <div class="col-xs-6">
+                <label class="control-label" for="nccno">เลขที่คุมสัญญา</label>
+                <input name="nccno" type="text" ng-model="vm.construction.ncc.nccno" id="nccno" class="form-control" placeholder="เลขที่คุมสัญญา">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-3">
+            <div class="row" ng-show="vm.construction.estimate.amountest >= 100000">
+              <div class="col-xs-12 ">
+                Remark
+              </div>
+            </div>
+            <div class="row well text-danger" ng-show="vm.construction.estimate.amountest >= 100000">
+              <div class="col-xs-12">
+                <ul>
+                  <li ng-show="vm.construction.estimate.amountest >= 100000">
+                    ต้องมีข้อมูลการประกาศ Website BAM
+                  </li>
+                  <li ng-show="vm.construction.estimate.amountest >= 2000000">
+                    ต้องมีข้อมูลคุมสัญญาจากสำนักงาน ป.ป.ช.
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-1">
+          </div>
+          <div class="col-lg-4">
+            <div class="row">
+              <div class="col-xs-12">
+                <div class="form-group">
+                  <label class="control-label" for="">ประมาณการค่าปรับปรุง</label>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-12">
+                <div class="form-group">
+                  <label class="control-label" for="dateest">วันที่อนุมัติ BOQ / ค่าใช้จ่าย</label>
+                  <input name="dateest" type="date" ng-model="vm.construction.estimate.dateest" id="dateest" class="form-control" placeholder="วันที่อนุมัติ BOQ / ค่าใช้จ่าย">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-12">
+                <div class="form-group">
+                  <label class="control-label" for="amountest">จำนวนเงิน</label>
+                  <input name="amountest" min="0" type="number" ng-model="vm.construction.estimate.amountest" id="amountest" class="form-control"
+                    placeholder="จำนวนเงิน">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-12">
+                <div class="form-group">
+                  <label class="control-label" for="approvest">ผู้อนุมัติ</label>
+                  <input name="approvest" type="text" ng-model="vm.construction.estimate.approvest" id="approvest" class="form-control" placeholder="ผู้อนุมัติ">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="row">
+              <div class="col-xs-12">
+                <div class="form-group">
+                  <label class="control-label" for="">ค่าปรับปรุงจริง</label>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-12">
+                <div class="form-group">
+                  <label class="control-label" for="amountadj">จำนวนเงิน</label>
+                  <input name="amountadj" type="number" min="0" ng-model="vm.construction.adjust.amountadj" id="amountadj" class="form-control"
+                    placeholder="จำนวนเงิน">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-12">
+                <div class="form-group">
+                  <label class="control-label" for="dateadj">วันที่</label>
+                  <input name="dateadj" type="date" ng-model="vm.construction.adjust.dateadj" id="dateadj" class="form-control" placeholder="วันที่">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-12">
+                <div class="form-group">
+                  <label class="control-label" for="approvadj">ผู้อนุมัติ</label>
+                  <input name="approvadj" type="text" ng-model="vm.construction.adjust.approvadj" id="approvadj" class="form-control" placeholder="ผู้อนุมัติ">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-3"></div>
+          <div class="col-xs-3"></div>
+          <div class="col-xs-3"></div>
+          <div class="col-xs-3">
+            <div class="form-group">
+              <label class="control-label" for="amount">Total Amount</label>
+              <p ng-bind="vm.construction.amount | number:2" />
+            </div>
+            <div class="form-group">
+              <button type="submit" class="btn btn-primary">{{vm.construction._id ? 'Update' : 'Create'}}</button>
+            </div>
+            <div ng-show="vm.error" class="text-danger">
+              <strong ng-bind="vm.error"></strong>
+            </div>
+          </div>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+</section>

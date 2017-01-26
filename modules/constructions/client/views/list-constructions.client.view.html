@@ -1,0 +1,42 @@
+<section>
+  <div class="page-header">
+    <h1>Constructions
+    <div class="pull-right" ng-hide="!vm.authentication.user">
+        <a class="btn btn-primary" ui-sref="constructions.create">
+          <span>Create</span>
+        </a>
+      </div>
+      </h1>
+  </div>
+   <div class="list-group" ng-show="vm.constructions.length > 0">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>No .</th>
+          <th>รหัสสินทรัพย์</th>
+          <th>เลขที่เอกสารสิทธิ์</th>
+          <th>ชื่ออาคารชุด/สถานที่</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="construction in vm.constructions | orderBy:'-docdate && docno' " ui-sref="constructions.edit({ constructionId: construction._id })">
+          <td>
+            <p class="list-group-item-heading">{{$index+1}}</p>
+          </td>
+          <td>
+            <p class="list-group-item-heading">{{construction.resourceno}}</p>
+          </td>
+          <td>
+            <p class="list-group-item-heading">{{construction.certno}}</p>
+          </td>
+          <td>
+            <p class="list-group-item-heading">{{construction.name}}</p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="alert alert-warning text-center" ng-if="vm.constructions.$resolved && !vm.constructions.length">
+    No Constructions yet, why don't you <a ui-sref="constructions.create">create one</a>?
+  </div>
+</section>

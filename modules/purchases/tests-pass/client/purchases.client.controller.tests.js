@@ -99,9 +99,9 @@
 
       }));
     });
-    
 
-describe('vm.addItem() as set', function () {
+
+    describe('vm.addItem() as set', function () {
 
       beforeEach(function () {
         $scope.vm.purchase.docdate = new Date();
@@ -130,7 +130,7 @@ describe('vm.addItem() as set', function () {
           productcode: '',
           product: '',
           qty: 1,
-          unitprice:10000
+          unitprice: 10000
         }];
       });
       it('should addItem < 100,000', inject(function () {
@@ -142,9 +142,6 @@ describe('vm.addItem() as set', function () {
         expect($scope.vm.purchase.items[0].amount).toEqual(10000);
         expect($scope.vm.purchase.amount).toEqual(10000);
         expect($scope.vm.purchase.remark.length).toEqual(0);
-        
-        
-
       }));
 
       it('should addItem >= 100,000 < 2,000,000', inject(function () {
@@ -152,7 +149,7 @@ describe('vm.addItem() as set', function () {
           productcode: '',
           product: '',
           qty: 1,
-          unitprice:100000
+          unitprice: 100000
         }];
         $scope.vm.calculate($scope.vm.purchase.items[0]);
 
@@ -163,7 +160,6 @@ describe('vm.addItem() as set', function () {
         expect($scope.vm.purchase.amount).toEqual(100000);
         expect($scope.vm.purchase.remark.length).toEqual(1);
         expect($scope.vm.purchase.remark[0]).toEqual('ต้องมีข้อมูลการประกาศ Website BAM');
-        
 
       }));
 
@@ -172,7 +168,7 @@ describe('vm.addItem() as set', function () {
           productcode: '',
           product: '',
           qty: 1,
-          unitprice:2000000
+          unitprice: 2000000
         }];
         $scope.vm.calculate($scope.vm.purchase.items[0]);
 
@@ -184,7 +180,6 @@ describe('vm.addItem() as set', function () {
         expect($scope.vm.purchase.remark.length).toEqual(2);
         expect($scope.vm.purchase.remark[0]).toEqual('ต้องมีข้อมูลการประกาศ Website BAM');
         expect($scope.vm.purchase.remark[1]).toEqual('ต้องมีข้อมูลคุมสัญญาจากสำนักงาน ป.ป.ช.');
-        
 
       }));
     });
@@ -202,7 +197,7 @@ describe('vm.addItem() as set', function () {
         expect($scope.vm.purchase.items.length).toEqual(0);
       });
     });
-    
+
     describe('vm.save() as create', function () {
       var samplePurchasePostData;
 
