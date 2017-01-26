@@ -67,55 +67,14 @@
       spyOn($state, 'go');
     }));
 
-    // describe('vm.calculate() as set', function () {
 
-    //   beforeEach(function () {
-    //     $scope.vm.construction.estimate = {
-    //       approvest: '',
-    //       amountest: 10000
-    //     };
-    //   });
-    //   it('should addItem < 100,000', inject(function () {
-    //     $scope.vm.calculate($scope.vm.construction.estimate);
+     describe('vm.setData() as set', function () {
 
-    //     // Test form inputs are reset
-    //     expect($scope.vm.construction.estimate.length).toEqual(1);
-    //     expect($scope.vm.construction.estimate.amountest).toEqual(10000);
-    //     expect($scope.vm.construction.remark.length).toEqual(0);
-    //   }));
+      it('should set Data', inject(function () {
+        $scope.vm.setData();
 
-    //   it('should addItem >= 100,000 < 2,000,000', inject(function () {
-    //     $scope.vm.construction.estimate = {
-    //       approvest: '',
-    //       amountest: 10000
-    //     };
-    //     $scope.vm.calculate($scope.vm.construction.estimate);
-
-    //     // Test form inputs are reset
-    //     expect($scope.vm.construction.estimate.length).toEqual(1);
-    //     expect($scope.vm.construction.estimate.amountest).toEqual(10000);
-    //     expect($scope.vm.construction.remark.length).toEqual(1);
-    //     expect($scope.vm.construction.remark[0]).toEqual('ต้องมีข้อมูลการประกาศ Website BAM');
-
-    //   }));
-
-    //   it('should addItem >= 2,000,000', inject(function () {
-    //     $scope.vm.construction.estimate = {
-    //       approvest: '',
-    //       amountest: 10000
-    //     };
-    //     $scope.vm.calculate($scope.vm.construction.items[0]);
-
-    //     // Test form inputs are reset
-    //     expect($scope.vm.construction.estimate.length).toEqual(1);
-    //     expect($scope.vm.construction.estimate.amountest).toEqual(2000000);
-    //     expect($scope.vm.construction.amountest).toEqual(2000000);
-    //     expect($scope.vm.construction.remark.length).toEqual(2);
-    //     expect($scope.vm.construction.remark[0]).toEqual('ต้องมีข้อมูลการประกาศ Website BAM');
-    //     expect($scope.vm.construction.remark[1]).toEqual('ต้องมีข้อมูลคุมสัญญาจากสำนักงาน ป.ป.ช.');
-
-    //   }));
-    // });
+      }));
+    });
 
     describe('vm.save() as create', function () {
       var sampleConstructionPostData;
@@ -138,7 +97,7 @@
         $httpBackend.flush();
 
         // Test URL redirection after the Construction was created
-        expect($state.go).toHaveBeenCalledWith('constructions.view', {
+        expect($state.go).toHaveBeenCalledWith('constructions.list', {
           constructionId: mockConstruction._id
         });
       }));
@@ -171,7 +130,7 @@
         $httpBackend.flush();
 
         // Test URL location to new object
-        expect($state.go).toHaveBeenCalledWith('constructions.view', {
+        expect($state.go).toHaveBeenCalledWith('constructions.list', {
           constructionId: mockConstruction._id
         });
       }));

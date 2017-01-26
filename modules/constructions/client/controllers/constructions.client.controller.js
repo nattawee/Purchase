@@ -17,9 +17,12 @@
     vm.form = {};
     vm.remove = remove;
     vm.save = save;
+    vm.setData = setData;
 
 
-    if (vm.construction._id) {
+
+    function setData() {
+      if (vm.construction._id) {
       if (vm.construction.webbam.datesub) {
         vm.construction.webbam.datesub = new Date(vm.construction.webbam.datesub);
       }
@@ -41,6 +44,8 @@
       }
 
     }
+    }
+
 
     // Remove existing Construction
     function remove() {
@@ -64,7 +69,7 @@
       }
 
       function successCallback(res) {
-        $state.go('constructions.view', {
+        $state.go('constructions.list', {
           constructionId: res._id
         });
       }
