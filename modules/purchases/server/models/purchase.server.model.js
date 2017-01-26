@@ -32,33 +32,32 @@ var PurchaseSchema = new Schema({
         // สังกัด
         type: String
     },
-    approvmd: [{
+    approvmd: {
         // Medium price
-        amount: {
-            type: String
+        amdamount: {
+            type: Number
         },
-        date: {
+        appmdate: {
             type: Date,
             default: Date.now
-
         },
-        approv: {
+        appmd: {
             type: String
         }
-    }],
-    approvp: [{
+    },
+    approvph: {
         // purchase
-        amount: {
-            type: String
+        appphamount: {
+            type: Number
         },
-        date: {
+        apppdate: {
             type: Date,
             default: Date.now
         },
-        approv: {
+        appph: {
             type: String
         }
-    }],
+    },
     tender: {
         // เลขที่ใบขอซื้อ
         type: String

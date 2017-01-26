@@ -46,7 +46,7 @@
           </div>
           <div class="col-md-3">
             <div class="form-group">
-              <label class="control-label" for="tender">เลขที่ใบสั่งซื้อ</label>
+              <label class="control-label" for="tender">เลขที่ใบซื้อของ</label>
               <input name="tender" type="text" ng-model="vm.purchase.tender" id="tender" class="form-control" placeholder="เลขที่ใบสั่งซื้อ">
             </div>
           </div>
@@ -119,8 +119,8 @@
                   <input name="product" type="text" ng-model="product.product" id="product" class="form-control" placeholder="ชื่อสินค้า" ng-change="vm.calculate(product)">
                 </td>
                 <td><input name="qty" type="number" ng-model="product.qty" id="qty" class="form-control" placeholder="QTY" ng-change="vm.calculate(product)"></td>
-                <td><input name="unitprice" type="number" ng-change="vm.calculate(product)" ng-model="product.unitprice" id="unitprice"
-                    class="form-control" placeholder="price"></td>
+                <td><input name="unitprice" type="number" min="0" ng-change="vm.calculate(product)" ng-model="product.unitprice"
+                    id="unitprice" class="form-control" placeholder="price"></td>
                 <td>
                   <p ng-bind="product.amount| number:2"></p>
                 </td>
@@ -146,15 +146,15 @@
                   <label class="control-label" for="datesub">วันที่ส่งฝ่าย</label>
                   <input name="datesub" type="date" ng-model="vm.purchase.webbam.datesub" id="datesub" class="form-control" placeholder="วันที่ส่งฝ่าย">
                 </div>
-              </div>          
+              </div>
 
               <div class="col-xs-3">
                 <label class="control-label" for="onweb">วันที่ประกาศ Website BAM</label>
                 <input name="onweb" type="date" ng-model="vm.purchase.webbam.onweb" id="onweb" class="form-control" placeholder="วันที่ประกาศ Website BAM">
               </div>
               <div class="col-xs-3">
-                <label class="control-label" for="refno">เลขที่อ้างอิง(Reference Number)</label>
-                <input name="refno" type="text" ng-model="vm.purchase.webbam.refno" id="refno" class="form-control" placeholder="เลขที่อ้างอิง(Reference Number)">
+                <label class="control-label" for="refno">เลขที่อ้างอิง</label>
+                <input name="refno" type="text" ng-model="vm.purchase.webbam.refno" id="refno" class="form-control" placeholder="เลขที่อ้างอิง">
               </div>
               <div class="col-xs-3">
                 <label class="control-label" for="url">Url Web BAM</label>
@@ -178,9 +178,6 @@
                   <input name="nccdate" type="date" ng-model="vm.purchase.ncc.nccdate" id="nccdate" class="form-control" placeholder="วันที่">
                 </div>
               </div>
-
-              {{vm.purchase.ncc.date}}
-
               <div class="col-xs-6">
                 <label class="control-label" for="nccno">เลขที่คุมสัญญา</label>
                 <input name="nccno" type="text" ng-model="vm.purchase.ncc.nccno" id="nccno" class="form-control" placeholder="เลขที่คุมสัญญา">
@@ -206,21 +203,88 @@
               </div>
             </div>
           </div>
-          <div class="col-lg-3">
+          <div class="col-lg-1">
 
           </div>
-          <div class="col-lg-3">
-
+          <div class="col-lg-4">
+            <div class="row">
+              <div class="col-xs-12">
+                <div class="form-group">
+                  <label class="control-label" for="">ประมาณการค่าจัดซื้อ/จัดจ้าง (ราคากลาง)</label>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-12">
+                <div class="form-group">
+                  <label class="control-label" for="amdamount">จำนวนเงิน</label>
+                  <input name="amdamount" type="number" min="0" ng-model="vm.purchase.approvmd.amdamount" id="amdamount" class="form-control"
+                    placeholder="จำนวนเงิน">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-12">
+                <div class="form-group">
+                  <label class="control-label" for="appmdate">วันที่</label>
+                  <input name="appmdate" type="date" ng-model="vm.purchase.approvmd.appmdate" id="appmdate" class="form-control" placeholder="วันที่">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-12">
+                <div class="form-group">
+                  <label class="control-label" for="appmd">ผู้อนุมัติ</label>
+                  <input name="appmd" type="text" ng-model="vm.purchase.approvmd.appmd" id="appmd" class="form-control" placeholder="ผู้อนุมัติ">
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="col-lg-3">
+
+          <div class="col-lg-4">
+            <div class="row">
+              <div class="col-xs-12">
+                <div class="form-group">
+                  <label class="control-label" for="">อนุมัติจัดซื้อ/จัดจ้าง</label>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-12">
+                <div class="form-group">
+                  <label class="control-label" for="appphamount">จำนวนเงิน</label>
+                  <input name="appphamount" type="number" min="0" ng-model="vm.purchase.approvph.appphamount" id="appphamount" class="form-control"
+                    placeholder="จำนวนเงิน">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-12">
+                <div class="form-group">
+                  <label class="control-label" for="appmdate">วันที่</label>
+                  <input name="appmdate" type="date" ng-model="vm.purchase.approvph.apppdate" id="appmdate" class="form-control" placeholder="วันที่">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-12">
+                <div class="form-group">
+                  <label class="control-label" for="appph">ผู้อนุมัติ</label>
+                  <input name="appph" type="text" ng-model="vm.purchase.approvph.appph" id="appph" class="form-control" placeholder="ผู้อนุมัติ">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-3"></div>
+          <div class="col-xs-3"></div>
+          <div class="col-xs-3"></div>
+          <div class="col-xs-3">
             <div class="form-group">
               <label class="control-label" for="amount">Total Amount</label>
               <p ng-bind="vm.purchase.amount | number:2" />
             </div>
-            <!--<div class="form-group">
-              <label class="control-label" for="approv">ผู้อนุมัติ</label>
-              <input name="approv" type="text" ng-model="vm.purchase.approv" id="approv" class="form-control" placeholder="ผู้อนุมัติ">
-            </div>-->
             <div class="form-group">
               <button type="submit" class="btn btn-primary">{{vm.purchase._id ? 'Update' : 'Create'}}</button>
             </div>

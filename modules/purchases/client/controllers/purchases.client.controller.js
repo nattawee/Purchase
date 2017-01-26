@@ -57,15 +57,23 @@
       }
       if (vm.purchase._id) {
         if (vm.purchase.ncc.nccdate) {
-          vm.purchase.ncc.nccdate = new Date(vm.purchase.ncc.nccdate)
+          vm.purchase.ncc.nccdate = new Date(vm.purchase.ncc.nccdate);
         }
 
         if (vm.purchase.webbam.datesub) {
-          vm.purchase.webbam.datesub = new Date(vm.purchase.webbam.datesub)
+          vm.purchase.webbam.datesub = new Date(vm.purchase.webbam.datesub);
         }
 
         if (vm.purchase.webbam.onweb) {
-          vm.purchase.webbam.onweb = new Date(vm.purchase.webbam.onweb)
+          vm.purchase.webbam.onweb = new Date(vm.purchase.webbam.onweb);
+        }
+
+        if(vm.purchase.approvmd.appmdate){
+          vm.purchase.approvmd.appmdate = new Date(vm.purchase.approvmd.appmdate);
+        }
+
+        if(vm.purchase.approvph.apppdate){
+          vm.purchase.approvph.apppdate = new Date(vm.purchase.approvph.apppdate);
         }
       }
 
