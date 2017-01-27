@@ -7,7 +7,13 @@
         </a>
       </div>
     </h1>
+    <form role="search" class="navbar-form-custom" method="post" action="">
+      <div class="form-group">
+        <input type="text" placeholder="Search for something..." ng-model="topsearch" class="form-control" name="top-search" id="top-search">
+      </div>
+    </form>
   </div>
+
 
   <div class="list-group" ng-show="vm.purchases.length > 0">
     <table class="table">
@@ -20,7 +26,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr ng-repeat="purchase in vm.purchases | orderBy:'-docdate && docno' " ui-sref="purchases.edit({ purchaseId: purchase._id })">
+        <tr ng-repeat="purchase in vm.purchases | orderBy:'-docdate && docno' | filter:topsearch " ui-sref="purchases.edit({ purchaseId: purchase._id })">
           <td>
             <p class="list-group-item-heading">{{$index+1}}</p>
           </td>
