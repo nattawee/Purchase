@@ -1,0 +1,28 @@
+<section>
+  <div class="page-header">
+    <h1>Acquisitions
+      <div class="pull-right" ng-hide="!vm.authentication.user">
+        <a class="btn btn-primary" ui-sref="acquisitions.create">
+          <span>Create</span>
+        </a>
+      </div>
+    </h1>
+  </div>
+  <div class="list-group">
+    <a ng-repeat="acquisition in vm.acquisitions"
+       ui-sref="acquisitions.view({ acquisitionId: acquisition._id })"
+       class="list-group-item">
+      <small class="list-group-item-text">
+        Posted on
+        <span ng-bind="acquisition.created | date:'mediumDate'"></span>
+        by
+        <span ng-if="acquisition.user" ng-bind="acquisition.user.displayName"></span>
+        <span ng-if="!acquisition.user">Deleted User</span>
+      </small>
+      <h4 class="list-group-item-heading" ng-bind="acquisition.name"></h4>
+    </a>
+  </div>
+  <div class="alert alert-warning text-center" ng-if="vm.acquisitions.$resolved && !vm.acquisitions.length">
+    No Acquisitions yet, why don't you <a ui-sref="acquisitions.create">create one</a>?
+  </div>
+</section>

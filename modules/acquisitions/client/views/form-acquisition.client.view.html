@@ -1,0 +1,119 @@
+<section style="min-height:1000px;">
+  <div class="page-header">
+    <h1>{{vm.acquisition._id ? 'Edit Acquisition' : 'New Acquisition'}}</h1>
+  </div>
+  <div class="col-md-12">
+    <form name="vm.form.acquisitionForm" class="form-horizontal" ng-submit="vm.save(vm.form.acquisitionForm.$valid)" novalidate>
+      <fieldset>
+        <div class="form-group">
+          <label class="control-label" for="buyer">ผู้ซื้อ</label>
+          <input name="buyer" type="text" ng-model="vm.acquisition.buyer" id="buyer" class="form-control" placeholder="ผู้ซื้อ">
+        </div>
+        <div class="form-group">
+          <label class="control-label" for="seller">ผู้ขาย</label>
+          <input name="seller" type="text" ng-model="vm.acquisition.seller" id="seller" class="form-control" placeholder="ผู้ขาย">
+        </div>
+
+        <div class="row">
+          <div class="col-xs-12">
+            <label class="control-label" for="">เกณฑ์กำไรสุทธิ</label>
+            <div class="row">
+              <div class="col-xs-4">
+                <div class="form-group">
+                  <label class="control-label" for="entryacq">สัดส่วนการเข้าซื้อ</label>
+                  <input name="entryacq" type="text" ng-model="vm.acquisition.forecast.entryacq" id="entryacq" class="form-control" placeholder="สัดส่วนการเข้าซื้อ">
+                </div>
+              </div>
+              <div class="col-xs-4">
+                <div class="form-group">
+                  <label class="control-label" for="net">กำไรสุทธิ</label>
+                  <input name="net" type="text" ng-model="vm.acquisition.forecast.net" id="net" class="form-control" placeholder="กำไรสุทธิ">
+                </div>
+              </div>
+              <div class="col-xs-4">
+                <div class="form-group">
+                  <label class="control-label" for="totalnet">กำไรสุทธิของบริษัท</label>
+                  <input name="totalnet" type="text" ng-model="vm.acquisition.forecast.totalnet" id="ptvcomapany" class="form-control" placeholder="กำไรสุทธิของบริษัท">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-xs-12">
+            <label class="control-label" for="">เกณฑ์มูลค่าสินทรัพย์ที่มีตัวตนสุทธิ</label>
+            <div class="row">
+              <div class="col-xs-4">
+                <div class="form-group">
+                  <label class="control-label" for="obtaining">สัดส่วนการได้มา</label>
+                  <input name="obtaining" type="text" ng-model="vm.acquisition.nta.obtaining" id="obtaining" class="form-control" placeholder="สัดส่วนการได้มา">
+                </div>
+              </div>
+              <div class="col-xs-4">
+                <div class="form-group">
+                  <label class="control-label" for="ptyvalue">มูลค่าสินทรัพย์สุทธ</label>
+                  <input name="ptyvalue" type="text" ng-model="vm.acquisition.nta.ptyvalue" id="ptyvalue" class="form-control" placeholder="มูลค่าสินทรัพย์สุทธ">
+                </div>
+              </div>
+              <div class="col-xs-4">
+                <div class="form-group">
+                  <label class="control-label" for="ptvcomapany">มูลค่าสินทรัพย์สุทธิของบริษัท</label>
+                  <input name="ptvcomapany" type="text" ng-model="vm.acquisition.nta.ptvcomapany" id="ptvcomapany" class="form-control" placeholder="มูลค่าสินทรัพย์สุทธิของบริษัท">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-xs-12">
+            <label class="control-label" for="">เกณฑ์มูลค่ารวมของสิ่งตอบแทน</label>
+            <div class="row">
+              <div class="col-xs-6">
+                <div class="form-group">
+                  <label class="control-label" for="ttvconsider">มูลค่าสิ่งตอบแทนที่ชำระให้</label>
+                  <input name="ttvconsider" type="text" ng-model="vm.acquisition.ttvconsider.ttvconsider" id="ttvconsider" class="form-control" placeholder="มูลค่าสิ่งตอบแทนที่ชำระให้">
+                </div>
+              </div>
+              <div class="col-xs-6">
+                <div class="form-group">
+                  <label class="control-label" for="issuedost">มูลค่าสินทรัพย์รวมของบริษัท</label>
+                  <input name="issuedost" type="text" ng-model="vm.acquisition.ttvconsider.issuedost" id="issuedost" class="form-control" placeholder="มูลค่าสินทรัพย์รวมของบริษัท">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-xs-12">
+            <label class="control-label" for="">เกณฑ์มูลค่าของหลักทรัพย์</label>
+            <div class="row">
+              <div class="col-xs-6">
+                <div class="form-group">
+                  <label class="control-label" for="payment">จำนวนหุ้นที่ออกเพื่อชำระค่าสินทรัพย</label>
+                  <input name="payment" type="text" ng-model="vm.acquisition.valuesecur.payment" id="payment" class="form-control" placeholder="มูลค่าสิ่งตอบแทนที่ชำระให้">
+                </div>
+              </div>
+              <div class="col-xs-6">
+                <div class="form-group">
+                  <label class="control-label" for="companypaid">จำนวนหุ้นที่ออกและชำระแล้วของบริษัท</label>
+                  <input name="companypaid" type="text" ng-model="vm.acquisition.valuesecur.companypaid" id="companypaid" class="form-control" placeholder="จำนวนหุ้นที่ออกและชำระแล้วของบริษัท">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="form-group">
+          <button type="submit" class="btn btn-default">{{vm.acquisition._id ? 'Update' : 'Create'}}</button>
+        </div>
+        <div ng-show="vm.error" class="text-danger">
+          <strong ng-bind="vm.error"></strong>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+</section>
