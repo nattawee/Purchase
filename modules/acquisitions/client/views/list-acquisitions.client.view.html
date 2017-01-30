@@ -7,22 +7,41 @@
         </a>
       </div>
     </h1>
+    <form role="search" class="navbar-form-custom" method="post" action="">
+      <div class="form-group">
+        <input type="text" placeholder="Search for something..." ng-model="topsearch" class="form-control" name="top-search" id="top-search">
+      </div>
+    </form>
   </div>
-  <div class="list-group">
-    <a ng-repeat="acquisition in vm.acquisitions"
-       ui-sref="acquisitions.view({ acquisitionId: acquisition._id })"
-       class="list-group-item">
-      <small class="list-group-item-text">
-        Posted on
-        <span ng-bind="acquisition.created | date:'mediumDate'"></span>
-        by
-        <span ng-if="acquisition.user" ng-bind="acquisition.user.displayName"></span>
-        <span ng-if="!acquisition.user">Deleted User</span>
-      </small>
-      <h4 class="list-group-item-heading" ng-bind="acquisition.name"></h4>
-    </a>
+  <div class="list-group" ng-show="vm.acquisitions.length > 0">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>No .</th>
+          <th>ผู้ซื้อ</th>
+          <th>ผู้ขาย</th>
+          <!--<th>ชื่ออาคารชุด/สถานที่</th>-->
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="acquisition in vm.acquisitions | orderBy:'-docdate && docno' | filter:topsearch " ui-sref="acquisitions.edit({ acquisitionId: acquisition._id })">
+          <td>
+            <p class="list-group-item-heading">{{$index+1}}</p>
+          </td>
+          <td>
+            <p class="list-group-item-heading">{{acquisition.buyer}}</p>
+          </td>
+          <td>
+            <p class="list-group-item-heading">{{acquisition.seller}}</p>
+          </td>
+          <!--<td>
+            <p class="list-group-item-heading">{{acquisition.name}}</p>
+          </td>-->
+        </tr>
+      </tbody>
+    </table>
   </div>
   <div class="alert alert-warning text-center" ng-if="vm.acquisitions.$resolved && !vm.acquisitions.length">
-    No Acquisitions yet, why don't you <a ui-sref="acquisitions.create">create one</a>?
+    No acquisitions yet, why don't you <a ui-sref="acquisitions.create">create one</a>?
   </div>
 </section>

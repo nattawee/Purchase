@@ -40,9 +40,7 @@
       }
 
       function successCallback(res) {
-        $state.go('acquisitions.view', {
-          acquisitionId: res._id
-        });
+        $state.go('acquisitions.list');
       }
 
       function errorCallback(res) {
