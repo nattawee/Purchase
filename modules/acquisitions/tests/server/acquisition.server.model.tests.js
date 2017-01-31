@@ -34,21 +34,22 @@ describe('Acquisition Model Unit Tests:', function () {
         seller: 'seller',
         nta: {
           // เกณฑ์มูลค่าสินทรัพย์ที่มีตัวตนสุทธิ
-          obtaining: 'pt',
-          ptyvalue: 'ptv',
-          ptvcomapany: 'ptvc'
+          obtaining: 1,
+          ptyvalue: 1,
+          ptvcomapany: 1
         },
         forecast: {
           //  เกณฑ์กำไรสุทธ
-          entryacq: 'enacq',
-          net: 'net',
-          totalnet: 'ttnet',
+          entryacq: 1,
+          net: 1,
+          totalnet: 1,
         },
         ttvconsider: {
           // เกณฑ์มูลค่ารวมของสิ่งตอบแทน
-          valueofaset: '',
-          issuedost:''
+          valueofaset: 1,
+          issuedost:1
         },
+        maximum: 1,
         user: user
       });
 
@@ -65,14 +66,14 @@ describe('Acquisition Model Unit Tests:', function () {
       });
     });
 
-    // it('should be able to show an error when try to save without name', function (done) {
-    //   acquisition.name = '';
+    it('should be able to show an error when try to save without maximum', function (done) {
+      acquisition.maximum = null;
 
-    //   return acquisition.save(function (err) {
-    //     should.exist(err);
-    //     done();
-    //   });
-    // });
+      return acquisition.save(function (err) {
+        should.exist(err);
+        done();
+      });
+    });
   });
 
   afterEach(function (done) {

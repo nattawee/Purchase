@@ -39,7 +39,7 @@
     }
 
     function calculate3() {
-      vm.acquisition.ttvconsider.ttvctotal = (vm.acquisition.ttvconsider.valueofaset || 0) / (vm.acquisition.ttvconsider.issuedost || 0);
+      vm.acquisition.ttvconsider.ttvctotal = ((vm.acquisition.ttvconsider.valueofaset || 0) / (vm.acquisition.ttvconsider.issuedost || 0)) * (100);
       if (vm.acquisition.ttvconsider.valueofaset > 0 && vm.acquisition.ttvconsider.issuedost > 0) {
         vm.findmaxvalue(vm.acquisition);
       }

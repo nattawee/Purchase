@@ -55,21 +55,22 @@ describe('Acquisition CRUD tests', function () {
         seller: 'seller',
         nta: {
           // เกณฑ์มูลค่าสินทรัพย์ที่มีตัวตนสุทธิ
-          obtaining: 'pt',
-          ptyvalue: 'ptv',
-          ptvcomapany: 'ptvc'
+          obtaining: 1,
+          ptyvalue: 1,
+          ptvcomapany: 1
         },
         forecast: {
           //  เกณฑ์กำไรสุทธ
-          entryacq: 'enacq',
-          net: 'net',
-          totalnet: 'ttnet',
+          entryacq: 1,
+          net: 1,
+          totalnet: 1,
         },
         ttvconsider: {
           // เกณฑ์มูลค่ารวมของสิ่งตอบแทน
-          valueofaset: '',
-          issuedost: ''
-        }
+          valueofaset: 1,
+          issuedost: 1
+        },
+        maximum:1,
       };
 
       done();
@@ -113,6 +114,8 @@ describe('Acquisition CRUD tests', function () {
                 // Set assertions
                 (acquisitions[0].user._id).should.equal(userId);
                 (acquisitions[0].buyer).should.match('buyer');
+                (acquisitions[0].maximum).should.equal(1);
+                
 
                 // Call the assertion callback
                 done();
@@ -131,35 +134,35 @@ describe('Acquisition CRUD tests', function () {
       });
   });
 
-  // it('should not be able to save an Acquisition if no name is provided', function (done) {
-  //   // Invalidate name field
-  //   acquisition.name = '';
+  it('should not be able to save an Acquisition if no maximum is provided', function (done) {
+    // Invalidate name field
+    acquisition.maximum = null;
 
-  //   agent.post('/api/auth/signin')
-  //     .send(credentials)
-  //     .expect(200)
-  //     .end(function (signinErr, signinRes) {
-  //       // Handle signin error
-  //       if (signinErr) {
-  //         return done(signinErr);
-  //       }
+    agent.post('/api/auth/signin')
+      .send(credentials)
+      .expect(200)
+      .end(function (signinErr, signinRes) {
+        // Handle signin error
+        if (signinErr) {
+          return done(signinErr);
+        }
 
-  //       // Get the userId
-  //       var userId = user.id;
+        // Get the userId
+        var userId = user.id;
 
-  //       // Save a new Acquisition
-  //       agent.post('/api/acquisitions')
-  //         .send(acquisition)
-  //         .expect(400)
-  //         .end(function (acquisitionSaveErr, acquisitionSaveRes) {
-  //           // Set message assertion
-  //           (acquisitionSaveRes.body.message).should.match('Please fill Acquisition name');
+        // Save a new Acquisition
+        agent.post('/api/acquisitions')
+          .send(acquisition)
+          .expect(400)
+          .end(function (acquisitionSaveErr, acquisitionSaveRes) {
+            // Set message assertion
+            (acquisitionSaveRes.body.message).should.match('Please fill Acquisition maximum');
 
-  //           // Handle Acquisition save error
-  //           done(acquisitionSaveErr);
-  //         });
-  //     });
-  // });
+            // Handle Acquisition save error
+            done(acquisitionSaveErr);
+          });
+      });
+  });
 
   it('should be able to update an Acquisition if signed in', function (done) {
     agent.post('/api/auth/signin')
