@@ -54,26 +54,30 @@
 
     function findmaxvalue(acquisition) {
       var data = acquisition;
+      var value1 = 0;
+      var value2 = 0;
+      var value3 = 0;
+      var value4 = 0;
       var result = 0;
       if (data.nta) {
-        var value1 = data.nta.ntatotal;
+        value1 = data.nta.ntatotal;
       } else {
-        var value1 = 0;
+        value1 = 0;
       }
       if (data.forecast) {
-        var value2 = data.forecast.fortotal;
+        value2 = data.forecast.fortotal;
       } else {
-        var value2 = 0;
+        value2 = 0;
       }
       if (data.ttvconsider) {
-        var value3 = data.ttvconsider.ttvctotal;
+        value3 = data.ttvconsider.ttvctotal;
       } else {
-        var value3 = 0;
+        value3 = 0;
       }
       if (data.valuesecur) {
-        var value4 = data.valuesecur.valuesecur;
+        value4 = data.valuesecur.valuesecur;
       } else {
-        var value4 = 0;
+        value4 = 0;
       }
       if (value1 > value2) {
         result = value1;

@@ -85,6 +85,29 @@
 
     });
 
+    describe('vm.findmaxvalue', function () {
+      beforeEach(function () {
+        $scope.vm.acquisition = {
+          nta: {},
+          forecast: {},
+          ttvconsider:{},
+          valuesecur:{}
+        };
+        $scope.vm.acquisition.nta.ntatotal = 100;
+        $scope.vm.acquisition.forecast.fortotal = 100;
+        $scope.vm.acquisition.ttvconsider.ttvctotal = 1;
+        $scope.vm.acquisition.valuesecur.valuesecur = 500;
+        
+      });
+      it('should obtaining*ptyvalue/ptvcomapany', inject(function () {
+        $scope.vm.findmaxvalue($scope.vm.acquisition);
+
+        // Test form inputs are reset
+        expect($scope.vm.acquisition.maximum).toEqual(500);
+      }));
+
+    });
+
     describe('vm.save() as create', function () {
       var sampleAcquisitionPostData;
 

@@ -20,7 +20,7 @@
           <th>No .</th>
           <th>ผู้ซื้อ</th>
           <th>ผู้ขาย</th>
-          <!--<th>ชื่ออาคารชุด/สถานที่</th>-->
+          <th>เกณฑ์สูงสุด / ร้อยละ</th>
         </tr>
       </thead>
       <tbody>
@@ -34,9 +34,9 @@
           <td>
             <p class="list-group-item-heading">{{acquisition.seller}}</p>
           </td>
-          <!--<td>
-            <p class="list-group-item-heading">{{acquisition.name}}</p>
-          </td>-->
+          <td>
+            <p class="list-group-item-heading">ร้อยละ {{acquisition.maximum | number:2}}</p>
+          </td>
         </tr>
       </tbody>
     </table>
