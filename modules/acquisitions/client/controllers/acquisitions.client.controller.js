@@ -23,36 +23,58 @@
     vm.calculate4 = calculate4;
     vm.findmaxvalue = findmaxvalue;
 
+
     function calculate1() {
       vm.acquisition.nta.ntatotal = ((vm.acquisition.nta.obtaining || 0) * (vm.acquisition.nta.ptyvalue || 0)) / (vm.acquisition.nta.ptvcomapany || 0);
-      var value1 = vm.acquisition.nta.ntatotal;
-      vm.findmaxvalue(value1);
+      if (vm.acquisition.nta.obtaining > 0 && vm.acquisition.nta.ptyvalue > 0 && vm.acquisition.nta.ptvcomapany > 0) {
+        vm.findmaxvalue(vm.acquisition);
+      }
     }
 
     function calculate2() {
       vm.acquisition.forecast.fortotal = ((vm.acquisition.forecast.entryacq || 0) * (vm.acquisition.forecast.net || 0)) / (vm.acquisition.forecast.totalnet || 0);
-      var value2 = vm.acquisition.forecast.fortotal;
-      vm.findmaxvalue(value2);
+      if (vm.acquisition.forecast.entryacq > 0 && vm.acquisition.forecast.net > 0 && vm.acquisition.forecast.totalnet > 0) {
+        vm.findmaxvalue(vm.acquisition);
+      }
     }
 
     function calculate3() {
-      vm.acquisition.ttvconsider.ttvctotal = (vm.acquisition.ttvconsider.ttvconsider || 0) / (vm.acquisition.ttvconsider.issuedost || 0);
-      var value3 = vm.acquisition.ttvconsider.ttvctotal;
-      vm.findmaxvalue(value3);
+      vm.acquisition.ttvconsider.ttvctotal = (vm.acquisition.ttvconsider.valueofaset || 0) / (vm.acquisition.ttvconsider.issuedost || 0);
+      if (vm.acquisition.ttvconsider.valueofaset > 0 && vm.acquisition.ttvconsider.issuedost > 0) {
+        vm.findmaxvalue(vm.acquisition);
+      }
     }
 
     function calculate4() {
       vm.acquisition.valuesecur.valuesecur = (vm.acquisition.valuesecur.payment || 0) / (vm.acquisition.valuesecur.companypaid || 0);
-      var value4 = vm.acquisition.valuesecur.valuesecur;
-      vm.findmaxvalue(value4);
+      if (vm.acquisition.valuesecur.payment > 0 && vm.acquisition.valuesecur.companypaid > 0) {
+        vm.findmaxvalue(vm.acquisition);
+      }
     }
 
-    function findmaxvalue(value1, value2, value3, value4) {
+    function findmaxvalue(acquisition) {
+      var data = acquisition;
       var result = 0;
-      value1 = value1 || 0;
-      value2 = value2 || 0;
-      value3 = value3 || 0;
-      value4 = value4 || 0;
+      if (data.nta) {
+        var value1 = data.nta.ntatotal;
+      } else {
+        var value1 = 0;
+      }
+      if (data.forecast) {
+        var value2 = data.forecast.fortotal;
+      } else {
+        var value2 = 0;
+      }
+      if (data.ttvconsider) {
+        var value3 = data.ttvconsider.ttvctotal;
+      } else {
+        var value3 = 0;
+      }
+      if (data.valuesecur) {
+        var value4 = data.valuesecur.valuesecur;
+      } else {
+        var value4 = 0;
+      }
       if (value1 > value2) {
         result = value1;
         if (result > value3) {
@@ -89,6 +111,7 @@
         }
       }
       $scope.maxValue = result;
+      vm.acquisition.maximum = $scope.maxValue;
 
     }
 
