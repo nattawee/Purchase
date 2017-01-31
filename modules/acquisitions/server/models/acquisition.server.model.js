@@ -13,27 +13,32 @@ var AcquisitionSchema = new Schema({
   buyer: String,
   seller: String,
   nta: {
-    // เกณฑ์มูลค่าสินทรัพย์ที่มีตัวตนสุทธิ
+    // เกณฑ์มูลค่าสินทรัพย์สุทธิ
     obtaining: String,
     ptyvalue: String,
-    ptvcomapany: String
+    ptvcomapany: String,
+    ntatotal: String
   },
   forecast: {
     //  เกณฑ์กำไรสุทธ
     entryacq: String,
     net: String,
     totalnet: String,
+    fortotal: String
   },
   ttvconsider: {
     // เกณฑ์มูลค่ารวมของสิ่งตอบแทน
     valueofaset: String,
-    issuedost: String
+    issuedost: String,
+    ttvctotal: String
   },
   valuesecur: {
     // เกณฑ์มูลค่าของหลักทรัพย
     payment: String,
-    companypaid: String
+    companypaid: String,
+    valuesecur: String
   },
+  maximum:String,
   created: {
     type: Date,
     default: Date.now

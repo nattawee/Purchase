@@ -67,6 +67,24 @@
       spyOn($state, 'go');
     }));
 
+    describe('vm.calculate1', function () {
+      beforeEach(function () {
+        $scope.vm.acquisition = {
+          nta: {}
+        };
+        $scope.vm.acquisition.nta.obtaining = 100;
+        $scope.vm.acquisition.nta.ptyvalue = 100;
+        $scope.vm.acquisition.nta.ptvcomapany = 1;
+      });
+      it('should obtaining*ptyvalue/ptvcomapany', inject(function () {
+        $scope.vm.calculate1();
+
+        // Test form inputs are reset
+        expect($scope.vm.acquisition.nta.ntatotal).toEqual(10000);
+      }));
+
+    });
+
     describe('vm.save() as create', function () {
       var sampleAcquisitionPostData;
 
@@ -88,9 +106,7 @@
         $httpBackend.flush();
 
         // Test URL redirection after the Acquisition was created
-        expect($state.go).toHaveBeenCalledWith('acquisitions.view', {
-          acquisitionId: mockAcquisition._id
-        });
+        expect($state.go).toHaveBeenCalledWith('acquisitions.list');
       }));
 
       it('should set $scope.vm.error if error', function () {
@@ -121,9 +137,7 @@
         $httpBackend.flush();
 
         // Test URL location to new object
-        expect($state.go).toHaveBeenCalledWith('acquisitions.view', {
-          acquisitionId: mockAcquisition._id
-        });
+        expect($state.go).toHaveBeenCalledWith('acquisitions.list');
       }));
 
       it('should set $scope.vm.error if error', inject(function (AcquisitionsService) {
@@ -167,4 +181,4 @@
       });
     });
   });
-}());
+} ());

@@ -16,24 +16,34 @@
 
         <div class="row">
           <div class="col-xs-12">
-            <label class="control-label" for="">เกณฑ์กำไรสุทธิ</label>
+            <label class="control-label" for="">เกณฑ์มูลค่าสินทรัพย์สุทธิ</label>
             <div class="row">
-              <div class="col-xs-4">
+              <div class="col-xs-3">
                 <div class="form-group">
-                  <label class="control-label" for="entryacq">สัดส่วนการเข้าซื้อ</label>
-                  <input name="entryacq" type="number" ng-model="vm.acquisition.forecast.entryacq" id="entryacq" class="form-control" placeholder="สัดส่วนการเข้าซื้อ">
+                  <label class="control-label" for="obtaining">สัดส่วนการได้มา</label>
+                  <input name="obtaining" type="number" ng-model="vm.acquisition.nta.obtaining" id="obtaining" class="form-control" placeholder="สัดส่วนการได้มา"
+                    ng-change="vm.calculate1()">
                 </div>
               </div>
-              <div class="col-xs-4">
+              <div class="col-xs-3">
                 <div class="form-group">
-                  <label class="control-label" for="net">กำไรสุทธิ</label>
-                  <input name="net" type="number" ng-model="vm.acquisition.forecast.net" id="net" class="form-control" placeholder="กำไรสุทธิ">
+                  <label class="control-label" for="ptyvalue">มูลค่าสินทรัพย์สุทธ</label>
+                  <input name="ptyvalue" type="number" ng-model="vm.acquisition.nta.ptyvalue" id="ptyvalue" class="form-control" placeholder="มูลค่าสินทรัพย์สุทธ"
+                    ng-change="vm.calculate1()">
                 </div>
               </div>
-              <div class="col-xs-4">
+              <div class="col-xs-3">
                 <div class="form-group">
-                  <label class="control-label" for="totalnet">กำไรสุทธิของบริษัท</label>
-                  <input name="totalnet" type="number" ng-model="vm.acquisition.forecast.totalnet" id="ptvcomapany" class="form-control" placeholder="กำไรสุทธิของบริษัท">
+                  <label class="control-label" for="ptvcomapany">มูลค่าสินทรัพย์สุทธิของบริษัท</label>
+                  <input name="ptvcomapany" type="number" ng-model="vm.acquisition.nta.ptvcomapany" id="ptvcomapany" class="form-control" placeholder="มูลค่าสินทรัพย์สุทธิของบริษัท"
+                    ng-change="vm.calculate1()">
+                </div>
+              </div>
+              <div class="col-xs-3">
+                <div class="form-group">
+                  <label class="control-label" for="totalnet">รายการขนาด / ร้อยละ</label>
+                  <input name="totalnet" readonly type="number" ng-model="vm.acquisition.nta.ntatotal" id="ptvcomapany" class="form-control"
+                    placeholder="รายการขนาด" ng-change="vm.calculate1()">
                 </div>
               </div>
             </div>
@@ -42,24 +52,34 @@
 
         <div class="row">
           <div class="col-xs-12">
-            <label class="control-label" for="">เกณฑ์มูลค่าสินทรัพย์ที่มีตัวตนสุทธิ</label>
+            <label class="control-label" for="">เกณฑ์กำไรสุทธิ</label>
             <div class="row">
-              <div class="col-xs-4">
+              <div class="col-xs-3">
                 <div class="form-group">
-                  <label class="control-label" for="obtaining">สัดส่วนการได้มา</label>
-                  <input name="obtaining" type="number" ng-model="vm.acquisition.nta.obtaining" id="obtaining" class="form-control" placeholder="สัดส่วนการได้มา">
+                  <label class="control-label" for="entryacq">สัดส่วนการเข้าซื้อ</label>
+                  <input name="entryacq" type="number" ng-model="vm.acquisition.forecast.entryacq" id="entryacq" class="form-control" placeholder="สัดส่วนการเข้าซื้อ"
+                    ng-change="vm.calculate2()">
                 </div>
               </div>
-              <div class="col-xs-4">
+              <div class="col-xs-3">
                 <div class="form-group">
-                  <label class="control-label" for="ptyvalue">มูลค่าสินทรัพย์สุทธ</label>
-                  <input name="ptyvalue" type="number" ng-model="vm.acquisition.nta.ptyvalue" id="ptyvalue" class="form-control" placeholder="มูลค่าสินทรัพย์สุทธ">
+                  <label class="control-label" for="net">กำไรสุทธิ</label>
+                  <input name="net" type="number" ng-model="vm.acquisition.forecast.net" id="net" class="form-control" placeholder="กำไรสุทธิ"
+                    ng-change="vm.calculate2()">
                 </div>
               </div>
-              <div class="col-xs-4">
+              <div class="col-xs-3">
                 <div class="form-group">
-                  <label class="control-label" for="ptvcomapany">มูลค่าสินทรัพย์สุทธิของบริษัท</label>
-                  <input name="ptvcomapany" type="number" ng-model="vm.acquisition.nta.ptvcomapany" id="ptvcomapany" class="form-control" placeholder="มูลค่าสินทรัพย์สุทธิของบริษัท">
+                  <label class="control-label" for="totalnet">กำไรสุทธิของบริษัท</label>
+                  <input name="totalnet" type="number" ng-model="vm.acquisition.forecast.totalnet" id="ptvcomapany" class="form-control" placeholder="กำไรสุทธิของบริษัท"
+                    ng-change="vm.calculate2()">
+                </div>
+              </div>
+              <div class="col-xs-3">
+                <div class="form-group">
+                  <label class="control-label" for="totalnet">รายการขนาด / ร้อยละ</label>
+                  <input name="totalnet" readonly type="number" ng-model="vm.acquisition.forecast.fortotal" id="ptvcomapany" class="form-control"
+                    placeholder="รายการขนาด" ng-change="vm.calculate2()">
                 </div>
               </div>
             </div>
@@ -70,16 +90,28 @@
           <div class="col-xs-12">
             <label class="control-label" for="">เกณฑ์มูลค่ารวมของสิ่งตอบแทน</label>
             <div class="row">
-              <div class="col-xs-6">
+              <div class="col-xs-4">
                 <div class="form-group">
                   <label class="control-label" for="ttvconsider">มูลค่าสิ่งตอบแทนที่ชำระให้</label>
-                  <input name="ttvconsider" type="number" ng-model="vm.acquisition.ttvconsider.ttvconsider" id="ttvconsider" class="form-control" placeholder="มูลค่าสิ่งตอบแทนที่ชำระให้">
+                  <input name="ttvconsider" type="number" ng-model="vm.acquisition.ttvconsider.ttvconsider" id="ttvconsider" class="form-control"
+                    placeholder="มูลค่าสิ่งตอบแทนที่ชำระให้" ng-change="vm.calculate3()">
                 </div>
               </div>
-              <div class="col-xs-6">
+              <div class="col-xs-4">
                 <div class="form-group">
                   <label class="control-label" for="issuedost">มูลค่าสินทรัพย์รวมของบริษัท</label>
-                  <input name="issuedost" type="number" ng-model="vm.acquisition.ttvconsider.issuedost" id="issuedost" class="form-control" placeholder="มูลค่าสินทรัพย์รวมของบริษัท">
+                  <input name="issuedost" type="number" ng-model="vm.acquisition.ttvconsider.issuedost" id="issuedost" class="form-control"
+                    placeholder="มูลค่าสินทรัพย์รวมของบริษัท" ng-change="vm.calculate3()">
+                </div>
+              </div>
+              <div class="col-xs-1">
+
+              </div>
+              <div class="col-xs-3">
+                <div class="form-group">
+                  <label class="control-label" for="totalnet">รายการขนาด / ร้อยละ</label>
+                  <input name="totalnet" readonly type="number" ng-model="vm.acquisition.ttvconsider.ttvctotal" id="ptvcomapany" class="form-control"
+                    placeholder="รายการขนาด" ng-change="vm.calculate3()">
                 </div>
               </div>
             </div>
@@ -90,22 +122,45 @@
           <div class="col-xs-12">
             <label class="control-label" for="">เกณฑ์มูลค่าของหลักทรัพย์</label>
             <div class="row">
-              <div class="col-xs-6">
+              <div class="col-xs-4">
                 <div class="form-group">
                   <label class="control-label" for="payment">จำนวนหุ้นที่ออกเพื่อชำระค่าสินทรัพย</label>
-                  <input name="payment" type="number" ng-model="vm.acquisition.valuesecur.payment" id="payment" class="form-control" placeholder="มูลค่าสิ่งตอบแทนที่ชำระให้">
+                  <input name="payment" type="number" ng-model="vm.acquisition.valuesecur.payment" id="payment" class="form-control" placeholder="มูลค่าสิ่งตอบแทนที่ชำระให้"
+                    ng-change="vm.calculate4()">
                 </div>
               </div>
-              <div class="col-xs-6">
+              <div class="col-xs-4">
                 <div class="form-group">
                   <label class="control-label" for="companypaid">จำนวนหุ้นที่ออกและชำระแล้วของบริษัท</label>
-                  <input name="companypaid" type="number" ng-model="vm.acquisition.valuesecur.companypaid" id="companypaid" class="form-control" placeholder="จำนวนหุ้นที่ออกและชำระแล้วของบริษัท">
+                  <input name="companypaid" type="number" ng-model="vm.acquisition.valuesecur.companypaid" id="companypaid" class="form-control"
+                    placeholder="จำนวนหุ้นที่ออกและชำระแล้วของบริษัท" ng-change="vm.calculate4()">
+                </div>
+              </div>
+              <div class="col-xs-1">
+
+              </div>
+              <div class="col-xs-3">
+                <div class="form-group">
+                  <label class="control-label" for="totalnet">รายการขนาด / ร้อยละ</label>
+                  <input name="totalnet" readonly type="number" ng-model="vm.acquisition.valuesecur.valuesecur" id="ptvcomapany" class="form-control"
+                    placeholder="รายการขนาด" ng-change="vm.calculate4()">
                 </div>
               </div>
             </div>
           </div>
         </div>
 
+        <div class="row">
+          <div class="col-xs-3"></div>
+          <div class="col-xs-3"></div>
+          <div class="col-xs-3"></div>
+          <div class="col-xs-3">
+            <div class="form-group">
+              <label class="control-label" for="totalnet">เกณฑ์สูงสุด / ร้อยละ</label>
+              <input name="totalnet" readonly type="number" ng-model="maxValue" id="ptvcomapany" class="form-control" placeholder="เกณฑ์สูงสุด" ng-change="vm.findmaxvalue()">
+            </div>
+          </div>
+        </div>
 
         <div class="form-group">
           <button type="submit" class="btn btn-default">{{vm.acquisition._id ? 'Update' : 'Create'}}</button>
