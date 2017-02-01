@@ -10,6 +10,7 @@
   function PurchasesListController(PurchasesService, Authentication) {
     var vm = this;
     vm.authentication = Authentication;
+    vm.user = Authentication.user;
     vm.purchases = PurchasesService.query();
   }
 }());
