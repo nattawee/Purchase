@@ -7,92 +7,24 @@
       <fieldset>
         <div class="row">
           <div class="col-md-3">
+          </div>
+          <div class="col-md-3">
+          </div>
+          <div class="col-md-3">
+          </div>
+          <div class="col-md-3">
             <div class="form-group">
               <label class="control-label" for="docdate">วันที่</label>
               <input name="docdate" type="date" ng-model="vm.purchase.docdate" id="docdate" class="form-control" placeholder="Doc Date">
             </div>
-          </div>
-          <div class="col-md-3">
-          </div>
-          <div class="col-md-3">
-          </div>
-          <div class="col-md-3">
-            <div class="form-group" show-errors>
+            <!--<div class="form-group" show-errors>
               <label class="control-label" for="docno">เลขที่ใบสั่งซื้อ</label>
               <input name="docno" type="text" ng-model="vm.purchase.docno" id="docno" class="form-control" placeholder="เลขที่ใบสั่งซื้อ"
                 required>
               <div ng-messages="vm.form.purchaseForm.docno.$error" role="alert">
                 <p class="help-block error-text" ng-message="required">Purchase docdate is required.</p>
               </div>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-3">
-            <div class="form-group" show-errors>
-              <label class="control-label" for="client">ชื่อผู้ขาย</label>
-              <input name="client" type="text" ng-model="vm.purchase.client" id="client" class="form-control" placeholder="ชื่อผู้ขาย"
-                required>
-              <div ng-messages="vm.form.purchaseForm.client.$error" role="alert">
-                <p class="help-block error-text" ng-message="required">Purchase Client is required.</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-3">
-            <div class="form-group">
-              <label class="control-label" for="company">สังกัด</label>
-              <input name="company" type="text" ng-model="vm.purchase.company" id="company" class="form-control" placeholder="สังกัด">
-            </div>
-          </div>
-          <div class="col-md-3">
-            <div class="form-group">
-              <label class="control-label" for="tender">เลขที่ใบซื้อของ</label>
-              <input name="tender" type="text" ng-model="vm.purchase.tender" id="tender" class="form-control" placeholder="เลขที่ใบสั่งซื้อ">
-            </div>
-          </div>
-          <div class="col-md-3">
-            <div class="form-group">
-              <label class="control-label" for="drilldate">กำหนดมอบวันที่</label>
-              <input name="drilldate" type="date" ng-model="vm.purchase.drilldate" id="drilldate" class="form-control" placeholder="กำหนดมอบวันที่">
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-2">
-            <div class="form-group">
-              <label class="control-label" for="buyer">ผู้สั่งซื้อ</label>
-              <input name="buyer" type="text" ng-model="vm.purchase.buyer" id="buyer" class="form-control" placeholder="ผู้สั่งซื้อ">
-            </div>
-          </div>
-          <div class="col-md-5">
-            <div class="form-group">
-              <label class="control-label" for="howtohire">วิธีซื้อ/จ้าง</label>
-              <select class="form-control" name="carlist" form="carform" ng-model="vm.purchase.howtohire">
-                <option value="วิธีตกลงราคา">วิธีตกลงราคา</option>
-                <option value="วิธีสืบราคา">วิธีสืบราคา</option>
-                <option value="วิธีประมูลด้วยระบบอิเล็กทรอนิกส์">วิธีประมูลด้วยระบบอิเล็กทรอนิกส์</option>
-                <option value="วิธีกรณีพิเศษ">วิธีกรณีพิเศษ</option>
-                <option value="การต่อสัญญา">การต่อสัญญา</option>
-                <option value="วิธีฉุกเฉิน">วิธีฉุกเฉิน</option>
-                <option value="วิธีพิเศษ (มีประกาศเชิญชวน หรือ ไม่มีประกาศเชิญชวน)">วิธีพิเศษ (มีประกาศเชิญชวน หรือ ไม่มีประกาศเชิญชวน)</option>
-                <option value="อื่นๆ">อื่นๆ</option>
-              </select>
-            </div>
-          </div>
-          <div class="col-md-5">
-            <div class="form-group">
-              <label class="control-label" for="pursector">ประเภทการจัดซื้อ/จัดจ้าง</label>
-              <select class="form-control" name="carlist" form="carform" ng-model="vm.purchase.pursector">
-                <option value="งานก่อสร้าง">งานก่อสร้าง</option>
-                <option value="การจ้างควบคุมงาน">การจ้างควบคุมงาน</option>
-                <option value="การจ้างออกแบบ">การจ้างออกแบบ</option>
-                <option value="การจ้างที่ปรึกษา">การจ้างที่ปรึกษา</option>
-                <option value="การจ้างงานวิจัยหรือเงินสนับสนุนให้ทุนการวิจัย">การจ้างงานวิจัยหรือเงินสนับสนุนให้ทุนการวิจัย</option>
-                <option value="การจ้างพัฒนาระบบคอมพิวเตอร์">การจ้างพัฒนาระบบคอมพิวเตอร์</option>
-                <option value="การจัดซื้อ/จัดจ้างที่มิใช่งานก่อสร้าง">การจัดซื้อ/จัดจ้างที่มิใช่งานก่อสร้าง</option>
-                <option value="อื่นๆ">อื่นๆ</option>
-              </select>
-            </div>
+            </div>-->
           </div>
         </div>
 
@@ -101,7 +33,7 @@
             <thead style="background-color:lightgray;">
               <tr>
                 <th>No.</th>
-                <th>Product name</th>
+                <th>รายการจัดซื้อ/จัดจ้าง</th>
                 <th>QTY</th>
                 <th>Price</th>
                 <th>Amount</th>
@@ -130,8 +62,126 @@
               </tr>
             </tbody>
           </table>
-          <button type="button" class="btn btn-default" ng-click="vm.addItem()">Add</button>
+          <div class="row">
+            <div class="col-xs-3">
+              <button type="button" class="btn btn-default" ng-click="vm.addItem()">Add</button>
+            </div>
+            <div class="col-xs-3"></div>
+            <div class="col-xs-3"></div>
+            <div class="col-xs-3">
+              <div class="form-group">
+                <label class="control-label" for="amount">Total Amount</label>
+                <p ng-bind="vm.purchase.amount | number:2" />
+              </div>
+            </div>
+          </div>
         </div>
+
+        <div class="row">
+          <div class="col-md-3">
+            <div class="form-group" show-errors>
+              <label class="control-label" for="client">ฝ่าย/สำนักงาน</label>
+              <input name="client" type="text" ng-model="vm.purchase.client" id="client" class="form-control" placeholder="ฝ่าย/สำนักงาน"
+                required>
+              <div ng-messages="vm.form.purchaseForm.client.$error" role="alert">
+                <p class="help-block error-text" ng-message="required">Purchase Client is required.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="form-group">
+              <label class="control-label" for="company">ผู้รับผิดชอบ</label>
+              <input name="company" type="text" ng-model="vm.purchase.company" id="company" class="form-control" placeholder="ผู้รับผิดชอบ">
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="form-group">
+              <label class="control-label" for="tender">บันทึกเลขที่</label>
+              <input name="tender" type="text" ng-model="vm.purchase.tender" id="tender" class="form-control" placeholder="บันทึกเลขที่">
+            </div>
+          </div>
+          <div class="col-md-3">
+
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="form-group">
+                <label class="control-label" for="">ประมาณการค่าจัดซื้อ/จัดจ้าง (ราคากลาง)</label>
+              </div>
+            </div>
+          </div>
+          <div class="col-xs-4">
+            <div class="form-group">
+              <label class="control-label" for="amdamount">จำนวนเงิน</label>
+              <input name="amdamount" type="number" min="0" ng-model="vm.purchase.approvmd.amdamount" id="amdamount" class="form-control"
+                placeholder="จำนวนเงิน">
+            </div>
+          </div>
+          <div class="col-xs-4">
+            <div class="form-group">
+              <label class="control-label" for="appmdate">วันที่</label>
+              <input name="appmdate" type="date" ng-model="vm.purchase.approvmd.appmdate" id="appmdate" class="form-control" placeholder="วันที่">
+            </div>
+          </div>
+          <div class="col-xs-4">
+            <div class="form-group">
+              <label class="control-label" for="appmd">ผู้อนุมัติ</label>
+              <input name="appmd" type="text" ng-model="vm.purchase.approvmd.appmd" id="appmd" class="form-control" placeholder="ผู้อนุมัติ">
+            </div>
+          </div>
+        </div>
+
+
+        <div class="row">
+          <!--<div class="col-md-3">
+            <div class="form-group">
+              <label class="control-label" for="buyer">ผู้สั่งซื้อ</label>
+              <input name="buyer" type="text" ng-model="vm.purchase.buyer" id="buyer" class="form-control" placeholder="ผู้สั่งซื้อ">
+            </div>
+          </div>-->
+          <div class="col-xs-6">
+            <div class="form-group">
+              <label class="control-label" for="howtohire">วิธีซื้อ/จ้าง</label>
+              <select class="form-control" name="carlist" form="carform" ng-model="vm.purchase.howtohire">
+                <option value="วิธีตกลงราคา">วิธีตกลงราคา</option>
+                <option value="วิธีสืบราคา">วิธีสืบราคา</option>
+                <option value="วิธีประมูลด้วยระบบอิเล็กทรอนิกส์">วิธีประมูลด้วยระบบอิเล็กทรอนิกส์</option>
+                <option value="วิธีกรณีพิเศษ">วิธีกรณีพิเศษ</option>
+                <option value="การต่อสัญญา">การต่อสัญญา</option>
+                <option value="วิธีฉุกเฉิน">วิธีฉุกเฉิน</option>
+                <option value="วิธีพิเศษ (มีประกาศเชิญชวน หรือ ไม่มีประกาศเชิญชวน)">วิธีพิเศษ (มีประกาศเชิญชวน หรือ ไม่มีประกาศเชิญชวน)</option>
+                <option value="อื่นๆ">อื่นๆ</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-xs-6">
+            <div class="form-group">
+              <label class="control-label" for="pursector">ประเภทการจัดซื้อ/จัดจ้าง</label>
+              <select class="form-control" name="carlist" form="carform" ng-model="vm.purchase.pursector">
+                <option value="งานก่อสร้าง">งานก่อสร้าง</option>
+                <option value="การจ้างควบคุมงาน">การจ้างควบคุมงาน</option>
+                <option value="การจ้างออกแบบ">การจ้างออกแบบ</option>
+                <option value="การจ้างที่ปรึกษา">การจ้างที่ปรึกษา</option>
+                <option value="การจ้างงานวิจัยหรือเงินสนับสนุนให้ทุนการวิจัย">การจ้างงานวิจัยหรือเงินสนับสนุนให้ทุนการวิจัย</option>
+                <option value="การจ้างพัฒนาระบบคอมพิวเตอร์">การจ้างพัฒนาระบบคอมพิวเตอร์</option>
+                <option value="การจัดซื้อ/จัดจ้างที่มิใช่งานก่อสร้าง">การจัดซื้อ/จัดจ้างที่มิใช่งานก่อสร้าง</option>
+                <option value="อื่นๆ">อื่นๆ</option>
+              </select>
+            </div>
+          </div>
+          <!--<div class="col-xs-4">
+            <div class="form-group">
+              <label class="control-label" for="drilldate">กำหนดมอบวันที่</label>
+              <input name="drilldate" type="date" ng-model="vm.purchase.drilldate" id="drilldate" class="form-control" placeholder="กำหนดมอบวันที่">
+            </div>
+          </div>-->
+
+        </div>
+
+
 
         <div class="row" ng-hide="(vm.purchase.amount || 0) < 100000">
           <div class="col-xs-12">
@@ -206,42 +256,9 @@
           <div class="col-lg-1">
 
           </div>
-          <div class="col-lg-4">
-            <div class="row">
-              <div class="col-xs-12">
-                <div class="form-group">
-                  <label class="control-label" for="">ประมาณการค่าจัดซื้อ/จัดจ้าง (ราคากลาง)</label>
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-xs-12">
-                <div class="form-group">
-                  <label class="control-label" for="amdamount">จำนวนเงิน</label>
-                  <input name="amdamount" type="number" min="0" ng-model="vm.purchase.approvmd.amdamount" id="amdamount" class="form-control"
-                    placeholder="จำนวนเงิน">
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-xs-12">
-                <div class="form-group">
-                  <label class="control-label" for="appmdate">วันที่</label>
-                  <input name="appmdate" type="date" ng-model="vm.purchase.approvmd.appmdate" id="appmdate" class="form-control" placeholder="วันที่">
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-xs-12">
-                <div class="form-group">
-                  <label class="control-label" for="appmd">ผู้อนุมัติ</label>
-                  <input name="appmd" type="text" ng-model="vm.purchase.approvmd.appmd" id="appmd" class="form-control" placeholder="ผู้อนุมัติ">
-                </div>
-              </div>
-            </div>
-          </div>
 
-          <div class="col-lg-4">
+
+          <!--<div class="col-lg-4">
             <div class="row">
               <div class="col-xs-12">
                 <div class="form-group">
@@ -274,17 +291,13 @@
                 </div>
               </div>
             </div>
-          </div>
+          </div>-->
         </div>
         <div class="row">
           <div class="col-xs-3"></div>
           <div class="col-xs-3"></div>
           <div class="col-xs-3"></div>
           <div class="col-xs-3">
-            <div class="form-group">
-              <label class="control-label" for="amount">Total Amount</label>
-              <p ng-bind="vm.purchase.amount | number:2" />
-            </div>
             <div class="form-group">
               <button type="submit" class="btn btn-primary">{{vm.purchase._id ? 'Update' : 'Create'}}</button>
             </div>

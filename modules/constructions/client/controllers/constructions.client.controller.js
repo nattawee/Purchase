@@ -18,32 +18,39 @@
     vm.remove = remove;
     vm.save = save;
     vm.setData = setData;
+    vm.init = init;
 
 
 
     function setData() {
       if (vm.construction._id) {
-      if (vm.construction.webbam.datesub) {
-        vm.construction.webbam.datesub = new Date(vm.construction.webbam.datesub);
-      }
+        if (vm.construction.webbam.datesub) {
+          vm.construction.webbam.datesub = new Date(vm.construction.webbam.datesub);
+        }
 
-      if (vm.construction.webbam.onweb) {
-        vm.construction.webbam.onweb = new Date(vm.construction.webbam.onweb);
-      }
+        if (vm.construction.webbam.onweb) {
+          vm.construction.webbam.onweb = new Date(vm.construction.webbam.onweb);
+        }
 
-      if (vm.construction.ncc.nccdate) {
-        vm.construction.ncc.nccdate = new Date(vm.construction.ncc.nccdate);
-      }
+        if (vm.construction.ncc.nccdate) {
+          vm.construction.ncc.nccdate = new Date(vm.construction.ncc.nccdate);
+        }
 
-      if (vm.construction.estimate.dateest) {
-        vm.construction.estimate.dateest = new Date(vm.construction.estimate.dateest);
-      }
+        if (vm.construction.estimate.dateest) {
+          vm.construction.estimate.dateest = new Date(vm.construction.estimate.dateest);
+        }
 
-      if (vm.construction.adjust.dateadj) {
-        vm.construction.adjust.dateadj = new Date(vm.construction.adjust.dateadj);
-      }
+        if (vm.construction.adjust.dateadj) {
+          vm.construction.adjust.dateadj = new Date(vm.construction.adjust.dateadj);
+        }
 
+      }
     }
+
+    function init() {
+
+      vm.setData();
+
     }
 
 

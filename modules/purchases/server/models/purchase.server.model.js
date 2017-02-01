@@ -15,7 +15,7 @@ var PurchaseSchema = new Schema({
         type: String,
         default: '',
         unique: true,
-        required: 'Please fill Purchase docno',
+        // required: 'Please fill Purchase docno',
         trim: true
     },
     docdate: {
@@ -24,12 +24,12 @@ var PurchaseSchema = new Schema({
         default: Date.now
     },
     client: {
-        // ชื่อผู้ขาย
+        // ฝ่าย/สำนักงาน
         type: String,
         required: 'Please fill Purchase client'
     },
     company: {
-        // สังกัด
+        // ผู้รับผิดชอบ
         type: String
     },
     approvmd: {
@@ -68,8 +68,8 @@ var PurchaseSchema = new Schema({
     },
     buyer: {
         // ผู้ซื้อ
-        type: String,
-        required: 'Please fill Purchase buyer'
+        type: String
+        // required: 'Please fill Purchase buyer'
     },
     pursector: {
         // ประเภทการจัดซื้อ / จัดจ้าง

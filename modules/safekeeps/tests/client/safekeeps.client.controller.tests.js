@@ -1,15 +1,15 @@
 (function () {
   'use strict';
 
-  describe('Constructions Controller Tests', function () {
+  describe('Safekeeps Controller Tests', function () {
     // Initialize global variables
-    var ConstructionsController,
+    var SafekeepsController,
       $scope,
       $httpBackend,
       $state,
       Authentication,
-      ConstructionsService,
-      mockConstruction;
+      SafekeepsService,
+      mockSafekeep;
 
     // The $resource service augments the response object with methods for updating and deleting the resource.
     // If we were to use the standard toEqual matcher, our tests would fail because the test values would not match
@@ -36,7 +36,7 @@
     // The injector ignores leading and trailing underscores here (i.e. _$httpBackend_).
     // This allows us to inject a service but then attach it to a variable
     // with the same name as the service.
-    beforeEach(inject(function ($controller, $rootScope, _$state_, _$httpBackend_, _Authentication_, _ConstructionsService_) {
+    beforeEach(inject(function ($controller, $rootScope, _$state_, _$httpBackend_, _Authentication_, _SafekeepsService_) {
       // Set a new global scope
       $scope = $rootScope.$new();
 
@@ -44,12 +44,12 @@
       $httpBackend = _$httpBackend_;
       $state = _$state_;
       Authentication = _Authentication_;
-      ConstructionsService = _ConstructionsService_;
+      SafekeepsService = _SafekeepsService_;
 
-      // create mock Construction
-      mockConstruction = new ConstructionsService({
+      // create mock Safekeep
+      mockSafekeep = new SafekeepsService({
         _id: '525a8422f6d0f87f0e407a33',
-        name: 'Construction Name'
+        name: 'Safekeep Name'
       });
 
       // Mock logged in user
@@ -57,16 +57,15 @@
         roles: ['user']
       };
 
-      // Initialize the Constructions controller.
-      ConstructionsController = $controller('ConstructionsController as vm', {
+      // Initialize the Safekeeps controller.
+      SafekeepsController = $controller('SafekeepsController as vm', {
         $scope: $scope,
-        constructionResolve: {}
+        safekeepResolve: {}
       });
 
       // Spy on state go
       spyOn($state, 'go');
     }));
-
 
     describe('vm.setData() as set', function () {
 
@@ -77,34 +76,32 @@
     });
 
     describe('vm.save() as create', function () {
-      var sampleConstructionPostData;
+      var sampleSafekeepPostData;
 
       beforeEach(function () {
-        // Create a sample Construction object
-        sampleConstructionPostData = new ConstructionsService({
-          name: 'Construction Name'
+        // Create a sample Safekeep object
+        sampleSafekeepPostData = new SafekeepsService({
+          name: 'Safekeep Name'
         });
 
-        $scope.vm.construction = sampleConstructionPostData;
+        $scope.vm.safekeep = sampleSafekeepPostData;
       });
 
-      it('should send a POST request with the form input values and then locate to new object URL', inject(function (ConstructionsService) {
+      it('should send a POST request with the form input values and then locate to new object URL', inject(function (SafekeepsService) {
         // Set POST response
-        $httpBackend.expectPOST('api/constructions', sampleConstructionPostData).respond(mockConstruction);
+        $httpBackend.expectPOST('api/safekeeps', sampleSafekeepPostData).respond(mockSafekeep);
 
         // Run controller functionality
         $scope.vm.save(true);
         $httpBackend.flush();
 
-        // Test URL redirection after the Construction was created
-        expect($state.go).toHaveBeenCalledWith('constructions.list', {
-          constructionId: mockConstruction._id
-        });
+        // Test URL redirection after the Safekeep was created
+        expect($state.go).toHaveBeenCalledWith('safekeeps.list');
       }));
 
       it('should set $scope.vm.error if error', function () {
         var errorMessage = 'this is an error message';
-        $httpBackend.expectPOST('api/constructions', sampleConstructionPostData).respond(400, {
+        $httpBackend.expectPOST('api/safekeeps', sampleSafekeepPostData).respond(400, {
           message: errorMessage
         });
 
@@ -117,27 +114,25 @@
 
     describe('vm.save() as update', function () {
       beforeEach(function () {
-        // Mock Construction in $scope
-        $scope.vm.construction = mockConstruction;
+        // Mock Safekeep in $scope
+        $scope.vm.safekeep = mockSafekeep;
       });
 
-      it('should update a valid Construction', inject(function (ConstructionsService) {
+      it('should update a valid Safekeep', inject(function (SafekeepsService) {
         // Set PUT response
-        $httpBackend.expectPUT(/api\/constructions\/([0-9a-fA-F]{24})$/).respond();
+        $httpBackend.expectPUT(/api\/safekeeps\/([0-9a-fA-F]{24})$/).respond();
 
         // Run controller functionality
         $scope.vm.save(true);
         $httpBackend.flush();
 
         // Test URL location to new object
-        expect($state.go).toHaveBeenCalledWith('constructions.list', {
-          constructionId: mockConstruction._id
-        });
+        expect($state.go).toHaveBeenCalledWith('safekeeps.list');
       }));
 
-      it('should set $scope.vm.error if error', inject(function (ConstructionsService) {
+      it('should set $scope.vm.error if error', inject(function (SafekeepsService) {
         var errorMessage = 'error';
-        $httpBackend.expectPUT(/api\/constructions\/([0-9a-fA-F]{24})$/).respond(400, {
+        $httpBackend.expectPUT(/api\/safekeeps\/([0-9a-fA-F]{24})$/).respond(400, {
           message: errorMessage
         });
 
@@ -150,23 +145,23 @@
 
     describe('vm.remove()', function () {
       beforeEach(function () {
-        // Setup Constructions
-        $scope.vm.construction = mockConstruction;
+        // Setup Safekeeps
+        $scope.vm.safekeep = mockSafekeep;
       });
 
-      it('should delete the Construction and redirect to Constructions', function () {
+      it('should delete the Safekeep and redirect to Safekeeps', function () {
         // Return true on confirm message
         spyOn(window, 'confirm').and.returnValue(true);
 
-        $httpBackend.expectDELETE(/api\/constructions\/([0-9a-fA-F]{24})$/).respond(204);
+        $httpBackend.expectDELETE(/api\/safekeeps\/([0-9a-fA-F]{24})$/).respond(204);
 
         $scope.vm.remove();
         $httpBackend.flush();
 
-        expect($state.go).toHaveBeenCalledWith('constructions.list');
+        expect($state.go).toHaveBeenCalledWith('safekeeps.list');
       });
 
-      it('should should not delete the Construction and not redirect', function () {
+      it('should should not delete the Safekeep and not redirect', function () {
         // Return false on confirm message
         spyOn(window, 'confirm').and.returnValue(false);
 
