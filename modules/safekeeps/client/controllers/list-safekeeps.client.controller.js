@@ -10,6 +10,7 @@
   function SafekeepsListController(SafekeepsService, Authentication) {
     var vm = this;
     vm.authentication = Authentication;
+    vm.user = Authentication.user;
     vm.safekeeps = SafekeepsService.query();
   }
 } ());

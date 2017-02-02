@@ -11,6 +11,7 @@
   function PurchasesController($scope, $state, $window, Authentication, purchase) {
     var vm = this;
     vm.authentication = Authentication;
+    vm.user = Authentication.user;
     vm.purchase = purchase;
 
 

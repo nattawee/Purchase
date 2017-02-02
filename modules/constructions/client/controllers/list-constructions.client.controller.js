@@ -10,6 +10,7 @@
   function ConstructionsListController(ConstructionsService, Authentication) {
     var vm = this;
     vm.authentication = Authentication;
+    vm.user = Authentication.user;    
     vm.constructions = ConstructionsService.query();
   }
 } ());

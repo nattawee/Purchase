@@ -96,6 +96,10 @@ var ConstructionSchema = new Schema({
     type: Date,
     default: Date.now
   },
+  sequence: {
+    type: Number,
+    unique: true
+  },
   user: {
     type: Schema.ObjectId,
     ref: 'User'

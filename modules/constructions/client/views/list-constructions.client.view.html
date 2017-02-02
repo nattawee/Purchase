@@ -1,23 +1,25 @@
 <section>
   <div class="page-header">
-    <h1>Constructions
+    <h1>การปรับปรุงทรัพย์ (Renovate)</h1>
+    <h2>ฝ่าย {{vm.user.department}} สาขา {{vm.user.branch}}
       <div class="pull-right" ng-hide="!vm.authentication.user">
         <a class="btn btn-primary" ui-sref="constructions.create">
           <span>Create</span>
         </a>
       </div>
-    </h1>
+    </h2>
     <form role="search" class="navbar-form-custom" method="post" action="">
-      <div class="form-group">
-        <input type="text" placeholder="Search for something..." ng-model="topsearch" class="form-control" name="top-search" id="top-search">
-      </div>
-    </form>
+    <div class="form-group">
+      <input type="text" placeholder="Search for something..." ng-model="topsearch" class="form-control" name="top-search" id="top-search">
+    </div>
+  </form>
   </div>
+  
   <div class="list-group" ng-show="vm.constructions.length > 0">
     <table class="table">
       <thead>
         <tr>
-          <th>No .</th>
+          <th>ลำดับ</th>
           <th>รหัสสินทรัพย์</th>
           <th>เลขที่เอกสารสิทธิ์</th>
           <th>ชื่ออาคารชุด/สถานที่</th>
@@ -26,7 +28,7 @@
       <tbody>
         <tr ng-repeat="construction in vm.constructions | orderBy:'-docdate && docno' | filter:topsearch " ui-sref="constructions.edit({ constructionId: construction._id })">
           <td>
-            <p class="list-group-item-heading">{{$index+1}}</p>
+            <p class="list-group-item-heading">{{construction.sequence}}</p>
           </td>
           <td>
             <p class="list-group-item-heading">{{construction.resourceno}}</p>

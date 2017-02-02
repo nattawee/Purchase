@@ -16,6 +16,10 @@ var SafekeepSchema = new Schema({
     required: 'Please fill Safekeep name',
     trim: true
   },
+  sequence:{
+    type:Number,
+    unique:true
+  },
   resourceno: {
     type: String,
     required: 'Please fill Safekeep name'

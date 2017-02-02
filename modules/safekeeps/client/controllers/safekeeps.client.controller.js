@@ -12,6 +12,7 @@
     var vm = this;
 
     vm.authentication = Authentication;
+    vm.user = Authentication.user;
     vm.safekeep = safekeep;
     vm.error = null;
     vm.form = {};

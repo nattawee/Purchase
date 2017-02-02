@@ -1,6 +1,14 @@
 <section style="min-height:1600px;" ng-init="vm.init()">
   <div class="page-header">
-    <h1>{{vm.construction._id ? 'Edit Construction' : 'New Construction'}}</h1>
+    <h1>{{vm.construction._id ? 'การปรับปรุงทรัพย์ (Renovate)' : 'การปรับปรุงทรัพย์ (Renovate)'}}
+      <div class="pull-right">
+        <input name="sequence" type="number" ng-model="vm.construction.sequence" id="sequence" class="form-control" placeholder="ลำดับ">
+      </div>
+    </h1>
+    <h2 ng-if="vm.construction._id ? vm.construction._id : ''">
+      ฝ่าย {{vm.user.department}} สาขา {{vm.user.branch}}
+    </h2>
+
   </div>
   <div class="col-md-12">
     <form name="vm.form.constructionForm" class="form-horizontal" ng-submit="vm.save(vm.form.constructionForm.$valid)" novalidate>

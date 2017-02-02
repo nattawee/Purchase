@@ -1,6 +1,9 @@
 <section ng-init="vm.init()" style="min-height:1600px;">
   <div class="page-header">
-    <h1>{{vm.purchase._id ? 'Edit Purchase' : 'New Purchase'}}</h1>
+    <h1>{{vm.purchase._id ? 'ทะเบียนการจัดซื้อ/จัดจ้าง' : 'ทะเบียนการจัดซื้อ/จัดจ้าง'}}</h1>
+    <h2 ng-if="vm.purchase._id ? vm.purchase._id : ''">
+      ฝ่าย {{vm.user.department}} สาขา {{vm.user.branch}}
+      </h2>
   </div>
   <div class="col-md-12">
     <form name="vm.form.purchaseForm" class="form-horizontal" ng-submit="vm.save(vm.form.purchaseForm.$valid)" novalidate>
@@ -28,7 +31,7 @@
           </div>
         </div>
 
-        <div class="form-group">
+        <!--<div class="form-group">
           <table class="table">
             <thead style="background-color:lightgray;">
               <tr>
@@ -43,14 +46,16 @@
             <tbody>
               <tr ng-repeat="product in vm.purchase.items">
                 <td>
-                  <!--<p>{{$index+1}}</p>-->
-                  <input name="productcode" type="text" ng-model="product.productcode" id="productcode" class="form-control" placeholder="รหัสสินค้า"
+                  <p>{{$index+1}}</p>
+                  <input name="productcode" type="text" ng-model="vm.purchase.items.productcode" id="productcode" class="form-control" placeholder="รหัสสินค้า"
                     ng-change="vm.calculate(product)">
                 </td>
                 <td>
-                  <input name="product" type="text" ng-model="product.product" id="product" class="form-control" placeholder="ชื่อสินค้า" ng-change="vm.calculate(product)">
+                  <input name="product" type="text" ng-model="vm.purchase.items.product" id="product" class="form-control" placeholder="ชื่อสินค้า"
+                    ng-change="vm.calculate(product)">
                 </td>
-                <td><input name="qty" type="number" ng-model="product.qty" id="qty" class="form-control" placeholder="QTY" ng-change="vm.calculate(product)"></td>
+                <td><input name="qty" type="number" ng-model="vm.purchase.items.qty" id="qty" class="form-control" placeholder="QTY"
+                    ng-change="vm.calculate(product)"></td>
                 <td><input name="unitprice" type="number" min="0" ng-change="vm.calculate(product)" ng-model="product.unitprice"
                     id="unitprice" class="form-control" placeholder="price"></td>
                 <td>
@@ -75,8 +80,28 @@
               </div>
             </div>
           </div>
+        </div>-->
+        <div class="row">
+          <div class="col-xs-4">
+            <div class="form-group">
+              <label class="control-label" for="product">รายการจัดซื้อ/จัดจ้าง</label>
+              <input name="product" type="text" ng-model="vm.purchase.items.product" id="product" class="form-control" placeholder="รายการจัดซื้อ/จัดจ้าง"
+                ng-change="vm.calculate(vm.purchase)">
+            </div>
+          </div>
+          <div class="col-xs-4">
+            <div class="form-group">
+              <label class="control-label" for="qty">จำนวน</label>
+              <input name="qty" type="text" ng-model="vm.purchase.items.qty" id="qty" class="form-control" placeholder="จำนวน" ng-change="vm.calculate(vm.purchase)">
+            </div>
+          </div>
+          <div class="col-xs-4">
+            <div class="form-group">
+              <label class="control-label" for="unitprice">ราคา</label>
+              <input name="unitprice" type="text" ng-model="vm.purchase.unitprice" id="unitprice" class="form-control" placeholder="ราคา" ng-change="vm.calculate(vm.purchase)">
+            </div>
+          </div>
         </div>
-
         <div class="row">
           <div class="col-md-3">
             <div class="form-group" show-errors>
@@ -115,7 +140,7 @@
           </div>
           <div class="col-xs-4">
             <div class="form-group">
-              <label class="control-label" for="amdamount">จำนวนเงิน</label>
+              <label class="control-label" for="amdamount">จำนวนเงิน (บาท)</label>
               <input name="amdamount" type="number" min="0" ng-model="vm.purchase.approvmd.amdamount" id="amdamount" class="form-control"
                 placeholder="จำนวนเงิน">
             </div>

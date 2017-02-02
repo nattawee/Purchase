@@ -1,6 +1,14 @@
 <section style="min-height:1600px;" ng-init="vm.init()">
   <div class="page-header">
-    <h1>{{vm.safekeep._id ? 'Edit Safekeep' : 'New Safekeep'}}</h1>
+    <h1>{{vm.safekeep._id ? 'การดูแลรักษาทรัพสินรอการขาย (Property Forclosed)' : 'การดูแลรักษาทรัพสินรอการขาย (Property Forclosed)'}}
+      <div class="pull-right">
+        <input name="sequence" type="number" ng-model="vm.safekeep.sequence" id="sequence" class="form-control" placeholder="ลำดับ">
+      </div>
+    </h1>
+    <h2 ng-if="vm.safekeep._id ? vm.safekeep._id : ''">
+      ฝ่าย {{vm.user.department}} สาขา {{vm.user.branch}}
+      </h2>
+      
   </div>
   <div class="col-md-12">
     <form name="vm.form.safekeepForm" class="form-horizontal" ng-submit="vm.save(vm.form.safekeepForm.$valid)" novalidate>
