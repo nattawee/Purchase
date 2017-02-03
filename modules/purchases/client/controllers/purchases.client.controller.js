@@ -50,11 +50,11 @@
       }
 
       if (!vm.purchase.items) {
-        vm.purchase.items = [{
+        vm.purchase.items = {
           productcode: '',
           product: '',
           qty: 1
-        }];
+        };
       }
       if (vm.purchase._id) {
         if (vm.purchase.ncc.nccdate) {

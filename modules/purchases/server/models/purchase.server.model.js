@@ -112,7 +112,7 @@ var PurchaseSchema = new Schema({
             type: String
         },
     },
-    items: [{
+    items: {
         // รายชื่อสินค้า
         productcode: {
             type: String
@@ -136,7 +136,7 @@ var PurchaseSchema = new Schema({
             type: Number,
             default: 0
         }
-    }],
+    },
     drilldate: {
         // กำหนดส่งมอบ วันที่
         type: Date,
