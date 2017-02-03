@@ -20,7 +20,7 @@
       <thead>
         <tr>
           <th>No.</th>
-          <th>เลขที่ใยสั่งซื้อ</th>
+          <th>รายการจัดซื้อ/จัดจ้าง</th>
           <th>ชื่อผู้ขาย</th>
           <th>ยอดต้นทุน</th>
         </tr>
@@ -31,7 +31,7 @@
             <p class="list-group-item-heading">{{$index+1}}</p>
           </td>
           <td>
-            <p class="list-group-item-heading">{{purchase.docno}}</p>
+            <p class="list-group-item-heading">{{purchase.items.product}}</p>
           </td>
           <td>
             <p class="list-group-item-heading">{{purchase.client}}</p>

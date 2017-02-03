@@ -25,8 +25,8 @@ var PurchaseSchema = new Schema({
     },
     client: {
         // ฝ่าย/สำนักงาน
-        type: String,
-        required: 'Please fill Purchase client'
+        type: String
+        // required: 'Please fill Purchase client'
     },
     company: {
         // ผู้รับผิดชอบ
@@ -115,8 +115,8 @@ var PurchaseSchema = new Schema({
     items: [{
         // รายชื่อสินค้า
         productcode: {
-            type: String,
-            required: 'Please fill Purchase productcode'
+            type: String
+            // required: 'Please fill Purchase productcode'
         },
         product: {
             type: String
