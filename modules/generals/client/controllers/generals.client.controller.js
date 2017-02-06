@@ -48,9 +48,7 @@
       }
 
       function successCallback(res) {
-        $state.go('generals.view', {
-          generalId: res._id
-        });
+        $state.go('generals.list');
       }
 
       function errorCallback(res) {
