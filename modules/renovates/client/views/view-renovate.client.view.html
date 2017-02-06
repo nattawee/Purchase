@@ -4,7 +4,7 @@
       รายงานการปรับปรุงทรัพย์ (RENOVATE)
     </h2>
   </div>
-  <form name="vm.form.renovateForm" class="form-horizontal" ng-submit="vm.save(vm.form.renovateForm.$valid)" novalidate>
+  <form name="vm.form.renovateForm" class="form-horizontal"  novalidate>
     <div class="row">
       <div class="col col-md-6">
         <div class="row">
@@ -152,7 +152,7 @@
     </div>
 
 
-    <div class="row" ng-if="vm.renovate.status === 'approved'">
+    <div class="row" ng-if="vm.renovate.status === 'approved' && vm.renovate.estexpense.amount >= 100000">
 
       <div class="col col-md-10">
         <div class="ibox float-e-margins border-left border-right border-bottom">
@@ -281,7 +281,7 @@
       </div>
       <div class="col col-md-2"></div>
     </div>
-    <div class="row" ng-if="vm.renovate.status === 'approved'">
+    <div class="row" ng-if="vm.renovate.status === 'approved' && vm.renovate.estexpense.amount >= 2000000">
 
       <div class="col col-md-10">
         <div class="ibox float-e-margins border-left border-right border-bottom">
@@ -331,7 +331,7 @@
         <button ng-click="vm.approved()" class="btn btn-primary">อนุมัติ</button>
       </div>
       <div class="col col-xs-4 text-right" ng-if="vm.renovate.status === 'approved'">
-        <button type="submit" class="btn btn-primary">บันทึกข้อมูล</button>
+        <button ng-click="vm.save(vm.form.renovateForm.$valid)" class="btn btn-primary">บันทึกข้อมูล</button>
       </div>
     </div>
     <div class="hr-line-dashed"></div>
