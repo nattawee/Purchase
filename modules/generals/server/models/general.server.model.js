@@ -71,6 +71,36 @@ var GeneralSchema = new Schema({
     required: 'Please fill General methodtype',
     trim: true
   },
+  announcement : {
+    requestdate : Date,
+    onlinedate : Date,
+    reference : String
+  },
+  purchase: {
+    amount: {
+      type: Number,
+      default: 0,
+      required: 'Please fill General amount',
+      trim: true
+    },
+    apprvdate: {
+      type: Date,
+      default: Date.now,
+      required: 'Please fill General apprvdate'
+    },
+    approver: {
+      type: String,
+      default: '',
+      required: 'Please fill General approver',
+      trim: true
+    }
+  },
+  supplier: String,
+  refno : String,
+  nacc : {
+    naccdocdate : Date,
+    naccdocno : String
+  },
   status: {
     type: String,
     default: 'draft',
