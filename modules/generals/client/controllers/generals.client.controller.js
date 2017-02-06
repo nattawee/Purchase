@@ -10,10 +10,6 @@
 
   function GeneralsController($scope, $state, $window, Authentication, general) {
     var vm = this;
-
-
-
-
     vm.authentication = Authentication;
     vm.general = general;
     if (vm.general.trnsdate) {
