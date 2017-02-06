@@ -6,19 +6,19 @@
 var should = require('should'),
   mongoose = require('mongoose'),
   User = mongoose.model('User'),
-  Renovate = mongoose.model('Renovate');
+  Property = mongoose.model('Property');
 
 /**
  * Globals
  */
 var user,
-  renovate;
+  property;
 
 /**
  * Unit tests
  */
-describe('Renovate Model Unit Tests:', function () {
-  beforeEach(function (done) {
+describe('Property Model Unit Tests:', function() {
+  beforeEach(function(done) {
     user = new User({
       firstName: 'Full',
       lastName: 'Name',
@@ -28,18 +28,18 @@ describe('Renovate Model Unit Tests:', function () {
       password: 'password'
     });
 
-    user.save(function () {
-      renovate = new Renovate({
-        renovateno: 1,
-        renovateid: 1,
+    user.save(function() {
+      property = new Property({
+        propertyno: 1,
+        propertyid: 1,
         documentno: 123,
-        name: 'Renovate name',
+        name: 'Property name',
         location: {
           subdistrict: 'subdistrict',
           district: 'district',
           province: 'province'
         },
-        renovatedes: 'description',
+        propertydes: 'description',
         processtype: 'วิธีตกลงราคา',
         methodtype: 'การจัดซื้อ/จัดจ้างที่มิใช่งานก่อสร้าง',
         estexpense: {
@@ -58,124 +58,124 @@ describe('Renovate Model Unit Tests:', function () {
   describe('Method Save', function () {
     it('should be able to save without problems', function (done) {
       this.timeout(0);
-      return renovate.save(function (err) {
+      return property.save(function (err) {
         should.not.exist(err);
         done();
       });
     });
 
-    it('should be able to show an error when try to save without renovateno', function (done) {
-      renovate.renovateno = '';
+    it('should be able to show an error when try to save without propertyno', function (done) {
+      property.propertyno = '';
 
-      return renovate.save(function (err) {
+      return property.save(function (err) {
         should.exist(err);
         done();
       });
     });
 
-    it('should be able to show an error when try to save without renovateid', function (done) {
-      renovate.renovateid = '';
+    it('should be able to show an error when try to save without propertyid', function (done) {
+      property.propertyid = '';
 
-      return renovate.save(function (err) {
+      return property.save(function (err) {
         should.exist(err);
         done();
       });
     });
 
     it('should be able to show an error when try to save without documentno', function (done) {
-      renovate.documentno = '';
+      property.documentno = '';
 
-      return renovate.save(function (err) {
+      return property.save(function (err) {
         should.exist(err);
         done();
       });
     });
 
     it('should be able to show an error when try to save without name', function (done) {
-      renovate.name = '';
+      property.name = '';
 
-      return renovate.save(function (err) {
+      return property.save(function (err) {
         should.exist(err);
         done();
       });
     });
 
     it('should be able to show an error when try to save without subdistrict', function (done) {
-      renovate.location.subdistrict = '';
+      property.location.subdistrict = '';
 
-      return renovate.save(function (err) {
+      return property.save(function (err) {
         should.exist(err);
         done();
       });
     });
 
     it('should be able to show an error when try to save without district', function (done) {
-      renovate.location.district = '';
+      property.location.district = '';
 
-      return renovate.save(function (err) {
+      return property.save(function (err) {
         should.exist(err);
         done();
       });
     });
 
     it('should be able to show an error when try to save without province', function (done) {
-      renovate.location.province = '';
+      property.location.province = '';
 
-      return renovate.save(function (err) {
+      return property.save(function (err) {
         should.exist(err);
         done();
       });
     });
 
-    it('should be able to show an error when try to save without renovatedes', function (done) {
-      renovate.renovatedes = '';
+    it('should be able to show an error when try to save without propertydes', function (done) {
+      property.propertydes = '';
 
-      return renovate.save(function (err) {
+      return property.save(function (err) {
         should.exist(err);
         done();
       });
     });
 
     it('should be able to show an error when try to save without processtype', function (done) {
-      renovate.processtype = '';
+      property.processtype = '';
 
-      return renovate.save(function (err) {
+      return property.save(function (err) {
         should.exist(err);
         done();
       });
     });
 
     it('should be able to show an error when try to save without methodtype', function (done) {
-      renovate.methodtype = '';
+      property.methodtype = '';
 
-      return renovate.save(function (err) {
+      return property.save(function (err) {
         should.exist(err);
         done();
       });
     });
 
     it('should be able to show an error when try to save without estimate expense amount', function(done) {
-      renovate.estexpense.amount = null; 
+      property.estexpense.amount = null; 
 
-      return renovate.save(function(err) {
+      return property.save(function(err) {
         should.exist(err);
         done();
       });
     });
 
     it('should be able to show an error when try to save without estimate approve date', function(done) {
-      renovate.estexpense.apprvdate = null; 
+      property.estexpense.apprvdate = null; 
 
-      return renovate.save(function(err) {
+      return property.save(function(err) {
         should.exist(err);
         done();
       });
     });
 
     it('should be able to show an error when try to save without estimate approver', function(done) {
-      renovate.estexpense.approver = ''; 
+      property.estexpense.approver = ''; 
 
-      return renovate.save(function(err) {
+      return property.save(function(err) {
         should.exist(err);
         done();
       });
@@ -183,9 +183,9 @@ describe('Renovate Model Unit Tests:', function () {
 
   });
 
-  afterEach(function (done) {
-    Renovate.remove().exec(function () {
-      User.remove().exec(function () {
+  afterEach(function(done) {
+    Property.remove().exec(function() {
+      User.remove().exec(function() {
         done();
       });
     });

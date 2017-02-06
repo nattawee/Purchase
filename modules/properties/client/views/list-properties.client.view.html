@@ -1,7 +1,7 @@
 <section>
   <div class="page-header">
     <h2 class="text-center">
-      รายงานการปรับปรุงทรัพย์ (RENOVATE)
+      รายงานดูแลรักษาทรัพย์สินรอการขาย (PROPERTY FORECLOSED)
     </h2>
   </div>
 
@@ -10,7 +10,7 @@
       <div class="col col-xs-10">
         <input type="search" class="form-control " ng-model="searchText" placeholder="ค้นหา">
       </div>
-      <div class="col col-md-2"><button class="btn btn-primary" ui-sref="renovates.create()">สร้างรายการใหม่</button></div>
+      <div class="col col-md-2"><button class="btn btn-primary" ui-sref="properties.create()">สร้างรายการใหม่</button></div>
     </div>
     <br>
 
@@ -34,7 +34,7 @@
                 <th>ชื่ออาคารชุด/สถานที่</th>
                 <th>
                   <div class="row">
-                    <div class="col-xs-12 text-center">ประมาณการค่าปรับปรุง</div>
+                    <div class="col-xs-12 text-center">ประมาณการค่าใช้จ่าย</div>
                   </div>
                   <div class="row">
                     <div class="col col-xs-4 text-center">จำนวนเงิน</div>
@@ -45,18 +45,18 @@
               </tr>
             </thead>
             <tbody>
-              <tr ng-repeat="renovate in vm.renovates | filter:{ status: 'draft' } | filter:searchText" ui-sref="renovates.edit({ renovateId: renovate._id })">
+              <tr ng-repeat="property in vm.properties | filter:{ status: 'draft' } | filter:searchText" ui-sref="properties.edit({ propertyId: property._id })">
                 <td>
-                  {{renovate.renovateno}}
+                  {{property.propertyno}}
                 </td>
-                <td>{{renovate.renovateid}}</td>
-                <td>{{renovate.documentno}}</td>
-                <td>{{renovate.name}}</td>
+                <td>{{property.propertyid}}</td>
+                <td>{{property.documentno}}</td>
+                <td>{{property.name}}</td>
                 <td>
                   <div class="row">
-                    <div class="col col-md-4 text-right">{{renovate.estexpense.amount | number:2}}</div>
-                    <div class="col col-md-4 text-center">{{renovate.estexpense.apprvdate | date:'dd/MM/yyyy'}}</div>
-                    <div class="col col-md-4">{{renovate.estexpense.approver}}</div>
+                    <div class="col col-md-4 text-right">{{property.estexpense.amount | number:2}}</div>
+                    <div class="col col-md-4 text-center">{{property.estexpense.apprvdate | date:'dd/MM/yyyy'}}</div>
+                    <div class="col col-md-4">{{property.estexpense.approver}}</div>
                   </div>
                 </td>
               </tr>
@@ -78,7 +78,7 @@
                 <th>ชื่ออาคารชุด/สถานที่</th>
                 <th>
                   <div class="row">
-                    <div class="col-xs-12 text-center">ประมาณการค่าปรับปรุง</div>
+                    <div class="col-xs-12 text-center">ประมาณการค่าใช้จ่าย</div>
                   </div>
                   <div class="row">
                     <div class="col col-xs-4 text-center">จำนวนเงิน</div>
@@ -89,18 +89,18 @@
               </tr>
             </thead>
             <tbody>
-              <tr ng-repeat="renovate in vm.renovates | filter:{ status: 'waiting for approve' } | filter:searchText" ui-sref="renovates.view({ renovateId: renovate._id })">
+              <tr ng-repeat="property in vm.properties | filter:{ status: 'waiting for approve' } | filter:searchText" ui-sref="properties.view({ propertyId: property._id })">
                 <td>
-                  {{renovate.renovateno}}
+                  {{property.propertyno}}
                 </td>
-                <td>{{renovate.renovateid}}</td>
-                <td>{{renovate.documentno}}</td>
-                <td>{{renovate.name}}</td>
+                <td>{{property.propertyid}}</td>
+                <td>{{property.documentno}}</td>
+                <td>{{property.name}}</td>
                 <td>
                   <div class="row">
-                    <div class="col col-md-4 text-right">{{renovate.estexpense.amount | number:2}}</div>
-                    <div class="col col-md-4 text-center">{{renovate.estexpense.apprvdate | date:'dd/MM/yyyy'}}</div>
-                    <div class="col col-md-4">{{renovate.estexpense.approver}}</div>
+                    <div class="col col-md-4 text-right">{{property.estexpense.amount | number:2}}</div>
+                    <div class="col col-md-4 text-center">{{property.estexpense.apprvdate | date:'dd/MM/yyyy'}}</div>
+                    <div class="col col-md-4">{{property.estexpense.approver}}</div>
                   </div>
                 </td>
               </tr>
@@ -122,7 +122,7 @@
                 <th>ชื่ออาคารชุด/สถานที่</th>
                 <th>
                   <div class="row">
-                    <div class="col-xs-12 text-center">ประมาณการค่าปรับปรุง</div>
+                    <div class="col-xs-12 text-center">ประมาณการค่าใช้จ่าย</div>
                   </div>
                   <div class="row">
                     <div class="col col-xs-4 text-center">จำนวนเงิน</div>
@@ -133,18 +133,18 @@
               </tr>
             </thead>
             <tbody>
-              <tr ng-repeat="renovate in vm.renovates | filter:{ status: 'approved' } | filter:searchText" ui-sref="renovates.view({ renovateId: renovate._id })">
+              <tr ng-repeat="property in vm.properties | filter:{ status: 'approved' } | filter:searchText" ui-sref="properties.view({ propertyId: property._id })">
                 <td>
-                  {{renovate.renovateno}}
+                  {{property.propertyno}}
                 </td>
-                <td>{{renovate.renovateid}}</td>
-                <td>{{renovate.documentno}}</td>
-                <td>{{renovate.name}}</td>
+                <td>{{property.propertyid}}</td>
+                <td>{{property.documentno}}</td>
+                <td>{{property.name}}</td>
                 <td>
                   <div class="row">
-                    <div class="col col-md-4 text-right">{{renovate.estexpense.amount | number:2}}</div>
-                    <div class="col col-md-4 text-center">{{renovate.estexpense.apprvdate | date:'dd/MM/yyyy'}}</div>
-                    <div class="col col-md-4">{{renovate.estexpense.approver}}</div>
+                    <div class="col col-md-4 text-right">{{property.estexpense.amount | number:2}}</div>
+                    <div class="col col-md-4 text-center">{{property.estexpense.apprvdate | date:'dd/MM/yyyy'}}</div>
+                    <div class="col col-md-4">{{property.estexpense.approver}}</div>
                   </div>
                 </td>
               </tr>
@@ -166,7 +166,7 @@
                 <th>ชื่ออาคารชุด/สถานที่</th>
                 <th>
                   <div class="row">
-                    <div class="col-xs-12 text-center">ประมาณการค่าปรับปรุง</div>
+                    <div class="col-xs-12 text-center">ประมาณการค่าใช้จ่าย</div>
                   </div>
                   <div class="row">
                     <div class="col col-xs-4 text-center">จำนวนเงิน</div>
@@ -177,18 +177,18 @@
               </tr>
             </thead>
             <tbody>
-              <tr ng-repeat="renovate in vm.renovates | filter:{ status: 'rejected' } | filter:searchText" ui-sref="renovates.edit({ renovateId: renovate._id })">
+              <tr ng-repeat="property in vm.properties | filter:{ status: 'rejected' } | filter:searchText" ui-sref="properties.edit({ propertyId: property._id })">
                 <td>
-                  {{renovate.renovateno}}
+                  {{property.propertyno}}
                 </td>
-                <td>{{renovate.renovateid}}</td>
-                <td>{{renovate.documentno}}</td>
-                <td>{{renovate.name}}</td>
+                <td>{{property.propertyid}}</td>
+                <td>{{property.documentno}}</td>
+                <td>{{property.name}}</td>
                 <td>
                   <div class="row">
-                    <div class="col col-md-4 text-right">{{renovate.estexpense.amount | number:2}}</div>
-                    <div class="col col-md-4 text-center">{{renovate.estexpense.apprvdate | date:'dd/MM/yyyy'}}</div>
-                    <div class="col col-md-4">{{renovate.estexpense.approver}}</div>
+                    <div class="col col-md-4 text-right">{{property.estexpense.amount | number:2}}</div>
+                    <div class="col col-md-4 text-center">{{property.estexpense.apprvdate | date:'dd/MM/yyyy'}}</div>
+                    <div class="col col-md-4">{{property.estexpense.approver}}</div>
                   </div>
                 </td>
               </tr>
@@ -210,7 +210,7 @@
                 <th>ชื่ออาคารชุด/สถานที่</th>
                 <th>
                   <div class="row">
-                    <div class="col-xs-12 text-center">ประมาณการค่าปรับปรุง</div>
+                    <div class="col-xs-12 text-center">ประมาณการค่าใช้จ่าย</div>
                   </div>
                   <div class="row">
                     <div class="col col-xs-4 text-center">จำนวนเงิน</div>
@@ -221,18 +221,18 @@
               </tr>
             </thead>
             <tbody>
-              <tr ng-repeat="renovate in vm.renovates | filter:{ status: 'completed' } | filter:searchText" ui-sref="renovates.view({ renovateId: renovate._id })">
+              <tr ng-repeat="property in vm.properties | filter:{ status: 'completed' } | filter:searchText" ui-sref="properties.view({ propertyId: property._id })">
                 <td>
-                  {{renovate.renovateno}}
+                  {{property.propertyno}}
                 </td>
-                <td>{{renovate.renovateid}}</td>
-                <td>{{renovate.documentno}}</td>
-                <td>{{renovate.name}}</td>
+                <td>{{property.propertyid}}</td>
+                <td>{{property.documentno}}</td>
+                <td>{{property.name}}</td>
                 <td>
                   <div class="row">
-                    <div class="col col-md-4 text-right">{{renovate.estexpense.amount | number:2}}</div>
-                    <div class="col col-md-4 text-center">{{renovate.estexpense.apprvdate | date:'dd/MM/yyyy'}}</div>
-                    <div class="col col-md-4">{{renovate.estexpense.approver}}</div>
+                    <div class="col col-md-4 text-right">{{property.estexpense.amount | number:2}}</div>
+                    <div class="col col-md-4 text-center">{{property.estexpense.apprvdate | date:'dd/MM/yyyy'}}</div>
+                    <div class="col col-md-4">{{property.estexpense.approver}}</div>
                   </div>
                 </td>
               </tr>
@@ -243,7 +243,7 @@
     </uib-tabset>
 
   </div>
-  <div class="alert alert-warning text-center" ng-if="vm.renovates.$resolved && !vm.renovates.length">
-    No renovates yet, why don't you <a ui-sref="renovates.create">create one</a>?
+  <div class="alert alert-warning text-center" ng-if="vm.properties.$resolved && !vm.properties.length">
+    No propertys yet, why don't you <a ui-sref="properties.create">create one</a>?
   </div>
 </section>

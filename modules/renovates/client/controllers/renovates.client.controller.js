@@ -15,6 +15,18 @@
     if (vm.renovate.estexpense && vm.renovate.estexpense.apprvdate) {
       vm.renovate.estexpense.apprvdate = new Date(vm.renovate.estexpense.apprvdate);
     }
+    if (vm.renovate.purchase && vm.renovate.purchase.apprvdate) {
+      vm.renovate.purchase.apprvdate = new Date(vm.renovate.purchase.apprvdate);
+    }
+    if (vm.renovate.announcement && vm.renovate.announcement.requestdate) {
+      vm.renovate.announcement.requestdate = new Date(vm.renovate.announcement.requestdate);
+    }
+    if (vm.renovate.announcement && vm.renovate.announcement.onlinedate) {
+      vm.renovate.announcement.onlinedate = new Date(vm.renovate.announcement.onlinedate);
+    }
+    if (vm.renovate.nacc && vm.renovate.nacc.naccdocdate) {
+      vm.renovate.nacc.naccdocdate = new Date(vm.renovate.nacc.naccdocdate);
+    }
     vm.error = null;
     vm.form = {};
     vm.remove = remove;

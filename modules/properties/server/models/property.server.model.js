@@ -4,19 +4,19 @@
  * Module dependencies.
  */
 var mongoose = require('mongoose'),
-    Schema = mongoose.Schema;
+  Schema = mongoose.Schema;
 
 /**
- * Renovate Schema
+ * Property Schema
  */
-var RenovateSchema = new Schema({
-    renovateno: {
+var PropertySchema = new Schema({
+    propertyno: {
         type: Number,
-        required: 'Please fill renovateno'
+        required: 'Please fill propertyno'
     },
-    renovateid: {
+    propertyid: {
         type: Number,
-        required: 'Please fill renovateid'
+        required: 'Please fill propertyid'
     },
     documentno: {
         type: Number,
@@ -25,7 +25,7 @@ var RenovateSchema = new Schema({
     name: {
         type: String,
         default: '',
-        required: 'Please fill Renovate name',
+        required: 'Please fill Property name',
         trim: true
     },
     location: {
@@ -42,9 +42,9 @@ var RenovateSchema = new Schema({
             required: 'Please fill location province'
         }
     },
-    renovatedes: {
+    propertydes: {
         type: String,
-        required: 'Please fill renovatedes'
+        required: 'Please fill propertydes'
     },
     processtype: {
         type: String,
@@ -108,15 +108,14 @@ var RenovateSchema = new Schema({
         naccdocdate: Date,
         naccdocno: String
     },
-
-    created: {
-        type: Date,
-        default: Date.now
-    },
-    user: {
-        type: Schema.ObjectId,
-        ref: 'User'
-    }
+  created: {
+    type: Date,
+    default: Date.now
+  },
+  user: {
+    type: Schema.ObjectId,
+    ref: 'User'
+  }
 });
 
-mongoose.model('Renovate', RenovateSchema);
+mongoose.model('Property', PropertySchema);

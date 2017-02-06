@@ -1,17 +1,17 @@
 <section>
   <div class="page-header">
     <h2 class="text-center">
-      รายงานการปรับปรุงทรัพย์ (RENOVATE)
+      รายงานดูแลรักษาทรัพย์สินรอการขาย (PROPERTY FORECLOSED)
     </h2>
   </div>
-  <form name="vm.form.renovateForm" class="form-horizontal" ng-submit="vm.save(vm.form.renovateForm.$valid)" novalidate>
+  <form name="vm.form.propertyForm" class="form-horizontal" ng-submit="vm.save(vm.form.propertyForm.$valid)" novalidate>
     <div class="row">
 
       <div class="col col-md-10">
         <div class="form-group" show-errors>
           <label class="col-sm-2 control-label">ลำดับ</label>
           <div class="col-sm-3">
-            <input type="number" ng-model="vm.renovate.renovateno" name="renovateno" class="form-control" placeholder="ลำดับ" required>
+            <input type="number" ng-model="vm.property.propertyno" name="propertyno" class="form-control" placeholder="ลำดับ" required>
 
           </div>
         </div>
@@ -24,7 +24,7 @@
         <div class="form-group" show-errors>
           <label class="col-sm-2 control-label">รหัสทรัพย์</label>
           <div class="col-sm-10">
-            <input type="number" ng-model="vm.renovate.renovateid" name="renovateid" class="form-control" placeholder="รหัสทรัพย์" required>
+            <input type="number" ng-model="vm.property.propertyid" name="propertyid" class="form-control" placeholder="รหัสทรัพย์" required>
           </div>
         </div>
       </div>
@@ -36,7 +36,7 @@
         <div class="form-group" show-errors>
           <label class="col-sm-2 control-label">เลขที่เอกสารสิทธิ์</label>
           <div class="col-sm-10">
-            <input type="number" ng-model="vm.renovate.documentno" name="documentno" class="form-control" placeholder="เลขที่เอกสารสิทธิ์"
+            <input type="number" ng-model="vm.property.documentno" name="documentno" class="form-control" placeholder="เลขที่เอกสารสิทธิ์"
               required>
           </div>
         </div>
@@ -48,7 +48,7 @@
         <div class="form-group" show-errors>
           <label class="col-sm-2 control-label">ชื่ออาคารชุด/สถานที่</label>
           <div class="col-sm-10">
-            <input type="text" ng-model="vm.renovate.name" name="name" class="form-control" placeholder="ชื่ออาคารชุด/สถานที่" required>
+            <input type="text" ng-model="vm.property.name" name="name" class="form-control" placeholder="ชื่ออาคารชุด/สถานที่" required>
           </div>
         </div>
       </div>
@@ -69,7 +69,7 @@
                 <div class="form-group" show-errors>
                   <label class="col-sm-2 control-label">แขวง/ตำบล</label>
                   <div class="col-sm-10">
-                    <input type="text" ng-model="vm.renovate.location.subdistrict" name="subdistrict" class="form-control" placeholder="แขวง/ตำบล"
+                    <input type="text" ng-model="vm.property.location.subdistrict" name="subdistrict" class="form-control" placeholder="แขวง/ตำบล"
                       required>
                   </div>
                 </div>
@@ -82,7 +82,7 @@
                 <div class="form-group" show-errors>
                   <label class="col-sm-2 control-label">เขต/อำเภอ</label>
                   <div class="col-sm-4">
-                    <input type="text" ng-model="vm.renovate.location.district" name="district" class="form-control" placeholder="เขต/อำเภอ"
+                    <input type="text" ng-model="vm.property.location.district" name="district" class="form-control" placeholder="เขต/อำเภอ"
                       required>
                   </div>
                 </div>
@@ -94,7 +94,7 @@
                 <div class="form-group" show-errors>
                   <label class="col-sm-2 control-label">จังหวัด</label>
                   <div class="col-sm-10">
-                    <input type="text" ng-model="vm.renovate.location.province" name="province" class="form-control" placeholder="จังหวัด"
+                    <input type="text" ng-model="vm.property.location.province" name="province" class="form-control" placeholder="จังหวัด"
                       required>
                   </div>
                 </div>
@@ -111,7 +111,7 @@
         <div class="form-group" show-errors>
           <label class="col-sm-2 control-label">ลักษณะงาน</label>
           <div class="col-sm-10">
-            <input type="text" ng-model="vm.renovate.renovatedes" name="renovatedes" class="form-control" placeholder="ลักษณะงาน" required>
+            <input type="text" ng-model="vm.property.propertydes" name="propertydes" class="form-control" placeholder="ลักษณะงาน" required>
           </div>
         </div>
       </div>
@@ -122,7 +122,7 @@
         <div class="form-group" show-errors>
           <label class="col-sm-2 control-label">วิธีซื้อ/จ้าง</label>
           <div class="col-sm-8">
-            <select class="form-control" name="processtype" form="carform" ng-model="vm.renovate.processtype" required>
+            <select class="form-control" name="processtype" form="carform" ng-model="vm.property.processtype" required>
                 <option value="วิธีตกลงราคา">วิธีตกลงราคา</option>
                 <option value="วิธีสืบราคา">วิธีสืบราคา</option>
                 <option value="วิธีประมูลด้วยระบบอิเล็กทรอนิกส์">วิธีประมูลด้วยระบบอิเล็กทรอนิกส์</option>
@@ -142,7 +142,7 @@
         <div class="form-group" show-errors>
           <label class="col-sm-2 control-label">ประเภทการซื้อ/จ้าง</label>
           <div class="col-sm-8">
-            <select class="form-control" name="methodtype" form="carform" ng-model="vm.renovate.methodtype" required>
+            <select class="form-control" name="methodtype" form="carform" ng-model="vm.property.methodtype" required>
                 <option value="งานก่อสร้าง">งานก่อสร้าง</option>
                 <option value="การจ้างควบคุมงาน">การจ้างควบคุมงาน</option>
                 <option value="การจ้างออกแบบ">การจ้างออกแบบ</option>
@@ -161,7 +161,7 @@
       <div class="col col-md-10">
         <div class="ibox float-e-margins border-left border-right border-bottom">
           <div class="ibox-title">
-            <h5>ประมาณการค่าปรับปรุง</h5>
+            <h5>ประมาณการค่าใช้จ่าย</h5>
             <div ibox-tools></div>
           </div>
           <div class="ibox-content">
@@ -170,7 +170,7 @@
                 <div class="form-group" show-errors>
                   <label class="col-sm-2 control-label">จำนวนเงิน</label>
                   <div class="col-sm-10">
-                    <input type="number" ng-model="vm.renovate.estexpense.amount" name="amount" class="form-control" placeholder="จำนวนเงิน"
+                    <input type="number" ng-model="vm.property.estexpense.amount" name="amount" class="form-control" placeholder="จำนวนเงิน"
                       required>
                   </div>
                 </div>
@@ -183,7 +183,7 @@
                 <div class="form-group" show-errors>
                   <label class="col-sm-2 control-label">วันที่อนุมัติ BOQ / ค่าใช้จ่าย</label>
                   <div class="col-sm-4">
-                    <input type="date" ng-model="vm.renovate.estexpense.apprvdate" name="apprvdate" class="form-control" placeholder="วันที่อนุมัติ BOQ / ค่าใช้จ่าย"
+                    <input type="date" ng-model="vm.property.estexpense.apprvdate" name="apprvdate" class="form-control" placeholder="วันที่อนุมัติ BOQ / ค่าใช้จ่าย"
                       required>
                   </div>
                 </div>
@@ -195,7 +195,7 @@
                 <div class="form-group" show-errors>
                   <label class="col-sm-2 control-label">ผู้อนุมัติ</label>
                   <div class="col-sm-10">
-                    <input type="text" ng-model="vm.renovate.estexpense.approver" name="approver" class="form-control" placeholder="ผู้อนุมัติ"
+                    <input type="text" ng-model="vm.property.estexpense.approver" name="approver" class="form-control" placeholder="ผู้อนุมัติ"
                       required>
                   </div>
                 </div>
@@ -210,11 +210,11 @@
     <div class="hr-line-dashed"></div>
     <div class="row">
       <div class="col col-xs-4">
-        <button class="btn" ui-sref="renovates.list()">ย้อนกลับ</button>
+        <button class="btn" ui-sref="properties.list()">ย้อนกลับ</button>
       </div>
       <div class="col col-xs-8 text-right">
         <button type="submit" class="btn btn-primary">บันทึกแบบร่าง</button>
-        <button ng-click="vm.saveToApprove(vm.form.renovateForm.$valid)" class="btn btn-primary">บันทึกขออนุมัติ</button>
+        <button ng-click="vm.saveToApprove(vm.form.propertyForm.$valid)" class="btn btn-primary">บันทึกขออนุมัติ</button>
         <!--<div class="btn-group" uib-dropdown is-open="status.isopen">
           <button id="single-button" type="button" class="btn btn-primary" uib-dropdown-toggle ng-disabled="disabled">
         บันทึกข้อมูล<span class="caret"></span>
