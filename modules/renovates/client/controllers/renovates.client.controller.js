@@ -40,6 +40,15 @@
       vm.save(true);
     };
 
+     vm.saveToCompleted = function (isValid) {
+      if (!isValid) {
+        $scope.$broadcast('show-errors-check-validity', 'vm.form.renovateForm');
+        return false;
+      }
+      vm.renovate.status = 'completed';
+      vm.save(true);
+    };
+
     vm.approved = function () {
 
       vm.renovate.status = 'approved';

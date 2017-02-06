@@ -331,7 +331,7 @@
         <button ng-click="vm.approved()" class="btn btn-primary">อนุมัติ</button>
       </div>
       <div class="col col-xs-4 text-right" ng-if="vm.property.status === 'approved'">
-        <button ng-click="vm.save(vm.form.propertyForm.$valid)" class="btn btn-primary">บันทึกข้อมูล</button>
+        <button ng-click="vm.saveToCompleted(vm.form.propertyForm.$valid)" class="btn btn-primary">บันทึกข้อมูล</button>
       </div>
     </div>
     <div class="hr-line-dashed"></div>

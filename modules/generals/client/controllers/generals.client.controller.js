@@ -43,6 +43,15 @@
       vm.save(true);
     };
 
+    vm.saveToCompleted = function (isValid) {
+      if (!isValid) {
+        $scope.$broadcast('show-errors-check-validity', 'vm.form.generalForm');
+        return false;
+      }
+      vm.general.status = 'completed';
+      vm.save(true);
+    };
+
     vm.approved = function () {
       vm.general.status = 'approved';
       vm.save(true);
