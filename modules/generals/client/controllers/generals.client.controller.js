@@ -15,7 +15,7 @@
     if (vm.general.trnsdate) {
       vm.general.trnsdate = new Date(vm.general.trnsdate);
     }
-    if (vm.general.estexpense.apprvdate) {
+    if (vm.general.estexpense && vm.general.estexpense.apprvdate) {
       vm.general.estexpense.apprvdate = new Date(vm.general.estexpense.apprvdate);
     }
     vm.error = null;
