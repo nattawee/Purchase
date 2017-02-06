@@ -10,10 +10,6 @@
 
   function GeneralsController($scope, $state, $window, Authentication, general) {
     var vm = this;
-
-
-
-
     vm.authentication = Authentication;
     vm.general = general;
     if (vm.general.trnsdate) {
@@ -33,19 +29,19 @@
       }
       vm.general.status = 'waiting for approve';
       vm.save(true);
-    }
+    };
 
     vm.approved = function () {
 
       vm.general.status = 'approved';
       vm.save(true);
-    }
+    };
 
     vm.rejected = function () {
 
       vm.general.status = 'rejected';
       vm.save(true);
-    }
+    };
 
     // Remove existing General
     function remove() {
