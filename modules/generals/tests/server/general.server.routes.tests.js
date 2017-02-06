@@ -60,7 +60,13 @@ describe('General CRUD tests', function () {
           amount : 100000,
           apprvdate : Date.now(),
           approver : 'นาย ประมาณ ใกล้เคียง'
-        }
+        },
+        purchase: {
+          amount: 11,
+          apprvdate: Date.now(),
+          approver: 'approver'
+        },
+        status:'draft',
       };
 
       done();
@@ -105,6 +111,7 @@ describe('General CRUD tests', function () {
                 (generals[0].user._id).should.equal(userId);
                 (generals[0].docno).should.match('PO-01');
                 (generals[0].status).should.match('draft');
+                
 
                 // Call the assertion callback
                 done();

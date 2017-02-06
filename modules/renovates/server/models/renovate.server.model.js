@@ -54,6 +54,25 @@ var RenovateSchema = new Schema({
     type: String,
     required: 'Please fill methodtype'
   },
+  estexpense: {
+    amount: {
+      type: Number,
+      default: 0,
+      required: 'Please fill General amount',
+      trim: true
+    },
+    apprvdate: {
+      type: Date,
+      default: Date.now,
+      required: 'Please fill General apprvdate'
+    },
+    approver: {
+      default: '',
+      type: String,
+      required: 'Please fill General approver',
+      trim: true
+    }
+  },
 created: {
   type: Date,
     default: Date.now

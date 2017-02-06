@@ -1,26 +1,330 @@
 <section>
   <div class="page-header">
-    <h1 ng-bind="vm.renovate.name"></h1>
+    <h2 class="text-center">
+      ทะเบียนการจัดซื้อ/จัดจ้าง
+    </h2>
   </div>
-  <div class="pull-right"
-       ng-show="vm.renovate.isCurrentUserOwner">
-    <a class="btn btn-primary"
-       ui-sref="renovates.edit({ renovateId: vm.renovate._id })">
-      <i class="glyphicon glyphicon-edit"></i>
-    </a>
-    <a class="btn btn-primary" ng-click="vm.remove()">
-      <i class="glyphicon glyphicon-trash"></i>
-    </a>
-  </div>
-  <small>
-    <em class="text-muted">
-      Posted on
-      <span ng-bind="vm.renovate.created | date:'mediumDate'"></span>
-      by
-      <span ng-if="vm.renovate.user"
-            ng-bind="vm.renovate.user.displayName"></span>
-      <span ng-if="!vm.renovate.user">Deleted User</span>
-    </em>
-  </small>
-  <p class="lead" ng-bind="vm.renovate.content"></p>
+  <form name="vm.form.renovateForm" class="form-horizontal" ng-submit="vm.save(vm.form.renovateForm.$valid)" novalidate>
+    <div class="row">
+      <div class="col col-md-6">
+        <div class="row">
+
+          <div class="col col-md-10">
+            <div class="form-group">
+              <label class="col-sm-4 control-label">ลำดับ</label>
+              <div class="col-sm-8">
+                <p class="form-control-static"> {{vm.renovate.renovateno}} </p>
+              </div>
+            </div>
+          </div>
+          <div class="col col-md-2"></div>
+        </div>
+      </div>
+      <div class="col col-md-6">
+        <div class="row">
+
+          <div class="col col-md-10">
+            <div class="form-group">
+              <label class="col-sm-4 control-label">รหัสทรัพย์</label>
+              <div class="col-sm-8">
+                <p class="form-control-static"> {{vm.renovate.docno}} </p>
+              </div>
+            </div>
+          </div>
+          <div class="col col-md-2"></div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col col-md-6">
+        <div class="row">
+
+          <div class="col col-md-10">
+            <div class="form-group">
+              <label class="col-sm-4 control-label">เลขที่เอกสารสิทธิ์</label>
+              <div class="col-sm-8">
+                <p class="form-control-static"> {{vm.renovate.department}} </p>
+              </div>
+            </div>
+          </div>
+          <div class="col col-md-2"></div>
+        </div>
+      </div>
+      <div class="col col-md-6">
+        <div class="row">
+
+          <div class="col col-md-10">
+            <div class="form-group">
+              <label class="col-sm-4 control-label">ชื่ออาคารชุด/สถานที่</label>
+              <div class="col-sm-8">
+                <p class="form-control-static"> {{vm.renovate.owner}} </p>
+              </div>
+            </div>
+          </div>
+          <div class="col col-md-2"></div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+
+      <div class="col col-md-10">
+        <div class="form-group">
+          <label class="col-sm-2 control-label">รายการจัดซื้อ/จัดจ้าง</label>
+          <div class="col-sm-10">
+            <p class="form-control-static"> {{vm.renovate.itemdesc}} </p>
+          </div>
+        </div>
+      </div>
+      <div class="col col-md-2"></div>
+    </div>
+
+
+
+    <div class="row">
+
+      <div class="col col-md-10">
+        <div class="ibox float-e-margins border-left border-right border-bottom">
+          <div class="ibox-title">
+            <h5>ประมาณการค่าจัดซื้อ/จัดจ้าง (ราคากลาง)</h5>
+
+            <div ibox-tools></div>
+          </div>
+          <div class="ibox-content">
+            <div class="row">
+
+              <div class="col col-md-4">
+                <div class="form-group">
+                  <label class="col-sm-4 control-label">จำนวนเงิน</label>
+                  <div class="col-sm-8">
+                    <p class="form-control-static"> {{vm.renovate.estexpense.amount | number:2}} (บาท) </p>
+                  </div>
+                </div>
+              </div>
+              <div class="col col-md-4">
+                <div class="form-group">
+                  <label class="col-sm-4 control-label">วันที่</label>
+                  <div class="col-sm-8">
+                    <p class="form-control-static"> {{vm.renovate.estexpense.apprvdate | date:'dd/MM/yyyy'}} </p>
+                  </div>
+                </div>
+              </div>
+              <div class="col col-md-4">
+                <div class="form-group">
+                  <label class="col-sm-4 control-label">ผู้อนุมัติ</label>
+                  <div class="col-sm-8">
+                    <p class="form-control-static"> {{vm.renovate.estexpense.approver}} </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+      <div class="col col-md-2"></div>
+    </div>
+    <div class="row">
+
+      <div class="col col-md-4">
+        <div class="form-group">
+          <label class="col-sm-4 control-label">วิธีซื้อ/จ้าง</label>
+          <div class="col-sm-8">
+            <p class="form-control-static"> {{vm.renovate.processtype}} </p>
+          </div>
+        </div>
+      </div>
+      <div class="col col-md-8">
+        <div class="form-group">
+          <label class="col-sm-4 control-label">ประเภทการซื้อ/จ้าง</label>
+          <div class="col-sm-8">
+            <p class="form-control-static"> {{vm.renovate.methodtype}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="row" ng-if="vm.renovate.status === 'approved'">
+
+      <div class="col col-md-10">
+        <div class="ibox float-e-margins border-left border-right border-bottom">
+          <div class="ibox-title">
+            <h5>ประกาศ Website BAM</h5>
+
+            <div ibox-tools></div>
+          </div>
+          <div class="ibox-content">
+            <div class="row">
+
+              <div class="col col-md-10">
+                <div class="form-group" show-errors>
+                  <label class="col-sm-2 control-label">วันที่ส่งฝ่ายสื่อสารองค์กร</label>
+                  <div class="col-sm-4">
+                    <input type="date" ng-model="vm.renovate.announcement.requestdate" name="requestdate" class="form-control" placeholder="วันที่ส่งฝ่ายสื่อสารองค์กร" required>
+                  </div>
+                </div>
+              </div>
+              <div class="col col-md-2"></div>
+            </div>
+            <div class="row">
+
+              <div class="col col-md-10">
+                <div class="form-group" show-errors>
+                  <label class="col-sm-2 control-label">วันที่ประกาศ Website BAM</label>
+                  <div class="col-sm-4">
+                    <input type="date" ng-model="vm.renovate.announcement.onlinedate" name="onlinedate" class="form-control" placeholder="วันที่ประกาศ Website BAM"
+                      required>
+                  </div>
+                </div>
+              </div>
+              <div class="col col-md-2"></div>
+            </div>
+            <div class="row">
+
+              <div class="col col-md-10">
+                <div class="form-group" show-errors>
+                  <label class="col-sm-2 control-label">เลขที่อ้างอิง</label>
+                  <div class="col-sm-10">
+                    <input type="text" ng-model="vm.renovate.announcement.reference" name="reference" class="form-control" placeholder="เลขที่อ้างอิง"
+                      required>
+                  </div>
+                </div>
+              </div>
+              <div class="col col-md-2"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col col-md-2"></div>
+    </div>
+    <div class="row" ng-if="vm.renovate.status === 'approved'">
+
+      <div class="col col-md-10">
+        <div class="ibox float-e-margins border-left border-right border-bottom">
+          <div class="ibox-title">
+            <h5>อนุมัติจัดซื้อ/จัดจ้าง</h5>
+
+            <div ibox-tools></div>
+          </div>
+          <div class="ibox-content">
+            <div class="row">
+
+              <div class="col col-md-10">
+                <div class="form-group" show-errors>
+                  <label class="col-sm-2 control-label">จำนวนเงิน</label>
+                  <div class="col-sm-10">
+                    <input type="number" ng-model="vm.renovate.purchase.amount" name="amount" class="form-control" placeholder="จำนวนเงิน" required>
+                  </div>
+                </div>
+              </div>
+              <div class="col col-md-2"></div>
+            </div>
+            <div class="row">
+
+              <div class="col col-md-10">
+                <div class="form-group" show-errors>
+                  <label class="col-sm-2 control-label">วันที่</label>
+                  <div class="col-sm-4">
+                    <input type="date" ng-model="vm.renovate.purchase.apprvdate" name="apprvdate" class="form-control" placeholder="วันที่"
+                      required>
+                  </div>
+                </div>
+              </div>
+              <div class="col col-md-2"></div>
+            </div>
+            <div class="row">
+
+              <div class="col col-md-10">
+                <div class="form-group" show-errors>
+                  <label class="col-sm-2 control-label">ผู้อนุมัติ</label>
+                  <div class="col-sm-10">
+                    <input type="text" ng-model="vm.renovate.purchase.approver" name="approver" class="form-control" placeholder="ผู้อนุมัติ"
+                      required>
+                  </div>
+                </div>
+              </div>
+              <div class="col col-md-2"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col col-md-2"></div>
+    </div>
+    <div class="row" ng-if="vm.renovate.status === 'approved'">
+      <div class="col col-md-10">
+        <div class="form-group" show-errors>
+          <label class="col-sm-4 control-label">ผู้ขาย/ผู้ชนะการเสนอราคา</label>
+          <div class="col-sm-8">
+            <input type="text" ng-model="vm.renovate.supplier" name="supplier" class="form-control" placeholder="ผู้ขาย/ผู้ชนะการเสนอราคา" required>
+          </div>
+        </div>
+      </div>
+      <div class="col col-md-2"></div>
+    </div>
+    <div class="row" ng-if="vm.renovate.status === 'approved'">
+      <div class="col col-md-10">
+        <div class="form-group" show-errors>
+          <label class="col-sm-4 control-label">เลขที่สัญญา/PO</label>
+          <div class="col-sm-8">
+            <input type="text" ng-model="vm.renovate.refno" name="refno" class="form-control" placeholder="เลขที่สัญญา/PO" required>
+          </div>
+        </div>
+      </div>
+      <div class="col col-md-2"></div>
+    </div>
+    <div class="row" ng-if="vm.renovate.status === 'approved'">
+
+      <div class="col col-md-10">
+        <div class="ibox float-e-margins border-left border-right border-bottom">
+          <div class="ibox-title">
+            <h5>คุมสัญญาจากสำนักงาน ป.ป.ช.</h5>
+
+            <div ibox-tools></div>
+          </div>
+          <div class="ibox-content">
+            
+            <div class="row">
+
+              <div class="col col-md-10">
+                <div class="form-group" show-errors>
+                  <label class="col-sm-2 control-label">วันที่</label>
+                  <div class="col-sm-4">
+                    <input type="date" ng-model="vm.renovate.nacc.naccdocdate" name="naccdocdate" class="form-control" placeholder="วันที่"
+                      required>
+                  </div>
+                </div>
+              </div>
+              <div class="col col-md-2"></div>
+            </div>
+            <div class="row">
+
+              <div class="col col-md-10">
+                <div class="form-group" show-errors>
+                  <label class="col-sm-2 control-label">เลขที่</label>
+                  <div class="col-sm-10">
+                    <input type="text" ng-model="vm.renovate.nacc.naccdocno" name="naccdocno" class="form-control" placeholder="เลขที่ ปปช"
+                      required>
+                  </div>
+                </div>
+              </div>
+              <div class="col col-md-2"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col col-md-2"></div>
+    </div>
+    <div class="hr-line-dashed"></div>
+    <div class="row">
+      <div class="col col-xs-10">
+        <button class="btn" ui-sref="renovates.list()">ย้อนกลับ</button>
+      </div>
+      <div class="col col-xs-1 text-right" ng-if="vm.renovate.status === 'waiting for approve'">
+        <button ng-click="vm.rejected()"  class="btn btn-danger">ไม่อนุมัติ</button>
+      </div>
+      <div class="col col-xs-1 text-right" ng-if="vm.renovate.status === 'approved'">
+        <button type="submit" class="btn btn-primary">บันทึกข้อมูล</button>
+      </div>
+    </div>
+    <div class="hr-line-dashed"></div>
+  </form>
 </section>

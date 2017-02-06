@@ -10,13 +10,35 @@
 
   function RenovatesController ($scope, $state, $window, Authentication, renovate) {
     var vm = this;
-
     vm.authentication = Authentication;
     vm.renovate = renovate;
+    if (vm.renovate.estexpense && vm.renovate.estexpense.apprvdate) {
+      vm.renovate.estexpense.apprvdate = new Date(vm.renovate.estexpense.apprvdate);
+    }
     vm.error = null;
     vm.form = {};
     vm.remove = remove;
     vm.save = save;
+    vm.saveToApprove = function (isValid) {
+      if (!isValid) {
+        $scope.$broadcast('show-errors-check-validity', 'vm.form.renovateForm');
+        return false;
+      }
+      vm.renovate.status = 'waiting for approve';
+      vm.save(true);
+    };
+
+    vm.approved = function () {
+
+      vm.renovate.status = 'approved';
+      vm.save(true);
+    };
+
+    vm.rejected = function () {
+
+      vm.renovate.status = 'rejected';
+      vm.save(true);
+    };
 
     // Remove existing Renovate
     function remove() {
@@ -40,9 +62,7 @@
       }
 
       function successCallback(res) {
-        $state.go('renovates.view', {
-          renovateId: res._id
-        });
+        $state.go('renovates.list');
       }
 
       function errorCallback(res) {

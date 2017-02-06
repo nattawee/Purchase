@@ -42,6 +42,11 @@ describe('Renovate Model Unit Tests:', function () {
         renovatedes: 'description',
         processtype: 'วิธีตกลงราคา',
         methodtype: 'การจัดซื้อ/จัดจ้างที่มิใช่งานก่อสร้าง',
+        estexpense: {
+          amount: 100000,
+          apprvdate: Date.now(),
+          approver: 'นาย ประมาณ ใกล้เคียง'
+        },
         user: user
       });
 
@@ -143,6 +148,33 @@ describe('Renovate Model Unit Tests:', function () {
       renovate.methodtype = '';
 
       return renovate.save(function (err) {
+        should.exist(err);
+        done();
+      });
+    });
+
+    it('should be able to show an error when try to save without estimate expense amount', function(done) {
+      renovate.estexpense.amount = null; 
+
+      return renovate.save(function(err) {
+        should.exist(err);
+        done();
+      });
+    });
+
+    it('should be able to show an error when try to save without estimate approve date', function(done) {
+      renovate.estexpense.apprvdate = null; 
+
+      return renovate.save(function(err) {
+        should.exist(err);
+        done();
+      });
+    });
+
+    it('should be able to show an error when try to save without estimate approver', function(done) {
+      renovate.estexpense.approver = ''; 
+
+      return renovate.save(function(err) {
         should.exist(err);
         done();
       });

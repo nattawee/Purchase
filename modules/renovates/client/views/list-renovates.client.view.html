@@ -1,22 +1,249 @@
 <section>
   <div class="page-header">
-    <h1>Renovates</h1>
+    <h2 class="text-center">
+      ทะเบียนการจัดซื้อ/จัดจ้าง 
+    </h2>
   </div>
-  <div class="list-group">
-    <a ng-repeat="renovate in vm.renovates"
-       ui-sref="renovates.view({ renovateId: renovate._id })"
-       class="list-group-item">
-      <small class="list-group-item-text">
-        Posted on
-        <span ng-bind="renovate.created | date:'mediumDate'"></span>
-        by
-        <span ng-if="renovate.user" ng-bind="renovate.user.displayName"></span>
-        <span ng-if="!renovate.user">Deleted User</span>
-      </small>
-      <h4 class="list-group-item-heading" ng-bind="renovate.name"></h4>
-    </a>
+
+  <div class="table-responsive">
+    <div class="row">
+      <div class="col col-xs-10">
+        <input type="search" class="form-control " ng-model="searchText" placeholder="ค้นหา">
+      </div>
+      <div class="col col-md-2"><button class="btn btn-primary" ui-sref="renovates.create()">สร้างรายการใหม่</button></div>
+    </div>
+    <br>
+
+
+  </div>
+  <div class="tabs-container">
+
+    <uib-tabset>
+      
+      <uib-tab>
+        <uib-tab-heading>
+          แบบร่าง
+        </uib-tab-heading>
+        <div class="panel-body">
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th>ลำดับ</th>
+                <th>รหัสทรัพย์</th>
+                <th>เลขที่เอกสารสิทธิ์</th>
+                <th>ชื่ออาคารชุด/สถานที่</th>
+                <th>
+                  <div class="row">
+                    <div class="col-xs-12 text-center">ประมาณการค่าปรับปรุง</div>
+                  </div>
+                  <div class="row">
+                    <div class="col col-xs-4 text-center">จำนวนเงิน</div>
+                    <div class="col col-xs-4 text-center">วันที่</div>
+                    <div class="col col-xs-4 text-center">ผู้อนุมัติ</div>
+                  </div>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="renovate in vm.renovates | filter:{ status: 'draft' } | filter:searchText" ui-sref="renovates.edit({ renovateId: renovate._id })">
+                <td>
+                  {{renovate.renovateno}}
+                </td>
+                <td>{{renovate.renovateid}}</td>
+                <td>{{renovate.documentno}}</td>
+                <td>{{renovate.name}}</td>
+                <td>
+                  <div class="row">
+                    <div class="col col-md-4 text-right">{{renovate.estexpense.amount | number:2}}</div>
+                    <div class="col col-md-4 text-center">{{renovate.estexpense.apprvdate | date:'dd/MM/yyyy'}}</div>
+                    <div class="col col-md-4">{{renovate.estexpense.approver}}</div>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </uib-tab>
+      <uib-tab>
+        <uib-tab-heading>
+          รออนุมัติ
+        </uib-tab-heading>
+        <div class="panel-body">
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th>ลำดับ</th>
+                <th>รหัสทรัพย์</th>
+                <th>เลขที่เอกสารสิทธิ์</th>
+                <th>ชื่ออาคารชุด/สถานที่</th>
+                <th>
+                  <div class="row">
+                    <div class="col-xs-12 text-center">ประมาณการค่าปรับปรุง</div>
+                  </div>
+                  <div class="row">
+                    <div class="col col-xs-4 text-center">จำนวนเงิน</div>
+                    <div class="col col-xs-4 text-center">วันที่</div>
+                    <div class="col col-xs-4 text-center">ผู้อนุมัติ</div>
+                  </div>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="renovate in vm.renovates | filter:{ status: 'draft' } | filter:searchText" ui-sref="renovates.edit({ renovateId: renovate._id })">
+                <td>
+                  {{renovate.renovateno}}
+                </td>
+                <td>{{renovate.renovateid}}</td>
+                <td>{{renovate.documentno}}</td>
+                <td>{{renovate.name}}</td>
+                <td>
+                  <div class="row">
+                    <div class="col col-md-4 text-right">{{renovate.estexpense.amount | number:2}}</div>
+                    <div class="col col-md-4 text-center">{{renovate.estexpense.apprvdate | date:'dd/MM/yyyy'}}</div>
+                    <div class="col col-md-4">{{renovate.estexpense.approver}}</div>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </uib-tab>
+      <uib-tab>
+        <uib-tab-heading>
+          อนุมัติ
+        </uib-tab-heading>
+        <div class="panel-body">
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th>ลำดับ</th>
+                <th>รหัสทรัพย์</th>
+                <th>เลขที่เอกสารสิทธิ์</th>
+                <th>ชื่ออาคารชุด/สถานที่</th>
+                <th>
+                  <div class="row">
+                    <div class="col-xs-12 text-center">ประมาณการค่าปรับปรุง</div>
+                  </div>
+                  <div class="row">
+                    <div class="col col-xs-4 text-center">จำนวนเงิน</div>
+                    <div class="col col-xs-4 text-center">วันที่</div>
+                    <div class="col col-xs-4 text-center">ผู้อนุมัติ</div>
+                  </div>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="renovate in vm.renovates | filter:{ status: 'draft' } | filter:searchText" ui-sref="renovates.edit({ renovateId: renovate._id })">
+                <td>
+                  {{renovate.renovateno}}
+                </td>
+                <td>{{renovate.renovateid}}</td>
+                <td>{{renovate.documentno}}</td>
+                <td>{{renovate.name}}</td>
+                <td>
+                  <div class="row">
+                    <div class="col col-md-4 text-right">{{renovate.estexpense.amount | number:2}}</div>
+                    <div class="col col-md-4 text-center">{{renovate.estexpense.apprvdate | date:'dd/MM/yyyy'}}</div>
+                    <div class="col col-md-4">{{renovate.estexpense.approver}}</div>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </uib-tab>
+      <uib-tab>
+        <uib-tab-heading>
+          ไม่อนุมัติ
+        </uib-tab-heading>
+        <div class="panel-body">
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th>ลำดับ</th>
+                <th>รหัสทรัพย์</th>
+                <th>เลขที่เอกสารสิทธิ์</th>
+                <th>ชื่ออาคารชุด/สถานที่</th>
+                <th>
+                  <div class="row">
+                    <div class="col-xs-12 text-center">ประมาณการค่าปรับปรุง</div>
+                  </div>
+                  <div class="row">
+                    <div class="col col-xs-4 text-center">จำนวนเงิน</div>
+                    <div class="col col-xs-4 text-center">วันที่</div>
+                    <div class="col col-xs-4 text-center">ผู้อนุมัติ</div>
+                  </div>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="renovate in vm.renovates | filter:{ status: 'draft' } | filter:searchText" ui-sref="renovates.edit({ renovateId: renovate._id })">
+                <td>
+                  {{renovate.renovateno}}
+                </td>
+                <td>{{renovate.renovateid}}</td>
+                <td>{{renovate.documentno}}</td>
+                <td>{{renovate.name}}</td>
+                <td>
+                  <div class="row">
+                    <div class="col col-md-4 text-right">{{renovate.estexpense.amount | number:2}}</div>
+                    <div class="col col-md-4 text-center">{{renovate.estexpense.apprvdate | date:'dd/MM/yyyy'}}</div>
+                    <div class="col col-md-4">{{renovate.estexpense.approver}}</div>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </uib-tab>
+      <uib-tab>
+        <uib-tab-heading>
+          เสร็จสมบูรณ์
+        </uib-tab-heading>
+        <div class="panel-body">
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th>ลำดับ</th>
+                <th>รหัสทรัพย์</th>
+                <th>เลขที่เอกสารสิทธิ์</th>
+                <th>ชื่ออาคารชุด/สถานที่</th>
+                <th>
+                  <div class="row">
+                    <div class="col-xs-12 text-center">ประมาณการค่าปรับปรุง</div>
+                  </div>
+                  <div class="row">
+                    <div class="col col-xs-4 text-center">จำนวนเงิน</div>
+                    <div class="col col-xs-4 text-center">วันที่</div>
+                    <div class="col col-xs-4 text-center">ผู้อนุมัติ</div>
+                  </div>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="renovate in vm.renovates | filter:{ status: 'draft' } | filter:searchText" ui-sref="renovates.edit({ renovateId: renovate._id })">
+                <td>
+                  {{renovate.renovateno}}
+                </td>
+                <td>{{renovate.renovateid}}</td>
+                <td>{{renovate.documentno}}</td>
+                <td>{{renovate.name}}</td>
+                <td>
+                  <div class="row">
+                    <div class="col col-md-4 text-right">{{renovate.estexpense.amount | number:2}}</div>
+                    <div class="col col-md-4 text-center">{{renovate.estexpense.apprvdate | date:'dd/MM/yyyy'}}</div>
+                    <div class="col col-md-4">{{renovate.estexpense.approver}}</div>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </uib-tab>
+    </uib-tabset>
+
   </div>
   <div class="alert alert-warning text-center" ng-if="vm.renovates.$resolved && !vm.renovates.length">
-    No Renovates yet, why don't you <a ui-sref="renovates.create">create one</a>?
+    No renovates yet, why don't you <a ui-sref="renovates.create">create one</a>?
   </div>
 </section>

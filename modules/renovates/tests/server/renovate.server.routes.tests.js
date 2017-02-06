@@ -63,6 +63,11 @@ describe('Renovate CRUD tests', function () {
         renovatedes: 'description',
         processtype: 'วิธีตกลงราคา',
         methodtype: 'การจัดซื้อ/จัดจ้างที่มิใช่งานก่อสร้าง',
+        estexpense: {
+          amount: 100000,
+          apprvdate: Date.now(),
+          approver: 'นาย ประมาณ ใกล้เคียง'
+        },
         user: user
       };
 

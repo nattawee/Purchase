@@ -11,7 +11,7 @@
         <div class="form-group" show-errors>
           <label class="col-sm-2 control-label">ลำดับ</label>
           <div class="col-sm-3">
-            <input type="date" ng-model="vm.renovate.trnsdate" name="trnsdate" class="form-control" placeholder="ลำดับ" required>
+            <input type="number" ng-model="vm.renovate.renovateno" name="renovateno" class="form-control" placeholder="ลำดับ" required>
 
           </div>
         </div>
@@ -24,8 +24,7 @@
         <div class="form-group" show-errors>
           <label class="col-sm-2 control-label">รหัสทรัพย์</label>
           <div class="col-sm-10">
-            <input type="text" ng-model="vm.renovate.itemdesc" name="itemdesc" class="form-control" placeholder="รหัสทรัพย์"
-              required>
+            <input type="number" ng-model="vm.renovate.renovateid" name="renovateid" class="form-control" placeholder="รหัสทรัพย์" required>
           </div>
         </div>
       </div>
@@ -37,38 +36,25 @@
         <div class="form-group" show-errors>
           <label class="col-sm-2 control-label">เลขที่เอกสารสิทธิ์</label>
           <div class="col-sm-10">
-            <input type="text" ng-model="vm.renovate.department" name="department" class="form-control" placeholder="เลขที่เอกสารสิทธิ์" required>
+            <input type="number" ng-model="vm.renovate.documentno" name="documentno" class="form-control" placeholder="เลขที่เอกสารสิทธิ์"
+              required>
           </div>
         </div>
       </div>
       <div class="col col-md-2"></div>
     </div>
     <div class="row">
-
       <div class="col col-md-10">
         <div class="form-group" show-errors>
           <label class="col-sm-2 control-label">ชื่ออาคารชุด/สถานที่</label>
           <div class="col-sm-10">
-            <input type="text" ng-model="vm.renovate.owner" name="owner" class="form-control" placeholder="ชื่ออาคารชุด/สถานที่" required>
+            <input type="text" ng-model="vm.renovate.name" name="name" class="form-control" placeholder="ชื่ออาคารชุด/สถานที่" required>
           </div>
         </div>
       </div>
       <div class="col col-md-2"></div>
     </div>
     <div class="row">
-
-      <div class="col col-md-10">
-        <div class="form-group" show-errors>
-          <label class="col-sm-2 control-label">ลักษณะงาน</label>
-          <div class="col-sm-10">
-            <input type="text" ng-model="vm.renovate.docno" name="docno" class="form-control" placeholder="ลักษณะงาน" required>
-          </div>
-        </div>
-      </div>
-      <div class="col col-md-2"></div>
-    </div>
-    <div class="row">
-
       <div class="col col-md-10">
         <div class="ibox float-e-margins border-left border-right border-bottom">
           <div class="ibox-title">
@@ -83,7 +69,8 @@
                 <div class="form-group" show-errors>
                   <label class="col-sm-2 control-label">แขวง/ตำบล</label>
                   <div class="col-sm-10">
-                    <input type="number" ng-model="vm.renovate.estexpense.amount" name="amount" class="form-control" placeholder="แขวง/ตำบล" required>
+                    <input type="text" ng-model="vm.renovate.location.subdistrict" name="subdistrict" class="form-control" placeholder="แขวง/ตำบล"
+                      required>
                   </div>
                 </div>
               </div>
@@ -95,7 +82,7 @@
                 <div class="form-group" show-errors>
                   <label class="col-sm-2 control-label">เขต/อำเภอ</label>
                   <div class="col-sm-4">
-                    <input type="date" ng-model="vm.renovate.estexpense.apprvdate" name="apprvdate" class="form-control" placeholder="เขต/อำเภอ"
+                    <input type="text" ng-model="vm.renovate.location.district" name="district" class="form-control" placeholder="เขต/อำเภอ"
                       required>
                   </div>
                 </div>
@@ -103,12 +90,11 @@
               <div class="col col-md-2"></div>
             </div>
             <div class="row">
-
               <div class="col col-md-10">
                 <div class="form-group" show-errors>
                   <label class="col-sm-2 control-label">จังหวัด</label>
                   <div class="col-sm-10">
-                    <input type="text" ng-model="vm.renovate.estexpense.approver" name="approver" class="form-control" placeholder="จังหวัด"
+                    <input type="text" ng-model="vm.renovate.location.province" name="province" class="form-control" placeholder="จังหวัด"
                       required>
                   </div>
                 </div>
@@ -121,7 +107,17 @@
       <div class="col col-md-2"></div>
     </div>
     <div class="row">
-
+      <div class="col col-md-10">
+        <div class="form-group" show-errors>
+          <label class="col-sm-2 control-label">ลักษณะงาน</label>
+          <div class="col-sm-10">
+            <input type="text" ng-model="vm.renovate.renovatedes" name="renovatedes" class="form-control" placeholder="ลักษณะงาน" required>
+          </div>
+        </div>
+      </div>
+      <div class="col col-md-2"></div>
+    </div>
+    <div class="row">
       <div class="col col-md-10">
         <div class="form-group" show-errors>
           <label class="col-sm-2 control-label">วิธีซื้อ/จ้าง</label>
@@ -142,7 +138,6 @@
       <div class="col col-md-2"></div>
     </div>
     <div class="row">
-
       <div class="col col-md-10">
         <div class="form-group" show-errors>
           <label class="col-sm-2 control-label">ประเภทการซื้อ/จ้าง</label>
@@ -157,6 +152,56 @@
                 <option value="การจัดซื้อ/จัดจ้างที่มิใช่งานก่อสร้าง">การจัดซื้อ/จัดจ้างที่มิใช่งานก่อสร้าง</option>
                 <option value="อื่นๆ">อื่นๆ</option>
               </select>
+          </div>
+        </div>
+      </div>
+      <div class="col col-md-2"></div>
+    </div>
+    <div class="row">
+      <div class="col col-md-10">
+        <div class="ibox float-e-margins border-left border-right border-bottom">
+          <div class="ibox-title">
+            <h5>ประมาณการค่าปรับปรุง</h5>
+            <div ibox-tools></div>
+          </div>
+          <div class="ibox-content">
+            <div class="row">
+              <div class="col col-md-10">
+                <div class="form-group" show-errors>
+                  <label class="col-sm-2 control-label">จำนวนเงิน</label>
+                  <div class="col-sm-10">
+                    <input type="number" ng-model="vm.renovate.estexpense.amount" name="amount" class="form-control" placeholder="จำนวนเงิน"
+                      required>
+                  </div>
+                </div>
+              </div>
+              <div class="col col-md-2"></div>
+            </div>
+            <div class="row">
+
+              <div class="col col-md-10">
+                <div class="form-group" show-errors>
+                  <label class="col-sm-2 control-label">วันที่อนุมัติ BOQ / ค่าใช้จ่าย</label>
+                  <div class="col-sm-4">
+                    <input type="date" ng-model="vm.renovate.estexpense.apprvdate" name="apprvdate" class="form-control" placeholder="วันที่อนุมัติ BOQ / ค่าใช้จ่าย"
+                      required>
+                  </div>
+                </div>
+              </div>
+              <div class="col col-md-2"></div>
+            </div>
+            <div class="row">
+              <div class="col col-md-10">
+                <div class="form-group" show-errors>
+                  <label class="col-sm-2 control-label">ผู้อนุมัติ</label>
+                  <div class="col-sm-10">
+                    <input type="text" ng-model="vm.renovate.estexpense.approver" name="approver" class="form-control" placeholder="ผู้อนุมัติ"
+                      required>
+                  </div>
+                </div>
+              </div>
+              <div class="col col-md-2"></div>
+            </div>
           </div>
         </div>
       </div>
