@@ -8,16 +8,25 @@
 
   GeneralsController.$inject = ['$scope', '$state', '$window', 'Authentication', 'generalResolve'];
 
-  function GeneralsController ($scope, $state, $window, Authentication, general) {
+  function GeneralsController($scope, $state, $window, Authentication, general) {
     var vm = this;
+
+
+
 
     vm.authentication = Authentication;
     vm.general = general;
+    if (vm.general.trnsdate) {
+      vm.general.trnsdate = new Date(vm.general.trnsdate);
+    }
+    if (vm.general.estexpense.apprvdate) {
+      vm.general.estexpense.apprvdate = new Date(vm.general.estexpense.apprvdate);
+    }
     vm.error = null;
     vm.form = {};
     vm.remove = remove;
     vm.save = save;
-    vm.saveToApprove = function(isValid){
+    vm.saveToApprove = function (isValid) {
       if (!isValid) {
         $scope.$broadcast('show-errors-check-validity', 'vm.form.generalForm');
         return false;
@@ -26,14 +35,14 @@
       vm.save(true);
     }
 
-    vm.approved = function(){
-      
+    vm.approved = function () {
+
       vm.general.status = 'approved';
       vm.save(true);
     }
 
-    vm.rejected = function(){
-      
+    vm.rejected = function () {
+
       vm.general.status = 'rejected';
       vm.save(true);
     }
