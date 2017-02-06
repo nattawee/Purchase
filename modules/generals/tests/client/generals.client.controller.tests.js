@@ -49,7 +49,7 @@
       // create mock General
       mockGeneral = new GeneralsService({
         _id: '525a8422f6d0f87f0e407a33',
-        name: 'General Name'
+        docno: 'PO-01'
       });
 
       // Mock logged in user
@@ -73,7 +73,8 @@
       beforeEach(function () {
         // Create a sample General object
         sampleGeneralPostData = new GeneralsService({
-          name: 'General Name'
+          docno: 'PO-01',
+          
         });
 
         $scope.vm.general = sampleGeneralPostData;
@@ -105,6 +106,7 @@
         expect($scope.vm.error).toBe(errorMessage);
       });
     });
+
 
     describe('vm.save() as update', function () {
       beforeEach(function () {

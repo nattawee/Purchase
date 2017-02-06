@@ -30,7 +30,18 @@ describe('General Model Unit Tests:', function() {
 
     user.save(function() {
       general = new General({
-        name: 'General Name',
+        trnsdate : Date.now(),
+        itemdesc : 'เครื่อง printer brother รุ่น MFC-7860DW',
+        department: 'บริหารทั่วไป',
+        owner: 'ธีรศักดิ์ ทับฤทธิ์',
+        docno: 'PO-01',
+        estexpense : {
+          amount : 100000,
+          apprvdate : Date.now(),
+          approver : 'นาย ประมาณ ใกล้เคียง'
+        },
+        processtype : 'วิธีตกลงราคา',
+        methodtype : 'การจัดซื้อ/จัดจ้างที่มิใช่งานก่อสร้าง',
         user: user
       });
 
@@ -46,9 +57,85 @@ describe('General Model Unit Tests:', function() {
         done();
       });
     });
+    it('should be able to show an error when try to save without trnsdate', function(done) {
+      general.trnsdate = null;
 
-    it('should be able to show an error when try to save without name', function(done) {
-      general.name = '';
+      return general.save(function(err) {
+        should.exist(err);
+        done();
+      });
+    });
+    it('should be able to show an error when try to save without itemdesc', function(done) {
+      general.itemdesc = '';
+
+      return general.save(function(err) {
+        should.exist(err);
+        done();
+      });
+    });
+    it('should be able to show an error when try to save without department', function(done) {
+      general.department = '';
+
+      return general.save(function(err) {
+        should.exist(err);
+        done();
+      });
+    });
+    it('should be able to show an error when try to save without owner', function(done) {
+      general.owner = '';
+
+      return general.save(function(err) {
+        should.exist(err);
+        done();
+      });
+    });
+    it('should be able to show an error when try to save without docno', function(done) {
+      general.docno = '';
+
+      return general.save(function(err) {
+        should.exist(err);
+        done();
+      });
+    });
+
+    it('should be able to show an error when try to save without estimate expense amount', function(done) {
+      general.estexpense.amount = null; 
+
+      return general.save(function(err) {
+        should.exist(err);
+        done();
+      });
+    });
+
+    it('should be able to show an error when try to save without estimate approve date', function(done) {
+      general.estexpense.apprvdate = null; 
+
+      return general.save(function(err) {
+        should.exist(err);
+        done();
+      });
+    });
+
+    it('should be able to show an error when try to save without estimate approver', function(done) {
+      general.estexpense.approver = ''; 
+
+      return general.save(function(err) {
+        should.exist(err);
+        done();
+      });
+    });
+
+    it('should be able to show an error when try to save without processtype', function(done) {
+      general.processtype = ''; 
+
+      return general.save(function(err) {
+        should.exist(err);
+        done();
+      });
+    });
+
+    it('should be able to show an error when try to save without methodtype', function(done) {
+      general.methodtype = ''; 
 
       return general.save(function(err) {
         should.exist(err);

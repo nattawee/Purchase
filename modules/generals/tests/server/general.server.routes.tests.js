@@ -51,7 +51,16 @@ describe('General CRUD tests', function () {
     // Save a user to the test db and create new General
     user.save(function () {
       general = {
-        name: 'General name'
+        trnsdate : Date.now(),
+        itemdesc : 'เครื่อง printer brother รุ่น MFC-7860DW',
+        department: 'บริหารทั่วไป',
+        owner: 'ธีรศักดิ์ ทับฤทธิ์',
+        docno: 'PO-01',
+        estexpense : {
+          amount : 100000,
+          apprvdate : Date.now(),
+          approver : 'นาย ประมาณ ใกล้เคียง'
+        }
       };
 
       done();
@@ -94,7 +103,8 @@ describe('General CRUD tests', function () {
 
                 // Set assertions
                 (generals[0].user._id).should.equal(userId);
-                (generals[0].name).should.match('General name');
+                (generals[0].docno).should.match('PO-01');
+                (generals[0].status).should.match('draft');
 
                 // Call the assertion callback
                 done();
@@ -113,9 +123,9 @@ describe('General CRUD tests', function () {
       });
   });
 
-  it('should not be able to save an General if no name is provided', function (done) {
+  it('should not be able to save an General if no docno is provided', function (done) {
     // Invalidate name field
-    general.name = '';
+    general.docno = '';
 
     agent.post('/api/auth/signin')
       .send(credentials)
@@ -135,7 +145,217 @@ describe('General CRUD tests', function () {
           .expect(400)
           .end(function (generalSaveErr, generalSaveRes) {
             // Set message assertion
-            (generalSaveRes.body.message).should.match('Please fill General name');
+            (generalSaveRes.body.message).should.match('Please fill General docno');
+
+            // Handle General save error
+            done(generalSaveErr);
+          });
+      });
+  });
+
+  it('should not be able to save an General if no trnsdate is provided', function (done) {
+    // Invalidate name field
+    general.trnsdate = null;
+
+    agent.post('/api/auth/signin')
+      .send(credentials)
+      .expect(200)
+      .end(function (signinErr, signinRes) {
+        // Handle signin error
+        if (signinErr) {
+          return done(signinErr);
+        }
+
+        // Get the userId
+        var userId = user.id;
+
+        // Save a new General
+        agent.post('/api/generals')
+          .send(general)
+          .expect(400)
+          .end(function (generalSaveErr, generalSaveRes) {
+            // Set message assertion
+            (generalSaveRes.body.message).should.match('Please fill General trnsdate');
+
+            // Handle General save error
+            done(generalSaveErr);
+          });
+      });
+  });
+
+  it('should not be able to save an General if no itemdesc is provided', function (done) {
+    // Invalidate name field
+    general.itemdesc = '';
+
+    agent.post('/api/auth/signin')
+      .send(credentials)
+      .expect(200)
+      .end(function (signinErr, signinRes) {
+        // Handle signin error
+        if (signinErr) {
+          return done(signinErr);
+        }
+
+        // Get the userId
+        var userId = user.id;
+
+        // Save a new General
+        agent.post('/api/generals')
+          .send(general)
+          .expect(400)
+          .end(function (generalSaveErr, generalSaveRes) {
+            // Set message assertion
+            (generalSaveRes.body.message).should.match('Please fill General itemdesc');
+
+            // Handle General save error
+            done(generalSaveErr);
+          });
+      });
+  });
+
+  it('should not be able to save an General if no department is provided', function (done) {
+    // Invalidate name field
+    general.department = '';
+
+    agent.post('/api/auth/signin')
+      .send(credentials)
+      .expect(200)
+      .end(function (signinErr, signinRes) {
+        // Handle signin error
+        if (signinErr) {
+          return done(signinErr);
+        }
+
+        // Get the userId
+        var userId = user.id;
+
+        // Save a new General
+        agent.post('/api/generals')
+          .send(general)
+          .expect(400)
+          .end(function (generalSaveErr, generalSaveRes) {
+            // Set message assertion
+            (generalSaveRes.body.message).should.match('Please fill General department');
+
+            // Handle General save error
+            done(generalSaveErr);
+          });
+      });
+  });
+
+  it('should not be able to save an General if no owner is provided', function (done) {
+    // Invalidate name field
+    general.owner = '';
+
+    agent.post('/api/auth/signin')
+      .send(credentials)
+      .expect(200)
+      .end(function (signinErr, signinRes) {
+        // Handle signin error
+        if (signinErr) {
+          return done(signinErr);
+        }
+
+        // Get the userId
+        var userId = user.id;
+
+        // Save a new General
+        agent.post('/api/generals')
+          .send(general)
+          .expect(400)
+          .end(function (generalSaveErr, generalSaveRes) {
+            // Set message assertion
+            (generalSaveRes.body.message).should.match('Please fill General owner');
+
+            // Handle General save error
+            done(generalSaveErr);
+          });
+      });
+  });
+
+  it('should not be able to save an General if no estimate amount is provided', function (done) {
+    // Invalidate name field
+    general.estexpense.amount = null;
+
+    agent.post('/api/auth/signin')
+      .send(credentials)
+      .expect(200)
+      .end(function (signinErr, signinRes) {
+        // Handle signin error
+        if (signinErr) {
+          return done(signinErr);
+        }
+
+        // Get the userId
+        var userId = user.id;
+
+        // Save a new General
+        agent.post('/api/generals')
+          .send(general)
+          .expect(400)
+          .end(function (generalSaveErr, generalSaveRes) {
+            // Set message assertion
+            (generalSaveRes.body.message).should.match('Please fill General amount');
+
+            // Handle General save error
+            done(generalSaveErr);
+          });
+      });
+  });
+
+  it('should not be able to save an General if no estimate approved date is provided', function (done) {
+    // Invalidate name field
+    general.estexpense.apprvdate = null;
+
+    agent.post('/api/auth/signin')
+      .send(credentials)
+      .expect(200)
+      .end(function (signinErr, signinRes) {
+        // Handle signin error
+        if (signinErr) {
+          return done(signinErr);
+        }
+
+        // Get the userId
+        var userId = user.id;
+
+        // Save a new General
+        agent.post('/api/generals')
+          .send(general)
+          .expect(400)
+          .end(function (generalSaveErr, generalSaveRes) {
+            // Set message assertion
+            (generalSaveRes.body.message).should.match('Please fill General apprvdate');
+
+            // Handle General save error
+            done(generalSaveErr);
+          });
+      });
+  });
+
+  it('should not be able to save an General if no estimate approver is provided', function (done) {
+    // Invalidate name field
+    general.estexpense.approver = null;
+
+    agent.post('/api/auth/signin')
+      .send(credentials)
+      .expect(200)
+      .end(function (signinErr, signinRes) {
+        // Handle signin error
+        if (signinErr) {
+          return done(signinErr);
+        }
+
+        // Get the userId
+        var userId = user.id;
+
+        // Save a new General
+        agent.post('/api/generals')
+          .send(general)
+          .expect(400)
+          .end(function (generalSaveErr, generalSaveRes) {
+            // Set message assertion
+            (generalSaveRes.body.message).should.match('Please fill General approver');
 
             // Handle General save error
             done(generalSaveErr);
@@ -167,7 +387,7 @@ describe('General CRUD tests', function () {
             }
 
             // Update General name
-            general.name = 'WHY YOU GOTTA BE SO MEAN?';
+            general.docno = 'PO-02';
 
             // Update an existing General
             agent.put('/api/generals/' + generalSaveRes.body._id)
@@ -181,7 +401,7 @@ describe('General CRUD tests', function () {
 
                 // Set assertions
                 (generalUpdateRes.body._id).should.equal(generalSaveRes.body._id);
-                (generalUpdateRes.body.name).should.match('WHY YOU GOTTA BE SO MEAN?');
+                (generalUpdateRes.body.docno).should.match('PO-02');
 
                 // Call the assertion callback
                 done();
@@ -218,7 +438,7 @@ describe('General CRUD tests', function () {
       request(app).get('/api/generals/' + generalObj._id)
         .end(function (req, res) {
           // Set assertion
-          res.body.should.be.instanceof(Object).and.have.property('name', general.name);
+          res.body.should.be.instanceof(Object).and.have.property('docno', general.docno);
 
           // Call the assertion callback
           done();
@@ -363,7 +583,7 @@ describe('General CRUD tests', function () {
               }
 
               // Set assertions on new General
-              (generalSaveRes.body.name).should.equal(general.name);
+              (generalSaveRes.body.docno).should.equal(general.docno);
               should.exist(generalSaveRes.body.user);
               should.equal(generalSaveRes.body.user._id, orphanId);
 
@@ -390,7 +610,7 @@ describe('General CRUD tests', function () {
 
                         // Set assertions
                         (generalInfoRes.body._id).should.equal(generalSaveRes.body._id);
-                        (generalInfoRes.body.name).should.equal(general.name);
+                        (generalInfoRes.body.docno).should.equal(general.docno);
                         should.equal(generalInfoRes.body.user, undefined);
 
                         // Call the assertion callback

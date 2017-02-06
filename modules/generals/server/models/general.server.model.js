@@ -6,14 +6,75 @@
 var mongoose = require('mongoose'),
   Schema = mongoose.Schema;
 
+
 /**
  * General Schema
  */
 var GeneralSchema = new Schema({
-  name: {
+  trnsdate: {
+    type: Date,
+    default: Date.now,
+    required: 'Please fill General trnsdate'
+  },
+  itemdesc: {
     type: String,
     default: '',
-    required: 'Please fill General name',
+    required: 'Please fill General itemdesc',
+    trim: true
+  },
+  department: {
+    type: String,
+    default: '',
+    required: 'Please fill General department',
+    trim: true
+  },
+  owner: {
+    type: String,
+    default: '',
+    required: 'Please fill General owner',
+    trim: true
+  },
+  docno: {
+    type: String,
+    default: '',
+    required: 'Please fill General docno',
+    trim: true
+  },
+  estexpense: {
+    amount: {
+      type: Number,
+      default: 0,
+      required: 'Please fill General amount',
+      trim: true
+    },
+    apprvdate: {
+      type: Date,
+      default: Date.now,
+      required: 'Please fill General apprvdate'
+    },
+    approver: {
+      type: String,
+      default: '',
+      required: 'Please fill General approver',
+      trim: true
+    }
+  },
+  processtype: {
+    type: String,
+    default: 'draft',
+    required: 'Please fill General processtype',
+    trim: true
+  },
+  methodtype: {
+    type: String,
+    default: 'draft',
+    required: 'Please fill General methodtype',
+    trim: true
+  },
+  status: {
+    type: String,
+    default: 'draft',
+    required: 'Please fill General owner',
     trim: true
   },
   created: {

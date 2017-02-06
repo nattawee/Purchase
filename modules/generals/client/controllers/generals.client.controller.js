@@ -17,6 +17,14 @@
     vm.form = {};
     vm.remove = remove;
     vm.save = save;
+    vm.saveToApprove = function(isValid){
+      if (!isValid) {
+        $scope.$broadcast('show-errors-check-validity', 'vm.form.generalForm');
+        return false;
+      }
+      vm.general.status = 'waiting for approve';
+      vm.save(true);
+    }
 
     // Remove existing General
     function remove() {
