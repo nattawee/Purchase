@@ -26,6 +26,18 @@
       vm.save(true);
     }
 
+    vm.approved = function(){
+      
+      vm.general.status = 'approved';
+      vm.save(true);
+    }
+
+    vm.rejected = function(){
+      
+      vm.general.status = 'rejected';
+      vm.save(true);
+    }
+
     // Remove existing General
     function remove() {
       if ($window.confirm('Are you sure you want to delete?')) {

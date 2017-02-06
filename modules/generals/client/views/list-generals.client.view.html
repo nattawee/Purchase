@@ -19,49 +19,7 @@
   <div class="tabs-container">
 
     <uib-tabset>
-      <uib-tab>
-        <uib-tab-heading>
-          ทั้งหมด
-        </uib-tab-heading>
-        <div class="panel-body">
-          <table class="table table-hover">
-            <thead>
-              <tr>
-                <th>วันที่</th>
-                <th>รายการจัดซื้อ/จัดจ้าง</th>
-                <th>ฝ่าย</th>
-                <th>
-                  <div class="row">
-                    <div class="col-xs-12 text-center">ประมาณการค่าจัดซื้อ/จัดจ้าง (ราคากลาง)</div>
-                  </div>
-                  <div class="row">
-                    <div class="col col-xs-4 text-center">จำนวนเงิน</div>
-                    <div class="col col-xs-4 text-center">วันที่</div>
-                    <div class="col col-xs-4 text-center">ผู้อนุมัติ</div>
-                  </div>
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr ng-repeat="general in vm.generals | filter:searchText" ui-sref="generals.edit({ generalId: general._id })">
-                <td>
-                  {{general.trnsdate | date:'dd/MM/yyyy'}}
-                </td>
-                <td>{{general.itemdesc}}</td>
-                <td>{{general.department}}</td>
-                <td>
-                  <div class="row">
-                    <div class="col col-md-4 text-right">{{general.estexpense.amount | number:2}}</div>
-                    <div class="col col-md-4 text-center">{{general.estexpense.apprvdate | date:'dd/MM/yyyy'}}</div>
-                    <div class="col col-md-4">{{general.estexpense.approver}}</div>
-                  </div>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-
-        </div>
-      </uib-tab>
+      
       <uib-tab>
         <uib-tab-heading>
           แบบร่าง
@@ -148,7 +106,7 @@
       </uib-tab>
       <uib-tab>
         <uib-tab-heading>
-          ผลการอนุมัติ
+          อนุมัติ
         </uib-tab-heading>
         <div class="panel-body">
           <table class="table table-hover">
@@ -171,6 +129,48 @@
             </thead>
             <tbody>
               <tr ng-repeat="general in vm.generals | filter:{ status: 'approved' } | filter:searchText" ui-sref="generals.view({ generalId: general._id })">
+                <td>
+                  {{general.trnsdate | date:'dd/MM/yyyy'}}
+                </td>
+                <td>{{general.itemdesc}}</td>
+                <td>{{general.department}}</td>
+                <td>
+                  <div class="row">
+                    <div class="col col-md-4 text-right">{{general.estexpense.amount | number:2}}</div>
+                    <div class="col col-md-4 text-center">{{general.estexpense.apprvdate | date:'dd/MM/yyyy'}}</div>
+                    <div class="col col-md-4">{{general.estexpense.approver}}</div>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </uib-tab>
+      <uib-tab>
+        <uib-tab-heading>
+          ไม่อนุมัติ
+        </uib-tab-heading>
+        <div class="panel-body">
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th>วันที่</th>
+                <th>รายการจัดซื้อ/จัดจ้าง</th>
+                <th>ฝ่าย</th>
+                <th>
+                  <div class="row">
+                    <div class="col-xs-12 text-center">ประมาณการค่าจัดซื้อ/จัดจ้าง (ราคากลาง)</div>
+                  </div>
+                  <div class="row">
+                    <div class="col col-xs-4 text-center">จำนวนเงิน</div>
+                    <div class="col col-xs-4 text-center">วันที่</div>
+                    <div class="col col-xs-4 text-center">ผู้อนุมัติ</div>
+                  </div>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="general in vm.generals | filter:{ status: 'rejected' } | filter:searchText" ui-sref="generals.view({ generalId: general._id })">
                 <td>
                   {{general.trnsdate | date:'dd/MM/yyyy'}}
                 </td>
