@@ -80,18 +80,18 @@ var GeneralSchema = new Schema({
     amount: {
       type: Number,
       default: 0,
-      required: 'Please fill General amount',
+      // required: 'Please fill General amount',
       trim: true
     },
     apprvdate: {
       type: Date,
       default: Date.now,
-      required: 'Please fill General apprvdate'
+      // required: 'Please fill General apprvdate'
     },
     approver: {
       type: String,
       default: '',
-      required: 'Please fill General approver',
+      // required: 'Please fill General approver',
       trim: true
     }
   },
