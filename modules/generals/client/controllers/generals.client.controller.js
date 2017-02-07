@@ -12,7 +12,17 @@
     var vm = this;
     vm.authentication = Authentication;
     BranchesService.query(function (ret) {
-      $scope.branchesService = ret;
+      
+      if(vm.authentication.branch){
+        $scope.branchesService = [];
+        ret.forEach(function(brch){
+          if(brch._id === vm.authentication.branch){
+             $scope.branchesService.push(brch);
+          }
+        });
+      }else{
+        $scope.branchesService = ret;
+      }
     });
     vm.general = general;
     if (vm.general.trnsdate) {
