@@ -322,7 +322,7 @@
         <button ng-click="vm.rejected()"  class="btn btn-danger">ไม่อนุมัติ</button>
         <button ng-click="vm.approved()" class="btn btn-primary">อนุมัติ</button>
       </div>
-      <div class="col col-xs-4 text-right" ng-if="vm.general.status === 'approved'">
+      <div class="col col-xs-4 text-right" ng-if="vm.general.status === 'approved' && vm.authentication.user.roles[0] !== 'approver'" >
         <button ng-click="vm.saveToCompleted(vm.form.generalForm.$valid)" class="btn btn-primary">บันทึกข้อมูล</button>
       </div>
     </div>
