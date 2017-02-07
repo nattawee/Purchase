@@ -49,6 +49,14 @@
       <li ng-class="{active: $uiRoute}" ui-route="/properties" class="{{purchases.class}}" ng-if="authentication.user">
         <a href="/#/properties"><i class="fa fa-file-powerpoint-o"></i> <span class="nav-label">ดูแลรักษาทรัพย์สินรอการขาย </span></a>
       </li>
+
+      <li ng-class="{active: $uiRoute}" ui-route="/departments" class="{{purchases.class}}" ng-if="authentication.user.roles[0] === 'admin'">
+        <a href="/#/departments"><i class="fa fa-file-powerpoint-o"></i> <span class="nav-label">แผนก </span></a>
+      </li>
+      
+      <li ng-class="{active: $uiRoute}" ui-route="/branches" class="{{purchases.class}}" ng-if="authentication.user.roles[0] === 'admin'">
+        <a href="/#/branches"><i class="fa fa-file-powerpoint-o"></i> <span class="nav-label">สาขา </span></a>
+      </li>
       
       <!--<li>
         <a><i class="fa fa-file-text"></i> <span class="nav-label">จัดจ้างทั่วไป</span></a>

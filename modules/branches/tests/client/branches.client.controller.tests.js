@@ -1,15 +1,15 @@
 (function () {
   'use strict';
 
-  describe('Renovates Controller Tests', function () {
+  describe('Branches Controller Tests', function () {
     // Initialize global variables
-    var RenovatesController,
+    var BranchesController,
       $scope,
       $httpBackend,
       $state,
       Authentication,
-      RenovatesService,
-      mockRenovate;
+      BranchesService,
+      mockBranch;
 
     // The $resource service augments the response object with methods for updating and deleting the resource.
     // If we were to use the standard toEqual matcher, our tests would fail because the test values would not match
@@ -36,7 +36,7 @@
     // The injector ignores leading and trailing underscores here (i.e. _$httpBackend_).
     // This allows us to inject a service but then attach it to a variable
     // with the same name as the service.
-    beforeEach(inject(function ($controller, $rootScope, _$state_, _$httpBackend_, _Authentication_, _RenovatesService_) {
+    beforeEach(inject(function ($controller, $rootScope, _$state_, _$httpBackend_, _Authentication_, _BranchesService_) {
       // Set a new global scope
       $scope = $rootScope.$new();
 
@@ -44,12 +44,12 @@
       $httpBackend = _$httpBackend_;
       $state = _$state_;
       Authentication = _Authentication_;
-      RenovatesService = _RenovatesService_;
+      BranchesService = _BranchesService_;
 
-      // create mock Renovate
-      mockRenovate = new RenovatesService({
+      // create mock Branch
+      mockBranch = new BranchesService({
         _id: '525a8422f6d0f87f0e407a33',
-        name: 'Renovate Name'
+        name: 'Branch Name'
       });
 
       // Mock logged in user
@@ -57,10 +57,10 @@
         roles: ['user']
       };
 
-      // Initialize the Renovates controller.
-      RenovatesController = $controller('RenovatesController as vm', {
+      // Initialize the Branches controller.
+      BranchesController = $controller('BranchesController as vm', {
         $scope: $scope,
-        renovateResolve: {}
+        branchResolve: {}
       });
 
       // Spy on state go
@@ -68,32 +68,32 @@
     }));
 
     describe('vm.save() as create', function () {
-      var sampleRenovatePostData;
+      var sampleBranchPostData;
 
       beforeEach(function () {
-        // Create a sample Renovate object
-        sampleRenovatePostData = new RenovatesService({
-          name: 'Renovate Name'
+        // Create a sample Branch object
+        sampleBranchPostData = new BranchesService({
+          name: 'Branch Name'
         });
 
-        $scope.vm.renovate = sampleRenovatePostData;
+        $scope.vm.branch = sampleBranchPostData;
       });
 
-      it('should send a POST request with the form input values and then locate to new object URL', inject(function (RenovatesService) {
+      it('should send a POST request with the form input values and then locate to new object URL', inject(function (BranchesService) {
         // Set POST response
-        $httpBackend.expectPOST('api/renovates', sampleRenovatePostData).respond(mockRenovate);
+        $httpBackend.expectPOST('api/branches', sampleBranchPostData).respond(mockBranch);
 
         // Run controller functionality
         $scope.vm.save(true);
         $httpBackend.flush();
 
-        // Test URL redirection after the Renovate was created
-        expect($state.go).toHaveBeenCalledWith('renovates.list');
+        // Test URL redirection after the Branch was created
+        expect($state.go).toHaveBeenCalledWith('branches.list');
       }));
 
       it('should set $scope.vm.error if error', function () {
         var errorMessage = 'this is an error message';
-        $httpBackend.expectPOST('api/renovates', sampleRenovatePostData).respond(400, {
+        $httpBackend.expectPOST('api/branches', sampleBranchPostData).respond(400, {
           message: errorMessage
         });
 
@@ -106,25 +106,25 @@
 
     describe('vm.save() as update', function () {
       beforeEach(function () {
-        // Mock Renovate in $scope
-        $scope.vm.renovate = mockRenovate;
+        // Mock Branch in $scope
+        $scope.vm.branch = mockBranch;
       });
 
-      it('should update a valid Renovate', inject(function (RenovatesService) {
+      it('should update a valid Branch', inject(function (BranchesService) {
         // Set PUT response
-        $httpBackend.expectPUT(/api\/renovates\/([0-9a-fA-F]{24})$/).respond();
+        $httpBackend.expectPUT(/api\/branches\/([0-9a-fA-F]{24})$/).respond();
 
         // Run controller functionality
         $scope.vm.save(true);
         $httpBackend.flush();
 
         // Test URL location to new object
-        expect($state.go).toHaveBeenCalledWith('renovates.list');
+        expect($state.go).toHaveBeenCalledWith('branches.list');
       }));
 
-      it('should set $scope.vm.error if error', inject(function (RenovatesService) {
+      it('should set $scope.vm.error if error', inject(function (BranchesService) {
         var errorMessage = 'error';
-        $httpBackend.expectPUT(/api\/renovates\/([0-9a-fA-F]{24})$/).respond(400, {
+        $httpBackend.expectPUT(/api\/branches\/([0-9a-fA-F]{24})$/).respond(400, {
           message: errorMessage
         });
 
@@ -137,23 +137,23 @@
 
     describe('vm.remove()', function () {
       beforeEach(function () {
-        // Setup Renovates
-        $scope.vm.renovate = mockRenovate;
+        // Setup Branches
+        $scope.vm.branch = mockBranch;
       });
 
-      it('should delete the Renovate and redirect to Renovates', function () {
+      it('should delete the Branch and redirect to Branches', function () {
         // Return true on confirm message
         spyOn(window, 'confirm').and.returnValue(true);
 
-        $httpBackend.expectDELETE(/api\/renovates\/([0-9a-fA-F]{24})$/).respond(204);
+        $httpBackend.expectDELETE(/api\/branches\/([0-9a-fA-F]{24})$/).respond(204);
 
         $scope.vm.remove();
         $httpBackend.flush();
 
-        expect($state.go).toHaveBeenCalledWith('renovates.list');
+        expect($state.go).toHaveBeenCalledWith('branches.list');
       });
 
-      it('should should not delete the Renovate and not redirect', function () {
+      it('should should not delete the Branch and not redirect', function () {
         // Return false on confirm message
         spyOn(window, 'confirm').and.returnValue(false);
 

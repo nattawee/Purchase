@@ -88,9 +88,7 @@
         $httpBackend.flush();
 
         // Test URL redirection after the Property was created
-        expect($state.go).toHaveBeenCalledWith('properties.view', {
-          propertyId: mockProperty._id
-        });
+        expect($state.go).toHaveBeenCalledWith('properties.list');
       }));
 
       it('should set $scope.vm.error if error', function () {
@@ -121,9 +119,7 @@
         $httpBackend.flush();
 
         // Test URL location to new object
-        expect($state.go).toHaveBeenCalledWith('properties.view', {
-          propertyId: mockProperty._id
-        });
+        expect($state.go).toHaveBeenCalledWith('properties.list');
       }));
 
       it('should set $scope.vm.error if error', inject(function (PropertiesService) {
