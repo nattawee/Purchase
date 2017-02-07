@@ -318,7 +318,7 @@
       <div class="col col-xs-8">
         <button class="btn" ui-sref="generals.list()">ย้อนกลับ</button>
       </div>
-      <div class="col col-xs-4 text-right" ng-if="vm.general.status === 'waiting for approve'">
+      <div class="col col-xs-4 text-right" ng-if="vm.general.status === 'waiting for approve' && vm.authentication.user.roles[0] !== 'user'">
         <button ng-click="vm.rejected()"  class="btn btn-danger">ไม่อนุมัติ</button>
         <button ng-click="vm.approved()" class="btn btn-primary">อนุมัติ</button>
       </div>
