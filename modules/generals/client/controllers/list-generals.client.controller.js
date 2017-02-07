@@ -5,11 +5,11 @@
     .module('generals')
     .controller('GeneralsListController', GeneralsListController);
 
-  GeneralsListController.$inject = ['GeneralsService'];
+  GeneralsListController.$inject = ['GeneralsService', 'Authentication'];
 
-  function GeneralsListController(GeneralsService) {
+  function GeneralsListController(GeneralsService, Authentication) {
     var vm = this;
-
+    vm.authentication = Authentication;
     vm.generals = GeneralsService.query();
   }
 }());
