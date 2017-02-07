@@ -81,7 +81,7 @@ exports.delete = function(req, res) {
  * List of Generals
  */
 exports.list = function(req, res) {
-  General.find().sort('-created').populate('user', 'displayName').exec(function(err, generals) {
+  General.find().sort('-created').populate('user', 'displayName').populate('department').exec(function(err, generals) {
     if (err) {
       return res.status(400).send({
         message: errorHandler.getErrorMessage(err)
@@ -103,7 +103,7 @@ exports.generalByID = function(req, res, next, id) {
     });
   }
 
-  General.findById(id).populate('user', 'displayName').exec(function (err, general) {
+  General.findById(id).populate('user', 'displayName').populate('department').exec(function (err, general) {
     if (err) {
       return next(err);
     } else if (!general) {

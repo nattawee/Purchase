@@ -35,9 +35,13 @@
 
       <div class="col col-md-10">
         <div class="form-group" show-errors>
-          <label class="col-sm-2 control-label">ฝ่าย/สำนักงาน</label>
+          <label class="col-sm-2 control-label">สำนักงาน</label>
           <div class="col-sm-10">
-            <input type="text" ng-model="vm.general.department" name="department" class="form-control" placeholder="ฝ่าย/สำนักงาน" required>
+            <select class="form-control" name="department" ng-model="vm.general.department" 
+            ng-options="option.name for option in branchesService track by option._id"
+            required>
+            
+            </select>
           </div>
         </div>
       </div>

@@ -6,11 +6,14 @@
     .module('generals')
     .controller('GeneralsController', GeneralsController);
 
-  GeneralsController.$inject = ['$scope', '$state', '$window', 'Authentication', 'generalResolve'];
+  GeneralsController.$inject = ['$scope', '$state', '$window', 'Authentication', 'generalResolve', 'BranchesService'];
 
-  function GeneralsController($scope, $state, $window, Authentication, general) {
+  function GeneralsController($scope, $state, $window, Authentication, general, BranchesService) {
     var vm = this;
     vm.authentication = Authentication;
+    BranchesService.query(function (ret) {
+      $scope.branchesService = ret;
+    });
     vm.general = general;
     if (vm.general.trnsdate) {
       vm.general.trnsdate = new Date(vm.general.trnsdate);
@@ -92,4 +95,4 @@
       }
     }
   }
-}());
+} ());
