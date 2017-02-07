@@ -5,11 +5,11 @@
     .module('properties')
     .controller('PropertiesListController', PropertiesListController);
 
-  PropertiesListController.$inject = ['PropertiesService'];
+  PropertiesListController.$inject = ['PropertiesService', 'Authentication'];
 
-  function PropertiesListController(PropertiesService) {
+  function PropertiesListController(PropertiesService, Authentication) {
     var vm = this;
-
+    vm.authentication = Authentication;
     vm.properties = PropertiesService.query();
   }
 }());

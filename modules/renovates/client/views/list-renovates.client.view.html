@@ -10,7 +10,7 @@
       <div class="col col-xs-10">
         <input type="search" class="form-control " ng-model="searchText" placeholder="ค้นหา">
       </div>
-      <div class="col col-md-2"><button class="btn btn-primary" ui-sref="renovates.create()">สร้างรายการใหม่</button></div>
+      <div class="col col-md-2" ng-show="vm.authentication.user.roles[0] !== 'approver'"><button class="btn btn-primary" ui-sref="renovates.create()">สร้างรายการใหม่</button></div>
     </div>
     <br>
 
@@ -20,7 +20,7 @@
 
     <uib-tabset>
 
-      <uib-tab>
+      <uib-tab ng-if="vm.authentication.user.roles[0] !== 'approver'">
         <uib-tab-heading>
           แบบร่าง
         </uib-tab-heading>
@@ -108,7 +108,7 @@
           </table>
         </div>
       </uib-tab>
-      <uib-tab>
+      <uib-tab ng-if="vm.authentication.user.roles[0] !== 'approver'">
         <uib-tab-heading>
           อนุมัติ
         </uib-tab-heading>
@@ -152,9 +152,9 @@
           </table>
         </div>
       </uib-tab>
-      <uib-tab>
+      <uib-tab ng-if="vm.authentication.user.roles[0] !== 'approver'">
         <uib-tab-heading>
-          ไม่อนุมัติ
+          รอแก้ไข
         </uib-tab-heading>
         <div class="panel-body">
           <table class="table table-hover">
