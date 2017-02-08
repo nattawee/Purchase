@@ -51,7 +51,31 @@ describe('Aquisition CRUD tests', function () {
     // Save a user to the test db and create new Aquisition
     user.save(function () {
       aquisition = {
-        name: 'Aquisition name'
+        from1: {
+          nta: {
+            assetssum: 1,
+            assetsintangible: 1,
+            debtssum: 1,
+            shareholder: 1,
+            ntasum: 1
+
+          },
+          acqodis: 1,
+          ntalisted: 1
+        },
+        from2: {
+          netoperating: 1,
+          ratio: 1,
+          netcompany: 1
+        },
+        from3: {
+          amount: 1,
+          assetscompany: 1
+        },
+        from4: {
+          sharespay: 1,
+          sharespaycompany: 1
+        }
       };
 
       done();
@@ -94,7 +118,7 @@ describe('Aquisition CRUD tests', function () {
 
                 // Set assertions
                 (aquisitions[0].user._id).should.equal(userId);
-                (aquisitions[0].name).should.match('Aquisition name');
+                (aquisitions[0].from1.nta.assetssum).should.equal(1);
 
                 // Call the assertion callback
                 done();
@@ -115,7 +139,7 @@ describe('Aquisition CRUD tests', function () {
 
   it('should not be able to save an Aquisition if no name is provided', function (done) {
     // Invalidate name field
-    aquisition.name = '';
+    aquisition.from1.nta.assetssum = null;
 
     agent.post('/api/auth/signin')
       .send(credentials)
@@ -135,7 +159,7 @@ describe('Aquisition CRUD tests', function () {
           .expect(400)
           .end(function (aquisitionSaveErr, aquisitionSaveRes) {
             // Set message assertion
-            (aquisitionSaveRes.body.message).should.match('Please fill Aquisition name');
+            (aquisitionSaveRes.body.message).should.match('Please fill Aquisition assetssum');
 
             // Handle Aquisition save error
             done(aquisitionSaveErr);
@@ -166,8 +190,8 @@ describe('Aquisition CRUD tests', function () {
               return done(aquisitionSaveErr);
             }
 
-            // Update Aquisition name
-            aquisition.name = 'WHY YOU GOTTA BE SO MEAN?';
+            // Update Aquisition assetssum
+            aquisition.from1.nta.assetssum = 2;
 
             // Update an existing Aquisition
             agent.put('/api/aquisitions/' + aquisitionSaveRes.body._id)
@@ -181,7 +205,7 @@ describe('Aquisition CRUD tests', function () {
 
                 // Set assertions
                 (aquisitionUpdateRes.body._id).should.equal(aquisitionSaveRes.body._id);
-                (aquisitionUpdateRes.body.name).should.match('WHY YOU GOTTA BE SO MEAN?');
+                (aquisitionUpdateRes.body.from1.nta.assetssum).should.equal(2);
 
                 // Call the assertion callback
                 done();
@@ -218,7 +242,7 @@ describe('Aquisition CRUD tests', function () {
       request(app).get('/api/aquisitions/' + aquisitionObj._id)
         .end(function (req, res) {
           // Set assertion
-          res.body.should.be.instanceof(Object).and.have.property('name', aquisition.name);
+          // res.body.should.be.instanceof(Object).and.have.property('',aquisition.from1.nta.assetssum);
 
           // Call the assertion callback
           done();
@@ -363,7 +387,7 @@ describe('Aquisition CRUD tests', function () {
               }
 
               // Set assertions on new Aquisition
-              (aquisitionSaveRes.body.name).should.equal(aquisition.name);
+              (aquisitionSaveRes.body.from1.nta.assetssum).should.equal(aquisition.from1.nta.assetssum);
               should.exist(aquisitionSaveRes.body.user);
               should.equal(aquisitionSaveRes.body.user._id, orphanId);
 
@@ -390,7 +414,7 @@ describe('Aquisition CRUD tests', function () {
 
                         // Set assertions
                         (aquisitionInfoRes.body._id).should.equal(aquisitionSaveRes.body._id);
-                        (aquisitionInfoRes.body.name).should.equal(aquisition.name);
+                        (aquisitionInfoRes.body.from1.nta.assetssum).should.equal(aquisition.from1.nta.assetssum);
                         should.equal(aquisitionInfoRes.body.user, undefined);
 
                         // Call the assertion callback

@@ -12,6 +12,7 @@
     var vm = this;
     vm.authentication = Authentication;
     vm.renovate = renovate;
+    vm.general = vm.renovate;
     if (vm.renovate.estexpense && vm.renovate.estexpense.apprvdate) {
       vm.renovate.estexpense.apprvdate = new Date(vm.renovate.estexpense.apprvdate);
     }
@@ -26,6 +27,27 @@
     }
     if (vm.renovate.nacc && vm.renovate.nacc.naccdocdate) {
       vm.renovate.nacc.naccdocdate = new Date(vm.renovate.nacc.naccdocdate);
+    }
+    if (vm.general.form1 && vm.general.form1.field4.field41) {
+      vm.general.form1.field4.field41 = new Date(vm.general.form1.field4.field41);
+    }
+    if (vm.general.form2 && vm.general.form2.field3.field31) {
+      vm.general.form2.field3.field31 = new Date(vm.general.form2.field3.field31);
+    }
+    if (vm.general.form3 && vm.general.form3.field3.field31) {
+      vm.general.form3.field3.field31 = new Date(vm.general.form3.field3.field31);
+    }
+    if (vm.general.form4 && vm.general.form4.field3.field31) {
+      vm.general.form4.field3.field31 = new Date(vm.general.form4.field3.field31);
+    }
+    if (vm.general.form5 && vm.general.form5.field3.field31) {
+      vm.general.form5.field3.field31 = new Date(vm.general.form5.field3.field31);
+    }
+    if (vm.general.form6 && vm.general.form6.field3.field31) {
+      vm.general.form6.field3.field31 = new Date(vm.general.form6.field3.field31);
+    }
+    if (vm.general.form7 && vm.general.form7.field3.field31) {
+      vm.general.form7.field3.field31 = new Date(vm.general.form7.field3.field31);
     }
     vm.error = null;
     vm.form = {};

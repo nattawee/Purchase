@@ -30,7 +30,7 @@ describe('Renovate Model Unit Tests:', function () {
 
     user.save(function () {
       renovate = new Renovate({
-        renovateno: 1,
+        // renovateno: 1,
         renovateid: 1,
         documentno: 123,
         name: 'Renovate name',
@@ -64,14 +64,14 @@ describe('Renovate Model Unit Tests:', function () {
       });
     });
 
-    it('should be able to show an error when try to save without renovateno', function (done) {
-      renovate.renovateno = '';
+    // it('should be able to show an error when try to save without renovateno', function (done) {
+    //   renovate.renovateno = '';
 
-      return renovate.save(function (err) {
-        should.exist(err);
-        done();
-      });
-    });
+    //   return renovate.save(function (err) {
+    //     should.exist(err);
+    //     done();
+    //   });
+    // });
 
     it('should be able to show an error when try to save without renovateid', function (done) {
       renovate.renovateid = '';

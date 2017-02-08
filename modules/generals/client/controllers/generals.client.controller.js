@@ -6,7 +6,7 @@
     .module('generals')
     .controller('GeneralsController', GeneralsController);
 
-  GeneralsController.$inject = ['$scope', '$state', '$window', 'Authentication', 'generalResolve', 'BranchesService'];
+  GeneralsController.$inject = ['$scope', '$state', '$window', 'Authentication', 'generalResolve', 'BranchesService',];
 
   function GeneralsController($scope, $state, $window, Authentication, general, BranchesService) {
     var vm = this;
@@ -14,7 +14,7 @@
     BranchesService.query(function (ret) {
       $scope.branchesService = ret;
     });
-    vm.general = general;
+    vm.general = general;    
     if (vm.general.trnsdate) {
       vm.general.trnsdate = new Date(vm.general.trnsdate);
     }
@@ -33,6 +33,30 @@
     if (vm.general.nacc && vm.general.nacc.naccdocdate) {
       vm.general.nacc.naccdocdate = new Date(vm.general.nacc.naccdocdate);
     }
+    if (vm.general.form1 && vm.general.form1.field4.field41) {
+      vm.general.form1.field4.field41 = new Date(vm.general.form1.field4.field41);
+    }
+    if (vm.general.form2 && vm.general.form2.field3.field31) {
+      vm.general.form2.field3.field31 = new Date(vm.general.form2.field3.field31);
+    }
+    if (vm.general.form3 && vm.general.form3.field3.field31) {
+      vm.general.form3.field3.field31 = new Date(vm.general.form3.field3.field31);
+    }
+    if (vm.general.form4 && vm.general.form4.field3.field31) {
+      vm.general.form4.field3.field31 = new Date(vm.general.form4.field3.field31);
+    }
+    if (vm.general.form5 && vm.general.form5.field3.field31) {
+      vm.general.form5.field3.field31 = new Date(vm.general.form5.field3.field31);
+    }
+    if (vm.general.form6 && vm.general.form6.field3.field31) {
+      vm.general.form6.field3.field31 = new Date(vm.general.form6.field3.field31);
+    }
+    if (vm.general.form7 && vm.general.form7.field3.field31) {
+      vm.general.form7.field3.field31 = new Date(vm.general.form7.field3.field31);
+    }
+
+    
+    
     vm.error = null;
     vm.form = {};
     vm.remove = remove;
@@ -78,7 +102,6 @@
         $scope.$broadcast('show-errors-check-validity', 'vm.form.generalForm');
         return false;
       }
-
       // TODO: move create/update logic to service
       if (vm.general._id) {
         vm.general.$update(successCallback, errorCallback);

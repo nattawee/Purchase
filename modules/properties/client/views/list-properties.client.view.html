@@ -28,7 +28,7 @@
           <table class="table table-hover">
             <thead>
               <tr>
-                <th>ลำดับ</th>
+                
                 <th>รหัสทรัพย์</th>
                 <th>เลขที่เอกสารสิทธิ์</th>
                 <th>ชื่ออาคารชุด/สถานที่</th>
@@ -46,9 +46,7 @@
             </thead>
             <tbody>
               <tr ng-repeat="property in vm.properties | filter:{ status: 'draft' } | filter:searchText" ui-sref="properties.edit({ propertyId: property._id })">
-                <td>
-                  {{property.propertyno}}
-                </td>
+                
                 <td>{{property.propertyid}}</td>
                 <td>{{property.documentno}}</td>
                 <td>{{property.name}}</td>
@@ -72,7 +70,7 @@
           <table class="table table-hover">
             <thead>
               <tr>
-                <th>ลำดับ</th>
+                
                 <th>รหัสทรัพย์</th>
                 <th>เลขที่เอกสารสิทธิ์</th>
                 <th>ชื่ออาคารชุด/สถานที่</th>
@@ -90,9 +88,7 @@
             </thead>
             <tbody>
               <tr ng-repeat="property in vm.properties | filter:{ status: 'waiting for approve' } | filter:searchText" ui-sref="properties.view({ propertyId: property._id })">
-                <td>
-                  {{property.propertyno}}
-                </td>
+                
                 <td>{{property.propertyid}}</td>
                 <td>{{property.documentno}}</td>
                 <td>{{property.name}}</td>
@@ -116,7 +112,7 @@
           <table class="table table-hover">
             <thead>
               <tr>
-                <th>ลำดับ</th>
+                
                 <th>รหัสทรัพย์</th>
                 <th>เลขที่เอกสารสิทธิ์</th>
                 <th>ชื่ออาคารชุด/สถานที่</th>
@@ -134,9 +130,7 @@
             </thead>
             <tbody>
               <tr ng-repeat="property in vm.properties | filter:{ status: 'approved' } | filter:searchText" ui-sref="properties.view({ propertyId: property._id })">
-                <td>
-                  {{property.propertyno}}
-                </td>
+                
                 <td>{{property.propertyid}}</td>
                 <td>{{property.documentno}}</td>
                 <td>{{property.name}}</td>
@@ -160,7 +154,7 @@
           <table class="table table-hover">
             <thead>
               <tr>
-                <th>ลำดับ</th>
+                
                 <th>รหัสทรัพย์</th>
                 <th>เลขที่เอกสารสิทธิ์</th>
                 <th>ชื่ออาคารชุด/สถานที่</th>
@@ -178,9 +172,7 @@
             </thead>
             <tbody>
               <tr ng-repeat="property in vm.properties | filter:{ status: 'rejected' } | filter:searchText" ui-sref="properties.edit({ propertyId: property._id })">
-                <td>
-                  {{property.propertyno}}
-                </td>
+                
                 <td>{{property.propertyid}}</td>
                 <td>{{property.documentno}}</td>
                 <td>{{property.name}}</td>
@@ -204,7 +196,7 @@
           <table class="table table-hover">
             <thead>
               <tr>
-                <th>ลำดับ</th>
+                
                 <th>รหัสทรัพย์</th>
                 <th>เลขที่เอกสารสิทธิ์</th>
                 <th>ชื่ออาคารชุด/สถานที่</th>
@@ -222,9 +214,7 @@
             </thead>
             <tbody>
               <tr ng-repeat="property in vm.properties | filter:{ status: 'completed' } | filter:searchText" ui-sref="properties.view({ propertyId: property._id })">
-                <td>
-                  {{property.propertyno}}
-                </td>
+                
                 <td>{{property.propertyid}}</td>
                 <td>{{property.documentno}}</td>
                 <td>{{property.name}}</td>

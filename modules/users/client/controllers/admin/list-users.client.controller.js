@@ -1,7 +1,10 @@
 'use strict';
 
-angular.module('users.admin').controller('UserListController', ['$scope', '$filter', 'Admin',
-  function ($scope, $filter, Admin) {
+angular.module('users.admin').controller('UserListController', ['$scope', '$http', '$filter', 'Admin', 'Authentication',
+  function ($scope, $http, $filter, Admin, Authentication) {
+    // Authentication.query(function (res) {
+    //   $scope.authentication = res;
+    // });
     Admin.query(function (data) {
       $scope.users = data;
       $scope.buildPager();
@@ -27,5 +30,16 @@ angular.module('users.admin').controller('UserListController', ['$scope', '$filt
     $scope.pageChanged = function () {
       $scope.figureOutItemsToDisplay();
     };
+
+    // $scope.signup = function () {
+    //   $http.post('/api/auth/signup', $scope.credentials).success(function () {
+    //     // If successful we assign the response to the global user model
+    //     // $scope.authentication.user = response;
+
+    //     // And redirect to the previous or home page
+    //   });
+    // };
   }
+
+
 ]);

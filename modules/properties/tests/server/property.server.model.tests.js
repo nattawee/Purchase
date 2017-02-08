@@ -30,7 +30,7 @@ describe('Property Model Unit Tests:', function() {
 
     user.save(function() {
       property = new Property({
-        propertyno: 1,
+        // propertyno: 1,
         propertyid: 1,
         documentno: 123,
         name: 'Property name',
@@ -64,14 +64,14 @@ describe('Property Model Unit Tests:', function() {
       });
     });
 
-    it('should be able to show an error when try to save without propertyno', function (done) {
-      property.propertyno = '';
+    // it('should be able to show an error when try to save without propertyno', function (done) {
+    //   property.propertyno = '';
 
-      return property.save(function (err) {
-        should.exist(err);
-        done();
-      });
-    });
+    //   return property.save(function (err) {
+    //     should.exist(err);
+    //     done();
+    //   });
+    // });
 
     it('should be able to show an error when try to save without propertyid', function (done) {
       property.propertyid = '';

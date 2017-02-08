@@ -51,7 +51,7 @@ describe('Property CRUD tests', function () {
     // Save a user to the test db and create new Property
     user.save(function () {
       property = {
-        propertyno: 1,
+        // propertyno: 1,
         propertyid: 1,
         documentno: 123,
         name: 'Property name',

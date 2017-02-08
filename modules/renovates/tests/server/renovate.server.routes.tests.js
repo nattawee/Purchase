@@ -51,7 +51,7 @@ describe('Renovate CRUD tests', function () {
     // Save a user to the test db and create new Renovate
     user.save(function () {
       renovate = {
-        renovateno: 1,
+        // renovateno: 1,
         renovateid: 1,
         documentno: 123,
         name: 'Renovate name',

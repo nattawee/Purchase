@@ -213,7 +213,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr ng-repeat="general in vm.generals | filter:{ status: 'completed' } | filter:searchText" ui-sref="generals.view({ generalId: vm.general._id })">
+              <tr ng-repeat="general in vm.generals | filter:{ status: 'completed' } | filter:searchText" ui-sref="generals.view({ generalId: general._id })">
                 <td>
                   {{general.trnsdate | date:'dd/MM/yyyy'}}
                 </td>

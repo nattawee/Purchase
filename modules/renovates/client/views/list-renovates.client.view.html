@@ -28,7 +28,7 @@
           <table class="table table-hover">
             <thead>
               <tr>
-                <th>ลำดับ</th>
+                
                 <th>รหัสทรัพย์</th>
                 <th>เลขที่เอกสารสิทธิ์</th>
                 <th>ชื่ออาคารชุด/สถานที่</th>
@@ -46,9 +46,7 @@
             </thead>
             <tbody>
               <tr ng-repeat="renovate in vm.renovates | filter:{ status: 'draft' } | filter:searchText" ui-sref="renovates.edit({ renovateId: renovate._id })">
-                <td>
-                  {{renovate.renovateno}}
-                </td>
+                
                 <td>{{renovate.renovateid}}</td>
                 <td>{{renovate.documentno}}</td>
                 <td>{{renovate.name}}</td>
@@ -72,7 +70,7 @@
           <table class="table table-hover">
             <thead>
               <tr>
-                <th>ลำดับ</th>
+                
                 <th>รหัสทรัพย์</th>
                 <th>เลขที่เอกสารสิทธิ์</th>
                 <th>ชื่ออาคารชุด/สถานที่</th>
@@ -90,9 +88,7 @@
             </thead>
             <tbody>
               <tr ng-repeat="renovate in vm.renovates | filter:{ status: 'waiting for approve' } | filter:searchText" ui-sref="renovates.view({ renovateId: renovate._id })">
-                <td>
-                  {{renovate.renovateno}}
-                </td>
+                
                 <td>{{renovate.renovateid}}</td>
                 <td>{{renovate.documentno}}</td>
                 <td>{{renovate.name}}</td>
@@ -116,7 +112,7 @@
           <table class="table table-hover">
             <thead>
               <tr>
-                <th>ลำดับ</th>
+                
                 <th>รหัสทรัพย์</th>
                 <th>เลขที่เอกสารสิทธิ์</th>
                 <th>ชื่ออาคารชุด/สถานที่</th>
@@ -134,9 +130,7 @@
             </thead>
             <tbody>
               <tr ng-repeat="renovate in vm.renovates | filter:{ status: 'approved' } | filter:searchText" ui-sref="renovates.view({ renovateId: renovate._id })">
-                <td>
-                  {{renovate.renovateno}}
-                </td>
+                
                 <td>{{renovate.renovateid}}</td>
                 <td>{{renovate.documentno}}</td>
                 <td>{{renovate.name}}</td>
@@ -160,7 +154,7 @@
           <table class="table table-hover">
             <thead>
               <tr>
-                <th>ลำดับ</th>
+                
                 <th>รหัสทรัพย์</th>
                 <th>เลขที่เอกสารสิทธิ์</th>
                 <th>ชื่ออาคารชุด/สถานที่</th>
@@ -178,9 +172,6 @@
             </thead>
             <tbody>
               <tr ng-repeat="renovate in vm.renovates | filter:{ status: 'rejected' } | filter:searchText" ui-sref="renovates.edit({ renovateId: renovate._id })">
-                <td>
-                  {{renovate.renovateno}}
-                </td>
                 <td>{{renovate.renovateid}}</td>
                 <td>{{renovate.documentno}}</td>
                 <td>{{renovate.name}}</td>
@@ -204,7 +195,7 @@
           <table class="table table-hover">
             <thead>
               <tr>
-                <th>ลำดับ</th>
+                
                 <th>รหัสทรัพย์</th>
                 <th>เลขที่เอกสารสิทธิ์</th>
                 <th>ชื่ออาคารชุด/สถานที่</th>
@@ -222,9 +213,7 @@
             </thead>
             <tbody>
               <tr ng-repeat="renovate in vm.renovates | filter:{ status: 'completed' } | filter:searchText" ui-sref="renovates.view({ renovateId: renovate._id })">
-                <td>
-                  {{renovate.renovateno}}
-                </td>
+                
                 <td>{{renovate.renovateid}}</td>
                 <td>{{renovate.documentno}}</td>
                 <td>{{renovate.name}}</td>

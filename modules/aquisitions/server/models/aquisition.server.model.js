@@ -10,11 +10,68 @@ var mongoose = require('mongoose'),
  * Aquisition Schema
  */
 var AquisitionSchema = new Schema({
-  name: {
-    type: String,
-    default: '',
-    required: 'Please fill Aquisition name',
-    trim: true
+  from1: {
+    nta: {
+      assetssum: {
+        type: Number,
+        required: 'Please fill Aquisition assetssum',
+      },
+      assetsintangible: {
+        type: Number,
+        required: 'Please fill Aquisition assetsintangible',
+      },
+      debtssum: {
+        type: Number,
+        required: 'Please fill Aquisition debtssum',
+      },
+      shareholder: Number,
+      ntasum: {
+        type: Number,
+        required: 'Please fill Aquisition ntasum',
+      }
+    },
+    acqodis: {
+      type: Number,
+      required: 'Please fill Aquisition acqodis',
+    },
+    ntalisted: {
+      type: Number,
+      required: 'Please fill Aquisition ntalisted',
+    }
+  },
+  from2: {
+    netoperating: {
+      type: Number,
+      required: 'Please fill Aquisition netoperating',
+    },
+    ratio: {
+      type: Number,
+      required: 'Please fill Aquisition ratio',
+    },
+    netcompany: {
+      type: Number,
+      required: 'Please fill Aquisition netcompany',
+    }
+  },
+  from3: {
+    amount: {
+      type: Number,
+      required: 'Please fill Aquisition amount',
+    },
+    assetscompany: {
+      type: Number,
+      required: 'Please fill Aquisition assetscompany',
+    }
+  },
+  from4: {
+    sharespay: {
+      type: Number,
+      required: 'Please fill Aquisition sharespay',
+    },
+    sharespaycompany: {
+      type: Number,
+      required: 'Please fill Aquisition sharespaycompany',
+    }
   },
   created: {
     type: Date,

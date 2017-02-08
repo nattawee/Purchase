@@ -7,18 +7,7 @@
   <form name="vm.form.renovateForm" class="form-horizontal"  novalidate>
     <div class="row">
       <div class="col col-md-6">
-        <div class="row">
-
-          <div class="col col-md-10">
-            <div class="form-group">
-              <label class="col-sm-4 control-label">ลำดับ</label>
-              <div class="col-sm-8">
-                <p class="form-control-static"> {{vm.renovate.renovateno}} </p>
-              </div>
-            </div>
-          </div>
-          <div class="col col-md-2"></div>
-        </div>
+        
       </div>
       <div class="col col-md-6">
         <div class="row">
@@ -321,6 +310,20 @@
       </div>
       <div class="col col-md-2"></div>
     </div>
+    <div ng-include="'/modules/generals/client/views/form/form1.html'" ng-if="vm.general.status === 'approved' && vm.general.estexpense.amount >= 100000 && vm.general.methodtype === 'งานก่อสร้าง'">
+    </div>
+    <div ng-include="'/modules/generals/client/views/form/form2.html'" ng-if="vm.general.status === 'approved' && vm.general.estexpense.amount >= 100000 && vm.general.methodtype === 'การจ้างควบคุมงาน'">
+    </div>
+    <div ng-include="'/modules/generals/client/views/form/form3.html'" ng-if="vm.general.status === 'approved' && vm.general.estexpense.amount >= 100000 && vm.general.methodtype === 'การจ้างออกแบบ'">
+    </div>
+    <div ng-include="'/modules/generals/client/views/form/form4.html'" ng-if="vm.general.status === 'approved' && vm.general.estexpense.amount >= 100000 && vm.general.methodtype === 'การจ้างที่ปรึกษา'">
+    </div>
+    <div ng-include="'/modules/generals/client/views/form/form5.html'" ng-if="vm.general.status === 'approved' && vm.general.estexpense.amount >= 100000 && vm.general.methodtype === 'การจ้างงานวิจัยหรือเงินสนับสนุนให้ทุนการวิจัย'">
+    </div>
+    <div ng-include="'/modules/generals/client/views/form/form6.html'" ng-if="vm.general.status === 'approved' && vm.general.estexpense.amount >= 100000 && vm.general.methodtype === 'การจ้างพัฒนาระบบคอมพิวเตอร์'">
+    </div>
+    <div ng-include="'/modules/generals/client/views/form/form7.html'" ng-if="vm.general.status === 'approved' && vm.general.estexpense.amount >= 100000 && vm.general.methodtype === 'การจัดซื้อ/จัดจ้างที่มิใช่งานก่อสร้าง'">
+    </div>
     <div class="hr-line-dashed"></div>
     <div class="row">
       <div class="col col-xs-8">
@@ -331,6 +334,7 @@
         <button ng-click="vm.approved()" class="btn btn-primary">อนุมัติ</button>
       </div>
       <div class="col col-xs-4 text-right" ng-if="vm.renovate.status === 'approved'  && vm.authentication.user.roles[0] !== 'approver'">
+        <button ng-click="vm.save(vm.form.renovateForm.$valid)" class="btn btn-primary">บันทึกแบบร่าง</button>
         <button ng-click="vm.saveToCompleted(vm.form.renovateForm.$valid)" class="btn btn-primary">บันทึกข้อมูล</button>
       </div>
     </div>
