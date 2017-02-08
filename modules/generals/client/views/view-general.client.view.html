@@ -269,7 +269,7 @@
             <input type="text" ng-model="vm.general.supplier" name="supplier" class="form-control" placeholder="ผู้ขาย/ผู้ชนะการเสนอราคา"
               required>
           </div>
-          <div class="col-sm-10" ng-if="vm.general.status === 'completed'">
+          <div class="col-sm-8" ng-if="vm.general.status === 'completed'">
             <p class="form-control-static"> {{vm.general.supplier}}</p>
           </div>
         </div>
@@ -283,7 +283,7 @@
           <div class="col-sm-8" ng-if="vm.general.status === 'approved'">
             <input type="text" ng-model="vm.general.refno" name="refno" class="form-control" placeholder="เลขที่สัญญา/PO" required>
           </div>
-          <div class="col-sm-10" ng-if="vm.general.status === 'completed'">
+          <div class="col-sm-8" ng-if="vm.general.status === 'completed'">
             <p class="form-control-static"> {{vm.general.refno}}</p>
           </div>
         </div>
