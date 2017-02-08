@@ -40,7 +40,7 @@
                         <input type="number" ng-model="vm.general.form1.field2" name="field2" class="form-control" placeholder="บาท" required>
                     </div>
                     <div class="col-sm-9" ng-if="vm.general.status === 'completed'">
-                        <p class="form-control-static"> {{vm.general.form1.field2}} </p>
+                        <p class="form-control-static"> {{vm.general.form1.field2 | number:2}} </p>
                     </div>
                 </div>
             </div>
@@ -68,7 +68,7 @@
                         <input type="date" ng-model="vm.general.form1.field4.field41" name="field41" class="form-control" placeholder="ณ วันที่" required>
                     </div>
                     <div class="col-sm-9" ng-if="vm.general.status === 'completed'">
-                        <p class="form-control-static"> {{vm.general.form1.field4.field41}} </p>
+                        <p class="form-control-static"> {{vm.general.form1.field4.field41 | date:'dd/MM/yyyy' }} </p>
                     </div>
                 </div>
             </div>
@@ -83,7 +83,7 @@
                         <input type="number" ng-model="vm.general.form1.field4.field42" name="field42" class="form-control" placeholder="บาท" required>
                     </div>
                     <div class="col-sm-9" ng-if="vm.general.status === 'completed'">
-                        <p class="form-control-static"> {{vm.general.form1.field4.field42}} </p>
+                        <p class="form-control-static"> {{vm.general.form1.field4.field42 | number:2}} </p>
                     </div>
                 </div>
             </div>
