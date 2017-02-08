@@ -155,14 +155,11 @@
                   <div class="col-sm-4" ng-if="vm.general.status === 'approved'">
                     <input type="date" ng-model="vm.general.announcement.requestdate" name="requestdate" class="form-control" placeholder="วันที่ส่งฝ่ายสื่อสารองค์กร"
                       required>
-                      <div ng-messages="vm.form.generalForm.requestdate.$error">
-                        <div ng-message="required">You did not enter a field</div>
-                      </div>
                   </div>
                   <div class="col-sm-4" ng-if="vm.general.status === 'completed'">
                     <p class="form-control-static"> {{vm.general.announcement.requestdate | date:'dd/MM/yyyy'}}</p>
                   </div>
-
+                  
                 </div>
               </div>
               <div class="col col-md-2"></div>
