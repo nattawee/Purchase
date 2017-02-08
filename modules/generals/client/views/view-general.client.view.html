@@ -156,9 +156,7 @@
                     <input type="date" ng-model="vm.general.announcement.requestdate" name="requestdate" class="form-control" placeholder="วันที่ส่งฝ่ายสื่อสารองค์กร"
                       required>
                   </div>
-                  <div class="col-sm-4" ng-if="vm.general.status === 'completed'">
-                    <p class="form-control-static"> {{vm.general.announcement.requestdate | date:'dd/MM/yyyy'}}</p>
-                  </div>
+                  
                   
                 </div>
               </div>
@@ -173,9 +171,7 @@
                     <input type="date" ng-model="vm.general.announcement.onlinedate" name="onlinedate" class="form-control" placeholder="วันที่ประกาศ Website BAM"
                       required>
                   </div>
-                  <div class="col-sm-4" ng-if="vm.general.status === 'completed'">
-                    <p class="form-control-static"> {{vm.general.announcement.onlinedate | date:'dd/MM/yyyy'}}</p>
-                  </div>
+                  
                 </div>
               </div>
               <div class="col col-md-2"></div>
@@ -189,9 +185,7 @@
                     <input type="text" ng-model="vm.general.announcement.reference" name="reference" class="form-control" placeholder="เลขที่อ้างอิง"
                       required>
                   </div>
-                  <div class="col-sm-10" ng-if="vm.general.status === 'completed'">
-                    <p class="form-control-static"> {{vm.general.announcement.reference}}</p>
-                  </div>
+                  
                 </div>
               </div>
               <div class="col col-md-2"></div>
@@ -219,9 +213,7 @@
                   <div class="col-sm-10" ng-if="vm.general.status === 'approved'">
                     <input type="number" ng-model="vm.general.purchase.amount" name="amount" class="form-control" placeholder="จำนวนเงิน" required>
                   </div>
-                  <div class="col-sm-10" ng-if="vm.general.status === 'completed'">
-                    <p class="form-control-static"> {{vm.general.purchase.amount | number:2}}</p>
-                  </div>
+                  
                 </div>
               </div>
               <div class="col col-md-2"></div>
@@ -234,9 +226,7 @@
                   <div class="col-sm-4" ng-if="vm.general.status === 'approved'">
                     <input type="date" ng-model="vm.general.purchase.apprvdate" name="apprvdate" class="form-control" placeholder="วันที่" required>
                   </div>
-                  <div class="col-sm-4" ng-if="vm.general.status === 'completed'">
-                    <p class="form-control-static"> {{vm.general.purchase.apprvdate | date:'dd/MM/yyyy'}}</p>
-                  </div>
+                  
                 </div>
               </div>
               <div class="col col-md-2"></div>
@@ -250,9 +240,7 @@
                     <input type="text" ng-model="vm.general.purchase.approver" name="approver" class="form-control" placeholder="ผู้อนุมัติ"
                       required>
                   </div>
-                  <div class="col-sm-10" ng-if="vm.general.status === 'completed'">
-                    <p class="form-control-static"> {{vm.general.purchase.approver}}</p>
-                  </div>
+                  
                 </div>
               </div>
               <div class="col col-md-2"></div>
@@ -270,9 +258,7 @@
             <input type="text" ng-model="vm.general.supplier" name="supplier" class="form-control" placeholder="ผู้ขาย/ผู้ชนะการเสนอราคา"
               required>
           </div>
-          <div class="col-sm-8" ng-if="vm.general.status === 'completed'">
-            <p class="form-control-static"> {{vm.general.supplier}}</p>
-          </div>
+          
         </div>
       </div>
       <div class="col col-md-2"></div>
@@ -284,9 +270,7 @@
           <div class="col-sm-8" ng-if="vm.general.status === 'approved'">
             <input type="text" ng-model="vm.general.refno" name="refno" class="form-control" placeholder="เลขที่สัญญา/PO" required>
           </div>
-          <div class="col-sm-8" ng-if="vm.general.status === 'completed'">
-            <p class="form-control-static"> {{vm.general.refno}}</p>
-          </div>
+          
         </div>
       </div>
       <div class="col col-md-2"></div>
@@ -310,9 +294,7 @@
                   <div class="col-sm-4" ng-if="vm.general.status === 'approved'">
                     <input type="date" ng-model="vm.general.nacc.naccdocdate" name="naccdocdate" class="form-control" placeholder="วันที่" required>
                   </div>
-                  <div class="col-sm-4" ng-if="vm.general.status === 'completed'">
-                    <p class="form-control-static"> {{vm.general.nacc.naccdocdate | date:'dd/MM/yyyy'}}</p>
-                  </div>
+                  
                 </div>
               </div>
               <div class="col col-md-2"></div>
@@ -325,9 +307,7 @@
                   <div class="col-sm-10" ng-if="vm.general.status === 'approved'">
                     <input type="text" ng-model="vm.general.nacc.naccdocno" name="naccdocno" class="form-control" placeholder="เลขที่ ปปช" required>
                   </div>
-                  <div class="col-sm-10" ng-if="vm.general.status === 'completed'">
-                    <p class="form-control-static"> {{vm.general.nacc.naccdocno}}</p>
-                  </div>
+                  
                 </div>
               </div>
               <div class="col col-md-2"></div>
@@ -337,20 +317,7 @@
       </div>
       <div class="col col-md-2"></div>
     </div>
-    <div ng-include="'/modules/generals/client/views/form/form1.html'" ng-if="(vm.general.status === 'approved' || vm.general.status === 'completed') && vm.general.estexpense.amount >= 100000 && vm.general.methodtype === 'งานก่อสร้าง'">
-    </div>
-    <div ng-include="'/modules/generals/client/views/form/form2.html'" ng-if="(vm.general.status === 'approved' || vm.general.status === 'completed') && vm.general.estexpense.amount >= 100000 && vm.general.methodtype === 'การจ้างควบคุมงาน'">
-    </div>
-    <div ng-include="'/modules/generals/client/views/form/form3.html'" ng-if="(vm.general.status === 'approved' || vm.general.status === 'completed') && vm.general.estexpense.amount >= 100000 && vm.general.methodtype === 'การจ้างออกแบบ'">
-    </div>
-    <div ng-include="'/modules/generals/client/views/form/form4.html'" ng-if="(vm.general.status === 'approved' || vm.general.status === 'completed') && vm.general.estexpense.amount >= 100000 && vm.general.methodtype === 'การจ้างที่ปรึกษา'">
-    </div>
-    <div ng-include="'/modules/generals/client/views/form/form5.html'" ng-if="(vm.general.status === 'approved' || vm.general.status === 'completed') && vm.general.estexpense.amount >= 100000 && vm.general.methodtype === 'การจ้างงานวิจัยหรือเงินสนับสนุนให้ทุนการวิจัย'">
-    </div>
-    <div ng-include="'/modules/generals/client/views/form/form6.html'" ng-if="(vm.general.status === 'approved' || vm.general.status === 'completed') && vm.general.estexpense.amount >= 100000 && vm.general.methodtype === 'การจ้างพัฒนาระบบคอมพิวเตอร์'">
-    </div>
-    <div ng-include="'/modules/generals/client/views/form/form7.html'" ng-if="(vm.general.status === 'approved' || vm.general.status === 'completed') && vm.general.estexpense.amount >= 100000 && vm.general.methodtype === 'การจัดซื้อ/จัดจ้างที่มิใช่งานก่อสร้าง'">
-    </div>
+    
     <div class="hr-line-dashed"></div>
     <div class="row">
       <div class="col col-xs-8">
