@@ -152,9 +152,12 @@
               <div class="col col-md-10">
                 <div class="form-group" show-errors>
                   <label class="col-sm-2 control-label">วันที่ส่งฝ่ายสื่อสารองค์กร</label>
-                  <div class="col-sm-4">
+                  <div class="col-sm-4" ng-if="vm.general.status === 'approved'">
                     <input type="date" ng-model="vm.general.announcement.requestdate" name="requestdate" class="form-control" placeholder="วันที่ส่งฝ่ายสื่อสารองค์กร"
                       required>
+                  </div>
+                  <div class="col-sm-4" ng-if="vm.general.status === 'completed'">
+                    <p class="form-control-static"> {{vm.general.announcement.requestdate | date:'dd/MM/yyyy'}}</p>
                   </div>
                 </div>
               </div>
@@ -165,9 +168,12 @@
               <div class="col col-md-10">
                 <div class="form-group" show-errors>
                   <label class="col-sm-2 control-label">วันที่ประกาศ Website BAM</label>
-                  <div class="col-sm-4">
+                  <div class="col-sm-4" ng-if="vm.general.status === 'approved'">
                     <input type="date" ng-model="vm.general.announcement.onlinedate" name="onlinedate" class="form-control" placeholder="วันที่ประกาศ Website BAM"
                       required>
+                  </div>
+                  <div class="col-sm-4" ng-if="vm.general.status === 'completed'">
+                    <p class="form-control-static"> {{vm.general.announcement.onlinedate | date:'dd/MM/yyyy'}}</p>
                   </div>
                 </div>
               </div>
@@ -178,9 +184,12 @@
               <div class="col col-md-10">
                 <div class="form-group" show-errors>
                   <label class="col-sm-2 control-label">เลขที่อ้างอิง</label>
-                  <div class="col-sm-10">
+                  <div class="col-sm-10" ng-if="vm.general.status === 'approved'">
                     <input type="text" ng-model="vm.general.announcement.reference" name="reference" class="form-control" placeholder="เลขที่อ้างอิง"
                       required>
+                  </div>
+                  <div class="col-sm-10" ng-if="vm.general.status === 'completed'">
+                    <p class="form-control-static"> {{vm.general.announcement.reference}}</p>
                   </div>
                 </div>
               </div>
@@ -206,8 +215,11 @@
               <div class="col col-md-10">
                 <div class="form-group" show-errors>
                   <label class="col-sm-2 control-label">จำนวนเงิน</label>
-                  <div class="col-sm-10">
+                  <div class="col-sm-10" ng-if="vm.general.status === 'approved'">
                     <input type="number" ng-model="vm.general.purchase.amount" name="amount" class="form-control" placeholder="จำนวนเงิน" required>
+                  </div>
+                  <div class="col-sm-10" ng-if="vm.general.status === 'completed'">
+                    <p class="form-control-static"> {{vm.general.purchase.amount | number:2}}</p>
                   </div>
                 </div>
               </div>
@@ -218,8 +230,11 @@
               <div class="col col-md-10">
                 <div class="form-group" show-errors>
                   <label class="col-sm-2 control-label">วันที่</label>
-                  <div class="col-sm-4">
+                  <div class="col-sm-4" ng-if="vm.general.status === 'approved'">
                     <input type="date" ng-model="vm.general.purchase.apprvdate" name="apprvdate" class="form-control" placeholder="วันที่" required>
+                  </div>
+                  <div class="col-sm-4" ng-if="vm.general.status === 'completed'">
+                    <p class="form-control-static"> {{vm.general.purchase.apprvdate | date:'dd/MM/yyyy'}}</p>
                   </div>
                 </div>
               </div>
@@ -230,9 +245,12 @@
               <div class="col col-md-10">
                 <div class="form-group" show-errors>
                   <label class="col-sm-2 control-label">ผู้อนุมัติ</label>
-                  <div class="col-sm-10">
+                  <div class="col-sm-10" ng-if="vm.general.status === 'approved'">
                     <input type="text" ng-model="vm.general.purchase.approver" name="approver" class="form-control" placeholder="ผู้อนุมัติ"
                       required>
+                  </div>
+                  <div class="col-sm-10" ng-if="vm.general.status === 'completed'">
+                    <p class="form-control-static"> {{vm.general.purchase.approver}}</p>
                   </div>
                 </div>
               </div>
@@ -247,9 +265,12 @@
       <div class="col col-md-10">
         <div class="form-group" show-errors>
           <label class="col-sm-4 control-label">ผู้ขาย/ผู้ชนะการเสนอราคา</label>
-          <div class="col-sm-8">
+          <div class="col-sm-8" ng-if="vm.general.status === 'approved'">
             <input type="text" ng-model="vm.general.supplier" name="supplier" class="form-control" placeholder="ผู้ขาย/ผู้ชนะการเสนอราคา"
               required>
+          </div>
+          <div class="col-sm-10" ng-if="vm.general.status === 'completed'">
+            <p class="form-control-static"> {{vm.general.supplier}}</p>
           </div>
         </div>
       </div>
@@ -259,8 +280,11 @@
       <div class="col col-md-10">
         <div class="form-group" show-errors>
           <label class="col-sm-4 control-label">เลขที่สัญญา/PO</label>
-          <div class="col-sm-8">
+          <div class="col-sm-8" ng-if="vm.general.status === 'approved'">
             <input type="text" ng-model="vm.general.refno" name="refno" class="form-control" placeholder="เลขที่สัญญา/PO" required>
+          </div>
+          <div class="col-sm-10" ng-if="vm.general.status === 'completed'">
+            <p class="form-control-static"> {{vm.general.refno}}</p>
           </div>
         </div>
       </div>
@@ -282,8 +306,11 @@
               <div class="col col-md-10">
                 <div class="form-group" show-errors>
                   <label class="col-sm-2 control-label">วันที่</label>
-                  <div class="col-sm-4">
+                  <div class="col-sm-4" ng-if="vm.general.status === 'approved'">
                     <input type="date" ng-model="vm.general.nacc.naccdocdate" name="naccdocdate" class="form-control" placeholder="วันที่" required>
+                  </div>
+                  <div class="col-sm-4" ng-if="vm.general.status === 'completed'">
+                    <p class="form-control-static"> {{vm.general.nacc.naccdocdate | date:'dd/MM/yyyy'}}</p>
                   </div>
                 </div>
               </div>
@@ -294,8 +321,11 @@
               <div class="col col-md-10">
                 <div class="form-group" show-errors>
                   <label class="col-sm-2 control-label">เลขที่</label>
-                  <div class="col-sm-10">
+                  <div class="col-sm-10" ng-if="vm.general.status === 'approved'">
                     <input type="text" ng-model="vm.general.nacc.naccdocno" name="naccdocno" class="form-control" placeholder="เลขที่ ปปช" required>
+                  </div>
+                  <div class="col-sm-10" ng-if="vm.general.status === 'completed'">
+                    <p class="form-control-static"> {{vm.general.nacc.naccdocno}}</p>
                   </div>
                 </div>
               </div>
