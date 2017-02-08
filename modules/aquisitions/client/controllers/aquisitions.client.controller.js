@@ -8,7 +8,7 @@
 
   AquisitionsController.$inject = ['$scope', '$state', '$window', 'Authentication', 'aquisitionResolve'];
 
-  function AquisitionsController ($scope, $state, $window, Authentication, aquisition) {
+  function AquisitionsController($scope, $state, $window, Authentication, aquisition) {
     var vm = this;
 
     vm.authentication = Authentication;
@@ -17,6 +17,29 @@
     vm.form = {};
     vm.remove = remove;
     vm.save = save;
+    $scope.step = function (step) {
+      if (step === 1) {
+        $scope.step1 = 'active';
+        $scope.step2 = null;
+        $scope.step3 = null;
+        $scope.step4 = null;
+      } else if (step === 2) {
+        $scope.step1 = 'active';
+        $scope.step2 = 'active';
+        $scope.step3 = null;
+        $scope.step4 = null;
+      } else if (step === 3) {
+        $scope.step1 = 'active';
+        $scope.step2 = 'active';
+        $scope.step3 = 'active';
+        $scope.step4 = null;
+      } else if (step === 4) {
+        $scope.step1 = 'active';
+        $scope.step2 = 'active';
+        $scope.step3 = 'active';
+        $scope.step4 = 'active';
+      }
+    };
 
     // Remove existing Aquisition
     function remove() {
@@ -50,4 +73,4 @@
       }
     }
   }
-}());
+} ());
