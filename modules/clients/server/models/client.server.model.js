@@ -28,7 +28,9 @@ var ClientSchema = new Schema({
     enum: ['P', 'C'],
     required: 'Please fill Client type'
   },
-  relations: [String],
+  relations: [{
+    rela:String
+  }],
   created: {
     type: Date,
     default: Date.now
