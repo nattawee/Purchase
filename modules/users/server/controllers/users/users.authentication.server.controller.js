@@ -54,10 +54,17 @@ exports.signup = function (req, res) {
 
 exports.createuser = function (req, res) {
   // For security measurement we remove the roles from the req.body object
-  delete req.body.roles;
+  // delete req.body.roles;
 
   // Init Variables
   var user = new User(req.body);
+  if(req.body.roles === 'admin')
+  {
+    user.roles = ['admin'];
+  }else if(req.body.roles === 'approver')
+  {
+    user.roles = ['approver'];
+  }
   var message = null;
 
   // Add missing user fields

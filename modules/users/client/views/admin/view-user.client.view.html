@@ -57,6 +57,18 @@
                   </div>
                 </div>
 
+                <div class="form-group" show-errors>
+                  <label for="roles">สิทธิ์การใช้งาน</label>
+                  <select class="form-control" name="roles" ng-model="credentials.roles" required>
+                      <option value="user">ผู้ใช้งานทั่วไป</option>
+                      <option value="approver">ผู้อนุมัติรายการ</option>
+                      <option value="admin">ผู้ดูแลระบบ</option>
+                  </select>
+                  <div ng-messages="userForm.roles.$error" role="alert">
+                    <p class="help-block error-text" ng-message="required">Roles is required.</p>
+                  </div>
+                </div>
+
               </div>
               <div class="col-xs-6">
                 <div class="form-group" show-errors>
