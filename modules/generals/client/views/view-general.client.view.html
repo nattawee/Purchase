@@ -158,6 +158,7 @@
                   </div>
                 </div>
                 <div class="form-group" ng-if="vm.general.status === 'completed'">
+                  <label class="col-sm-2 control-label">วันที่ส่งฝ่ายสื่อสารองค์กร</label>
                   <div class="col-sm-4">
                     <p class="form-control-static"> {{vm.general.announcement.requestdate | date:'dd/MM/yyyy'}}</p>
                   </div>
@@ -175,6 +176,7 @@
                   </div>
                 </div>
                 <div class="form-group" ng-if="vm.general.status === 'completed'">
+                  <label class="col-sm-2 control-label">วันที่ประกาศ Website BAM</label>
                   <div class="col-sm-4">
                     <p class="form-control-static"> {{vm.general.announcement.onlinedate | date:'dd/MM/yyyy'}}</p>
                   </div>
@@ -193,6 +195,7 @@
                   </div>
                 </div>
                 <div class="form-group" ng-if="vm.general.status === 'completed'">
+                  <label class="col-sm-2 control-label">เลขที่อ้างอิง</label>
                   <div class="col-sm-10">
                     <p class="form-control-static"> {{vm.general.announcement.reference}}</p>
                   </div>
@@ -225,6 +228,7 @@
                   </div>
                 </div>
                 <div class="form-group" ng-if="vm.general.status === 'completed'">
+                  <label class="col-sm-2 control-label">จำนวนเงิน</label>
                   <div class="col-sm-10">
                     <p class="form-control-static"> {{vm.general.purchase.amount | number:2}}</p>
                   </div>
@@ -242,6 +246,7 @@
                   </div>
                 </div>
                 <div class="form-group" ng-if="vm.general.status === 'completed'">
+                  <label class="col-sm-2 control-label">วันที่</label>
                   <div class="col-sm-4">
                     <p class="form-control-static"> {{vm.general.purchase.apprvdate | date:'dd/MM/yyyy'}}</p>
                   </div>
@@ -260,6 +265,7 @@
                   </div>
                 </div>
                 <div class="form-group" ng-if="vm.general.status === 'completed'">
+                  <label class="col-sm-2 control-label">ผู้อนุมัติ</label>
                   <div class="col-sm-10">
                     <p class="form-control-static"> {{vm.general.purchase.approver}}</p>
                   </div>
@@ -282,6 +288,7 @@
           </div>
         </div>
         <div class="form-group" ng-if="vm.general.status === 'completed'">
+          <label class="col-sm-4 control-label">ผู้ขาย/ผู้ชนะการเสนอราคา</label>          
           <div class="col-sm-8">
             <p class="form-control-static"> {{vm.general.supplier}}</p>
           </div>
@@ -326,8 +333,9 @@
                     <input type="date" ng-model="vm.general.nacc.naccdocdate" name="naccdocdate" class="form-control" placeholder="วันที่" required>
                   </div>
                 </div>
-                <div class="form-group">
-                  <div class="col-sm-4" ng-if="vm.general.status === 'completed'">
+                <div class="form-group" ng-if="vm.general.status === 'completed'">
+                  <label class="col-sm-2 control-label">วันที่</label>
+                  <div class="col-sm-4" >                    
                     <p class="form-control-static"> {{vm.general.nacc.naccdocdate | date:'dd/MM/yyyy'}}</p>
                   </div>
                 </div>
@@ -343,8 +351,9 @@
                     <input type="text" ng-model="vm.general.nacc.naccdocno" name="naccdocno" class="form-control" placeholder="เลขที่ ปปช" required>
                   </div>
                 </div>
-                <div class="form-group">
-                  <div class="col-sm-10" ng-if="vm.general.status === 'completed'">
+                <div class="form-group" ng-if="vm.general.status === 'completed'">
+                  <label class="col-sm-2 control-label">เลขที่</label>
+                  <div class="col-sm-10" >
                     <p class="form-control-static"> {{vm.general.nacc.naccdocno}}</p>
                   </div>
                 </div>
