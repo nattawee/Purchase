@@ -38,7 +38,7 @@
                 </div>
 
                 <div class="form-group" show-errors>
-                  <label for="branch">สาขา</label>
+                  <label for="branch">สำนักงาน</label>
                   <select class="form-control" name="branch" ng-model="credentials.branch" required>
                       <option ng-repeat="option in branchesService" value="{{option._id}}">{{option.name}}</option>
                   </select>
@@ -48,7 +48,7 @@
                 </div>
 
                 <div class="form-group" show-errors>
-                  <label for="department">แผนก</label>
+                  <label for="department">ฝ่าย</label>
                   <select class="form-control" name="department" ng-model="credentials.department" required>
                       <option ng-repeat="option in departmentsService" value="{{option._id}}">{{option.name}}</option>
                   </select>   
