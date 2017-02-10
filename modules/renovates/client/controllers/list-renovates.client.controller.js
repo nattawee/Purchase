@@ -40,13 +40,13 @@
       renovate: 4,
       name: 'เสร็จสมบูรณ์ 1',
       status: 'completed1',
-      uriref: 'renovates.view({ generalId: general._id })'
+      uriref: 'renovates.view({ renovateId: property._id })'
     },
     {
       renovate: 5,
       name: 'เสร็จสมบูรณ์ 2',
       status: 'completed2',
-      uriref: 'renovates.view({ generalId: general._id })'
+      uriref: 'renovates.view({ renovateId: property._id })'
     }];
   }
 }());
