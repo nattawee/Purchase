@@ -57,7 +57,6 @@ var RenovateSchema = new Schema({
     estexpense: {
         amount: {
             type: Number,
-            default: 0,
             required: 'Please fill General amount',
             trim: true
         },
@@ -86,7 +85,6 @@ var RenovateSchema = new Schema({
     }, purchase: {
         amount: {
             type: Number,
-            default: 0,
             // required: 'Please fill General amount',
             trim: true
         },
