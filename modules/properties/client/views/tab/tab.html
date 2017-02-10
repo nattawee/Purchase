@@ -25,7 +25,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr ng-repeat="property in vm.properties | filter:{ status: tab.status }  | filter:searchText" ui-sref={{tab.uriref}}>
+              <tr ng-repeat="property in vm.properties | filter:{ status: tab.status }  | filter:searchText" ui-sref={{tab.uriref}} ng-if="property.department._id === vm.authentication.user.branch">
                 
                 <td>{{property.propertyid || property.renovateid}}</td>
                 <td>{{property.documentno}}</td>
