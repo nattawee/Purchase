@@ -6,12 +6,13 @@
 var should = require('should'),
   mongoose = require('mongoose'),
   User = mongoose.model('User'),
-  General = mongoose.model('General');
-
+  General = mongoose.model('General'),
+  Branch = mongoose.model('Branch');
 /**
  * Globals
  */
 var user,
+  branch,
   general;
 
 /**
@@ -27,12 +28,15 @@ describe('General Model Unit Tests:', function () {
       username: 'username',
       password: 'password'
     });
-
+    branch = new Branch({
+      name: 'Branch Name',
+      user: user
+    });
     user.save(function () {
       general = new General({
         trnsdate: Date.now(),
         itemdesc: 'เครื่อง printer brother รุ่น MFC-7860DW',
-        department: 'บริหารทั่วไป',
+        department: branch,
         owner: 'ธีรศักดิ์ ทับฤทธิ์',
         docno: 'PO-01',
         estexpense: {
@@ -47,7 +51,7 @@ describe('General Model Unit Tests:', function () {
           apprvdate: Date.now(),
           approver: 'approver'
         },
-        status:'status',
+        status: 'status',
         user: user
       });
 
@@ -63,10 +67,10 @@ describe('General Model Unit Tests:', function () {
         done();
       });
     });
-    it('should be able to show an error when try to save without trnsdate', function(done) {
+    it('should be able to show an error when try to save without trnsdate', function (done) {
       general.trnsdate = null;
 
-      return general.save(function(err) {
+      return general.save(function (err) {
         should.exist(err);
         done();
       });
@@ -104,19 +108,19 @@ describe('General Model Unit Tests:', function () {
       });
     });
 
-    it('should be able to show an error when try to save without estimate expense amount', function(done) {
-      general.estexpense.amount = null; 
+    it('should be able to show an error when try to save without estimate expense amount', function (done) {
+      general.estexpense.amount = null;
 
-      return general.save(function(err) {
+      return general.save(function (err) {
         should.exist(err);
         done();
       });
     });
 
-    it('should be able to show an error when try to save without estimate approve date', function(done) {
-      general.estexpense.apprvdate = null; 
+    it('should be able to show an error when try to save without estimate approve date', function (done) {
+      general.estexpense.apprvdate = null;
 
-      return general.save(function(err) {
+      return general.save(function (err) {
         should.exist(err);
         done();
       });

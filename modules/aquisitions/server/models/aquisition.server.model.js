@@ -10,7 +10,7 @@ var mongoose = require('mongoose'),
  * Aquisition Schema
  */
 var AquisitionSchema = new Schema({
-  from1: {
+  form1: {
     nta: {
       assetssum: {
         type: Number,
@@ -39,7 +39,7 @@ var AquisitionSchema = new Schema({
       required: 'Please fill Aquisition ntalisted',
     }
   },
-  from2: {
+  form2: {
     netoperating: {
       type: Number,
       required: 'Please fill Aquisition netoperating',
@@ -53,7 +53,7 @@ var AquisitionSchema = new Schema({
       required: 'Please fill Aquisition netcompany',
     }
   },
-  from3: {
+  form3: {
     amount: {
       type: Number,
       required: 'Please fill Aquisition amount',
@@ -63,7 +63,7 @@ var AquisitionSchema = new Schema({
       required: 'Please fill Aquisition assetscompany',
     }
   },
-  from4: {
+  form4: {
     sharespay: {
       type: Number,
       required: 'Please fill Aquisition sharespay',
@@ -73,6 +73,15 @@ var AquisitionSchema = new Schema({
       required: 'Please fill Aquisition sharespaycompany',
     }
   },
+  startdate: Date,
+  relations: String,
+  descriptionlist: String,
+  descriptionproduct: String,
+  caculation: String,
+  benefit: String,
+  comment: String,
+  manipulator: String,
+  approvers: String,
   created: {
     type: Date,
     default: Date.now

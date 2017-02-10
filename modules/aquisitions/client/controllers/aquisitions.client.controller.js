@@ -13,6 +13,7 @@
 
     vm.authentication = Authentication;
     vm.aquisition = aquisition;
+    vm.aquisition.startdate = new Date(vm.aquisition.startdate);
     vm.error = null;
     vm.form = {};
     vm.remove = remove;
@@ -23,21 +24,31 @@
         $scope.step2 = null;
         $scope.step3 = null;
         $scope.step4 = null;
+        $scope.step5 = null;
       } else if (step === 2) {
         $scope.step1 = 'active';
         $scope.step2 = 'active';
         $scope.step3 = null;
         $scope.step4 = null;
+        $scope.step5 = null;
       } else if (step === 3) {
         $scope.step1 = 'active';
         $scope.step2 = 'active';
         $scope.step3 = 'active';
         $scope.step4 = null;
+        $scope.step5 = null;
       } else if (step === 4) {
         $scope.step1 = 'active';
         $scope.step2 = 'active';
         $scope.step3 = 'active';
         $scope.step4 = 'active';
+        $scope.step5 = null;
+      } else if (step === 5) {
+        $scope.step1 = 'active';
+        $scope.step2 = 'active';
+        $scope.step3 = 'active';
+        $scope.step4 = 'active';
+        $scope.step5 = 'active';
       }
     };
 
@@ -50,6 +61,7 @@
 
     // Save Aquisition
     function save(isValid) {
+      console.log(vm.aquisition);
       if (!isValid) {
         $scope.$broadcast('show-errors-check-validity', 'vm.form.aquisitionForm');
         return false;
