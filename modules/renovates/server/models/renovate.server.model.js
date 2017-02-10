@@ -15,16 +15,18 @@ var RenovateSchema = new Schema({
     //     required: 'Please fill renovateno'
     // },
     renovateid: {
-        type: Number,
+        type: String,
+        default: 'ยังไม่ระบุ',
         //required: 'Please fill renovateid'
     },
     documentno: {
-        type: Number,
+        type: String,
+        default: 'ยังไม่ระบุ',
         //required: 'Please fill documentno'
     },
     name: {
         type: String,
-        default: '',
+        default: 'ยังไม่ระบุ',
         //required: 'Please fill Renovate name',
         trim: true
     },

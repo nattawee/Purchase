@@ -15,16 +15,18 @@ var PropertySchema = new Schema({
     //     required: 'Please fill propertyno'
     // },
     propertyid: {
-        type: Number,
+        type: String,
+        default: 'ยังไม่ระบุ',
         //required: 'Please fill propertyid'
     },
     documentno: {
-        type: Number,
+        type: String,
+        default: 'ยังไม่ระบุ',
         //required: 'Please fill documentno'
     },
     name: {
         type: String,
-        default: '',
+        default: 'ยังไม่ระบุ',
         //required: 'Please fill Property name',
         trim: true
     },
