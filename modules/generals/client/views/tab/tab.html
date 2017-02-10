@@ -26,9 +26,9 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr ng-repeat="general in vm.generals | filter:{ status: tab.status } | filter:searchText" ui-sref="{{tab.uriref}}" >
+                        <tr ng-repeat="general in vm.generals | filter:{ status: tab.status } | filter:{ department._id.toString(): vm.authentication.user.branch} | filter:searchText" ui-sref="{{tab.uriref}}" >
                             <td>
-                                {{general.trnsdate | date:'dd/MM/yyyy'}} -- {{ general.department}} -- {{vm.authentication.user.branch}}
+                                {{general.trnsdate | date:'dd/MM/yyyy'}}
                             </td>
                             <td>{{general.itemdesc}}</td>
                             <td>{{general.department.name}}</td>
