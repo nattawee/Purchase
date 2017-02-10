@@ -11,5 +11,35 @@
     var vm = this;
     vm.authentication = Authentication;
     vm.generals = GeneralsService.query();
+    vm.tabs = [{
+      renovate: 0,
+      name: 'แบบร่าง',
+      status: 'draft',
+      uriref: 'generals.edit({ generalId: general._id })'
+    },
+    {
+      renovate: 1,
+      name: 'รออนุมัติ',
+      status: 'waiting for approve',
+      uriref: 'generals.view({ generalId: general._id })'
+    },
+    {
+      renovate: 2,
+      name: 'อนุมัติ',
+      status: 'approved',
+      uriref: 'generals.view({ generalId: general._id })'
+    },
+    {
+      renovate: 3,
+      name: 'รอแก้ไข',
+      status: 'rejected',
+      uriref: 'generals.edit({ generalId: general._id })'
+    },
+    {
+      renovate: 4,
+      name: 'เสร็จสมบูรณ์',
+      status: 'completed',
+      uriref: 'generals.view({ generalId: general._id })'
+    }];
   }
-}());
+} ());

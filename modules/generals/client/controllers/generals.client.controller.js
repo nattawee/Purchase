@@ -12,19 +12,19 @@
     var vm = this;
     vm.authentication = Authentication;
     BranchesService.query(function (ret) {
-      
-      if(vm.authentication.branch){
+
+      if (vm.authentication.branch) {
         $scope.branchesService = [];
-        ret.forEach(function(brch){
-          if(brch._id === vm.authentication.branch){
-             $scope.branchesService.push(brch);
+        ret.forEach(function (brch) {
+          if (brch._id === vm.authentication.branch) {
+            $scope.branchesService.push(brch);
           }
         });
-      }else{
+      } else {
         $scope.branchesService = ret;
       }
     });
-    vm.general = general;    
+    vm.general = general;
     if (vm.general.trnsdate) {
       vm.general.trnsdate = new Date(vm.general.trnsdate);
     }
@@ -65,12 +65,12 @@
       vm.general.form7.field3.field31 = new Date(vm.general.form7.field3.field31);
     }
 
-    
-    
     vm.error = null;
     vm.form = {};
     vm.remove = remove;
     vm.save = save;
+    
+
     vm.saveToApprove = function (isValid) {
       if (!isValid) {
         $scope.$broadcast('show-errors-check-validity', 'vm.form.generalForm');

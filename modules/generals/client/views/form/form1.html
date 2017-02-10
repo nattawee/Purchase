@@ -83,7 +83,7 @@
                 <div class="form-group" ng-if="vm.general.status === 'completed'">
                     <label class="col-sm-3 control-label">4. ราคากลางคำนวณ ณ วันที่</label>
                     <div class="col-sm-9">
-                        <p class="form-control-static"> {{vm.general.form1.field4.field4}} </p>
+                        <p class="form-control-static"> {{vm.general.form1.field4.field41 | date:'dd/MM/yyyy'}} </p>
                     </div>
                 </div>
             </div>
@@ -101,7 +101,7 @@
                 <div class="form-group" ng-if="vm.general.status === 'completed'">
                     <label class="col-sm-3 control-label">เป็นเงิน</label>
                     <div class="col-sm-9">
-                        <p class="form-control-static"> {{vm.general.form1.field4.field2}} </p>
+                        <p class="form-control-static"> {{vm.general.form1.field4.field42}} </p>
                     </div>
                 </div>
             </div>

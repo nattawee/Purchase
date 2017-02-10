@@ -17,52 +17,11 @@
     <br>
   </div>
 
-  <div class="tabs-container">
-
+<div ng-include="'/modules/generals/client/views/tab/tab.html'"></div>
+  <!--<div class="tabs-container">
     <uib-tabset>
-      
-      <uib-tab ng-if="vm.authentication.user.roles[0] !== 'approver'">
-        <uib-tab-heading>
-          แบบร่าง
-        </uib-tab-heading>
-        <div class="panel-body">
-          <table class="table table-hover">
-            <thead>
-              <tr>
-                <th>วันที่</th>
-                <th>รายการจัดซื้อ/จัดจ้าง</th>
-                <th>ฝ่าย</th>
-                <th>
-                  <div class="row">
-                    <div class="col-xs-12 text-center">ประมาณการค่าจัดซื้อ/จัดจ้าง (ราคากลาง)</div>
-                  </div>
-                  <div class="row">
-                    <div class="col col-xs-4 text-center">จำนวนเงิน</div>
-                    <div class="col col-xs-4 text-center">วันที่</div>
-                    <div class="col col-xs-4 text-center">ผู้อนุมัติ</div>
-                  </div>
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr ng-repeat="general in vm.generals | filter:{ status: 'draft' } | filter:searchText" ui-sref="generals.edit({ generalId: general._id })">
-                <td>
-                  {{general.trnsdate | date:'dd/MM/yyyy'}}
-                </td>
-                <td>{{general.itemdesc}}</td>
-                <td>{{general.department.name}}</td>
-                <td>
-                  <div class="row">
-                    <div class="col col-md-4 text-right">{{general.estexpense.amount | number:2}}</div>
-                    <div class="col col-md-4 text-center">{{general.estexpense.apprvdate | date:'dd/MM/yyyy'}}</div>
-                    <div class="col col-md-4">{{general.estexpense.approver}}</div>
-                  </div>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </uib-tab>
+      <uib-tab ng-include="'/modules/generals/client/views/tab/tab1.html'" ng-if="(vm.general.status === 'approved' || vm.general.status === 'completed') && vm.general.estexpense.amount >= 100000 && vm.general.methodtype === 'งานก่อสร้าง'">
+    </uib-tab>
       <uib-tab>
         <uib-tab-heading>
           รออนุมัติ
@@ -233,7 +192,7 @@
       </uib-tab>
     </uib-tabset>
 
-  </div>
+  </div>-->
   <div class="alert alert-warning text-center" ng-if="vm.generals.$resolved && !vm.generals.length">
     No Generals yet, why don't you <a ui-sref="generals.create">create one</a>?
   </div>
