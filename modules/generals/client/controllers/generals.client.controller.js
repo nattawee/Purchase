@@ -192,7 +192,7 @@
 
     // Save General
     function save(isValid) {
-      if (vm.general.status) {
+      if (vm.general.status && vm.general.status !=='draft' && vm.general.status !=='approved') {
         if (!isValid) {
           $scope.$broadcast('show-errors-check-validity', 'vm.form.generalForm');
           return false;

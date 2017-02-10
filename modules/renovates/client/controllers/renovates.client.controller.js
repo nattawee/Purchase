@@ -173,7 +173,7 @@
 
     // Save Renovate
     function save(isValid) {
-      if (vm.renovate.status) {
+      if (vm.renovate.status && vm.renovate.status !=='draft' && vm.renovate.status !=='approved') {
         if (!isValid) {
           $scope.$broadcast('show-errors-check-validity', 'vm.form.renovateForm');
           return false;
