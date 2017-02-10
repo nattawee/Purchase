@@ -14,12 +14,10 @@ var GeneralSchema = new Schema({
     trnsdate: {
         type: Date,
         default: Date.now,
-        required: 'Please fill General trnsdate'
     },
     itemdesc: {
         type: String,
-        default: '',
-        required: 'Please fill General itemdesc',
+        default: 'ยังไม่ระบุ',
         trim: true
     },
     department: {
@@ -29,43 +27,34 @@ var GeneralSchema = new Schema({
     owner: {
         type: String,
         default: '',
-        required: 'Please fill General owner',
         trim: true
     },
     docno: {
         type: String,
         default: '',
-        required: 'Please fill General docno',
         trim: true
     },
     estexpense: {
         amount: {
             type: Number,
-            required: 'Please fill General amount',
             trim: true
         },
         apprvdate: {
             type: Date,
-            default: Date.now,
-            required: 'Please fill General apprvdate'
+            default: Date.now
         },
         approver: {
             default: '',
             type: String,
-            required: 'Please fill General approver',
             trim: true
         }
     },
     processtype: {
         type: String,
-        default: 'draft',
-        required: 'Please fill General processtype',
         trim: true
     },
     methodtype: {
         type: String,
-        default: 'draft',
-        required: 'Please fill General methodtype',
         trim: true
     },
     announcement: {
@@ -100,7 +89,6 @@ var GeneralSchema = new Schema({
     status: {
         type: String,
         default: 'draft',
-        required: 'Please fill General owner',
         trim: true
     },
     form1:{
@@ -249,6 +237,22 @@ var GeneralSchema = new Schema({
             field43:String
         },
         field5:Number
+    },
+    approved: {
+        type: Date,
+        default: Date.now
+    },
+    approver: {
+        type: Schema.ObjectId,
+        ref: 'User'
+    },
+    updated: {
+        type: Date,
+        default: Date.now
+    },
+    updater: {
+        type: Schema.ObjectId,
+        ref: 'User'
     },
     created: {
         type: Date,
