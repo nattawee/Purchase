@@ -18,7 +18,7 @@
                                 <input type="date" ng-model="vm.general.nacc.naccdocdate" name="naccdocdate" class="form-control" placeholder="วันที่" required>
                             </div>
                         </div>
-                        <div class="form-group" ng-if="vm.general.status === 'completed'">
+                        <div class="form-group" ng-if="vm.general.status === 'completed1' || vm.general.status === 'completed2'">
                             <label class="col-sm-2 control-label">วันที่</label>
                             <div class="col-sm-4">
                                 <p class="form-control-static"> {{vm.general.nacc.naccdocdate | date:'dd/MM/yyyy'}}</p>
@@ -36,7 +36,7 @@
                                 <input type="text" ng-model="vm.general.nacc.naccdocno" name="naccdocno" class="form-control" placeholder="เลขที่ ปปช" required>
                             </div>
                         </div>
-                        <div class="form-group" ng-if="vm.general.status === 'completed'">
+                        <div class="form-group" ng-if="vm.general.status === 'completed1' || vm.general.status === 'completed2'">
                             <label class="col-sm-2 control-label">เลขที่</label>
                             <div class="col-sm-10">
                                 <p class="form-control-static"> {{vm.general.nacc.naccdocno}}</p>

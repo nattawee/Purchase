@@ -15,7 +15,7 @@
                       required>
                   </div>
                 </div>
-                <div class="form-group" ng-if="vm.general.status === 'completed'">
+                <div class="form-group" ng-if="vm.general.status === 'completed1' || vm.general.status === 'completed2'">
                   <label class="col-sm-2 control-label">วันที่ส่งฝ่ายสื่อสารองค์กร</label>
                   <div class="col-sm-4">
                     <p class="form-control-static"> {{vm.general.announcement.requestdate | date:'dd/MM/yyyy'}}</p>
@@ -33,7 +33,7 @@
                       required>
                   </div>
                 </div>
-                <div class="form-group" ng-if="vm.general.status === 'completed'">
+                <div class="form-group" ng-if="vm.general.status === 'completed1' || vm.general.status === 'completed2'">
                   <label class="col-sm-2 control-label">วันที่ประกาศ Website BAM</label>
                   <div class="col-sm-4">
                     <p class="form-control-static"> {{vm.general.announcement.onlinedate | date:'dd/MM/yyyy'}}</p>
@@ -51,7 +51,7 @@
                       required>
                   </div>
                 </div>
-                <div class="form-group" ng-if="vm.general.status === 'completed'">
+                <div class="form-group" ng-if="vm.general.status === 'completed1' || vm.general.status === 'completed2'">
                   <label class="col-sm-2 control-label">เลขที่อ้างอิง</label>
                   <div class="col-sm-10">
                     <p class="form-control-static"> {{vm.general.announcement.reference}}</p>
