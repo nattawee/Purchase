@@ -4,7 +4,8 @@
             <uib-tab-heading>
                 {{tab.name}}
             </uib-tab-heading>
-            <div class="panel-body">     
+            <div class="panel-body">   
+                {{vm.authentication.user.branch}}  
                 <!--{{( tab.status === 'draft' ||  tab.status === 'rejected' ? 'ui-sref="generals.edit({ generalId: general._id })"': 'ui-sref="generals.view({ generalId: general._id })"')}}      -->
                 <table class="table table-hover">
                     <thead>
@@ -25,7 +26,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr ng-repeat="general in vm.generals | filter:{ status: tab.status } | filter:{ general.department._id: vm.authentication.user.branch} | filter:searchText" ui-sref="{{tab.uriref}}" >
+                        <tr ng-repeat="general in vm.generals | filter:{ status: tab.status } | filter:{ department._id: vm.authentication.user.branch} | filter:searchText" ui-sref="{{tab.uriref}}" >
                             <td>
                                 {{general.trnsdate | date:'dd/MM/yyyy'}}
                             </td>
