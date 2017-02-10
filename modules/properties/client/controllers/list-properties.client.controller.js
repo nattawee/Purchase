@@ -38,9 +38,15 @@
     },
     {
       renovate: 4,
-      name: 'เสร็จสมบูรณ์',
+      name: 'เสร็จสมบูรณ์ 1',
+      status: 'precompleted',
+      uriref: 'generals.view({ generalId: general._id })'
+    },
+    {
+      renovate: 5,
+      name: 'เสร็จสมบูรณ์ 2',
       status: 'completed',
-      uriref: 'properties.view({ propertyId: property._id })'
+      uriref: 'generals.view({ generalId: general._id })'
     }];
   }
 }());
