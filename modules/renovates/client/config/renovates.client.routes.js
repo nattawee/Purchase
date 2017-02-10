@@ -45,7 +45,7 @@
           renovateResolve: getRenovate
         },
         data: {
-          roles: ['user', 'admin','viewer','approver'],
+          roles: ['user', 'admin','viewer','approver','dataentry'],
           pageTitle: 'Edit Renovate {{ renovateResolve.name }}'
         }
       })

@@ -47,5 +47,24 @@
       status: 'completed2',
       uriref: 'generals.view({ generalId: general._id })'
     }];
+
+    vm.dataList = [
+      {
+        id: 1,
+        name: 'github',
+        price: '200$',
+        publisher: {
+          name: 'dtagdev'
+        }
+      },
+      {
+        id: 2,
+        name: 'google',
+        price: '300$',
+        publisher: {
+          name: 'dtagvn'
+        }
+      }
+    ];
   }
-} ());
+}());
