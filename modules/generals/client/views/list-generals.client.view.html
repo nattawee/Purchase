@@ -10,7 +10,7 @@
       <div class="col col-xs-10">
         <input type="search" class="form-control " ng-model="searchText" placeholder="ค้นหา">
       </div>
-      <div class="col col-md-2" ng-show="vm.authentication.user.roles[0] !== 'approver'">
+      <div class="col col-md-2" ng-show="vm.authentication.user.roles[0] !== 'approver' && vm.authentication.user.roles[0] !== 'viewer'">
         <button class="btn btn-primary" ui-sref="generals.create()">สร้างรายการใหม่</button>
       </div>
     </div>
