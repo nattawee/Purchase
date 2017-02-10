@@ -38,6 +38,12 @@
     {
       renovate: 4,
       name: 'เสร็จสมบูรณ์',
+      status: 'precompleted',
+      uriref: 'generals.view({ generalId: general._id })'
+    },
+    {
+      renovate: 5,
+      name: 'เสร็จสมบูรณ์',
       status: 'completed',
       uriref: 'generals.view({ generalId: general._id })'
     }];
