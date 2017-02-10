@@ -8,7 +8,7 @@
 
   RenovatesController.$inject = ['$scope', '$state', '$window', 'Authentication', 'renovateResolve'];
 
-  function RenovatesController ($scope, $state, $window, Authentication, renovate) {
+  function RenovatesController($scope, $state, $window, Authentication, renovate) {
     var vm = this;
     vm.authentication = Authentication;
     vm.renovate = renovate;
@@ -62,20 +62,101 @@
       vm.save(true);
     };
 
-     vm.saveToCompleted = function (isValid) {
+    vm.saveToCompleted = function (isValid) {
       if (!isValid) {
         $scope.$broadcast('show-errors-check-validity', 'vm.form.renovateForm');
         return false;
       }
-      vm.renovate.status = 'completed';
+      vm.renovate.status = 'completed2';
       vm.save(true);
     };
 
     vm.approved = function () {
+      if (vm.general.estexpense.amount < 100000) {
+        vm.general.status = 'completed1';
+      } else {
+        vm.general.status = 'approved';
+        setNCCdefault();
+      }
 
-      vm.renovate.status = 'approved';
       vm.save(true);
     };
+
+    function setNCCdefault() {
+      /*
+                <option value="งานก่อสร้าง">งานก่อสร้าง</option>
+                <option value="การจ้างควบคุมงาน">การจ้างควบคุมงาน</option>
+                <option value="การจ้างออกแบบ">การจ้างออกแบบ</option>
+                <option value="การจ้างที่ปรึกษา">การจ้างที่ปรึกษา</option>
+                <option value="การจ้างงานวิจัยหรือเงินสนับสนุนให้ทุนการวิจัย">การจ้างงานวิจัยหรือเงินสนับสนุนให้ทุนการวิจัย</option>
+                <option value="การจ้างพัฒนาระบบคอมพิวเตอร์">การจ้างพัฒนาระบบคอมพิวเตอร์</option>
+                <option value="การจัดซื้อ/จัดจ้างที่มิใช่งานก่อสร้าง">การจัดซื้อ/จัดจ้างที่มิใช่งานก่อสร้าง</option>
+      */
+      switch (vm.general.methodtype) {
+        case 'งานก่อสร้าง':
+          // vm.general.form1.field4.field41 = vm.general.trnsdate;
+          // vm.general.form1.field4.field42 = vm.general.estexpense.amount;
+          vm.general.form1 = {
+            field4: {
+              field41: vm.general.estexpense.apprvdate,
+              field42: vm.general.estexpense.amount
+            }
+          };
+          break;
+        case 'การจ้างควบคุมงาน':
+          // vm.general.form2.field3.field31 = vm.general.trnsdate;
+          // vm.general.form2.field3.field32 = vm.general.estexpense.amount;
+          vm.general.form2 = {
+            field3: {
+              field31: vm.general.estexpense.apprvdate,
+              field32: vm.general.estexpense.amount
+            }
+          };
+          break;
+        case 'การจ้างออกแบบ':
+          vm.general.form3 = {
+            field3: {
+              field31: vm.general.estexpense.apprvdate,
+              field32: vm.general.estexpense.amount
+            }
+          };
+          break;
+        case 'การจ้างที่ปรึกษา':
+          vm.general.form2 = {
+            field4: {
+              field31: vm.general.estexpense.apprvdate,
+              field32: vm.general.estexpense.amount
+            }
+          };
+          break;
+        case 'การจ้างงานวิจัยหรือเงินสนับสนุนให้ทุนการวิจัย':
+          vm.general.form2 = {
+            field5: {
+              field31: vm.general.estexpense.apprvdate,
+              field32: vm.general.estexpense.amount
+            }
+          };
+          break;
+        case 'การจ้างพัฒนาระบบคอมพิวเตอร์':
+          vm.general.form6 = {
+            field3: {
+              field31: vm.general.estexpense.apprvdate,
+              field32: vm.general.estexpense.amount
+            }
+          };
+          break;
+        case 'การจัดซื้อ/จัดจ้างที่มิใช่งานก่อสร้าง':
+          vm.general.form7 = {
+            field3: {
+              field31: vm.general.estexpense.apprvdate,
+              field32: vm.general.estexpense.amount
+            }
+          };
+          break;
+        default:
+
+      }
+    }
 
     vm.rejected = function () {
 
@@ -92,10 +173,13 @@
 
     // Save Renovate
     function save(isValid) {
-      if (!isValid) {
-        $scope.$broadcast('show-errors-check-validity', 'vm.form.renovateForm');
-        return false;
+      if (vm.renovate.status && vm.renovate.status !=='draft' && vm.renovate.status !=='approved') {
+        if (!isValid) {
+          $scope.$broadcast('show-errors-check-validity', 'vm.form.renovateForm');
+          return false;
+        }
       }
+
 
       // TODO: move create/update logic to service
       if (vm.renovate._id) {

@@ -46,7 +46,12 @@ exports.read = function(req, res) {
  */
 exports.update = function(req, res) {
   var general = req.general;
-
+  general.updated = Date.now();
+  general.updater = req.user;
+  if(general.status === 'approved'){
+     general.approved = Date.now();
+     general.approver = req.user;
+  }
   general = _.extend(general, req.body);
 
   general.save(function(err) {

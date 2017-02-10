@@ -46,7 +46,12 @@ exports.read = function(req, res) {
  */
 exports.update = function(req, res) {
   var renovate = req.renovate;
-
+  renovate.updated = Date.now();
+  renovate.updater = req.user;
+  if(renovate.status === 'approved'){
+     renovate.approved = Date.now();
+     renovate.approver = req.user;
+  }
   renovate = _.extend(renovate, req.body);
 
   renovate.save(function(err) {
