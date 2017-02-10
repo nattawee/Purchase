@@ -51,7 +51,7 @@ describe('Aquisition CRUD tests', function () {
     // Save a user to the test db and create new Aquisition
     user.save(function () {
       aquisition = {
-        from1: {
+        form1: {
           nta: {
             assetssum: 1,
             assetsintangible: 1,
@@ -63,16 +63,16 @@ describe('Aquisition CRUD tests', function () {
           acqodis: 1,
           ntalisted: 1
         },
-        from2: {
+        form2: {
           netoperating: 1,
           ratio: 1,
           netcompany: 1
         },
-        from3: {
+        form3: {
           amount: 1,
           assetscompany: 1
         },
-        from4: {
+        form4: {
           sharespay: 1,
           sharespaycompany: 1
         }
@@ -118,7 +118,7 @@ describe('Aquisition CRUD tests', function () {
 
                 // Set assertions
                 (aquisitions[0].user._id).should.equal(userId);
-                (aquisitions[0].from1.nta.assetssum).should.equal(1);
+                (aquisitions[0].form1.nta.assetssum).should.equal(1);
 
                 // Call the assertion callback
                 done();
@@ -139,7 +139,7 @@ describe('Aquisition CRUD tests', function () {
 
   it('should not be able to save an Aquisition if no name is provided', function (done) {
     // Invalidate name field
-    aquisition.from1.nta.assetssum = null;
+    aquisition.form1.nta.assetssum = null;
 
     agent.post('/api/auth/signin')
       .send(credentials)
@@ -191,7 +191,7 @@ describe('Aquisition CRUD tests', function () {
             }
 
             // Update Aquisition assetssum
-            aquisition.from1.nta.assetssum = 2;
+            aquisition.form1.nta.assetssum = 2;
 
             // Update an existing Aquisition
             agent.put('/api/aquisitions/' + aquisitionSaveRes.body._id)
@@ -205,7 +205,7 @@ describe('Aquisition CRUD tests', function () {
 
                 // Set assertions
                 (aquisitionUpdateRes.body._id).should.equal(aquisitionSaveRes.body._id);
-                (aquisitionUpdateRes.body.from1.nta.assetssum).should.equal(2);
+                (aquisitionUpdateRes.body.form1.nta.assetssum).should.equal(2);
 
                 // Call the assertion callback
                 done();
@@ -242,7 +242,7 @@ describe('Aquisition CRUD tests', function () {
       request(app).get('/api/aquisitions/' + aquisitionObj._id)
         .end(function (req, res) {
           // Set assertion
-          // res.body.should.be.instanceof(Object).and.have.property('',aquisition.from1.nta.assetssum);
+          // res.body.should.be.instanceof(Object).and.have.property('',aquisition.form1.nta.assetssum);
 
           // Call the assertion callback
           done();
@@ -387,7 +387,7 @@ describe('Aquisition CRUD tests', function () {
               }
 
               // Set assertions on new Aquisition
-              (aquisitionSaveRes.body.from1.nta.assetssum).should.equal(aquisition.from1.nta.assetssum);
+              (aquisitionSaveRes.body.form1.nta.assetssum).should.equal(aquisition.form1.nta.assetssum);
               should.exist(aquisitionSaveRes.body.user);
               should.equal(aquisitionSaveRes.body.user._id, orphanId);
 
@@ -414,7 +414,7 @@ describe('Aquisition CRUD tests', function () {
 
                         // Set assertions
                         (aquisitionInfoRes.body._id).should.equal(aquisitionSaveRes.body._id);
-                        (aquisitionInfoRes.body.from1.nta.assetssum).should.equal(aquisition.from1.nta.assetssum);
+                        (aquisitionInfoRes.body.form1.nta.assetssum).should.equal(aquisition.form1.nta.assetssum);
                         should.equal(aquisitionInfoRes.body.user, undefined);
 
                         // Call the assertion callback
