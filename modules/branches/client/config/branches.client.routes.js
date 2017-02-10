@@ -32,7 +32,7 @@
           branchResolve: newBranch
         },
         data: {
-          roles: ['dataentry', 'admin'],
+          roles: ['dataentry', 'superuser', 'admin'],
           pageTitle: 'Branches Create'
         }
       })
@@ -45,7 +45,7 @@
           branchResolve: getBranch
         },
         data: {
-          roles: ['dataentry', 'admin','approver'],
+          roles: ['dataentry', 'admin','approver', 'superuser'],
           pageTitle: 'Edit Branch {{ branchResolve.name }}'
         }
       })

@@ -172,7 +172,7 @@
         <button ng-click="vm.rejected()"  class="btn btn-danger">ส่งกลับแก้ไข</button>
         <button ng-click="vm.approved()" class="btn btn-primary">อนุมัติ</button>
       </div>
-      <div class="col col-xs-4 text-right" ng-if="vm.property.status === 'approved'  && vm.authentication.user.roles[0] === 'admin' || vm.authentication.user.roles[0] === 'dataentry'">
+      <div class="col col-xs-4 text-right" ng-if="vm.property.status === 'approved'  && vm.authentication.user.roles[0] === 'superuser' || vm.authentication.user.roles[0] === 'dataentry'">
         <button ng-click="vm.save(vm.form.propertyForm.$valid)" class="btn btn-primary">บันทึกแบบร่าง</button>
         <button ng-click="vm.saveToCompleted(vm.form.propertyForm.$valid)" class="btn btn-primary">บันทึกข้อมูล</button>
       </div>

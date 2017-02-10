@@ -60,11 +60,12 @@
                 <div class="form-group" show-errors>
                   <label for="roles">สิทธิ์การใช้งาน</label>
                   <select class="form-control" name="roles" ng-model="credentials.roles" required>
-                      <option value="guest">ผู้ที่ร้อนขอสมัครการใช้งาน</option>
-                      <option value="viewer">ผู้ใช้งานทั่วไป</option>
-                      <option value="dataentry">ผู้บันทึกข้อมูล</option>
-                      <option value="approver">ผู้อนุมัติรายการ</option>
-                      <option value="admin">ผู้ดูแลระบบ</option>
+                      <option value="guest">Guest</option>
+                      <option value="viewer">Viewer</option>
+                      <option value="dataentry">Preparer</option>
+                      <option value="approver">Approver</option>
+                      <option value="superuser">Super User</option>
+                      <option value="admin">User Admin</option>
                   </select>
                   <div ng-messages="userForm.roles.$error" role="alert">
                     <p class="help-block error-text" ng-message="required">Roles is required.</p>

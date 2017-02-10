@@ -32,7 +32,7 @@
           generalResolve: newGeneral
         },
         data: {
-          roles: ['dataentry', 'admin'],
+          roles: ['dataentry', 'admin', 'superuser'],
           pageTitle: 'Generals Create'
         }
       })
@@ -45,7 +45,7 @@
           generalResolve: getGeneral
         },
         data: {
-          roles: ['dataentry', 'admin','viewer','approver'],
+          roles: ['dataentry', 'admin','viewer','approver', 'superuser'],
           pageTitle: 'Edit General {{ generalResolve.name }}'
         }
       })
