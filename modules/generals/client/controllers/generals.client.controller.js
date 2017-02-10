@@ -96,13 +96,13 @@
          vm.general.status = 'precompleted';
       }else{
          vm.general.status = 'approved';
-         vm.setNCCdefault();
+         setNCCdefault();
       }
      
       vm.save(true);
     };
 
-    vm.setNCCdefault = function(){
+    function setNCCdefault(){
       /*
                 <option value="งานก่อสร้าง">งานก่อสร้าง</option>
                 <option value="การจ้างควบคุมงาน">การจ้างควบคุมงาน</option>
