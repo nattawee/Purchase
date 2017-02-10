@@ -32,7 +32,7 @@
           renovateResolve: newRenovate
         },
         data: {
-          roles: ['user', 'admin'],
+          roles: ['dataentry', 'admin'],
           pageTitle: 'Renovates Create'
         }
       })
@@ -45,7 +45,7 @@
           renovateResolve: getRenovate
         },
         data: {
-          roles: ['user', 'admin'],
+          roles: ['user', 'admin','viewer','approver'],
           pageTitle: 'Edit Renovate {{ renovateResolve.name }}'
         }
       })

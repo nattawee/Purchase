@@ -42,9 +42,11 @@
 
         <div class="form-group" show-errors>
           <label class="control-label" for="roles">Roles</label>
-          <div class="controls">            
+          <div class="controls">
             <select class="form-control" name="roles" ng-model="user.roles[0]" required>
-                      <option value="user">ผู้ใช้งานทั่วไป</option>
+                      <option value="guest">ผู้ที่ร้อนขอสมัครการใช้งาน</option>
+                      <option value="viewer">ผู้ใช้งานทั่วไป</option>
+                      <option value="dataentry">ผู้บันทึกข้อมูล</option>
                       <option value="approver">ผู้อนุมัติรายการ</option>
                       <option value="admin">ผู้ดูแลระบบ</option>
                   </select>

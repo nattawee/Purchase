@@ -164,13 +164,16 @@
       <div class="col col-xs-8">
         <button class="btn" ui-sref="generals.list()">ย้อนกลับ</button>
       </div>
-      <div class="col col-xs-4 text-right" ng-if="vm.general.status === 'waiting for approve' && vm.authentication.user.roles[0] !== 'user'">
+      <div class="col col-xs-4 text-right" ng-if="vm.general.status === 'waiting for approve' && vm.authentication.user.roles[0] === 'approver'">
         <button ng-click="vm.rejected()" class="btn btn-danger">ไม่อนุมัติ</button>
         <button ng-click="vm.approved()" class="btn btn-primary">อนุมัติ</button>
       </div>
-      <div class="col col-xs-4 text-right" ng-if="vm.general.status === 'approved' && vm.authentication.user.roles[0] !== 'approver'">
+      <div class="col col-xs-4 text-right" ng-if="vm.general.status === 'approved' && vm.authentication.user.roles[0] === 'admin' || vm.authentication.user.roles[0] === 'dataentry'">
         <button ng-click="vm.save(vm.form.generalForm.$valid)" class="btn btn-primary">บันทึกแบบร่าง</button>
         <button ng-click="vm.saveToCompleted(vm.form.generalForm.$valid)" class="btn btn-primary">บันทึกข้อมูล</button>
+      </div>
+      <div class="col col-xs-4 text-right" ng-if="vm.general.status === 'completed' && vm.authentication.user.roles[0] === 'admin'">
+        <button ng-click="vm.approved()" class="btn btn-primary">กลับสู่สถานะอนุมัติ</button>
       </div>
     </div>
     <div class="hr-line-dashed"></div>

@@ -200,7 +200,7 @@
       <div class="col col-xs-4">
         <button class="btn" ui-sref="properties.list()">ย้อนกลับ</button>
       </div>
-      <div class="col col-xs-8 text-right">
+      <div class="col col-xs-8 text-right" ng-if="vm.authentication.user.roles[0] === 'admin' || vm.authentication.user.roles[0] === 'dataentry'">
         <button ng-click="vm.save(vm.form.propertyForm.$valid)" class="btn btn-primary">บันทึกแบบร่าง</button>
         <button ng-click="vm.saveToApprove(vm.form.propertyForm.$valid)" class="btn btn-primary">บันทึกขออนุมัติ</button>
         <!--<div class="btn-group" uib-dropdown is-open="status.isopen">

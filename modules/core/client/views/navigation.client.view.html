@@ -1,6 +1,6 @@
 <nav class="navbar-default navbar-static-side" role="navigation" data-ng-controller="HeaderController">
   <div class="sidebar-collapse">
-    <ul side-navigation class="nav metismenu" id="side-menu">
+    <ul side-navigation class="nav metismenu" id="side-menu" ng-if="authentication.user.roles[0] !== 'guest'">
       <li class="nav-header">
         <div class="profile-element">
           <!-- Picture of user -->
@@ -57,7 +57,7 @@
       <li ng-class="{active: $uiRoute}" ui-route="/departments" class="{{purchases.class}}" ng-if="authentication.user.roles[0] === 'admin'">
         <a href="/#/departments"><i class="fa fa-file-powerpoint-o"></i> <span class="nav-label">ฝ่าย</span></a>
       </li>
-       <li ng-class="{active: $uiRoute}" ui-route="/aquisitions" class="{{purchases.class}}">
+       <li ng-class="{active: $uiRoute}" ui-route="/aquisitions" class="{{purchases.class}}" ng-if="authentication.user">
         <a href="/#/aquisitions"><i class="fa fa-file-powerpoint-o"></i> <span class="nav-label">aquisitions</span></a>
       </li>
       <!--<li>
@@ -77,5 +77,6 @@
       </li>-->
       
     </ul>
+    
   </div>
 </nav>

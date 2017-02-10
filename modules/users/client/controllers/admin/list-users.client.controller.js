@@ -5,10 +5,37 @@ angular.module('users.admin').controller('UserListController', ['$scope', '$http
     // Authentication.query(function (res) {
     //   $scope.authentication = res;
     // });
+
     Admin.query(function (data) {
       $scope.users = data;
       $scope.buildPager();
     });
+
+    $scope.tabs = [{
+      renovate: 0,
+      name: 'Guest',
+      status: 'guest'
+    },
+    {
+      renovate: 1,
+      name: 'Viewer',
+      status: 'viewer'
+    },
+    {
+      renovate: 2,
+      name: 'Data Entry',
+      status: 'dataentry'
+    },
+    {
+      renovate: 3,
+      name: 'Approver',
+      status: 'approver'
+    },
+    {
+      renovate: 4,
+      name: 'User Admin',
+      status: 'admin'
+    }];
 
     $scope.buildPager = function () {
       $scope.pagedItems = [];
@@ -31,14 +58,7 @@ angular.module('users.admin').controller('UserListController', ['$scope', '$http
       $scope.figureOutItemsToDisplay();
     };
 
-    // $scope.signup = function () {
-    //   $http.post('/api/auth/signup', $scope.credentials).success(function () {
-    //     // If successful we assign the response to the global user model
-    //     // $scope.authentication.user = response;
 
-    //     // And redirect to the previous or home page
-    //   });
-    // };
   }
 
 

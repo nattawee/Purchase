@@ -32,7 +32,7 @@
           propertyResolve: newProperty
         },
         data: {
-          roles: ['user', 'admin'],
+          roles: ['dataentry', 'admin'],
           pageTitle: 'Properties Create'
         }
       })
@@ -45,7 +45,7 @@
           propertyResolve: getProperty
         },
         data: {
-          roles: ['user', 'admin'],
+          roles: ['dataentry', 'admin','viewer','approver'],
           pageTitle: 'Edit Property {{ propertyResolve.name }}'
         }
       })

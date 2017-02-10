@@ -74,10 +74,10 @@ var UserSchema = new Schema({
     type: String,
     required: 'Provider is required'
   },
-  department:{
+  department: {
     type: String
   },
-  branch:{
+  branch: {
     type: String
   },
   providerData: {},
@@ -85,9 +85,9 @@ var UserSchema = new Schema({
   roles: {
     type: [{
       type: String,
-      enum: ['user', 'approver', 'admin']
+      enum: ['guest', 'viewer', 'dataentry', 'approver', 'admin']
     }],
-    default: ['user'],
+    default: ['guest'],
     required: 'Please provide at least one role'
   },
   updated: {

@@ -4,10 +4,10 @@
       รายงานดูแลรักษาทรัพย์สินรอการขาย (PROPERTY FORECLOSED)
     </h2>
   </div>
-  <form name="vm.form.propertyForm" class="form-horizontal"  novalidate>
+  <form name="vm.form.propertyForm" class="form-horizontal" novalidate>
     <div class="row">
       <div class="col col-md-6">
-        
+
       </div>
       <div class="col col-md-6">
         <div class="row">
@@ -60,7 +60,7 @@
           <label class="col-sm-2 control-label">ที่ตั้ง</label>
           <div class="col-sm-10">
             <p class="form-control-static">ตำบล {{vm.property.location.subdistrict}} อำเภอ {{vm.property.location.district}} จังหวัด {{vm.property.location.province}}
-              </p>
+            </p>
           </div>
         </div>
       </div>
@@ -146,9 +146,9 @@
     <div ng-include="'/modules/generals/client/views/ibox/purchase-winer.html'"></div>
     <div ng-include="'/modules/generals/client/views/ibox/po.html'"></div>
     <div ng-include="'/modules/generals/client/views/ibox/ncc.html'"></div>
-    
-    
-    
+
+
+
     <div ng-include="'/modules/generals/client/views/form/form1.html'" ng-if="(vm.general.status === 'approved' || vm.general.status === 'completed') && vm.general.estexpense.amount >= 100000 && vm.general.methodtype === 'งานก่อสร้าง'">
     </div>
     <div ng-include="'/modules/generals/client/views/form/form2.html'" ng-if="(vm.general.status === 'approved' || vm.general.status === 'completed') && vm.general.estexpense.amount >= 100000 && vm.general.methodtype === 'การจ้างควบคุมงาน'">
@@ -168,13 +168,16 @@
       <div class="col col-xs-8">
         <button class="btn" ui-sref="properties.list()">ย้อนกลับ</button>
       </div>
-      <div class="col col-xs-4 text-right" ng-if="vm.property.status === 'waiting for approve'  && vm.authentication.user.roles[0] !== 'user'">
-        <button ng-click="vm.rejected()"  class="btn btn-danger">ไม่อนุมัติ</button>
+      <div class="col col-xs-4 text-right" ng-if="vm.property.status === 'waiting for approve'  && vm.authentication.user.roles[0] === 'approver'">
+        <button ng-click="vm.rejected()" class="btn btn-danger">ไม่อนุมัติ</button>
         <button ng-click="vm.approved()" class="btn btn-primary">อนุมัติ</button>
       </div>
-      <div class="col col-xs-4 text-right" ng-if="vm.property.status === 'approved'  && vm.authentication.user.roles[0] !== 'approver'">
+      <div class="col col-xs-4 text-right" ng-if="vm.property.status === 'approved'  && vm.authentication.user.roles[0] === 'admin' || vm.authentication.user.roles[0] === 'dataentry'">
         <button ng-click="vm.save(vm.form.propertyForm.$valid)" class="btn btn-primary">บันทึกแบบร่าง</button>
         <button ng-click="vm.saveToCompleted(vm.form.propertyForm.$valid)" class="btn btn-primary">บันทึกข้อมูล</button>
+      </div>
+      <div class="col col-xs-4 text-right" ng-if="vm.general.status === 'completed' && vm.authentication.user.roles[0] === 'admin'">
+        <button ng-click="vm.approved()" class="btn btn-primary">กลับสู่สถานะอนุมัติ</button>
       </div>
     </div>
     <div class="hr-line-dashed"></div>
