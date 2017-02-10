@@ -149,15 +149,15 @@
 
 
 
-    <div ng-include="'/modules/generals/client/views/form/form1.html'" ng-if="(vm.general.status === 'approved' || vm.general.status === 'completed') && vm.general.estexpense.amount >= 100000 && vm.general.methodtype === 'งานก่อสร้าง'">
+    <div ng-include="'/modules/generals/client/views/form/form1.html'" ng-if="(vm.general.status === 'approved' || vm.general.status === 'completed1' || vm.general.status === 'completed2') && vm.general.estexpense.amount >= 100000 && vm.general.methodtype === 'งานก่อสร้าง'">
     </div>
-    <div ng-include="'/modules/generals/client/views/form/form2.html'" ng-if="(vm.general.status === 'approved' || vm.general.status === 'completed') && vm.general.estexpense.amount >= 100000 && vm.general.methodtype === 'การจ้างควบคุมงาน'">
+    <div ng-include="'/modules/generals/client/views/form/form2.html'" ng-if="(vm.general.status === 'approved' || vm.general.status === 'completed1' || vm.general.status === 'completed2') && vm.general.estexpense.amount >= 100000 && vm.general.methodtype === 'การจ้างควบคุมงาน'">
     </div>
-    <div ng-include="'/modules/generals/client/views/form/form3.html'" ng-if="(vm.general.status === 'approved' || vm.general.status === 'completed') && vm.general.estexpense.amount >= 100000 && vm.general.methodtype === 'การจ้างออกแบบ'">
+    <div ng-include="'/modules/generals/client/views/form/form3.html'" ng-if="(vm.general.status === 'approved' || vm.general.status === 'completed1' || vm.general.status === 'completed2') && vm.general.estexpense.amount >= 100000 && vm.general.methodtype === 'การจ้างออกแบบ'">
     </div>
-    <div ng-include="'/modules/generals/client/views/form/form4.html'" ng-if="(vm.general.status === 'approved' || vm.general.status === 'completed') && vm.general.estexpense.amount >= 100000 && vm.general.methodtype === 'การจ้างที่ปรึกษา'">
+    <div ng-include="'/modules/generals/client/views/form/form4.html'" ng-if="(vm.general.status === 'approved' || vm.general.status === 'completed1' || vm.general.status === 'completed2') && vm.general.estexpense.amount >= 100000 && vm.general.methodtype === 'การจ้างที่ปรึกษา'">
     </div>
-    <div ng-include="'/modules/generals/client/views/form/form5.html'" ng-if="(vm.general.status === 'approved' || vm.general.status === 'completed') && vm.general.estexpense.amount >= 100000 && vm.general.methodtype === 'การจ้างงานวิจัยหรือเงินสนับสนุนให้ทุนการวิจัย'">
+    <div ng-include="'/modules/generals/client/views/form/form5.html'" ng-if="(vm.general.status === 'approved' || vm.general.status === 'completed1' || vm.general.status === 'completed2') && vm.general.estexpense.amount >= 100000 && vm.general.methodtype === 'การจ้างงานวิจัยหรือเงินสนับสนุนให้ทุนการวิจัย'">
     </div>
     <div ng-include="'/modules/generals/client/views/form/form6.html'" ng-if="(vm.general.status === 'approved' || vm.general.status === 'completed') && vm.general.estexpense.amount >= 100000 && vm.general.methodtype === 'การจ้างพัฒนาระบบคอมพิวเตอร์'">
     </div>
