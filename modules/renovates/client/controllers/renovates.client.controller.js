@@ -76,13 +76,13 @@
          vm.general.status = 'precompleted';
       }else{
          vm.general.status = 'approved';
-         vm.setNCCdefault();
+         setNCCdefault();
       }
      
       vm.save(true);
     };
 
-    vm.setNCCdefault = function(){
+    function setNCCdefault(){
       /*
                 <option value="งานก่อสร้าง">งานก่อสร้าง</option>
                 <option value="การจ้างควบคุมงาน">การจ้างควบคุมงาน</option>
@@ -92,7 +92,7 @@
                 <option value="การจ้างพัฒนาระบบคอมพิวเตอร์">การจ้างพัฒนาระบบคอมพิวเตอร์</option>
                 <option value="การจัดซื้อ/จัดจ้างที่มิใช่งานก่อสร้าง">การจัดซื้อ/จัดจ้างที่มิใช่งานก่อสร้าง</option>
       */
-      switch (caseStr) {
+      switch (vm.general.methodtype) {
             case 'งานก่อสร้าง':
                 vm.general.form1.field4.field41 = vm.general.trnsdate;
                 vm.general.form1.field4.field42 = vm.general.estexpense.amount;
