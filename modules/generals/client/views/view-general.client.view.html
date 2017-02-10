@@ -173,7 +173,7 @@
         <button ng-click="vm.save(vm.form.generalForm.$valid)" class="btn btn-primary">บันทึกแบบร่าง</button>
         <button ng-click="vm.saveToCompleted(vm.form.generalForm.$valid)" class="btn btn-primary">บันทึกข้อมูล</button>
       </div>
-      <div class="col col-xs-4 text-right" ng-if="vm.general.status === 'completed' && vm.authentication.user.roles[0] === 'admin'">
+      <div class="col col-xs-4 text-right" ng-if="vm.general.status === 'completed'">
         <button ng-click="vm.approved()" class="btn btn-primary">กลับสู่สถานะอนุมัติ</button>
       </div>
     </div>

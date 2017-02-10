@@ -176,6 +176,7 @@
     function save(isValid) {
       if (vm.property.status && vm.property.status !=='draft' && vm.property.status !=='approved') {
         if (!isValid) {
+          angular.element('input.ng-invalid').first().focus();
           $scope.$broadcast('show-errors-check-validity', 'vm.form.propertyForm');
           return false;
         }

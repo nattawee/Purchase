@@ -175,6 +175,7 @@
     function save(isValid) {
       if (vm.renovate.status && vm.renovate.status !=='draft' && vm.renovate.status !=='approved') {
         if (!isValid) {
+          angular.element('input.ng-invalid').first().focus();
           $scope.$broadcast('show-errors-check-validity', 'vm.form.renovateForm');
           return false;
         }
