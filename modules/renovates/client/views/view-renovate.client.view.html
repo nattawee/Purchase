@@ -165,11 +165,11 @@
       <div class="col col-xs-8">
         <button class="btn" ui-sref="renovates.list()">ย้อนกลับ</button>
       </div>
-      <div class="col col-xs-4 text-right" ng-if="vm.renovate.status === 'waiting for approve'  && (vm.authentication.user.roles[0] === 'approver' || vm.authentication.user.roles[0] === 'admin') ">
+      <div class="col col-xs-4 text-right" ng-if="vm.renovate.status === 'waiting for approve'  && (vm.authentication.user.roles[0] === 'approver' || vm.authentication.user.roles[0] === 'superuser') ">
         <button ng-click="vm.rejected()"  class="btn btn-danger">ส่งกลับแก้ไข</button>
         <button ng-click="vm.approved()" class="btn btn-primary">อนุมัติ</button>
       </div>
-      <div class="col col-xs-4 text-right" ng-if="vm.renovate.status === 'approved'  && vm.authentication.user.roles[0] === 'superuser' || vm.authentication.user.roles[0] === 'dataentry'">
+      <div class="col col-xs-4 text-right" ng-if="vm.renovate.status === 'approved'  && (vm.authentication.user.roles[0] === 'superuser' || vm.authentication.user.roles[0] === 'dataentry')">
         <button ng-click="vm.save(vm.form.renovateForm.$valid)" class="btn btn-primary">บันทึกแบบร่าง</button>
         <button ng-click="vm.saveToCompleted(vm.form.renovateForm.$valid)" class="btn btn-primary">บันทึกข้อมูล</button>
       </div>
