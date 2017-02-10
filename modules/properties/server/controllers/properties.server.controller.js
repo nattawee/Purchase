@@ -46,7 +46,12 @@ exports.read = function(req, res) {
  */
 exports.update = function(req, res) {
   var property = req.property;
-
+  property.updated = Date.now();
+  property.updater = req.user;
+  if(property.status === 'approved'){
+     property.approved = Date.now();
+     property.approver = req.user;
+  }
   property = _.extend(property, req.body);
 
   property.save(function(err) {

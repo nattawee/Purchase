@@ -41,7 +41,7 @@ var GeneralSchema = new Schema({
         },
         apprvdate: {
             type: Date,
-            default: Date.now
+            //default: Date.now
         },
         approver: {
             default: '',
@@ -70,7 +70,7 @@ var GeneralSchema = new Schema({
         },
         apprvdate: {
             type: Date,
-            default: Date.now,
+            //default: Date.now,
             // required: 'Please fill General apprvdate'
         },
         approver: {
