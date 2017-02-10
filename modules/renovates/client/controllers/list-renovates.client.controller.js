@@ -16,31 +16,31 @@
       renovate: 0,
       name: 'แบบร่าง',
       status: 'draft',
-      uriref: 'properties.edit({ propertyId: property._id })'
+      uriref: 'renovates.edit({ renovateId: property._id })'
     },
     {
       renovate: 1,
       name: 'รออนุมัติ',
       status: 'waiting for approve',
-      uriref: 'properties.view({ propertyId: property._id })'
+      uriref: 'renovates.view({ renovateId: property._id })'
     },
     {
       renovate: 2,
       name: 'อนุมัติ',
       status: 'approved',
-      uriref: 'properties.view({ propertyId: property._id })'
+      uriref: 'renovates.view({ renovateId: property._id })'
     },
     {
       renovate: 3,
       name: 'รอแก้ไข',
       status: 'rejected',
-      uriref: 'properties.edit({ propertyId: property._id })'
+      uriref: 'renovates.edit({ renovateId: property._id })'
     },
     {
       renovate: 4,
       name: 'เสร็จสมบูรณ์',
       status: 'completed',
-      uriref: 'properties.view({ propertyId: property._id })'
+      uriref: 'renovates.view({ renovateId: property._id })'
     }];
   }
 }());
