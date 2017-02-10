@@ -23,7 +23,7 @@ angular.module('users.admin').controller('UserListController', ['$scope', '$http
     },
     {
       renovate: 2,
-      name: 'Data Entry',
+      name: 'Preparer',
       status: 'dataentry'
     },
     {
@@ -33,6 +33,11 @@ angular.module('users.admin').controller('UserListController', ['$scope', '$http
     },
     {
       renovate: 4,
+      name: 'Super User',
+      status: 'superuser'
+    },
+    {
+      renovate: 5,
       name: 'User Admin',
       status: 'admin'
     }];
