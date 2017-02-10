@@ -87,13 +87,13 @@
         $scope.$broadcast('show-errors-check-validity', 'vm.form.generalForm');
         return false;
       }
-      vm.general.status = 'completed';
+      vm.general.status = 'completed2';
       vm.save(true);
     };
 
     vm.approved = function () {
       if (vm.general.estexpense.amount < 100000) {
-        vm.general.status = 'precompleted';
+        vm.general.status = 'completed1';
       } else {
         vm.general.status = 'approved';
         setNCCdefault();
@@ -118,7 +118,7 @@
           // vm.general.form1.field4.field42 = vm.general.estexpense.amount;
           vm.general.form1 = {
             field4: {
-              field41: vm.general.trnsdate,
+              field41: vm.general.estexpense.apprvdate,
               field42: vm.general.estexpense.amount
             }
           };
@@ -128,7 +128,7 @@
           // vm.general.form2.field3.field32 = vm.general.estexpense.amount;
           vm.general.form2 = {
             field3: {
-              field31: vm.general.trnsdate,
+              field31: vm.general.estexpense.apprvdate,
               field32: vm.general.estexpense.amount
             }
           };
@@ -136,7 +136,7 @@
         case 'การจ้างออกแบบ':
           vm.general.form3 = {
             field3: {
-              field31: vm.general.trnsdate,
+              field31: vm.general.estexpense.apprvdate,
               field32: vm.general.estexpense.amount
             }
           };
@@ -144,7 +144,7 @@
         case 'การจ้างที่ปรึกษา':
           vm.general.form2 = {
             field4: {
-              field31: vm.general.trnsdate,
+              field31: vm.general.estexpense.apprvdate,
               field32: vm.general.estexpense.amount
             }
           };
@@ -152,7 +152,7 @@
         case 'การจ้างงานวิจัยหรือเงินสนับสนุนให้ทุนการวิจัย':
           vm.general.form2 = {
             field5: {
-              field31: vm.general.trnsdate,
+              field31: vm.general.estexpense.apprvdate,
               field32: vm.general.estexpense.amount
             }
           };
@@ -160,7 +160,7 @@
         case 'การจ้างพัฒนาระบบคอมพิวเตอร์':
           vm.general.form6 = {
             field3: {
-              field31: vm.general.trnsdate,
+              field31: vm.general.estexpense.apprvdate,
               field32: vm.general.estexpense.amount
             }
           };
@@ -168,7 +168,7 @@
         case 'การจัดซื้อ/จัดจ้างที่มิใช่งานก่อสร้าง':
           vm.general.form7 = {
             field3: {
-              field31: vm.general.trnsdate,
+              field31: vm.general.estexpense.apprvdate,
               field32: vm.general.estexpense.amount
             }
           };
