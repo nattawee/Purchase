@@ -94,32 +94,64 @@
       */
       switch (vm.general.methodtype) {
             case 'งานก่อสร้าง':
-                vm.general.form1.field4.field41 = vm.general.trnsdate;
-                vm.general.form1.field4.field42 = vm.general.estexpense.amount;
+                // vm.general.form1.field4.field41 = vm.general.trnsdate;
+                // vm.general.form1.field4.field42 = vm.general.estexpense.amount;
+                vm.general.form1 = {
+                  field4 : {
+                    field41 : vm.general.trnsdate,
+                    field42 :vm.general.estexpense.amount
+                  }
+                };
                 break;
             case 'การจ้างควบคุมงาน':
-                vm.general.form2.field3.field31 = vm.general.trnsdate;
-                vm.general.form2.field3.field32 = vm.general.estexpense.amount;
+                // vm.general.form2.field3.field31 = vm.general.trnsdate;
+                // vm.general.form2.field3.field32 = vm.general.estexpense.amount;
+                vm.general.form2 = {
+                  field3 : {
+                    field31 : vm.general.trnsdate,
+                    field32 :vm.general.estexpense.amount
+                  }
+                };
                 break;
             case 'การจ้างออกแบบ':
-                vm.general.form3.field3.field31 = vm.general.trnsdate;
-                vm.general.form3.field3.field32 = vm.general.estexpense.amount;
+                vm.general.form3 = {
+                  field3 : {
+                    field31 : vm.general.trnsdate,
+                    field32 :vm.general.estexpense.amount
+                  }
+                };
                 break;
             case 'การจ้างที่ปรึกษา':
-                vm.general.form4.field3.field31 = vm.general.trnsdate;
-                vm.general.form4.field3.field32 = vm.general.estexpense.amount;
+                vm.general.form2 = {
+                  field4 : {
+                    field31 : vm.general.trnsdate,
+                    field32 :vm.general.estexpense.amount
+                  }
+                };
                 break;
             case 'การจ้างงานวิจัยหรือเงินสนับสนุนให้ทุนการวิจัย':
-                vm.general.form5.field3.field31 = vm.general.trnsdate;
-                vm.general.form5.field3.field32 = vm.general.estexpense.amount;
+                vm.general.form2 = {
+                  field5 : {
+                    field31 : vm.general.trnsdate,
+                    field32 :vm.general.estexpense.amount
+                  }
+                };
                 break;
             case 'การจ้างพัฒนาระบบคอมพิวเตอร์':
-                vm.general.form6.field3.field31 = vm.general.trnsdate;
-                vm.general.form6.field3.field32 = vm.general.estexpense.amount;
+                vm.general.form6 = {
+                  field3 : {
+                    field31 : vm.general.trnsdate,
+                    field32 :vm.general.estexpense.amount
+                  }
+                };
                 break;
             case 'การจัดซื้อ/จัดจ้างที่มิใช่งานก่อสร้าง':
-                vm.general.form7.field3.field31 = vm.general.trnsdate;
-                vm.general.form7.field3.field32 = vm.general.estexpense.amount;
+                vm.general.form7 = {
+                  field3 : {
+                    field31 : vm.general.trnsdate,
+                    field32 :vm.general.estexpense.amount
+                  }
+                };
                 break;
             default:
 
