@@ -48,23 +48,21 @@
       uriref: 'generals.view({ generalId: general._id })'
     }];
 
-    vm.dataList = [
-      {
-        id: 1,
-        name: 'github',
-        price: '200$',
-        publisher: {
-          name: 'dtagdev'
-        }
-      },
-      {
-        id: 2,
-        name: 'google',
-        price: '300$',
-        publisher: {
-          name: 'dtagvn'
-        }
+    vm.dataList = [];
+    vm.generals.forEach(function (general) {
+      if (general.trnsdate) {
+        var data = {
+          date: new Date(general.trnsdate).toLocaleDateString('en-GB', {
+            day: 'numeric',
+            month: 'short',
+            year: 'numeric'
+          }).split(' ').join('-'),
+          item: general.itemdesc
+        };
+        vm.dataList.push(data);
       }
-    ];
+
+    });
+
   }
 }());
