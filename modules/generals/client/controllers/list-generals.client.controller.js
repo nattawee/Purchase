@@ -14,13 +14,13 @@
       vm.dataList = [];
       generals.forEach(function (general) {
         if (generals.department._id.toString() === vm.authentication.user.branch) {
-          var data = {
-            item: general.itemdesc,
-            brunch: general.department.name
-          };
-          vm.dataList.push(data);
-        }
 
+        }
+        var data = {
+          item: general.itemdesc,
+          brunch: general.department.name
+        };
+        vm.dataList.push(data);
 
       });
     });
