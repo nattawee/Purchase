@@ -86,7 +86,7 @@ exports.delete = function(req, res) {
  * List of Renovates
  */
 exports.list = function(req, res) {
-  Renovate.find().sort('-created').populate('user', 'displayName').exec(function(err, renovates) {
+  Renovate.find().sort('-created').populate('user', 'displayName').populate('department').exec(function(err, renovates) {
     if (err) {
       return res.status(400).send({
         message: errorHandler.getErrorMessage(err)
@@ -108,7 +108,7 @@ exports.renovateByID = function(req, res, next, id) {
     });
   }
 
-  Renovate.findById(id).populate('user', 'displayName').exec(function (err, renovate) {
+  Renovate.findById(id).populate('user', 'displayName').populate('department').exec(function (err, renovate) {
     if (err) {
       return next(err);
     } else if (!renovate) {

@@ -48,6 +48,10 @@ var RenovateSchema = new Schema({
         type: String,
         //required: 'Please fill renovatedes'
     },
+    department: {
+        type: Schema.ObjectId,
+        ref: 'Branch'
+    },
     processtype: {
         type: String,
         //required: 'Please fill processtype'

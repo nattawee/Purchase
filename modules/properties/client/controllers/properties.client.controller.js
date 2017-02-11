@@ -6,14 +6,28 @@
     .module('properties')
     .controller('PropertiesController', PropertiesController);
 
-  PropertiesController.$inject = ['$scope', '$state', '$window', 'Authentication', 'propertyResolve'];
+  PropertiesController.$inject = ['$scope', '$state', '$window', 'Authentication', 'propertyResolve', 'BranchesService'];
 
-  function PropertiesController($scope, $state, $window, Authentication, property) {
+  function PropertiesController($scope, $state, $window, Authentication, property, BranchesService) {
     var vm = this;
 
     vm.authentication = Authentication;
     vm.property = property;
     vm.general = vm.property;
+    BranchesService.query(function (ret) {
+      
+      if (vm.authentication.user.branch) {
+        $scope.branchesService = [];
+        ret.forEach(function (brch) {
+          if (brch._id.toString() === vm.authentication.user.branch) {
+            $scope.branchesService.push(brch);
+            vm.general.department = brch;
+          }
+        });
+      } else {
+        $scope.branchesService = ret;
+      }
+    });
     if (vm.property.estexpense && vm.property.estexpense.apprvdate) {
       vm.property.estexpense.apprvdate = new Date(vm.property.estexpense.apprvdate);
     }

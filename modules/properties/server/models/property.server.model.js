@@ -48,6 +48,10 @@ var PropertySchema = new Schema({
         type: String,
         //required: 'Please fill propertydes'
     },
+    department: {
+        type: Schema.ObjectId,
+        ref: 'Branch'
+    },
     processtype: {
         type: String,
         //required: 'Please fill processtype'

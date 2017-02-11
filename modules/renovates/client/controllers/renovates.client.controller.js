@@ -6,13 +6,27 @@
     .module('renovates')
     .controller('RenovatesController', RenovatesController);
 
-  RenovatesController.$inject = ['$scope', '$state', '$window', 'Authentication', 'renovateResolve'];
+  RenovatesController.$inject = ['$scope', '$state', '$window', 'Authentication', 'renovateResolve', 'BranchesService'];
 
-  function RenovatesController($scope, $state, $window, Authentication, renovate) {
+  function RenovatesController($scope, $state, $window, Authentication, renovate, BranchesService) {
     var vm = this;
     vm.authentication = Authentication;
     vm.renovate = renovate;
     vm.general = vm.renovate;
+    BranchesService.query(function (ret) {
+      
+      if (vm.authentication.user.branch) {
+        $scope.branchesService = [];
+        ret.forEach(function (brch) {
+          if (brch._id.toString() === vm.authentication.user.branch) {
+            $scope.branchesService.push(brch);
+            vm.general.department = brch;
+          }
+        });
+      } else {
+        $scope.branchesService = ret;
+      }
+    });
     if (vm.renovate.estexpense && vm.renovate.estexpense.apprvdate) {
       vm.renovate.estexpense.apprvdate = new Date(vm.renovate.estexpense.apprvdate);
     }

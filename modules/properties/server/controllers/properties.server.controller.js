@@ -86,7 +86,7 @@ exports.delete = function(req, res) {
  * List of Properties
  */
 exports.list = function(req, res) {
-  Property.find().sort('-created').populate('user', 'displayName').exec(function(err, properties) {
+  Property.find().sort('-created').populate('user', 'displayName').populate('department').exec(function(err, properties) {
     if (err) {
       return res.status(400).send({
         message: errorHandler.getErrorMessage(err)
@@ -108,7 +108,7 @@ exports.propertyByID = function(req, res, next, id) {
     });
   }
 
-  Property.findById(id).populate('user', 'displayName').exec(function (err, property) {
+  Property.findById(id).populate('user', 'displayName').populate('department').exec(function (err, property) {
     if (err) {
       return next(err);
     } else if (!property) {
