@@ -13,10 +13,13 @@
     vm.generals = GeneralsService.query(function (generals) {
       vm.dataList = [];
       generals.forEach(function (general) {
-        var data = {
-          item: general.itemdesc
-        };
-        vm.dataList.push(data);
+        if (generals.department._id.toString() === vm.authentication.user.branch) {
+          var data = {
+            item: general.itemdesc
+          };
+          vm.dataList.push(data);
+        }
+
 
       });
     });
