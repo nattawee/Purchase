@@ -50,17 +50,10 @@
 
     vm.dataList = [];
     vm.generals.forEach(function (general) {
-      if (general.trnsdate) {
-        var data = {
-          date: new Date(general.trnsdate).toLocaleDateString('en-GB', {
-            day: 'numeric',
-            month: 'short',
-            year: 'numeric'
-          }).split(' ').join('-'),
+      var data = {
           item: general.itemdesc
         };
         vm.dataList.push(data);
-      }
 
     });
 
