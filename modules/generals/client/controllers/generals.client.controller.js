@@ -11,12 +11,13 @@
   function GeneralsController($scope, $state, $window, Authentication, general, BranchesService) {
     var vm = this;
     vm.authentication = Authentication;
+    alert(vm.authentication.branch);
     BranchesService.query(function (ret) {
-
+      
       if (vm.authentication.branch) {
         $scope.branchesService = [];
         ret.forEach(function (brch) {
-          if (brch._id === vm.authentication.branch) {
+          if (brch._id.toString() === vm.authentication.branch) {
             $scope.branchesService.push(brch);
           }
         });
