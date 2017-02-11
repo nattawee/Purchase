@@ -10,7 +10,16 @@
   function GeneralsListController(GeneralsService, Authentication) {
     var vm = this;
     vm.authentication = Authentication;
-    vm.generals = GeneralsService.query();
+    vm.generals = GeneralsService.query(function (generals) {
+      vm.dataList = [];
+      generals.forEach(function (general) {
+        var data = {
+          item: general.itemdesc
+        };
+        vm.dataList.push(data);
+
+      });
+    });
     vm.tabs = [{
       renovate: 0,
       name: 'แบบร่าง',
@@ -48,14 +57,7 @@
       uriref: 'generals.view({ generalId: general._id })'
     }];
 
-    vm.dataList = [];
-    vm.generals.forEach(function (general) {
-      var data = {
-          item: general.itemdesc
-        };
-        vm.dataList.push(data);
 
-    });
 
   }
 }());
