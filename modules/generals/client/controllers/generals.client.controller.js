@@ -11,7 +11,7 @@
   function GeneralsController($scope, $state, $window, Authentication, general, BranchesService) {
     var vm = this;
     vm.authentication = Authentication;
-    
+    vm.general = general;
     BranchesService.query(function (ret) {
       
       if (vm.authentication.user.branch) {
@@ -19,13 +19,14 @@
         ret.forEach(function (brch) {
           if (brch._id.toString() === vm.authentication.user.branch) {
             $scope.branchesService.push(brch);
+            vm.general.department = brch;
           }
         });
       } else {
         $scope.branchesService = ret;
       }
     });
-    vm.general = general;
+    
     if (vm.general.trnsdate) {
       vm.general.trnsdate = new Date(vm.general.trnsdate);
     }
