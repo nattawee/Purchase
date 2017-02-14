@@ -10,35 +10,58 @@
   function GeneralsListController(GeneralsService, Authentication) {
     var vm = this;
     vm.authentication = Authentication;
-    vm.generals = GeneralsService.query(function (generals) {
-    vm.dataList = [];
-      generals.forEach(function (general) {
-        var data = {
-          date: new Date(general.trnsdate).toLocaleDateString(),
-          item: general.itemdesc,
-          brunch: general.department.name,
-          owner: general.owner,
-          docno: general.docno,
-          amount: general.estexpense.amount,
-          apprvdate: new Date(general.estexpense ? general.estexpense.apprvdate : '').toLocaleDateString(),
-          approver: general.estexpense.approver,
-          processtype: general.processtype,
-          methodtype: general.methodtype,
-          requestdate: new Date(general.announcement ? general.announcement.requestdate : '').toLocaleDateString(),
-          onlinedate: new Date(general.announcement ? general.announcement.onlinedate : '').toLocaleDateString(),
-          reference: (general.announcement ? general.announcement.reference : ''),
-          pamount: general.purchase.amount,
-          papprvdate: new Date(general.purchase ? general.purchase.apprvdate : '').toLocaleDateString(),
-          papprover: general.purchase.approver,
-          supplier: general.supplier,
-          refno: general.refno,
-          naccdocdate: new Date(general.nacc ? general.nacc.naccdocdate : '').toLocaleDateString(),
-          naccdocno: (general.nacc ? general.nacc.naccdocno : '')
-        };
-        vm.dataList.push(data);
+    vm.status = function (status) {
+      if (status) {
+        vm.selectedStatus = status.status;
+      } else {
+        vm.selectedStatus = 'draft';
+      }
+      vm.readGenerals(vm.selectedStatus);
+    };
+    // vm.status();
+    // vm.tabstatus = function (status) {
+    vm.readGenerals = function (status) {
+      vm.generals = GeneralsService.query(function (generals) {
+        vm.dataList = [];
+        generals.forEach(function (general) {
+          if (general.department._id === vm.authentication.user.branch) {
+            vm.selectedStatus = status || 'draft';
+            if (vm.selectedStatus === general.status) {
+              var data = {
+                date: new Date(general.trnsdate).toLocaleDateString(),
+                item: general.itemdesc,
+                brunch: general.department.name,
+                owner: general.owner,
+                docno: general.docno,
+                amount: general.estexpense.amount,
+                apprvdate: new Date(general.estexpense ? general.estexpense.apprvdate : '').toLocaleDateString(),
+                approver: general.estexpense.approver,
+                processtype: general.processtype,
+                methodtype: general.methodtype,
+                requestdate: new Date(general.announcement ? general.announcement.requestdate : '').toLocaleDateString(),
+                onlinedate: new Date(general.announcement ? general.announcement.onlinedate : '').toLocaleDateString(),
+                reference: (general.announcement ? general.announcement.reference : ''),
+                pamount: general.purchase.amount,
+                papprvdate: new Date(general.purchase ? general.purchase.apprvdate : '').toLocaleDateString(),
+                papprover: general.purchase.approver,
+                supplier: general.supplier,
+                refno: general.refno,
+                naccdocdate: new Date(general.nacc ? general.nacc.naccdocdate : '').toLocaleDateString(),
+                naccdocno: (general.nacc ? general.nacc.naccdocno : '')
+              };
+              // if (general.department.name === vm.authentication.department){
+              vm.dataList.push(data);
+            }
+            // }
+          }
 
+        });
       });
-    });
+    };
+
+    // }
+
+    // vm.ge = JSON.stringify(vm.dataList);
     // vm.dataList = [
     //   {
     //     id: 1,
