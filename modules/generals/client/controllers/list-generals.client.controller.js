@@ -11,19 +11,52 @@
     var vm = this;
     vm.authentication = Authentication;
     vm.generals = GeneralsService.query(function (generals) {
-      vm.dataList = [];
+    vm.dataList = [];
       generals.forEach(function (general) {
-        if (generals.department._id.toString() === vm.authentication.user.branch) {
-
-        }
         var data = {
+          date: new Date(general.trnsdate).toLocaleDateString(),
           item: general.itemdesc,
-          brunch: general.department.name
+          brunch: general.department.name,
+          owner: general.owner,
+          docno: general.docno,
+          amount: general.estexpense.amount,
+          apprvdate: new Date(general.estexpense ? general.estexpense.apprvdate : '').toLocaleDateString(),
+          approver: general.estexpense.approver,
+          processtype: general.processtype,
+          methodtype: general.methodtype,
+          requestdate: new Date(general.announcement ? general.announcement.requestdate : '').toLocaleDateString(),
+          onlinedate: new Date(general.announcement ? general.announcement.onlinedate : '').toLocaleDateString(),
+          reference: (general.announcement ? general.announcement.reference : ''),
+          pamount: general.purchase.amount,
+          papprvdate: new Date(general.purchase ? general.purchase.apprvdate : '').toLocaleDateString(),
+          papprover: general.purchase.approver,
+          supplier: general.supplier,
+          refno: general.refno,
+          naccdocdate: new Date(general.nacc ? general.nacc.naccdocdate : '').toLocaleDateString(),
+          naccdocno: (general.nacc ? general.nacc.naccdocno : '')
         };
         vm.dataList.push(data);
 
       });
     });
+    // vm.dataList = [
+    //   {
+    //     id: 1,
+    //     name: 'github',
+    //     price: '200$',
+    //     publisher: {
+    //       name: 'dtagdev'
+    //     }
+    //   },
+    //   {
+    //     id: 2,
+    //     name: 'google',
+    //     price: '300$',
+    //     publisher: {
+    //       name: 'dtagvn'
+    //     }
+    //   }
+    // ];
     vm.tabs = [{
       renovate: 0,
       name: 'แบบร่าง',
@@ -64,4 +97,4 @@
 
 
   }
-}());
+} ());
