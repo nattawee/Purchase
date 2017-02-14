@@ -16,14 +16,14 @@
     <h1 ng-show="step5">4. เกณฑ์มูลค่าหุ้นทุนที่ออกเพื่อชำระค่าสินทรัพย์</h1>
   </div>
   <!--<div class="col-md-12">-->
-  <form name="vm.form.aquisitionForm" class="form-horizontal" ng-submit="vm.save(vm.form.aquisitionForm.$valid)" novalidate>
+  <form name="vm.form.aquisitionForm" class="form-horizontal" novalidate>
     <fieldset>
       <!--Form0-->
       <div class="form-group" ng-show="step1 && step2 === null && step3 === null && step4 === null && step5 === null">
         <div class="form-group">
           <p class="col-sm-2 control-label">วัน/เดือน/ปี ที่ทำรายการ</p>
           <div class="col-sm-10">
-            <input type="date" ng-model="vm.aquisition.startdate" name="startdate" class="form-control" required>
+            <input type="date" ng-model="vm.aquisition.startdate" name="startdate" class="form-control" required ng-disabled="vm.aquisition.status && (vm.aquisition.status === 'waiting for approve' || vm.aquisition.status === 'complete')">
             <div ng-messages="vm.form.aquisitionForm.startdate.$error" role="alert">
               <p class="help-block error-text" ng-message="required">กรุณากรอก วัน/เดือน/ปี</p>
             </div>
@@ -34,7 +34,7 @@
           <p class="col-sm-2 control-label">คู่สัญญาที่เกี่ยวข้องและความสัมพันธ์</p>
           <div class="col-sm-10">
             <input type="text" ng-model="vm.aquisition.relations" name="relations" class="form-control" placeholder="คู่สัญญาที่เกี่ยวข้องและความสัมพันธ์"
-              required>
+              required ng-disabled="vm.aquisition.status && (vm.aquisition.status === 'waiting for approve' || vm.aquisition.status === 'complete')">
             <div ng-messages="vm.form.aquisitionForm.relations.$error" role="alert">
               <p class="help-block error-text" ng-message="required">กรุณากรอก คู่สัญญาที่เกี่ยวข้องและความสัมพันธ์</p>
             </div>
@@ -45,7 +45,7 @@
           <p class="col-sm-2 control-label">ลักษณะโดยทั่วไปของรายการ</p>
           <div class="col-sm-10">
             <input type="text" ng-model="vm.aquisition.descriptionlist" name="descriptionlist" class="form-control" placeholder="ลักษณะโดยทั่วไปของรายการ"
-              required>
+              required ng-disabled="vm.aquisition.status && (vm.aquisition.status === 'waiting for approve' || vm.aquisition.status === 'complete')">
             <div ng-messages="vm.form.aquisitionForm.descriptionlist.$error" role="alert">
               <p class="help-block error-text" ng-message="required">กรุณากรอก ลักษณะโดยทั่วไปของรายการ</p>
             </div>
@@ -56,7 +56,7 @@
           <p class="col-sm-2 control-label">รายละเอียดและมูลค่าของสินทรัพย์ที่ได้มา</p>
           <div class="col-sm-10">
             <input type="text" ng-model="vm.aquisition.descriptionproduct" name="descriptionproduct" class="form-control" placeholder="รายละเอียดและมูลค่าของสินทรัพย์ที่ได้มา"
-              required>
+              required ng-disabled="vm.aquisition.status && (vm.aquisition.status === 'waiting for approve' || vm.aquisition.status === 'complete')">
             <div ng-messages="vm.form.aquisitionForm.descriptionproduct.$error" role="alert">
               <p class="help-block error-text" ng-message="required">กรุณากรอก รายละเอียดและมูลค่าของสินทรัพย์ที่ได้มา</p>
             </div>
@@ -67,7 +67,7 @@
           <p class="col-sm-2 control-label">การคำนวณขนาดรายการ</p>
           <div class="col-sm-10">
             <input type="text" ng-model="vm.aquisition.caculation" name="caculation" class="form-control" placeholder="การคำนวณขนาดรายการ"
-              required>
+              required ng-disabled="vm.aquisition.status && (vm.aquisition.status === 'waiting for approve' || vm.aquisition.status === 'complete')">
             <div ng-messages="vm.form.aquisitionForm.caculation.$error" role="alert">
               <p class="help-block error-text" ng-message="required">การคำนวณขนาดรายการ</p>
             </div>
@@ -78,7 +78,7 @@
           <p class="col-sm-2 control-label">ประโยชน์ที่บริษัทคาดว่าจะได้รับ</p>
           <div class="col-sm-10">
             <input type="text" ng-model="vm.aquisition.benefit" name="benefit" class="form-control" placeholder="ประโยชน์ที่บริษัทคาดว่าจะได้รับ"
-              required>
+              required ng-disabled="vm.aquisition.status && (vm.aquisition.status === 'waiting for approve' || vm.aquisition.status === 'complete')">
             <div ng-messages="vm.form.aquisitionForm.benefit.$error" role="alert">
               <p class="help-block error-text" ng-message="required">กรุณากรอก ประโยชน์ที่บริษัทคาดว่าจะได้รับ</p>
             </div>
@@ -89,7 +89,7 @@
           <p class="col-sm-2 control-label">ความเห็นของคณะกรรมการบริษัท</p>
           <div class="col-sm-10">
             <input type="text" ng-model="vm.aquisition.comment" name="comment" class="form-control" placeholder="ความเห็นของคณะกรรมการบริษัท"
-              required>
+              required ng-disabled="vm.aquisition.status && (vm.aquisition.status === 'waiting for approve' || vm.aquisition.status === 'complete')">
             <div ng-messages="vm.form.aquisitionForm.comment.$error" role="alert">
               <p class="help-block error-text" ng-message="required">กรุณากรอก ความเห็นของคณะกรรมการบริษัท</p>
             </div>
@@ -99,7 +99,7 @@
         <div class="form-group">
           <p class="col-sm-2 control-label">ผู้จัดทำ</p>
           <div class="col-sm-10">
-            <input type="text" ng-model="vm.aquisition.manipulator" name="manipulator" class="form-control" placeholder="ผู้จัดทำ" required>
+            <input type="text" ng-model="vm.aquisition.manipulator" name="manipulator" class="form-control" placeholder="ผู้จัดทำ" required ng-disabled="vm.aquisition.status && (vm.aquisition.status === 'waiting for approve' || vm.aquisition.status === 'complete')">
             <div ng-messages="vm.form.aquisitionForm.manipulator.$error" role="alert">
               <p class="help-block error-text" ng-message="required">กรุณากรอก ผู้จัดทำ</p>
             </div>
@@ -109,7 +109,7 @@
         <div class="form-group">
           <p class="col-sm-2 control-label">ผู้อนุมัติ</p>
           <div class="col-sm-10">
-            <input type="text" ng-model="vm.aquisition.approvers" name="approvers" class="form-control" placeholder="ผู้อนุมัติ" required>
+            <input type="text" ng-model="vm.aquisition.approvers" name="approvers" class="form-control" placeholder="ผู้อนุมัติ" required ng-disabled="vm.aquisition.status && (vm.aquisition.status === 'waiting for approve' || vm.aquisition.status === 'complete')">
             <div ng-messages="vm.form.aquisitionForm.approvers.$error" role="alert">
               <p class="help-block error-text" ng-message="required">กรุณากรอก ผู้อนุมัติ</p>
             </div>
@@ -137,7 +137,7 @@
           <p class="col-sm-2 control-label">สินทรัพย์รวม</p>
           <div class="col-sm-10">
             <input type="number" ng-model="vm.aquisition.form1.nta.assetssum" name="assetssum" class="form-control" placeholder="กรอกตัวเลข"
-              required>
+              required ng-disabled="vm.aquisition.status && (vm.aquisition.status === 'waiting for approve' || vm.aquisition.status === 'complete')">
             <div ng-messages="vm.form.aquisitionForm.assetssum.$error" role="alert">
               <p class="help-block error-text" ng-message="required">กรุณากรอก สินทรัพย์รวม</p>
             </div>
@@ -148,7 +148,7 @@
           <p class="col-sm-2 control-label">หัก สินทรัพย์ไม่มีตัวตน*</p>
           <div class="col-sm-10">
             <input type="number" ng-model="vm.aquisition.form1.nta.assetsintangible" name="assetsintangible" class="form-control" placeholder="กรอกตัวเลข"
-              required>
+              required ng-disabled="vm.aquisition.status && (vm.aquisition.status === 'waiting for approve' || vm.aquisition.status === 'complete')">
             <div ng-messages="vm.form.aquisitionForm.assetsintangible.$error" role="alert">
               <p class="help-block error-text" ng-message="required">กรุณากรอก หัก สินทรัพย์ไม่มีตัวตน</p>
             </div>
@@ -159,7 +159,7 @@
           <p class="col-sm-2 control-label">หัก หนี้สินรวม</p>
           <div class="col-sm-10">
             <input type="number" ng-model="vm.aquisition.form1.nta.debtssum" name="debtssum" class="form-control" placeholder="กรอกตัวเลข"
-              required>
+              required ng-disabled="vm.aquisition.status && (vm.aquisition.status === 'waiting for approve' || vm.aquisition.status === 'complete')">
             <div ng-messages="vm.form.aquisitionForm.debtssum.$error" role="alert">
               <p class="help-block error-text" ng-message="required">กรุณากรอก หัก หนี้สินรวม</p>
             </div>
@@ -169,7 +169,7 @@
         <div class="form-group">
           <p class="col-sm-2 control-label">หัก ส่วนผู้ถือหุ้นที่ไม่มีอำนาจควบคุม(ถ้ามี)</p>
           <div class="col-sm-10">
-            <input type="number" ng-model="vm.aquisition.form1.nta.shareholder" name="shareholder" class="form-control" placeholder="กรอกตัวเลข">
+            <input type="number" ng-model="vm.aquisition.form1.nta.shareholder" name="shareholder" class="form-control" placeholder="กรอกตัวเลข" ng-disabled="vm.aquisition.status && (vm.aquisition.status === 'waiting for approve' || vm.aquisition.status === 'complete')">
           </div>
         </div>
 
@@ -177,7 +177,7 @@
           <p class="col-sm-2 control-label">รวม NTA ของเงินลงทุนในบริษัท</p>
           <div class="col-sm-10">
             <input type="number" ng-model="vm.aquisition.form1.nta.ntasum" name="ntasum" class="form-control" placeholder="กรอกตัวเลข"
-              required>
+              required ng-disabled="vm.aquisition.status && (vm.aquisition.status === 'waiting for approve' || vm.aquisition.status === 'complete')">
             <div ng-messages="vm.form.aquisitionForm.ntasum.$error" role="alert">
               <p class="help-block error-text" ng-message="required">กรุณากรอก รวม NTA ของเงินลงทุนในบริษัท</p>
             </div>
@@ -190,7 +190,7 @@
           <p class="col-sm-2 control-label">สัดส่วนที่ได้มาหรือจำหน่ายไป</p>
           <div class="col-sm-10">
             <input type="number" ng-model="vm.aquisition.form1.acqodis" name="acqodis" class="form-control" placeholder="กรอกตัวเลข"
-              required>
+              required ng-disabled="vm.aquisition.status && (vm.aquisition.status === 'waiting for approve' || vm.aquisition.status === 'complete')">
             <div ng-messages="vm.form.aquisitionForm.acqodis.$error" role="alert">
               <p class="help-block error-text" ng-message="required">กรุณากรอก สัดส่วนที่ได้มาหรือจำหน่ายไป</p>
             </div>
@@ -203,7 +203,7 @@
           <p class="col-sm-2 control-label">NTA ของบริษัทจดทะเบียน</p>
           <div class="col-sm-10">
             <input type="number" ng-model="vm.aquisition.form1.ntalisted" name="ntalisted" class="form-control" placeholder="กรอกตัวเลข"
-              required>
+              required ng-disabled="vm.aquisition.status && (vm.aquisition.status === 'waiting for approve' || vm.aquisition.status === 'complete')">
             <div ng-messages="vm.form.aquisitionForm.ntalisted.$error" role="alert">
               <p class="help-block error-text" ng-message="required">กรุณากรอก NTA ของบริษัทจดทะเบียน</p>
             </div>
@@ -224,7 +224,7 @@
           <p class="col-sm-2 control-label">กำไรสุทธิจากการดำเนินงานของเงินลงทุนในบริษัท</p>
           <div class="col-sm-10">
             <input type="number" ng-model="vm.aquisition.form2.netoperating" name="netoperating" class="form-control" placeholder="กรอกตัวเลข"
-              required>
+              required ng-disabled="vm.aquisition.status && (vm.aquisition.status === 'waiting for approve' || vm.aquisition.status === 'complete')">
             <div ng-messages="vm.form.aquisitionForm.netoperating.$error" role="alert">
               <p class="help-block error-text" ng-message="required">กรุณากรอก กำไรสุทธิจากการดำเนินงานของเงินลงทุนในบริษัท</p>
             </div>
@@ -237,7 +237,7 @@
         <div class="form-group">
           <p class="col-sm-2 control-label">สัดส่วนที่ซื้อหรือขาย</p>
           <div class="col-sm-10">
-            <input type="number" ng-model="vm.aquisition.form2.ratio" name="ratio" class="form-control" placeholder="กรอกตัวเลข" required>
+            <input type="number" ng-model="vm.aquisition.form2.ratio" name="ratio" class="form-control" placeholder="กรอกตัวเลข" required ng-disabled="vm.aquisition.status && (vm.aquisition.status === 'waiting for approve' || vm.aquisition.status === 'complete')">
             <div ng-messages="vm.form.aquisitionForm.ratio.$error" role="alert">
               <p class="help-block error-text" ng-message="required">กรุณากรอก สัดส่วนที่ซื้อหรือขาย</p>
             </div>
@@ -251,7 +251,7 @@
           <p class="col-sm-2 control-label">กำไรสุทธิจากการดำเนินงานของบริษัทจดทะเบียน</p>
           <div class="col-sm-10">
             <input type="number" ng-model="vm.aquisition.form2.netcompany" name="netcompany" class="form-control" placeholder="กรอกตัวเลข"
-              required>
+              required ng-disabled="vm.aquisition.status && (vm.aquisition.status === 'waiting for approve' || vm.aquisition.status === 'complete')">
             <div ng-messages="vm.form.aquisitionForm.netcompany.$error" role="alert">
               <p class="help-block error-text" ng-message="required">กรุณากรอก กำไรสุทธิจากการดำเนินงานของบริษัทจดทะเบียน</p>
             </div>
@@ -272,7 +272,7 @@
         <div class="form-group">
           <p class="col-sm-2 control-label">มูลค่ารายการที่จ่ายหรือได้รับ</p>
           <div class="col-sm-10">
-            <input type="number" ng-model="vm.aquisition.form3.amount" name="amount" class="form-control" placeholder="กรอกตัวเลข" required>
+            <input type="number" ng-model="vm.aquisition.form3.amount" name="amount" class="form-control" placeholder="กรอกตัวเลข" required ng-disabled="vm.aquisition.status && (vm.aquisition.status === 'waiting for approve' || vm.aquisition.status === 'complete')">
             <div ng-messages="vm.form.aquisitionForm.amount.$error" role="alert">
               <p class="help-block error-text" ng-message="required">กรุณากรอก มูลค่ารายการที่จ่ายหรือได้รับ</p>
             </div>
@@ -286,7 +286,7 @@
           <p class="col-sm-2 control-label">สินทรัพย์รวมของบริษัทจดทะเบียน</p>
           <div class="col-sm-10">
             <input type="number" ng-model="vm.aquisition.form3.assetscompany" name="assetscompany" class="form-control" placeholder="กรอกตัวเลข"
-              required>
+              required ng-disabled="vm.aquisition.status && (vm.aquisition.status === 'waiting for approve' || vm.aquisition.status === 'complete')">
             <div ng-messages="vm.form.aquisitionForm.assetscompany.$error" role="alert">
               <p class="help-block error-text" ng-message="required">กรุณากรอก สินทรัพย์รวมของบริษัทจดทะเบียน</p>
             </div>
@@ -308,7 +308,7 @@
           <p class="col-sm-2 control-label">จำนวนหุ้นที่บริษัทออกเพื่อชำระค่าสินทรัพย์ </p>
           <div class="col-sm-10">
             <input type="number" ng-model="vm.aquisition.form4.sharespay" name="sharespay" class="form-control" placeholder="กรอกตัวเลข"
-              required>
+              required ng-disabled="vm.aquisition.status && (vm.aquisition.status === 'waiting for approve' || vm.aquisition.status === 'complete')">
             <div ng-messages="vm.form.aquisitionForm.sharespay.$error" role="alert">
               <p class="help-block error-text" ng-message="required">กรุณากรอก จำนวนหุ้นที่บริษัทออกเพื่อชำระค่าสินทรัพย์</p>
             </div>
@@ -322,7 +322,7 @@
           <p class="col-sm-2 control-label">จำนวนหุ้นที่ชำระแล้วของบริษัท</p>
           <div class="col-sm-10">
             <input type="number" ng-model="vm.aquisition.form4.sharespaycompany" name="sharespaycompany" class="form-control" placeholder="กรอกตัวเลข"
-              required>
+              required ng-disabled="vm.aquisition.status && (vm.aquisition.status === 'waiting for approve' || vm.aquisition.status === 'complete')">
             <div ng-messages="vm.form.aquisitionForm.sharespaycompany.$error" role="alert">
               <p class="help-block error-text" ng-message="required">กรุณากรอก จำนวนหุ้นที่ชำระแล้วของบริษัท</p>
             </div>
@@ -333,7 +333,11 @@
 
       <div class="form-group">
         <label class="control-label btn btn-default" for="step1" ng-click="step(4)" ng-show="step5">Back Step</label>
-        <button type="submit" class="btn btn-default" ng-show="step5">{{vm.aquisition._id ? 'แก้ไขฉบับร่าง' : 'บันทึกฉบับร่าง'}}</button>
+        <!--ng-disabled="vm.aquisition.status && (vm.aquisition.status === 'waiting for approve' || vm.aquisition.status === 'complete')"-->
+        <button type="submit" class="btn btn-primary" ng-click="vm.saveToDraft(vm.form.aquisitionForm.$valid)" ng-show="step5 && (vm.aquisition.status || !vm.aquisition.status) && (vm.aquisition.status === 'draft' || !vm.aquisition.status) && (vm.authentication.user.roles[0] === 'dataentry' || vm.authentication.user.roles[0] === 'superuser')">{{vm.aquisition._id ? 'แก้ไขฉบับร่าง' : 'บันทึกฉบับร่าง'}}</button>
+        <button type="submit" class="btn btn-primary" ng-click="vm.saveToApprove(vm.form.aquisitionForm.$valid)" ng-show="step5 && (vm.aquisition.status || !vm.aquisition.status) && (vm.aquisition.status === 'draft' || !vm.aquisition.status) && (vm.authentication.user.roles[0] === 'dataentry' || vm.authentication.user.roles[0] === 'superuser')">บันทึกขออนุมัติ</button>    
+        <button type="submit" class="btn btn-danger" ng-click="vm.saveToDraft(vm.form.aquisitionForm.$valid)" ng-show="step5 && vm.aquisition.status && vm.aquisition.status === 'waiting for approve' && (vm.authentication.user.roles[0] === 'approver' || vm.authentication.user.roles[0] === 'superuser')">ส่งกลับแก้ไข</button>  
+        <button type="submit" class="btn btn-primary" ng-click="vm.saveToComplete(vm.form.aquisitionForm.$valid)" ng-show="step5 && vm.aquisition.status && vm.aquisition.status === 'waiting for approve' && (vm.authentication.user.roles[0] === 'approver' || vm.authentication.user.roles[0] === 'superuser')">อนุมัติ</button>                                              
       </div>
       <!--End Form4-->
       <div ng-show="vm.error" class="text-danger">

@@ -51,7 +51,31 @@
         $scope.step5 = 'active';
       }
     };
+    vm.saveToApprove = function (isValid) {
+      if (!isValid) {
+        $scope.$broadcast('show-errors-check-validity', 'vm.form.aquisitionForm');
+        return false;
+      }
+      vm.aquisition.status = 'waiting for approve';
+      vm.save(true);
+    };
+    vm.saveToDraft = function (isValid) {
+      if (!isValid) {
+        $scope.$broadcast('show-errors-check-validity', 'vm.form.aquisitionForm');
+        return false;
+      }
+      vm.aquisition.status = 'draft';
+      vm.save(true);
+    };
 
+    vm.saveToComplete = function (isValid) {
+      if (!isValid) {
+        $scope.$broadcast('show-errors-check-validity', 'vm.form.aquisitionForm');
+        return false;
+      }
+      vm.aquisition.status = 'complete';
+      vm.save(true);
+    };
     // Remove existing Aquisition
     function remove() {
       if ($window.confirm('Are you sure you want to delete?')) {
@@ -75,7 +99,7 @@
       }
 
       function successCallback(res) {
-        $state.go('aquisitions.view', {
+        $state.go('aquisitions.list', {
           aquisitionId: res._id
         });
       }

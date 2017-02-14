@@ -32,7 +32,7 @@
           aquisitionResolve: newAquisition
         },
         data: {
-          roles: ['user', 'admin'],
+          roles: ['dataentry', 'superuser'],
           pageTitle: 'Aquisitions Create'
         }
       })
@@ -45,7 +45,7 @@
           aquisitionResolve: getAquisition
         },
         data: {
-          roles: ['user', 'admin'],
+          roles: ['dataentry', 'admin', 'viewer', 'approver', 'superuser'],
           pageTitle: 'Edit Aquisition {{ aquisitionResolve.name }}'
         }
       })
@@ -76,4 +76,4 @@
   function newAquisition(AquisitionsService) {
     return new AquisitionsService();
   }
-}());
+} ());
