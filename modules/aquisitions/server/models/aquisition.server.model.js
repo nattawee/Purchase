@@ -82,6 +82,7 @@ var AquisitionSchema = new Schema({
   comment: String,
   manipulator: String,
   approvers: String,
+  status: String,
   created: {
     type: Date,
     default: Date.now

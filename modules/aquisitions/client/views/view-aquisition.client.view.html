@@ -1,5 +1,5 @@
 <section>
-  <div class="page-header">
+  <!--<div class="page-header">
     <h1 ng-bind="vm.aquisition.name"></h1>
   </div>
   <div class="pull-right" ng-show="vm.aquisition.isCurrentUserOwner">
@@ -9,8 +9,9 @@
     <a class="btn btn-primary" ng-click="vm.remove()">
       <i class="glyphicon glyphicon-trash"></i>
     </a>
-  </div>
-  <small>
+  </div>-->
+  <div ng-include="'/modules/aquisitions/client/views/form-aquisition.client.view.html'"></div>
+  <!--<small>
     <em class="text-muted">
       Posted on
       <span ng-bind="vm.aquisition.created | date:'mediumDate'"></span>
@@ -19,7 +20,7 @@
             ng-bind="vm.aquisition.user.displayName"></span>
       <span ng-if="!vm.aquisition.user">Deleted User</span>
     </em>
-  </small>
+  </small>-->
   <!--<p class="lead">sdf</p>-->
   <!--<div class="row">
     <div class="col-xs-12">
