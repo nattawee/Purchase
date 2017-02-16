@@ -42,14 +42,14 @@
                   methodtype: general.methodtype,
                   requestdate: general.announcement ? new Date(general.announcement.requestdate).toLocaleDateString() : '',
                   onlinedate: general.announcement ? new Date(general.announcement.onlinedate).toLocaleDateString() : '',
-                  reference: general.announcement.reference,
+                  reference: general.announcement ? general.announcement.reference : '',
                   pamount: general.purchase.amount,
                   papprvdate: general.purchase ? new Date(general.purchase.apprvdate ).toLocaleDateString(): '',
                   papprover: general.purchase.approver,
                   supplier: general.supplier,
                   refno: general.refno,
                   naccdocdate: general.nacc ? new Date(general.nacc.naccdocdate).toLocaleDateString() : '',
-                  naccdocno: general.nacc.naccdocno
+                  naccdocno: general.nacc ? general.nacc.naccdocno :''
                 };
                 // if (general.department.name === vm.authentication.department){
                 vm.dataList.push(data);
