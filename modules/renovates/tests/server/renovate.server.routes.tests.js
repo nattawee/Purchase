@@ -45,7 +45,8 @@ describe('Renovate CRUD tests', function () {
       email: 'test@test.com',
       username: credentials.username,
       password: credentials.password,
-      provider: 'local'
+      provider: 'local',
+      roles: ['superuser']
     });
 
     // Save a user to the test db and create new Renovate
@@ -348,7 +349,8 @@ describe('Renovate CRUD tests', function () {
       email: 'orphan@test.com',
       username: _creds.username,
       password: _creds.password,
-      provider: 'local'
+      provider: 'local',
+      roles: ['superuser']
     });
 
     _orphan.save(function (err, orphan) {

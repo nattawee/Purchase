@@ -67,91 +67,91 @@ describe('General Model Unit Tests:', function () {
         done();
       });
     });
-    it('should be able to show an error when try to save without trnsdate', function (done) {
-      general.trnsdate = null;
+    // it('should be able to show an error when try to save without trnsdate', function (done) {
+    //   general.trnsdate = null;
 
-      return general.save(function (err) {
-        should.exist(err);
-        done();
-      });
-    });
-    it('should be able to show an error when try to save without itemdesc', function (done) {
-      general.itemdesc = '';
+    //   return general.save(function (err) {
+    //     should.exist(err);
+    //     done();
+    //   });
+    // });
+    // it('should be able to show an error when try to save without itemdesc', function (done) {
+    //   general.itemdesc = '';
 
-      return general.save(function (err) {
-        should.exist(err);
-        done();
-      });
-    });
-    it('should be able to show an error when try to save without department', function (done) {
-      general.department = '';
+    //   return general.save(function (err) {
+    //     should.exist(err);
+    //     done();
+    //   });
+    // });
+    // it('should be able to show an error when try to save without department', function (done) {
+    //   general.department = '';
 
-      return general.save(function (err) {
-        should.exist(err);
-        done();
-      });
-    });
-    it('should be able to show an error when try to save without owner', function (done) {
-      general.owner = '';
+    //   return general.save(function (err) {
+    //     should.exist(err);
+    //     done();
+    //   });
+    // });
+    // it('should be able to show an error when try to save without owner', function (done) {
+    //   general.owner = '';
 
-      return general.save(function (err) {
-        should.exist(err);
-        done();
-      });
-    });
-    it('should be able to show an error when try to save without docno', function (done) {
-      general.docno = '';
+    //   return general.save(function (err) {
+    //     should.exist(err);
+    //     done();
+    //   });
+    // });
+    // it('should be able to show an error when try to save without docno', function (done) {
+    //   general.docno = '';
 
-      return general.save(function (err) {
-        should.exist(err);
-        done();
-      });
-    });
+    //   return general.save(function (err) {
+    //     should.exist(err);
+    //     done();
+    //   });
+    // });
 
-    it('should be able to show an error when try to save without estimate expense amount', function (done) {
-      general.estexpense.amount = null;
+    // it('should be able to show an error when try to save without estimate expense amount', function (done) {
+    //   general.estexpense.amount = null;
 
-      return general.save(function (err) {
-        should.exist(err);
-        done();
-      });
-    });
+    //   return general.save(function (err) {
+    //     should.exist(err);
+    //     done();
+    //   });
+    // });
 
-    it('should be able to show an error when try to save without estimate approve date', function (done) {
-      general.estexpense.apprvdate = null;
+    // it('should be able to show an error when try to save without estimate approve date', function (done) {
+    //   general.estexpense.apprvdate = null;
 
-      return general.save(function (err) {
-        should.exist(err);
-        done();
-      });
-    });
+    //   return general.save(function (err) {
+    //     should.exist(err);
+    //     done();
+    //   });
+    // });
 
-    it('should be able to show an error when try to save without estimate approver', function (done) {
-      general.estexpense.approver = '';
+    // it('should be able to show an error when try to save without estimate approver', function (done) {
+    //   general.estexpense.approver = '';
 
-      return general.save(function (err) {
-        should.exist(err);
-        done();
-      });
-    });
+    //   return general.save(function (err) {
+    //     should.exist(err);
+    //     done();
+    //   });
+    // });
 
-    it('should be able to show an error when try to save without processtype', function (done) {
-      general.processtype = '';
+    // it('should be able to show an error when try to save without processtype', function (done) {
+    //   general.processtype = '';
 
-      return general.save(function (err) {
-        should.exist(err);
-        done();
-      });
-    });
+    //   return general.save(function (err) {
+    //     should.exist(err);
+    //     done();
+    //   });
+    // });
 
-    it('should be able to show an error when try to save without methodtype', function (done) {
-      general.methodtype = '';
+    // it('should be able to show an error when try to save without methodtype', function (done) {
+    //   general.methodtype = '';
 
-      return general.save(function (err) {
-        should.exist(err);
-        done();
-      });
-    });
+    //   return general.save(function (err) {
+    //     should.exist(err);
+    //     done();
+    //   });
+    // });
   });
 
   afterEach(function (done) {
