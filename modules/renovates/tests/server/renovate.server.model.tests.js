@@ -73,113 +73,113 @@ describe('Renovate Model Unit Tests:', function () {
     //   });
     // });
 
-    it('should be able to show an error when try to save without renovateid', function (done) {
-      renovate.renovateid = '';
+    // it('should be able to show an error when try to save without renovateid', function (done) {
+    //   renovate.renovateid = '';
 
-      return renovate.save(function (err) {
-        should.exist(err);
-        done();
-      });
-    });
+    //   return renovate.save(function (err) {
+    //     should.exist(err);
+    //     done();
+    //   });
+    // });
 
-    it('should be able to show an error when try to save without documentno', function (done) {
-      renovate.documentno = '';
+    // it('should be able to show an error when try to save without documentno', function (done) {
+    //   renovate.documentno = '';
 
-      return renovate.save(function (err) {
-        should.exist(err);
-        done();
-      });
-    });
+    //   return renovate.save(function (err) {
+    //     should.exist(err);
+    //     done();
+    //   });
+    // });
 
-    it('should be able to show an error when try to save without name', function (done) {
-      renovate.name = '';
+    // it('should be able to show an error when try to save without name', function (done) {
+    //   renovate.name = '';
 
-      return renovate.save(function (err) {
-        should.exist(err);
-        done();
-      });
-    });
+    //   return renovate.save(function (err) {
+    //     should.exist(err);
+    //     done();
+    //   });
+    // });
 
-    it('should be able to show an error when try to save without subdistrict', function (done) {
-      renovate.location.subdistrict = '';
+    // it('should be able to show an error when try to save without subdistrict', function (done) {
+    //   renovate.location.subdistrict = '';
 
-      return renovate.save(function (err) {
-        should.exist(err);
-        done();
-      });
-    });
+    //   return renovate.save(function (err) {
+    //     should.exist(err);
+    //     done();
+    //   });
+    // });
 
-    it('should be able to show an error when try to save without district', function (done) {
-      renovate.location.district = '';
+    // it('should be able to show an error when try to save without district', function (done) {
+    //   renovate.location.district = '';
 
-      return renovate.save(function (err) {
-        should.exist(err);
-        done();
-      });
-    });
+    //   return renovate.save(function (err) {
+    //     should.exist(err);
+    //     done();
+    //   });
+    // });
 
-    it('should be able to show an error when try to save without province', function (done) {
-      renovate.location.province = '';
+    // it('should be able to show an error when try to save without province', function (done) {
+    //   renovate.location.province = '';
 
-      return renovate.save(function (err) {
-        should.exist(err);
-        done();
-      });
-    });
+    //   return renovate.save(function (err) {
+    //     should.exist(err);
+    //     done();
+    //   });
+    // });
 
-    it('should be able to show an error when try to save without renovatedes', function (done) {
-      renovate.renovatedes = '';
+    // it('should be able to show an error when try to save without renovatedes', function (done) {
+    //   renovate.renovatedes = '';
 
-      return renovate.save(function (err) {
-        should.exist(err);
-        done();
-      });
-    });
+    //   return renovate.save(function (err) {
+    //     should.exist(err);
+    //     done();
+    //   });
+    // });
 
-    it('should be able to show an error when try to save without processtype', function (done) {
-      renovate.processtype = '';
+    // it('should be able to show an error when try to save without processtype', function (done) {
+    //   renovate.processtype = '';
 
-      return renovate.save(function (err) {
-        should.exist(err);
-        done();
-      });
-    });
+    //   return renovate.save(function (err) {
+    //     should.exist(err);
+    //     done();
+    //   });
+    // });
 
-    it('should be able to show an error when try to save without methodtype', function (done) {
-      renovate.methodtype = '';
+    // it('should be able to show an error when try to save without methodtype', function (done) {
+    //   renovate.methodtype = '';
 
-      return renovate.save(function (err) {
-        should.exist(err);
-        done();
-      });
-    });
+    //   return renovate.save(function (err) {
+    //     should.exist(err);
+    //     done();
+    //   });
+    // });
 
-    it('should be able to show an error when try to save without estimate expense amount', function(done) {
-      renovate.estexpense.amount = null; 
+    // it('should be able to show an error when try to save without estimate expense amount', function(done) {
+    //   renovate.estexpense.amount = null; 
 
-      return renovate.save(function(err) {
-        should.exist(err);
-        done();
-      });
-    });
+    //   return renovate.save(function(err) {
+    //     should.exist(err);
+    //     done();
+    //   });
+    // });
 
-    it('should be able to show an error when try to save without estimate approve date', function(done) {
-      renovate.estexpense.apprvdate = null; 
+    // it('should be able to show an error when try to save without estimate approve date', function(done) {
+    //   renovate.estexpense.apprvdate = null; 
 
-      return renovate.save(function(err) {
-        should.exist(err);
-        done();
-      });
-    });
+    //   return renovate.save(function(err) {
+    //     should.exist(err);
+    //     done();
+    //   });
+    // });
 
-    it('should be able to show an error when try to save without estimate approver', function(done) {
-      renovate.estexpense.approver = ''; 
+    // it('should be able to show an error when try to save without estimate approver', function(done) {
+    //   renovate.estexpense.approver = ''; 
 
-      return renovate.save(function(err) {
-        should.exist(err);
-        done();
-      });
-    });
+    //   return renovate.save(function(err) {
+    //     should.exist(err);
+    //     done();
+    //   });
+    // });
 
   });
 

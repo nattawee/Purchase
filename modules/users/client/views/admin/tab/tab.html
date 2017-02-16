@@ -16,7 +16,7 @@
                     </thead>
                     <tbody>
                         <!--{{users[0].roles}}-->
-                        <tr ng-repeat="user in users | filter:{ roles : tab.status } | filter:searchText" ui-sref="admin.user-edit({ userId: user._id })">
+                        <tr ng-repeat="user in users | filter:{ roles : tab.status } | filter:search" ui-sref="admin.user-edit({ userId: user._id })">
                             <td>
                                 {{user.username}}
                             </td>

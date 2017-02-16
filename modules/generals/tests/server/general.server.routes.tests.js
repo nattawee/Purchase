@@ -47,7 +47,8 @@ describe('General CRUD tests', function () {
       email: 'test@test.com',
       username: credentials.username,
       password: credentials.password,
-      provider: 'local'
+      provider: 'local',
+      roles: ['superuser']
     });
     branch = new Branch({
       name: 'Branch Name',
@@ -564,7 +565,8 @@ describe('General CRUD tests', function () {
       email: 'orphan@test.com',
       username: _creds.username,
       password: _creds.password,
-      provider: 'local'
+      provider: 'local',
+      roles: ['superuser']
     });
 
     _orphan.save(function (err, orphan) {

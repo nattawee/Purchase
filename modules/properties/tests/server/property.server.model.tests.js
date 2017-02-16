@@ -73,113 +73,113 @@ describe('Property Model Unit Tests:', function() {
     //   });
     // });
 
-    it('should be able to show an error when try to save without propertyid', function (done) {
-      property.propertyid = '';
+    // it('should be able to show an error when try to save without propertyid', function (done) {
+    //   property.propertyid = '';
 
-      return property.save(function (err) {
-        should.exist(err);
-        done();
-      });
-    });
+    //   return property.save(function (err) {
+    //     should.exist(err);
+    //     done();
+    //   });
+    // });
 
-    it('should be able to show an error when try to save without documentno', function (done) {
-      property.documentno = '';
+    // it('should be able to show an error when try to save without documentno', function (done) {
+    //   property.documentno = '';
 
-      return property.save(function (err) {
-        should.exist(err);
-        done();
-      });
-    });
+    //   return property.save(function (err) {
+    //     should.exist(err);
+    //     done();
+    //   });
+    // });
 
-    it('should be able to show an error when try to save without name', function (done) {
-      property.name = '';
+    // it('should be able to show an error when try to save without name', function (done) {
+    //   property.name = '';
 
-      return property.save(function (err) {
-        should.exist(err);
-        done();
-      });
-    });
+    //   return property.save(function (err) {
+    //     should.exist(err);
+    //     done();
+    //   });
+    // });
 
-    it('should be able to show an error when try to save without subdistrict', function (done) {
-      property.location.subdistrict = '';
+    // it('should be able to show an error when try to save without subdistrict', function (done) {
+    //   property.location.subdistrict = '';
 
-      return property.save(function (err) {
-        should.exist(err);
-        done();
-      });
-    });
+    //   return property.save(function (err) {
+    //     should.exist(err);
+    //     done();
+    //   });
+    // });
 
-    it('should be able to show an error when try to save without district', function (done) {
-      property.location.district = '';
+    // it('should be able to show an error when try to save without district', function (done) {
+    //   property.location.district = '';
 
-      return property.save(function (err) {
-        should.exist(err);
-        done();
-      });
-    });
+    //   return property.save(function (err) {
+    //     should.exist(err);
+    //     done();
+    //   });
+    // });
 
-    it('should be able to show an error when try to save without province', function (done) {
-      property.location.province = '';
+    // it('should be able to show an error when try to save without province', function (done) {
+    //   property.location.province = '';
 
-      return property.save(function (err) {
-        should.exist(err);
-        done();
-      });
-    });
+    //   return property.save(function (err) {
+    //     should.exist(err);
+    //     done();
+    //   });
+    // });
 
-    it('should be able to show an error when try to save without propertydes', function (done) {
-      property.propertydes = '';
+    // it('should be able to show an error when try to save without propertydes', function (done) {
+    //   property.propertydes = '';
 
-      return property.save(function (err) {
-        should.exist(err);
-        done();
-      });
-    });
+    //   return property.save(function (err) {
+    //     should.exist(err);
+    //     done();
+    //   });
+    // });
 
-    it('should be able to show an error when try to save without processtype', function (done) {
-      property.processtype = '';
+    // it('should be able to show an error when try to save without processtype', function (done) {
+    //   property.processtype = '';
 
-      return property.save(function (err) {
-        should.exist(err);
-        done();
-      });
-    });
+    //   return property.save(function (err) {
+    //     should.exist(err);
+    //     done();
+    //   });
+    // });
 
-    it('should be able to show an error when try to save without methodtype', function (done) {
-      property.methodtype = '';
+    // it('should be able to show an error when try to save without methodtype', function (done) {
+    //   property.methodtype = '';
 
-      return property.save(function (err) {
-        should.exist(err);
-        done();
-      });
-    });
+    //   return property.save(function (err) {
+    //     should.exist(err);
+    //     done();
+    //   });
+    // });
 
-    it('should be able to show an error when try to save without estimate expense amount', function(done) {
-      property.estexpense.amount = null; 
+    // it('should be able to show an error when try to save without estimate expense amount', function(done) {
+    //   property.estexpense.amount = null; 
 
-      return property.save(function(err) {
-        should.exist(err);
-        done();
-      });
-    });
+    //   return property.save(function(err) {
+    //     should.exist(err);
+    //     done();
+    //   });
+    // });
 
-    it('should be able to show an error when try to save without estimate approve date', function(done) {
-      property.estexpense.apprvdate = null; 
+    // it('should be able to show an error when try to save without estimate approve date', function(done) {
+    //   property.estexpense.apprvdate = null; 
 
-      return property.save(function(err) {
-        should.exist(err);
-        done();
-      });
-    });
+    //   return property.save(function(err) {
+    //     should.exist(err);
+    //     done();
+    //   });
+    // });
 
-    it('should be able to show an error when try to save without estimate approver', function(done) {
-      property.estexpense.approver = ''; 
+    // it('should be able to show an error when try to save without estimate approver', function(done) {
+    //   property.estexpense.approver = ''; 
 
-      return property.save(function(err) {
-        should.exist(err);
-        done();
-      });
-    });
+    //   return property.save(function(err) {
+    //     should.exist(err);
+    //     done();
+    //   });
+    // });
 
   });
 
