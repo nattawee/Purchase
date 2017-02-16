@@ -44,7 +44,7 @@
                   onlinedate: general.announcement ? new Date(general.announcement.onlinedate).toLocaleDateString() : '',
                   reference: general.announcement ? general.announcement.reference : '',
                   pamount: general.purchase.amount,
-                  papprvdate: general.purchase ? new Date(general.purchase.apprvdate ).toLocaleDateString(): '',
+                  papprvdate: general.purchase ? new Date(general.purchase.apprvdate).toLocaleDateString(): '',
                   papprover: general.purchase.approver,
                   supplier: general.supplier,
                   refno: general.refno,
