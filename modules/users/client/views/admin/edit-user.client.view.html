@@ -44,12 +44,7 @@
           <label class="control-label" for="roles">Roles</label>
           <div class="controls">
             <select class="form-control" name="roles" ng-model="user.roles[0]" required>
-                      <option value="guest">Guest</option>
-                      <option value="viewer">Viewer</option>
-                      <option value="dataentry">Preparer</option>
-                      <option value="approver">Approver</option>
-                      <option value="superuser">Super User</option>
-                      <option value="admin">User Admin</option>
+                      <option ng-repeat="role in roles" value="{{role.code}}">{{role.name}}</option>
                   </select>
             <div ng-messages="userForm.roles.$error" role="alert">
               <p class="help-block error-text" ng-message="required">At least one role is required.</p>

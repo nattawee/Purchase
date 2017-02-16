@@ -5,11 +5,12 @@
     .module('roles')
     .controller('RolesListController', RolesListController);
 
-  RolesListController.$inject = ['RolesService'];
+  RolesListController.$inject = ['RolesService', 'Authentication'];
 
-  function RolesListController(RolesService) {
+  function RolesListController(RolesService, Authentication) {
     var vm = this;
+    vm.authentication = Authentication;
 
     vm.roles = RolesService.query();
   }
-}());
+} ());

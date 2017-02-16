@@ -7,7 +7,7 @@
       <div class="col col-xs-10">
         <input type="search" class="form-control " ng-model="searchText" placeholder="ค้นหา">
       </div>
-      <div class="col col-md-2" ng-show="vm.authentication.user.roles[0] === 'admin'">
+      <div class="col col-md-2" ng-if="vm.authentication.user.roles[0] === 'admin'">
         <button class="btn btn-primary" ui-sref="roles.create()">สร้างรายการใหม่</button>
       </div>
     </div>
