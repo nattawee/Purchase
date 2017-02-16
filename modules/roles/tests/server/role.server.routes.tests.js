@@ -52,7 +52,7 @@ describe('Role CRUD tests', function () {
     user.save(function () {
       role = {
         code: 'a12',
-        name: 'Role Name'
+        name: 'Role name'
       };
 
       done();
