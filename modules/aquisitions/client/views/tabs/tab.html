@@ -17,6 +17,7 @@
                         </tr>
                     </thead>
                     <tbody>
+                        {{vm.aquisitions}}
                         <tr ng-repeat="aquisition in vm.aquisitions | filter:{ status: tab.status }" ui-sref="{{tab.uriref}}" ng-if="general.department._id === vm.authentication.user.branch"> <!--ng-if="general.department._id === vm.authentication.user.branch"-->
                             <td>
                                 {{aquisition.startdate | date:'dd/MM/yyyy'}} 
