@@ -46,7 +46,7 @@ describe('Role Model Unit Tests:', function() {
     });
   });
 
-  describe('Method Save', function() {
+  describe('Method Save', function(done) {
     it('should be able to save without problems', function(done) {
       this.timeout(0);
       return role.save(function(err) {
