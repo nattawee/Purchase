@@ -131,35 +131,35 @@ describe('Property CRUD tests', function () {
       });
   });
 
-  it('should not be able to save an Property if no name is provided', function (done) {
-    // Invalidate name field
-    property.name = '';
+  // it('should not be able to save an Property if no name is provided', function (done) {
+  //   // Invalidate name field
+  //   property.name = '';
 
-    agent.post('/api/auth/signin')
-      .send(credentials)
-      .expect(200)
-      .end(function (signinErr, signinRes) {
-        // Handle signin error
-        if (signinErr) {
-          return done(signinErr);
-        }
+  //   agent.post('/api/auth/signin')
+  //     .send(credentials)
+  //     .expect(200)
+  //     .end(function (signinErr, signinRes) {
+  //       // Handle signin error
+  //       if (signinErr) {
+  //         return done(signinErr);
+  //       }
 
-        // Get the userId
-        var userId = user.id;
+  //       // Get the userId
+  //       var userId = user.id;
 
-        // Save a new Property
-        agent.post('/api/properties')
-          .send(property)
-          .expect(400)
-          .end(function (propertySaveErr, propertySaveRes) {
-            // Set message assertion
-            (propertySaveRes.body.message).should.match('Please fill Property name');
+  //       // Save a new Property
+  //       agent.post('/api/properties')
+  //         .send(property)
+  //         .expect(400)
+  //         .end(function (propertySaveErr, propertySaveRes) {
+  //           // Set message assertion
+  //           (propertySaveRes.body.message).should.match();
 
-            // Handle Property save error
-            done(propertySaveErr);
-          });
-      });
-  });
+  //           // Handle Property save error
+  //           done(propertySaveErr);
+  //         });
+  //     });
+  // });
 
   it('should be able to update an Property if signed in', function (done) {
     agent.post('/api/auth/signin')
@@ -218,7 +218,7 @@ describe('Property CRUD tests', function () {
       request(app).get('/api/properties')
         .end(function (req, res) {
           // Set assertion
-          res.body.should.be.instanceof(Array).and.have.lengthOf(1);
+          (res.body.message).should.match('User is not authorized');
 
           // Call the assertion callback
           done();
@@ -236,7 +236,7 @@ describe('Property CRUD tests', function () {
       request(app).get('/api/properties/' + propertyObj._id)
         .end(function (req, res) {
           // Set assertion
-          res.body.should.be.instanceof(Object).and.have.property('name', property.name);
+          (res.body.message).should.match('User is not authorized');
 
           // Call the assertion callback
           done();
