@@ -84,7 +84,7 @@ var UserSchema = new Schema({
   additionalProvidersData: {},
   roles: {
     type: [{
-      type: String,
+      type: String
       // enum: ['guest', 'viewer', 'dataentry', 'approver', 'superuser', 'admin']
     }],
     default: ['guest'],
