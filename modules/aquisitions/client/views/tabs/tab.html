@@ -2,7 +2,7 @@
     <uib-tabset>
         <uib-tab ng-repeat="tab in vm.tabs">
             <uib-tab-heading>
-                {{tab.name}}
+                <div ng-click="vm.status(tab)">{{tab.name}}</div>
             </uib-tab-heading>
             <div class="panel-body">   
                   

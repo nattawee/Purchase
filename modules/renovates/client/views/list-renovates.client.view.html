@@ -1,4 +1,4 @@
-<section>
+<section ng-init="vm.readGenerals()">
   <div class="page-header">
     <h2 class="text-center">
       รายงานการปรับปรุงทรัพย์ (RENOVATE)
@@ -20,4 +20,5 @@
   <div class="alert alert-warning text-center" ng-if="vm.renovates.$resolved && !vm.renovates.length">
     No renovates yet, why don't you <a ui-sref="renovates.create">create one</a>?
   </div>
+  <div ng-include="'/modules/properties/client/views/button/button.exportexcel.html'"></div>
 </section>
